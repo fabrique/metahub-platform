@@ -1,6 +1,6 @@
-# JMF online collection
+# MetaHub online collection
 
-This is the readme for JMF online collection. Use this to get started,
+This is the readme for MetaHub online collection. Use this to get started,
 but don't forget to update these instructions when you change and add stuff.
 
 ## Setting up this project for development
@@ -9,8 +9,8 @@ To get this project up and running locally for development, do the following
 in the directory you want the project to be in:
 
 ```bash
-$ mkdir jmf  # this can be anything you want, it's not in git
-$ cd jmf
+$ mkdir metahub  # this can be anything you want, it's not in git
+$ cd metahub
 
 $ git clone git@bitbucket.org:fabrique/<name-of-repo>.git src
 
@@ -109,7 +109,7 @@ The environments are managed in the `development.py` settings under `DEPLOY_CONF
 The basic project structure is as follows:
 
 ```
-    jmf  # this can be anything you want, it's not in git
+    metahub  # this can be anything you want, it's not in git
     ├── assets  # compiled static files
     ├── mail    # development mail folder
     ├── media   # media folder
@@ -119,7 +119,7 @@ The basic project structure is as follows:
     |   ├── requirements    # requirements for dev and production
     |   ├── frontend        # design system frontend folder
     |   ├──
-    |   ├── jmf
+    |   ├── metahub
     |   |   ├── ...        # apps for this project
     |   |   ├── assets     # uncompiled assets (sass, js, etc.)
     |   |   ├── locale     # labels and translations
@@ -153,10 +153,10 @@ It is also very explicit about which settings can be changed in which environmen
 
 ### Where's my `localsettings.py`?
 You probably won't need it, since everyone shares the same development settings
-(in `jmf/settings/development.py`).
+(in `metahub/settings/development.py`).
 You can tweak some settings in your local version of the `.env` file (like `DATABASE_URL`).
 
-If you really want to, you can put your local settings in `jmf/settings/local.py`.
+If you really want to, you can put your local settings in `metahub/settings/local.py`.
 
 This file is ignored by git, and is only included in development settings if it exists.
 On the staging and production environment, all local settings should be configured
