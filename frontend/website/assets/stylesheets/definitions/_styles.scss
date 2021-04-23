@@ -1,0 +1,89 @@
+
+// Styles
+
+// Visually disable the size when the displayport is too small
+@mixin style-minimum-width-blackout {
+  &::after {
+    background: rgba(255, 255, 255, .8);
+    content: '';
+    display: block;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: $z-index-website-min-width-overlay;
+  }
+}
+
+@mixin style-anchor($inverted: false) {
+  cursor: pointer;
+  text-decoration: none;
+  text-decoration-skip-ink: auto; // Pretty descenders! 😍
+  transition: color $easing-change;
+
+  > span {
+    text-decoration: if($inverted, none, underline);
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    > span {
+      text-decoration: if($inverted, underline, none);
+    }
+  }
+}
+
+@mixin style-anchor-plain($inverted: false) {
+  cursor: pointer;
+  text-decoration: if($inverted, none, underline);
+  text-decoration-skip-ink: auto; // Pretty descenders! 😍
+  transition: color $easing-change;
+
+  &:hover {
+    text-decoration: if($inverted, underline, none);
+  }
+}
+
+@mixin style-list-base {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 16px;
+
+  li {
+    margin-left: .1em;
+    padding-left: 1.5em;
+    position: relative;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      height: 1em;
+      margin-left: -1.5em;
+      margin-right: .5em;
+      vertical-align: baseline;
+      width: 1em;
+    }
+  }
+}
+
+@mixin style-list-unordered {
+  li {
+    &::before {
+      content: '•';
+    }
+  }
+}
+
+@mixin style-list-ordered {
+  counter-reset: list-counter;
+
+  li {
+    counter-increment: list-counter;
+
+    &::before {
+      content: counter(list-counter) '.';
+    }
+  }
+}

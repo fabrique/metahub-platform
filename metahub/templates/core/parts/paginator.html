@@ -1,0 +1,31 @@
+{% load i18n %}
+
+{{ paginator.num_pages }}
+
+{% if paginator.paginator.num_pages > 1 %}
+<div class="pagination">
+    {% if paginator.has_previous %}
+        <a href="?{{ paginator.previous_page_number.querystring }}" class="prev">&lsaquo;&lsaquo;</a>
+    {% else %}
+        <span class="disabled prev">&lsaquo;&lsaquo;</span>
+    {% endif %}
+    {% for page in paginator.pages %}
+        {% if page %}
+            {% ifequal page paginator.number %}
+                <span class="current page">{{ page }}</span>
+            {% else %}
+                <a href="?{{ page.querystring }}" class="page">{{ page }}</a>
+            {% endifequal %}
+        {% else %}
+            <span class="pagination__points">
+            ...
+            </span>
+        {% endif %}
+    {% endfor %}
+    {% if paginator.has_next %}
+        <a href="?{{ paginator.next_page_number.querystring }}" class="next">&rsaquo;&rsaquo;</a>
+    {% else %}
+        <span class="disabled next">&rsaquo;&rsaquo;</span>
+    {% endif %}
+</div>
+{% endif %}

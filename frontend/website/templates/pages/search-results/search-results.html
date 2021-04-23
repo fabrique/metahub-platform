@@ -1,0 +1,200 @@
+{% extends 'templates/_base.html' %}
+
+{% import 'components/organisms/search-header/search-header.html' as organisms_search_header %}
+{% import 'components/organisms/search-results/search-results.html' as organisms_search_results %}
+
+{% block page_title %}Suchen in der Sammlung{% endblock %}
+
+{% block header %}
+  {{ organisms_search_header.regular(
+    pictures = [{
+      images: {
+        mobile: '/static/media/unsplash/cropped/search-results-header-1.jpg',
+        portrait: '/static/media/unsplash/cropped/search-results-header-1.jpg',
+        landscape: '/static/media/unsplash/cropped/search-results-header-1.jpg'
+      },
+      positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 50%' },
+      width: '1920',
+      height: '1280',
+      alt: 'test description'
+    }],
+    title = 'Suchen in der Sammlung',
+    subtitle = 'Jüdische Geschichte, Biografien, Kunst, Kultur.'
+  )}}
+{% endblock %}
+
+{% block content %}
+  {{ organisms_search_results.regular(
+    result_count = '328',
+
+    dropdowns = [
+      {
+         name: 'date',
+         type: 'date',
+         placeholder: 'datierung'
+      },
+      {
+        classes : component + '__dropdown-filter',
+        name : 'künstler',
+        label : 'künstler',
+        placeholder : 'Künstler*in',
+        type: 'select',
+        options : [
+          { value: 'meidner_l', title: 'Meidner, L.  (110)' },
+          { value: 'meidner_g', title: 'Meidner, G. (25)' },
+          { value: 'Horovitz', title: 'Horovitz, E.  (5)' },
+          { value: 'Oppenheimer', title: 'Oppenheimer, M. D. (3)' },
+          { value: 'aon', title: 'Aon, N. (2)' },
+          { value: 'loewy', title: 'Loewy, P. (20)' },
+          { value: 'Nussbaum', title: 'Nussbaum, J. (43)' },
+          { value: 'alexander', title: 'Alexander-Ihme, E. (6)' },
+          { value: 'anonym', title: 'Anonym (210)' }
+        ]
+      }, {
+        classes : component + '__dropdown-filter',
+        name : 'material',
+        label : 'material',
+        placeholder : 'Material & Technik',
+        type: 'select',
+        options : [
+          { value: 'meidner_l', title: 'Meidner, L.  (110)' },
+          { value: 'meidner_g', title: 'Meidner, G. (25)' },
+          { value: 'Horovitz', title: 'Horovitz, E.  (5)' },
+          { value: 'Oppenheimer', title: 'Oppenheimer, M. D. (3)' },
+          { value: 'aon', title: 'Aon, N. (2)' },
+          { value: 'loewy', title: 'Loewy, P. (20)' },
+          { value: 'Nussbaum', title: 'Nussbaum, J. (43)' },
+          { value: 'alexander', title: 'Alexander-Ihme, E. (6)' },
+          { value: 'anonym', title: 'Anonym (210)' }
+        ]
+  }, {
+          classes : component + '__dropdown-filter',
+        name : 'bezug',
+        label : 'bezug',
+        type: 'select',
+        placeholder : 'Geogr. Bezug',
+        options : [
+          { value: 'meidner_l', title: 'Meidner, L.  (110)' },
+          { value: 'meidner_g', title: 'Meidner, G. (25)' },
+          { value: 'Horovitz', title: 'Horovitz, E.  (5)' },
+          { value: 'Oppenheimer', title: 'Oppenheimer, M. D. (3)' },
+          { value: 'aon', title: 'Aon, N. (2)' },
+          { value: 'loewy', title: 'Loewy, P. (20)' },
+          { value: 'Nussbaum', title: 'Nussbaum, J. (43)' },
+          { value: 'alexander', title: 'Alexander-Ihme, E. (6)' },
+          { value: 'anonym', title: 'Anonym (210)' }
+        ]}
+          ],
+
+    results = [
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/search-result-1.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        },
+        title: 'Besamim-Turm',
+        name: 'Carl Wilhelm Rauch',
+        type: 'objekt',
+        variant: 'object',
+        date: '1875 - 1910',
+        link: {
+          href: '?'
+        }
+      },
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/search-result-2.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        },
+        title: 'Besamim-Turm',
+        name: 'Carl Wilhelm Rauch',
+        type: 'objekt',
+        variant: 'object',
+        date: '1875 - 1910',
+        link: {
+          href: '?'
+        }
+      },
+      {
+        href: '?',
+        target: '',
+        title: 'Leviten-Kanne und Waschschüssel',
+        type: 'objekt',
+        variant: 'object',
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/search-result-3.jpg' },
+          positions: { mobile: '40% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        }
+      },
+      {
+        href: '?',
+        target: '',
+        title: 'Jüdische Identität in Deutschland',
+        type: 'geschichten',
+        color: 'blurple',
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/search-result-3.jpg' },
+          positions: { mobile: '80% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        }
+      },
+      {
+        href: '?',
+        target: '',
+        title: 'Leviten-Kanne und Waschschüssel',
+        type: 'objekt',
+        variant: 'object',
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/search-result-4.jpg' },
+          positions: { mobile: '40% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        }
+      },
+      {
+        href: '?',
+        target: '',
+        title: 'Jüdische Identität in Deutschland',
+        type: 'geschichten',
+        color: 'blurple',
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/story-detail-main.jpg' },
+          positions: { mobile: '80% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        }
+      },
+      {
+        href: '?',
+        target: '',
+        title: 'Leviten-Kanne und Waschschüssel',
+        type: 'objekt',
+        variant: 'object',
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/search-result-6.jpg' },
+          positions: { mobile: '40% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        }
+      }
+    ]
+  )}}
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

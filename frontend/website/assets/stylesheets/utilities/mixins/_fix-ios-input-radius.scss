@@ -1,0 +1,5 @@
+
+@mixin fix-ios-input-radius {
+  -webkit-appearance: none;
+  border-radius: 0;
+}

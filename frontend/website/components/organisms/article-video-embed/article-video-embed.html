@@ -1,0 +1,29 @@
+
+{% import 'components/atoms/video-embed/video-embed.html' as atom_video_embed %}
+{% import 'components/atoms/link/link.html' as atom_link %}
+
+{% macro regular(id = '', caption = '', video = {}) %}
+
+{% set component = 'article-video-embed' %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }}">
+    <div class="{{ component }}__grid">
+      <div class="{{ component }}__wrapper">
+        {{ atom_video_embed.regular(
+          classes = component + '__video-embed',
+          video_id = video.video_id,
+          video_type = video.video_type,
+          picture = video.video_preview,
+          autoplay = video.autoplay,
+          button_play_title = video.button_play_title,
+          href = video.href
+        ) }}
+        {% if caption %}
+          <figcaption class="{{ component }}__caption">{% if video.duration %}{{ video.duration }}m - {% endif %} {{ caption }}</figcaption>
+        {% endif %}
+        {% if video.link %}
+          {{ atom_link.regular( classes = component + "__link", title = video.link.title, href = video.link.href, target = video.link.target, icon_before = 'custom/link-arrow') }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endmacro %}

@@ -1,0 +1,14 @@
+
+.figure {
+  contain: content;
+  position: relative;
+
+  .picture {
+    height: 100%;
+    width: 100%;
+  }
+
+  .figure__caption {
+    @include typography(caption, true, false);
+  }
+}

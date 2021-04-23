@@ -1,0 +1,156 @@
+
+// Grid mixins
+//
+// You can add or remove breakpoints at will,
+// but be sure to add/remove/modify the relevant mixins as well!
+
+// Basic breakpoint mixins
+// These are X 'and up', since we build mobile-first.
+@mixin mobile {
+  @content;
+}
+
+@mixin portrait {
+  @media (min-width: $portrait) {
+    @content;
+  }
+}
+
+@mixin landscape {
+  @media (min-width: $landscape) {
+    @content;
+  }
+}
+
+@mixin notebook {
+  @media (min-width: $notebook) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}
+
+// Override breakpoint mixins
+// These are X 'only'. Use them to target a specific breakpoint only.
+// Useful for when the next breakpoint in line's gonna have too much overrides.
+@mixin mobile-only {
+  @media (max-width: $almost-portrait) {
+    @content;
+  }
+}
+
+@mixin portrait-only {
+  @media (min-width: $portrait) and (max-width: $almost-landscape) {
+    @content;
+  }
+}
+
+@mixin landscape-only {
+  @media (min-width: $landscape) and (max-width: $almost-notebook) {
+    @content;
+  }
+}
+
+@mixin notebook-only {
+  @media (min-width: $notebook) and (max-width: $almost-desktop) {
+    @content;
+  }
+}
+
+// Constraint breakpoints
+// These are for special circumstances.
+@mixin too-small {
+  @media (max-width: $min-width) {
+    @content;
+  }
+}
+
+@mixin too-large {
+  @media (min-width: $max-width) {
+    @content;
+  }
+}
+
+// Multiple breakpoints
+// Specify a list of breakpoints (can be any, really) which will be applied one-by-one.
+// Warning: this duplicates content for every breakpoint specified.
+// It's usually better to use `breakpoint-span()`.
+@mixin breakpoints($breakpoints...) {
+  @each $breakpoint in $breakpoints {
+    // TODO: Something with sass mixin-exists and module-mixins!
+
+    @if ($breakpoint == mobile) {
+      @include mobile {
+        @content;
+      }
+    } @else if ($breakpoint == mobile-only) {
+      @include mobile-only {
+        @content;
+      }
+    } @else if ($breakpoint == portrait) {
+      @include portrait {
+        @content;
+      }
+    } @else if ($breakpoint == portrait-only) {
+      @include portrait-only {
+        @content;
+      }
+    } @else if ($breakpoint == landscape) {
+      @include landscape {
+        @content;
+      }
+    } @else if ($breakpoint == landscape-only) {
+      @include landscape-only {
+        @content;
+      }
+    } @else if ($breakpoint == notebook) {
+      @include notebook {
+        @content;
+      }
+    } @else if ($breakpoint == notebook-only) {
+      @include notebook-only {
+        @content;
+      }
+    } @else if ($breakpoint == desktop) {
+      @include desktop {
+        @content;
+      }
+    }
+  }
+}
+
+// Apply something specifically on *ALL* breakpoints.
+// Warning: this causes massive style duplication.
+// Use only when absolutely needed!
+@mixin every-breakpoint {
+  @include breakpoints(mobile-only, portrait-only, landscape-only, notebook-only, desktop) {
+    @content;
+  }
+}
+
+// Span something from one to another specific breakpoint.
+// Useful when you have to apply a specific set of properties in a breakpoint range.
+// For example: `breakpoint-span(portrait, notebook)` will span both portrait, landscape and notebook.
+// This does *NOT* cause style duplication.
+// This will take the last breakpoint given, and get the width (minus one) of the next.
+// That is only an issue when you try to give the last breakpoint (desktop) as the $to variable.
+// Use a normal 'and-up' breakpoint in that case.
+@mixin breakpoint-span($from, $to) {
+  $from-index: index(map-keys($breakpoints), $from);
+  $to-index: index(map-keys($breakpoints), $to);
+  $almost-next-one-up: map-get($breakpoints, nth(map-keys($breakpoints), ($to-index + 1))) - 1;
+
+  @if ($from == mobile) {
+    @media (max-width: $almost-next-one-up) {
+      @content;
+    }
+  } @else {
+    @media (min-width: map-get($breakpoints, $from)) and (max-width: $almost-next-one-up) {
+      @content;
+    }
+  }
+}

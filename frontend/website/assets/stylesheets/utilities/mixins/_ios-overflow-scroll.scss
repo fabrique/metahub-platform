@@ -1,0 +1,7 @@
+
+@mixin ios-overflow-scroll {
+  -webkit-overflow-scrolling: touch;
+  // overflow-y has to be scroll, not auto
+  // overflow-y has to be important, to override overflow: hidden
+  overflow-y: scroll !important;
+}

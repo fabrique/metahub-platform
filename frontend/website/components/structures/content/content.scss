@@ -1,0 +1,12 @@
+@import '../../../assets/stylesheets/utilities/mixins/clearfix';
+
+.content {
+  @include clearfix;
+
+  //contain: content;
+  display: flex;
+  flex: 1 0 100%;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+}

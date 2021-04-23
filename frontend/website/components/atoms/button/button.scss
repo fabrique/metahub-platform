@@ -1,0 +1,125 @@
+
+.button {
+  @include typography(sub-heading, $replica-font-stack);
+
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  max-width: min(100%, 520px);
+  min-width: 60px;
+  padding: 5px 15px;
+  position: relative;
+  text-align: center;
+  text-overflow: ellipsis;
+  transition: color $easing-change, background-color $easing-change, border-color $easing-change;
+  user-select: none;
+  vertical-align: bottom;
+  white-space: nowrap;
+  width: auto;
+
+  &::before {
+    background: $color-blue;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    right: -15px;
+    top: 0;
+    transform: skewX(-30deg);
+    width: 50px;
+  }
+
+  .button__span {
+    display: block;
+    flex: 1 1 100%;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    z-index: 5;
+
+    @include landscape {
+      display: none;
+    }
+  }
+
+  .button__long-title {
+    display: none;
+    flex: 1 1 100%;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    z-index: 5;
+
+    @include landscape {
+      display: block;
+    }
+  }
+
+  .button__icon {
+    display: block;
+    flex: 0 0 var(--button-line-height);
+    height: var(--button-line-height);
+    width: var(--button-line-height);
+    z-index: 5;
+
+    > svg {
+      display: block;
+      fill: $color-white;
+
+      > g {
+        > g {
+          fill: $color-white;
+        }
+      }
+    }
+  }
+
+  .button__icon--before {
+    margin-right: .5em;
+  }
+
+  .button__icon--after {
+    margin-left: .5em;
+    margin-right: -.5em;
+  }
+}
+
+.button:disabled,
+.button--disabled {
+  cursor: default;
+  opacity: .25;
+  pointer-events: none;
+}
+
+.button--primary {
+  background-color: $color-blue;
+  border-color: $color-blue;
+  color: $color-white;
+}
+
+.button--secondary {
+  background-color: $color-white;
+  border-color: $color-white;
+  color: $color-blue;
+
+  &::before {
+    background: $color-white;
+  }
+
+  .button__icon {
+    > svg {
+      fill: $color-blue;
+
+      > g {
+        > g {
+          fill: $color-blue;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+
+@mixin nullify-content-breaks($breakpoint: false) {
+  @if ($breakpoint) {
+    @include below($breakpoint) {
+      br {
+        content: ' ';
+        display: inline-block;
+        width: .25em;
+      }
+    }
+  } @else {
+    br {
+      content: ' ';
+      display: inline-block;
+      width: .25em;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{% load starling_tags %}
+
+{% if results|length > 0 %}
+  {% for result in results %}
+    {% include_component 'atoms.livesearch-result.regular' result=result %}
+  {% endfor %}
+{% else %}
+    {% include_component 'atoms.livesearch-result.no_results' %}
+{% endif %}

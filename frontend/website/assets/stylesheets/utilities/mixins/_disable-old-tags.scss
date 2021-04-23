@@ -1,0 +1,22 @@
+
+// Disable old tags helper
+//
+// To disable 'b' and 'i' tags.
+
+@mixin disable-old-tags($high-priority: true) {
+  @if ($high-priority) {
+    html & {
+      b,
+      i {
+        font-style: inherit;
+        font-weight: inherit;
+      }
+    }
+  } @else {
+    b,
+    i {
+      font-style: inherit;
+      font-weight: inherit;
+    }
+  }
+}

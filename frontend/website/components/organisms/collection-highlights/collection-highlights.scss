@@ -1,0 +1,193 @@
+
+@mixin collection-highlights {
+  .collection-highlights__grid-container {
+    @include grid-container;
+
+    padding-bottom: 110px;
+    padding-top: 80px;
+
+    @include landscape {
+      padding-top: 50px;
+    }
+  }
+
+  .collection-highlights__title {
+    @include typography(heading-1, $replica-font-stack);
+
+    color: $color-blue;
+    grid-column: column 1 / span 12;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+  }
+
+  .collection-highlights__introduction {
+    @include typography(introduction, $replica-font-stack);
+
+    a {
+      cursor: pointer;
+    }
+
+    color: $color-blue;
+    font-weight: normal;
+    grid-column: column 1 / span 12;
+
+    @include landscape {
+      grid-column: column 1 / span 7;
+    }
+  }
+
+  .collection-highlights__highlight-container {
+    @include grid-container;
+
+    grid-column: column 1 / span 12;
+    margin-top: 70px;
+    padding-left: 0;
+    padding-right: 0;
+
+    //@include landscape {
+    //  &:nth-child(4),
+    //  &:nth-child(7) {
+    //    margin-top: -70px;
+    //  }
+    //
+    //  &:nth-child(5) {
+    //    margin-top: 50px;
+    //  }
+    //
+    //  margin-top: 130px;
+    //}
+  }
+
+  .collection-highlights__highlight-image--left {
+    grid-column: column 1 / span 10;
+
+    @include landscape {
+      grid-column: column 1 / span 5;
+    }
+  }
+
+  .collection-highlights__highlight-image--right {
+    .picture {
+      margin-bottom: 20px;
+    }
+
+    grid-column: column 3 / span 12;
+
+    @include landscape {
+      grid-column: column 6 / span 7;
+    }
+  }
+
+  .collection-highlights__highlight-image--centered-left {
+    grid-column: column 1 / span 10;
+
+    @include landscape {
+      grid-column: column 2 / span 7;
+    }
+  }
+
+  .collection-highlights__highlight-image--left,
+  .collection-highlights__highlight-image--centered-left {
+    .picture {
+      margin-bottom: 20px;
+    }
+  }
+
+  .collection-highlights__highlight-information--right {
+    grid-column: column 1 /span 10;
+
+    @include landscape {
+      grid-column: column 6 / span 5;
+    }
+  }
+
+  .collection-highlights__highlight-information--centered-right {
+    grid-column: column 1 / span 10;
+
+    @include landscape {
+      grid-column: column 9 / span 3;
+    }
+  }
+
+  .collection-highlights__info-description {
+    @include typography(description, $replica-font-stack);
+
+    font-weight: bold;
+    margin-bottom: 60px;
+  }
+
+  .collection-highlights__info-detail {
+    margin-bottom: 20px;
+  }
+
+  .collection-highlights__info-link,
+  .collection-highlights__info-detail {
+    @include typography(caption, $replica-font-stack);
+  }
+
+  .collection-highlights__info-link {
+    svg {
+      flex-shrink: 0;
+      height: 24px;
+      margin-right: 7px;
+      width: 24px;
+    }
+
+    align-items: center;
+    color: $color-blue;
+    display: flex;
+    font-weight: bold;
+  }
+
+  .collection-highlights__info-location {
+    .collection-highlights__location-text {
+      @include typography(location, $replica-font-stack);
+
+      color: $color-pink;
+      display: inline-block;
+      text-transform: uppercase;
+      vertical-align: text-top;
+    }
+
+    .collection-highlights__location-icon {
+      > svg {
+        height: 100%;
+        position: relative;
+        top: 0;
+        vertical-align: middle;
+        width: 100%;
+      }
+
+      display: inline-block;
+      height: 1.4em;
+      margin-right: .2em;
+      position: relative;
+      top: -1px;
+      vertical-align: text-top;
+      width: 1.4em;
+    }
+
+    display: inline-block;
+    text-decoration: none;
+    transition: color $easing-change;
+    vertical-align: bottom;
+  }
+
+  .collection-highlights__button-container {
+    grid-column: column 1 /span 12;
+    margin-top: 80px;
+
+    @include landscape {
+      grid-column: column 6 /span 6;
+    }
+  }
+
+  .collection-highlights__picture-anchor {
+    display: inline-block;
+    vertical-align: top;
+  }
+}
+
+.collection-highlights {
+  @include collection-highlights;
+}

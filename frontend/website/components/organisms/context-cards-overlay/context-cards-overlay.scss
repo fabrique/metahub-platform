@@ -1,0 +1,151 @@
+@mixin context-cards-overlay {
+  background-color: $color-blue;
+  bottom: 0;
+  color: $color-white;
+  height: 380px;
+  left: 0;
+  position: fixed;
+  right: 0;
+  transform: translateY(calc(100% - 59px));
+  transition: transform .3s ease;
+  z-index: 500;
+
+  &.context-cards-overlay--hide {
+    display: none;
+  }
+
+  @include landscape {
+    display: none;
+  }
+
+  &.context-cards-overlay--open {
+    transform: translateY(0);
+
+    .context-cards-overlay__button-icon {
+      transform: rotate(180deg);
+    }
+  }
+
+  .context-cards-overlay__overlay-button {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 20px 0;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .context-cards-overlay__button-icon {
+    display: inline-block;
+    margin-left: 10px;
+    transition: transform .2s ease;
+    width: 15px;
+  }
+
+  .context-cards-overlay__title {
+    @include typography(caption, $replica-font-stack);
+
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .swiper-container {
+    width: 100%;
+  }
+
+  .swiper-wrapper {
+    height: 210px;
+    overflow: visible;
+    padding: 0 0 0 80px;
+  }
+
+  .swiper-slide {
+    list-style: none;
+
+    &:not(:last-child) {
+      padding-right: 40px;
+    }
+  }
+
+  .context-cards-overlay__card {
+    position: static;
+
+    .card__info-container {
+      max-width: 60%;
+    }
+
+    .card__image {
+      right: 40px;
+    }
+  }
+}
+
+@mixin context-cards-overlay__ribbon {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  right: 25px;
+  top: 350px;
+  width: 300px;
+  z-index: $z-index-context-ribbon;
+
+  .menu-bar--sticky & {
+    //top: 350px - 126px;  // MKR enable this for animations smoothness not for now
+    top: 350px;
+  }
+
+  @include landscape {
+    display: flex;
+  }
+
+  .context-cards-overlay__ribbon-wrapper {
+    grid-column: column 9 / span 3;
+  }
+
+  .context-cards-overlay__title {
+    color: $color-white;
+    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    grid-column: column 1 / span 12;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+
+    @include typography(sub-heading, $replica-font-stack);
+
+    .context-cards-overlay__title-top,
+    .context-cards-overlay__title-bottom {
+      background-color: $color-blue;
+      display: inline-block;
+      margin-right: auto;
+      padding: 0 10px;
+    }
+
+    .context-cards-overlay__title-bottom {
+      margin-top: -5px;
+    }
+  }
+
+  .context-cards-overlay__ribbon-card {
+    height: 200px;
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
+
+    .card__title {
+      font-size: 18px;
+    }
+  }
+}
+
+.context-cards-overlay {
+  @include context-cards-overlay;
+}
+
+.context-cards-overlay__ribbon {
+  @include context-cards-overlay__ribbon;
+}

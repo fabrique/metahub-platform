@@ -1,0 +1,145 @@
+
+.text-field {
+  position: relative;
+
+  .text-field__label {
+    @include typography(field-label, false, true, false);
+
+    cursor: pointer;
+    display: block;
+    line-height: 32px;
+    margin: 8px 0;
+    user-select: none;
+  }
+
+  .text-field__wrapper {
+    display: block;
+    font-size: 0;
+    max-width: 100%;
+    position: relative;
+  }
+
+  .text-field__input {
+    @include typography(paragraph);
+
+    background-color: $color-white;
+    border: 1px solid currentColor;
+    color: inherit;
+    display: inline-block;
+    flex: 1 1 100%;
+    height: 64px;
+    line-height: 32px;
+    margin: 0;
+    min-height: 64px;
+    min-width: 64px;
+    overflow: hidden;
+    padding: 16px 20px;
+    position: relative;
+    transition: color .25s ease-out, background-color .25s ease-out, border-color .25s ease-out;
+    vertical-align: bottom;
+    white-space: nowrap;
+    width: 100%;
+
+    &:hover:not(:disabled) {
+      background-color: $color-grey-extralight;
+    }
+
+    &:disabled {
+      opacity: .4;
+      pointer-events: none;
+    }
+  }
+
+  &.text-field--required {
+    .text-field__label {
+      &::after {
+        content: '*';
+        display: inline-block;
+        margin-left: .25em;
+      }
+    }
+  }
+
+  &:not(.text-field--required) {
+    .text-field__label {
+      &::after {
+        content: '';
+        display: inline-block;
+        margin-left: .25em;
+      }
+    }
+  }
+
+  &.text-field--error {
+    .text-field__error {
+      @include typography(caption);
+
+      color: $color-error;
+      display: inline-block;
+      max-width: 100%;
+      width: auto;
+    }
+
+    .text-field__input {
+      border-color: $color-error;
+    }
+  }
+}
+
+.text-field--text {
+  //
+}
+
+.text-field--number {
+  //
+}
+
+.text-field--password {
+  //
+}
+
+.text-field--textarea {
+  .text-field__input {
+    min-height: 10em;
+  }
+}
+
+.text-field--search {
+  .text-field__input {
+    padding-left: 48px;
+    padding-right: 64px;
+  }
+
+  .text-field__icon,
+  .text-field__button-icon {
+    border: 16px solid transparent;
+    fill: currentColor;
+    height: 64px;
+    left: 8px;
+    line-height: 64px;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 48px;
+    z-index: 1;
+  }
+
+  .text-field__button {
+    border-radius: 0;
+    color: inherit;
+    height: 64px;
+    margin: 0;
+    margin-left: -64px;
+    padding: 16px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 64px;
+
+    .button__icon {
+      height: 32px;
+      width: 32px;
+    }
+  }
+}

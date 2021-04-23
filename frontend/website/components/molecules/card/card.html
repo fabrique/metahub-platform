@@ -1,0 +1,17 @@
+{% import 'components/atoms/picture/picture.html' as atom_picture %}
+
+{% macro regular(classes = '', href = '', target = '', title = '', type = '', picture = {}, color = '', variant='object') %}
+  {% set component = 'card' %}
+
+  <a class="{{ component }} {{ classes }}" href="{{ href }}" {% if target %}target="{{ target }}"{% endif %}>
+    {% if picture %}
+      <div class="{{ component }}__image">
+        {{ atom_picture.regular(images = picture.images, fits = picture.fits, positions = picture.positions, width = picture.width, height = picture.height, loading = picture.loading, alt = picture.alt) }}
+      </div>
+    {% endif %}
+    <div class="{{ component }}__info-container {% if color == 'blurple' %}{{ component }}__info-container--gradient{% endif %}">
+      <p class="{{ component }}__type">{{ type }}</p>
+      <p class="{{ component }}__title">{{ title }}</p>
+    </div>
+  </a>
+{% endmacro %}

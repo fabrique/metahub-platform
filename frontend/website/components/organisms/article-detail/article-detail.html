@@ -1,0 +1,35 @@
+{% import 'components/atoms/description/description.html' as atom_description %}
+{% import 'components/molecules/detail-image/detail-image.html' as molecule_detail_image %}
+{% import 'components/molecules/audio/audio.html' as molecule_audio %}
+
+{% macro regular(id = '', classes = '', description = false, pictures = [], information = {}, text_content = '', reading_time = '', type = '', audio = false, download_link = '', expandable = true, minimal = false, favourite = false, favinfo = {}) %}
+  {% set component = 'article-detail' %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }} {% if minimal %}{{ component }}--minimal{% endif %}" data-id="{{ favinfo.id }}" data-category="{{ favinfo.category }}">
+    <div class="{{ component }}__grid">
+
+      <div class="{{ component }}__column-left">
+        {{ molecule_detail_image.regular(classes = component + "__main-image", pictures = pictures, information = information, type = type, download_link = download_link, expandable = expandable, favinfo=favinfo) }}
+      </div>
+
+      {% if minimal == false %}
+        <div class="{{ component }}__column-right">
+
+          <button class="{{ component }}__icon-favorite" aria-label="favorite">
+            <span class="heart-empty">{% include 'assets/icons/custom/heart-icon.svg' %}</span>
+            <span class="heart-filled">{% include 'assets/icons/custom/heart-filled.svg' %}</span>
+          </button>
+
+          {% if description %} {{ atom_description.regular(text = description.text, location = description.location, location_icon = description.location_icon, scroll_link = description.scroll_link ) }} {% endif %}
+
+          {% if reading_time %}
+            <p class="{{ component }}__reading-time">{{ reading_time }} min Lesezeit</p>
+          {% endif %}
+
+          {% if audio %}
+            {{ molecule_audio.regular(classes = component + "__audio", title = audio.title, file_title = audio.file_title, file_subtitle = audio.file_subtitle, file = audio.file, audio_transcript = audio.audio_transcript) }}
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endmacro %}

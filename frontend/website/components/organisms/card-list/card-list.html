@@ -1,0 +1,52 @@
+
+{% import 'components/atoms/picture/picture.html' as atom_picture %}
+{% import 'components/molecules/pagination/pagination.html' as molecule_pagination %}
+
+{% macro regular(id = '', title = '', cards = [], show_pagination = true) %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="card-list">
+    <div class="card-list__grid">
+      <div class="card-list__wrapper">
+        {% if title %}
+          <h2 class="card-list__title">{{ title }}</h2>
+        {% endif %}
+
+        {% for card in cards %}
+          <a class="card-list__cards"  href="{{ card.href }}">
+            {% if card.picture %}
+               <div class="card-list__image">
+                {% if card.picture.images == 'placeholders' %}
+                  {{ object_replace_value(card.picture, 'images', 'placeholders', generate_placeholders({ mobile: '530x600', portrait: '800x600', landscape: '1180x600', notebook: '1480x600', desktop: '1920x600' })) }}
+                {% endif %}
+
+                {{ atom_picture.regular(
+                  images = card.picture.images,
+                  fits = card.picture.fits,
+                  positions = card.picture.positions,
+                  width = card.picture.width,
+                  height = card.picture.height,
+                  loading = card.picture.loading
+                ) }}
+              </div>
+            {% endif %}
+
+            <div class="card-list__content">
+              {% if card.title %}
+                <h3 class="card-list__card-title">{{ card.title }}</h3>
+              {% endif %}
+
+              {% if card.text %}
+                <p class="card-list__text">{{ card.text }}</p>
+              {% endif %}
+            </div>
+          </a>
+        {% endfor %}
+
+        {% if show_pagination %}
+          <div class="card-list__pagination">
+            {{ molecule_pagination.regular() }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endmacro %}

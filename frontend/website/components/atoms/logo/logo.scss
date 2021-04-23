@@ -1,0 +1,13 @@
+
+.logo {
+  color: inherit;
+  contain: content;
+  display: inline-block;
+  height: 45px;
+  line-height: 0;
+  min-width: 120px;
+  position: relative;
+  transition: color $easing-change;
+  user-select: none;
+  vertical-align: top;
+}

@@ -1,0 +1,6 @@
+
+@mixin browserhack-chrome {
+  @supports (-webkit-appearance: none) {
+    @content;
+  }
+}

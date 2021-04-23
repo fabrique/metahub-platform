@@ -1,0 +1,270 @@
+{% extends 'templates/_base.html' %}
+
+{% import 'components/atoms/richtext/richtext.html' as atom_richtext %}
+{% import 'components/organisms/article-video-embed/article-video-embed.html' as article_video_embed %}
+{% import 'components/organisms/article-audio/article-audio.html' as organism_article_audio %}
+{% import 'components/organisms/article-content/article-content.html' as organism_article_content %}
+{% import 'components/organisms/article-quote/article-quote.html' as organism_article_quote %}
+{% import 'components/organisms/article-quote-and-text/article-quote-and-text.html' as organism_article_quote_and_text %}
+{% import 'components/organisms/article-photos-and-text/article-photos-and-text.html' as organism_article_photos_and_text %}
+{% import 'components/organisms/article-detail/article-detail.html' as organism_article_detail %}
+{% import 'components/organisms/article-photo/article-photo.html' as organism_article_photo %}
+{% import 'components/organisms/article-links/article-links.html' as organism_article_links %}
+{% import 'components/organisms/article-video/article-video.html' as organism_article_video %}
+{% import 'components/organisms/image-header/image-header.html' as organism_image_header %}
+{% import 'components/organisms/lightbox/lightbox.html' as lightbox %}
+{% import 'components/organisms/context-cards-overlay/context-cards-overlay.html' as context_overlay %}
+
+{% block page_title %}Geschichten{% endblock %}
+
+{% block header %}
+  {{ organism_image_header.regular(
+    expandable = true,
+    pictures = [{
+      images: {
+        mobile: '/static/media/unsplash/cropped/story-detail-main.jpg',
+        portrait: '/static/media/unsplash/cropped/story-detail-main.jpg',
+        landscape: '/static/media/unsplash/cropped/story-detail-main.jpg'
+      },
+      positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 50%' },
+      width: '1920',
+      height: '1280',
+      alt: 'test description'
+    }],
+    information = {
+      name: 'Geschichten',
+      title: 'Jüdische Identität in Deutschland'
+    },
+    context = true
+  ) }}
+{% endblock %}
+
+{% block content %}
+  {{ organism_article_detail.regular(
+    information = {
+      title: 'Chanukka-Leuchter',
+      name: 'Geschichten: Jüdische Identität in Deutschland',
+      date: ''
+    },
+    type = 'story',
+    pictures = [{
+      images: { mobile: '/static/media/unsplash/cropped/story-detail-main.jpg' },
+      positions: { mobile: '50% 50%' },
+      fits: { mobile: 'cover' },
+      width: 1920,
+      height: 640
+    }],
+    description = {
+      scroll_link: false,
+      text: 'Wenn Havlin vor die Tür geht, fällt er auf. Dieser Anzug, dieser Bart. Viele sprechen ihn an. An manchen Tagen, sagt Havlin, brauche er von seiner Wohnung zur Synagoge doppelt so lange wie geplant.'
+    },
+    reading_time = '3',
+    expandable = true
+  ) }}
+
+  {% call organism_article_content.regular(classes = component + '__text-content') %}
+    <p>
+      Wenn Havlin vor die Tür geht, fällt er auf. Dieser Anzug, dieser Bart. Viele sprechen ihn an. An manchen Tagen, sagt Havlin, brauche er von seiner Wohnung zur Synagoge doppelt so lange wie geplant.
+      Wenn er vor Schulklassen steht, ist er oft der erste Jude, mit dem die Jugendlichen bewusst Kontakt haben. Jüdisches Leben, das ist immer noch etwas, das nicht selbstverständlich ist in Deutschland.
+    </p>
+  {% endcall %}
+
+  {{ article_video_embed.regular(
+    video_embed = {
+      caption: 'Their success serves to remind us that readers are not sick of content',
+      picture: {
+        images: { mobile: '/static/media/unsplash/cropped/video-placeholder.jpg' },
+        positions: { mobile: '50% 50%' },
+        fits: { mobile: 'cover' },
+        width: 1920,
+        height: 640
+      },
+      href: 'https://vimeo.com/329812936',
+      video_id: '329812936',
+      video_type: 'vimeo',
+      duration: '1.23',
+      autoplay: false,
+      link: {
+        href: '?',
+        title: 'Link zu Video-transcript'
+      }
+    }
+  ) }}
+
+  {{ organism_article_quote_and_text.regular(
+    quote = 'Vor dem Holocaust lebten in Hamburg 50.000 Jüdinnen und Juden – heute hat die Gemeinde etwa 2500 Mitglieder.',
+    attribution =  'Halvi, Rabbiner in Berlin',
+    text = '
+      <p>
+        Wenn Havlin vor die Tür geht, fällt er auf. Dieser Anzug, dieser Bart. Viele sprechen ihn an. An manchen Tagen, sagt Havlin, brauche er von seiner Wohnung zur Synagoge doppelt so lange wie geplant.
+        Wenn er vor Schulklassen steht, ist er oft der erste Jude, mit dem die Jugendlichen bewusst Kontakt haben. Jüdisches Leben, das ist immer noch etwas, das nicht selbstverständlich ist in Deutschland.
+      </p>
+    '
+  ) }}
+
+  {% call organism_article_content.regular(classes = component + '__text-content') %}
+    <p>
+      Wenn Havlin vor die Tür geht, fällt er auf. Dieser Anzug, dieser Bart. Viele sprechen ihn an. An manchen Tagen, sagt Havlin, brauche er von seiner Wohnung zur Synagoge doppelt so lange wie geplant.
+      Wenn er vor Schulklassen steht, ist er oft der erste Jude, mit dem die Jugendlichen bewusst Kontakt haben. Jüdisches Leben, das ist immer noch etwas, das nicht selbstverständlich ist in Deutschland.
+    </p>
+  {% endcall %}
+
+  {{ organism_article_photo.regular(
+    figure = {
+      picture: {
+        images: { mobile: '/static/media/unsplash/cropped/luke-porter-letterbox.jpg' },
+        positions: { mobile: '50% 50%' },
+        fits: { mobile: 'cover' },
+        width: 1920,
+        height: 640,
+        alt: 'test alt'
+      }
+    }
+  ) }}
+
+  {{ organism_article_photos_and_text.regular(
+    picture_large = {
+      images: {
+        mobile: '/static/media/unsplash/cropped/kevin-young-portrait.jpg',
+        portrait: '/static/media/unsplash/cropped/kevin-young-portrait.jpg',
+        landscape: '/static/media/unsplash/cropped/kevin-young-landscape.jpg'
+      },
+      positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 100%' },
+      width: '1920',
+      height: '1280',
+      alt: 'test description'
+    },
+    picture_small = {
+      images: {
+        mobile: '/static/media/unsplash/cropped/article-detail-image.jpg',
+        portrait: '/static/media/unsplash/cropped/article-detail-image.jpg',
+        landscape: '/static/media/unsplash/cropped/article-detail-image.jpg'
+      },
+      positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 100%' },
+      width: '1920',
+      height: '1280',
+      alt: 'test description'
+    }
+    ,
+    text = '
+      <h3>Jussuf, 19 aus Berlin</h3>
+      <p>
+        Rabbi Havlin wurde in Israel geboren, studierte dort und in den USA. 2012 kam er nach Deutschland. In Hamburg arbeitet der 33-Jährige auch als Religionslehrer für das 2007 wieder gegründete jüdische Bildungshaus.
+        Wenn er vor Schulklassen steht, ist er oft der erste Jude, mit dem die Jugendlichen bewusst Kontakt haben.
+        Vieles ist unbekannt. Wie oft betet ihr am Tag? Was trägst du zu Hause? Welche Rolle haben Frauen im Judentum? Was bedeutet der Davidstern?
+
+        Über den Nahostkonflikt spricht Havlin bewusst nicht. Dafür sei er der falsche Ansprechpartner, sagt er. Israel, Juden, Holocaust, Muslime, Antisemitismus – viele wissen heute gar nicht mehr, wie die Dinge zusammenhängen. Menschen jüdischen Glaubens sollen abwechselnd den Nahostkonflikt bewerten, den Holocaust erklären und Verschwörungstheorien widerlegen.
+      </p>
+      <br />
+      <p>
+        Rabbi Havlin wurde in Israel geboren, studierte dort und in den USA. 2012 kam er nach Deutschland. In Hamburg arbeitet der 33-Jährige auch als Religionslehrer für das 2007 wieder gegründete jüdische Bildungshaus.
+        Wenn er vor Schulklassen steht, ist er oft der erste Jude, mit dem die Jugendlichen bewusst Kontakt haben.
+        Vieles ist unbekannt. Wie oft betet ihr am Tag? Was trägst du zu Hause? Welche Rolle haben Frauen im Judentum? Was bedeutet der Davidstern?
+
+      </p>
+    '
+  ) }}
+
+  {{ organism_article_audio.regular(
+      file = {
+        title: 'Das dritte Inteview mit Jussuf, 25 aus Frankfurt hören sie im Podcast:',
+        file_title: 'Jüdische Identität in Deutschland',
+        file_subtitle: 'Jussuf, 25 erzählt von seinem Alltag in Frankfurt',
+        file: 'https://www2.cs.uic.edu/~i101/SoundFiles/BabyElephantWalk60.wav',
+        audio_transcript: '?'
+      }
+  ) }}
+
+  {{ organism_article_links.regular(
+    title = 'Interessante Links zu diesem Thema ',
+    links = [
+      { title: 'Wir haben die CSU gefragt, ob sie auch Davidsterne in Bayern aufhängen will', href: '?' },
+      { title: 'Zeichen für Toleranz: Rabbis und Imame radeln gemeinsam durch Berlin', href: '?' }
+    ]
+  ) }}
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+{% block overlays %}
+  {{ lightbox.photo_series(
+    items = [
+      {
+        picture: {
+          images: {
+            mobile: '/static/media/unsplash/cropped/story-detail-main.jpg',
+            portrait: '/static/media/unsplash/cropped/story-detail-main.jpg',
+            landscape: '/static/media/unsplash/cropped/story-detail-main.jpg'
+          },
+          positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 50%' },
+          width: '1920',
+          height: '1280',
+          alt: 'test description'
+        },
+        information: {
+          title: 'Ohne Titel',
+          name: 'New name',
+          date: 'Fotografie 200',
+          description: 'This is a new description',
+          credits: 'BY ND',
+          link: {
+            href: '?',
+            title: 'Objekt Details'
+          }
+        }
+      }
+    ]
+  ) }}
+
+  {{ context_overlay.regular(
+    title = 'das werk im kontext',
+    title_top = 'Entdecken SIe',
+    title_bottom = 'das werk im kontext',
+    cards = [
+      {
+        href: '?',
+        target: '',
+        title: 'Jüdische Identität in Deutschland',
+        type: 'geschichten',
+        color: 'blurple',
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/story-detail-main.jpg' },
+          positions: { mobile: '80% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        }
+      },
+      {
+        href: '?',
+        target: '',
+        title: 'Leviten-Kanne und Waschschüssel',
+        type: 'objekt',
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/context-card-2.jpg' },
+          positions: { mobile: '40% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        }
+      },
+      {
+        href: '?',
+        target: '',
+        title: 'Peter Loewy, Fotograf',
+        type: 'BIOGRAFIE',
+        color: 'blurple',
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/context-card-3.jpg' },
+          positions: { mobile: '85% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        }
+      }
+    ]
+  )}}
+{% endblock %}

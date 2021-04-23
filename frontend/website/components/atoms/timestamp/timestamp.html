@@ -1,0 +1,13 @@
+
+{% macro regular(classes = '', datetime = '', title = '', locale = 'en-US', options = { dateStyle: 'long', timeStyle: 'short'} ) %}
+  {% set datetime_full = datetime|friendly_timestamp('en-US', { dateStyle: 'full', timeStyle: 'long' }) %}
+  {% set datetime_short = datetime|friendly_timestamp(locale, options) %}
+
+  <time class="timestamp {{ classes }}" datetime="{{ datetime }}" title="{{ datetime_full }}">
+    {% if title %}
+      <span class="timestamp__span">{{ title }}</span>
+    {% else %}
+      <span class="timestamp__span">{{ datetime_short }}</span>
+    {% endif %}
+  </time>
+{% endmacro %}

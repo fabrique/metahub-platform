@@ -1,0 +1,73 @@
+
+@mixin idangerous-swiper-base {
+  .swiper-container {
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    z-index: 1; // Webkit flickering fix
+
+    // a11y
+    .swiper-notification {
+      left: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      z-index: -1000;
+    }
+  }
+
+  .swiper-container-no-flexbox {
+    .swiper-slide {
+      float: left;
+    }
+  }
+
+  .swiper-container-vertical {
+    > .swiper-wrapper {
+      flex-direction: column;
+    }
+  }
+
+  .swiper-wrapper {
+    box-sizing: content-box;
+    display: flex;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition-property: transform;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .swiper-container-android .swiper-slide,
+  .swiper-wrapper {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .swiper-container-multirow > .swiper-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .swiper-container-free-mode > .swiper-wrapper {
+    margin: 0 auto;
+    transition-timing-function: ease-out;
+  }
+
+  .swiper-slide {
+    flex-shrink: 0;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    width: 100%;
+  }
+
+  // IE10 Windows Phone 8 Fixes
+  .swiper-wp8-horizontal {
+    touch-action: pan-y;
+  }
+
+  .swiper-wp8-vertical {
+    touch-action: pan-x;
+  }
+}

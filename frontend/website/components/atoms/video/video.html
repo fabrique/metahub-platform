@@ -1,0 +1,24 @@
+
+{% macro regular(classes = '', sources = [], options = {}, button_play_title = 'Play') %}
+  {% set options = merge_objects({ autoplay: false, inline: true, loop: false, muted: false, preload: 'metadata' }, options) %}
+
+  {% if options.autoplay %}
+    {% set options = merge_objects(options, { inline: true, muted: true, preload: 'auto' }) %}
+  {% endif %}
+
+  <figure class="video {{ classes }}">
+    <div class="video__container">
+      <video class="video__video" {% if options.autoplay %}autoplay{% endif %} {% if options.muted %}muted{% endif %} {% if options.inline %}playsinline{% endif %} {% if options.loop %}loop{% endif %} preload="{{ options.preload }}" poster="">
+        {% for source in sources %}
+          <source src="{{ source.src }}" {% if source.mimetype %}type="{{ source.mimetype }}"{% endif %}>
+        {% endfor %}
+      </video>
+      <span class="video__hit-target">
+        <button class="video__button video__button--play" aria-label="play-button">
+          {% include 'assets/icons/custom/ic_play.svg' %}
+          <span class="video__button-span" hidden="screen">{{ button_play_title }}</span>
+        </button>
+      </span>
+    </div>
+  </figure>
+{% endmacro %}

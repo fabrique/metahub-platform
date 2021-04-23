@@ -1,0 +1,93 @@
+{% load staticfiles i18n analytics_tags core_tags wagtailimages_tags %}
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="DC.Contributor" content="Fabrique">
+  <link rel="DC.Contributor" href="https://fabrique.nl">
+
+  
+  <title>{% block page_title %}{{ request.site.site_name }}{% endblock %}</title>
+  <meta name="description" content="{% block site_description %}{{ settings.core.GlobalSettings.default_site_description }}{% endblock %}">
+  
+
+  {% block share %}
+  
+  {% if settings.core.GlobalSettings.default_share_image %}
+    {% image settings.core.GlobalSettings.default_share_image fill-1200x630 as share_image %}
+  {% endif %}
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% block og_title %}{{ request.site.site_name }}{% endblock %}">
+  <meta property="og:url" content="{% block og_url %}{% endblock %}">
+  <meta property="og:image" content="{% block og_image %}{% if share_image %}{{ share_image.url }}{% endif %}{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}{{ settings.core.GlobalSettings.default_site_description }}{% endblock %}">
+  <meta property="og:site_name " content="{% block og_sitename %}{{ request.site.site_name }}{% endblock %}">
+  {% trans "core.head.fb_admins" as fb_admins %}
+  {% if fb_admins and fb_admins != "core.head.fb_admins" %}
+    <meta property="fb:admins" content="{{ fb_admins }}">
+  {% endif %}
+  {% trans "core.head.fb_appid" as fb_appid %}
+  {% if fb_appid and fb_appid != "core.head.fb_appid" %}
+    <meta property="fb:app_id" content="{{ fb_appid }}">
+  {% endif %}
+  <meta name="twitter:title" content="{% block twitter_title %}{{ request.site.site_name }}{% endblock %}">
+  <meta name="twitter:description" content="{% block twitter_description %}{{ settings.core.GlobalSettings.default_site_description }}{% endblock %}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="{% block twitter_site %}{{ request.site.site_name }}{% endblock %}">
+  <meta property="twitter:image:src" content="{% block twitter_image %}{% if share_image %}{{ share_image.url }}{% endif %}{% endblock %}">
+  
+  {% endblock share %}
+
+  {% google_tag_manager %}
+
+  {# TODO: Make sure these icons exist in the static/favicons/ folder, see that folder for specs #}
+  {# basic favicon #}
+  <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}" sizes="16x16 32x32 48x48">
+  {# basic apple and android (yes) icon #}
+  <link rel="apple-touch-icon-precomposed" sizes="152x152"
+        href="{% static 'images/favicons/apple-touch-icon-152x152.png' %}">
+  {# android address bar color #}
+  <meta name="theme-color" content="#ffffff"> {# TODO: set this color to real color! #}
+  {# ie/edge tiles #}
+  <meta name="application-name" content="{{ settings.core.ShareAndSEOSettings.default_title }}">
+  <meta name="msapplication-TileColor" content="#ffffff"> {# TODO: set this color to real color! #}
+  {# pin to dekstop (windows 8) or start (windows 10) #}
+  <meta name="msapplication-TileImage" content="{% static 'images/favicons/mstile-144x144.png' %}">
+
+  {% block css %}
+    {# Render webpack css bundle here #}
+    {% render_bundle 'main' 'css' %}
+  {% endblock %}
+</head>
+
+<body>
+{% google_tag_manager_noscript %}
+{% block main %}
+<main>
+  <header class="page-header">
+    {# main header goes here #}
+    {% block page_header %}{% endblock page_header %}
+  </header>
+
+  <article class="page-content">
+    {# main page structure should wrap around this #}
+    {% block page_content %}{% endblock page_content %}
+  </article>
+  <footer class="page-footer">
+    {# #}
+  </footer>
+</main>
+{% endblock main %}
+
+{% block javascript %}
+  {# Render webpack javascript bundle here #}
+  {% render_bundle 'main' 'js' %}
+{% endblock javascript %}
+</body>
+</html>
+

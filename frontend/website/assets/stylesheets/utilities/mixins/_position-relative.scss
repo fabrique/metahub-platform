@@ -1,0 +1,22 @@
+
+@mixin position-relative($top: false, $right: false, $bottom: false, $left: false) {
+  @if $top or $right or $bottom or $left {
+    position: relative;
+
+    @if $top {
+      top: $top;
+    }
+
+    @if $right {
+      right: $right;
+    }
+
+    @if $bottom {
+      bottom: $bottom;
+    }
+
+    @if $left {
+      left: $left;
+    }
+  }
+}

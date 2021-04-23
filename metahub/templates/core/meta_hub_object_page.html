@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags starling_tags %}
+
+{% block page_header %}
+    {% include_component 'organisms.image-header.regular' page.build_hero_header %}
+{% endblock %}
+
+{% block bodyclass %}{{ bc }}{% endblock %}
+
+{% block overlays %}
+    {% include_component 'organisms.lightbox.photo_series' items=page.get_lightbox_items %}
+    {% include_component 'organisms.context-cards-overlay.regular' title_top='Entdecken Sie' title_bottom='das Werk im Kontext' cards=page.build_context_cards %}
+{% endblock %}
+
+{% block page_content %}
+    {% include_component 'organisms.article-detail.regular' page.build_intro %}
+
+    {% for block in page.content %}
+        {% include_block block %}
+    {% endfor %}
+
+    {% include_component 'organisms.object-details.regular' title='Objektdetails' categories=page.build_metadata tags=page.get_tags minimal=page.has_no_rich_content favinfo=page.get_favourite_info %}
+
+    {% include_component 'organisms.related-objects.regular' page.build_related_objects %}
+
+    {% include_component 'organisms.context-cards.regular' title='Entdecken Sie das Werk im Kontext' cards=page.build_context_cards %}
+
+
+{% endblock %}
+
+{% block footer %}
+  <footer class="footer" role="contentinfo">
+    {% if page.has_context %}
+        {% include_component 'structures.footer-bar.simple' settings.core.GlobalSettings.get_contextual_footer %}
+    {% else %}
+       {{ block.super }}
+    {% endif %}
+  </footer>
+{% endblock %}
+
+
+

@@ -1,0 +1,6 @@
+{% load starling_tags %}
+
+{% include_component 'organisms.search-results.regular' results=results result_count=result_count search_query=search_query dropdowns=filters results=results result_count=result_count no_results=no_results %}
+
+{% include 'core/parts/paginator.html' with paginator=paginator %}
+

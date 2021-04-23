@@ -1,0 +1,36 @@
+
+.pagination {
+  align-items: center;
+  display: inline-block;
+  height: 40px;
+  left: 50%;
+  position: relative;
+  text-align: center;
+  transform: translateX(-50%);
+
+  @include typography(link, $replica-font-stack);
+
+  .number-button {
+    margin: 0 5px;
+  }
+
+  a {
+    color: $color-black;
+  }
+
+  .number-button--selected {
+    color: $color-blue;
+  }
+
+  .next {
+    color: $color-grey-medium;
+  }
+
+  .prev {
+    color: $color-grey-medium;
+  }
+
+  .current {
+    border-bottom: 2px solid $color-grey-medium;
+  }
+}

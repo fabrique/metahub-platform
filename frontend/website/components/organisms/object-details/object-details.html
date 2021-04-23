@@ -1,0 +1,69 @@
+{% macro regular(id = '', classes = '', title = '', categories = [], tags = {}, minimal = false, favinfo = {}) %}
+  {% set component = 'object-details' %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }} {% if minimal %}{{ component }}--minimal{% endif %}" data-id="{{ favinfo.id }}" data-category="{{ favinfo.category }}">
+    <div class="{{ component }}__grid">
+      <div class="{{ component }}__wrapper">
+
+        {% if minimal %}
+          <button class="{{ component }}__icon-favorite" aria-label="favorite">
+            <span class="heart-empty">{% include 'assets/icons/custom/heart-icon.svg' %}</span>
+              <span class="heart-filled">{% include 'assets/icons/custom/heart-filled.svg' %}</span>
+          </button>
+        {% endif %}
+
+        <h2 class="{{ component }}__title">{{ title }}</h2>
+        <span class="{{ component }}__divider"></span>
+
+        <!-- Regular dropdown -->
+        {% if categories|length > 0 %}
+          {% for category in categories %}
+            {% if category.information %}
+              <div class="{{ component }}__dropdown">
+                <button class="{{ component }}__title-container" aria-expanded="false">
+                  <h4 class="{{ component }}__category-title">{{ category.title }}</h4>
+                  <span class="{{ component }}__dropdown-arrow">{% include 'assets/icons/custom/ic_expand.svg' %}</span>
+                </button>
+                <table class="{{ component }}__information-container" role="table">
+                  {% for item in category.information %}
+                    <tr class="{{ component }}__information-wrapper" role="table-row">
+                      <th class="{{ component }}__information-name" role="row-property">
+                        <p>{{ item.name }}</p>
+                      </th>
+                      <td class="{{ component }}__information-value" role="row-value">
+                        {% if item.link %}
+                          <a href="{{ item.link.href }}">{{ item.value }}</a>
+                        {% else %}
+                          <p>{{ item.value }}</p>
+                        {% endif %}
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </table>
+                <span class="{{ component }}__divider"></span>
+              </div>
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        <!-- Tags dropdown -->
+        {% if tags %}
+          <div class="{{ component }}__dropdown">
+            <button class="{{ component }}__title-container" aria-expanded="false">
+              <h4 class="{{ component }}__category-title">{{ tags.title }}</h4>
+              <span class="{{ component }}__dropdown-arrow">{% include 'assets/icons/custom/ic_expand.svg' %}</span>
+            </button>
+
+            <div class="{{ component }}__information-container {{ component }}__tags-container">
+              {% for tag in tags.tag_items %}
+                <a href="{{ tag.href }}" class="{{ component }}__tag" role="tag">{{ tag.title }}</a>
+              {% endfor %}
+            </div>
+
+            <span class="{{ component }}__divider"></span>
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+{% endmacro %}

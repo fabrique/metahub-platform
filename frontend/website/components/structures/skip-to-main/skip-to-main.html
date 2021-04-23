@@ -1,0 +1,8 @@
+
+{% import 'components/atoms/link/link.html' as atom_link %}
+
+{% macro regular(link = {}) %}
+  <div class="skip-to-main">
+    {{ atom_link.button(title = link.title|default('Skip to contents')) }}
+  </div>
+{% endmacro %}

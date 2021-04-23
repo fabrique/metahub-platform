@@ -1,0 +1,57 @@
+@mixin filters {
+  position: relative;
+
+  .filters__button {
+    left: 0;
+    min-width: 180px;
+    position: absolute;
+    top: 0;
+    z-index: 20;
+  }
+
+  .filters__container {
+    background-color: $color-grey-light;
+    height: 0;  //this is the only way to solve the pushing the content down
+    overflow: hidden;
+    transition: height .3s ease;
+
+    &.filters__container--open {
+      //transform: translateY(0);
+
+      height: auto;
+      overflow: visible;
+      padding: 60px 15px 20px;
+      z-index: 50; //above the results, zindex is mandatory for this
+
+      @include portrait {
+        min-height: 210px;
+      }
+
+      @include landscape {
+        padding: 80px 25px 50px;
+      }
+
+      .filters__dropdown-filter,
+      .filters__dropdown-date {
+        opacity: 1;
+        transition: opacity .3s ease .2s;
+      }
+    }
+  }
+
+  .filters__dropdown-filter,
+  .filters__dropdown-date {
+    display: block;
+    margin: 0 0 10px;
+    opacity: 0;
+
+    @include landscape {
+      display: inline-block;
+      margin: 0 25px 20px 0;
+    }
+  }
+}
+
+.filters {
+  @include filters;
+}

@@ -1,0 +1,26 @@
+
+// Adaptive padding helper
+//
+// To automagically collapse the top or bottom padding when in the beginning or end of a content component.
+
+@mixin adaptive-padding($padding-top: false, $padding-bottom: false, $undo-first-child: true, $undo-last-child: true) {
+  @if ($padding-top) {
+    padding-top: $padding-top;
+  }
+
+  @if ($padding-bottom) {
+    padding-bottom: $padding-bottom;
+  }
+
+  @if ($undo-first-child) {
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+
+  @if ($undo-last-child) {
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_close info</title>
+    <g id="Ontwerp" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="assets" transform="translate(-149.000000, -178.000000)">
+            <g id="ic_close-info" transform="translate(164.000000, 193.000000) rotate(-45.000000) translate(-164.000000, -193.000000) translate(149.000000, 178.000000)">
+                <circle id="Oval" fill="#434343" cx="15" cy="15" r="15"></circle>
+                <g id="Group-3" transform="translate(11.000000, 10.500000)" stroke="#FFFFFF" stroke-linecap="square" stroke-width="2">
+                    <line x1="4" y1="0.5" x2="4" y2="8.5" id="Line-Copy"></line>
+                    <line x1="0" y1="4.5" x2="8" y2="4.5" id="Line-Copy-2"></line>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

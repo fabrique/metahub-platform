@@ -1,0 +1,18 @@
+{% import 'components/molecules/button-list/button-list.html' as molecule_button_list %}
+{% import 'components/molecules/link-list/link-list.html' as molecule_link_list %}
+
+{% macro regular(id = '', link_list = {}, button_list = {}) %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="article-footer">
+    <div class="article-footer__grid">
+      <div class="article-footer__wrapper">
+        {% if link_list.links %}
+          {{ molecule_link_list.regular(direction = 'vertical', title = link_list.title, links = link_list.links) }}
+        {% endif %}
+
+        {% if button_list.buttons or button_list.icon_buttons or button_list.share_buttons %}
+          {{ molecule_button_list.regular(direction = 'horizontal', title = button_list.title, buttons = button_list.buttons, icon_buttons = button_list.icon_buttons, share_buttons = button_list.share_buttons) }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endmacro %}

@@ -1,0 +1,112 @@
+
+.transition-animated { // body
+
+  header.header {
+    bottom: 0;
+    height: calc(100vh - 109px);
+    position: fixed;
+    width: 100vw;
+
+    @include mobile-only {
+      height: calc(100vh - 169px);
+    }
+
+    @include landscape {
+      height: calc(100vh - 123px);
+    }
+  }
+
+  .page-content { // give top margin to compensate for fixed positioned header
+    margin-top: calc(100vh - 123px);
+    padding-top: 130vh; // to make room for animating the image
+  }
+
+  .image-header__label { // this can be another class later, and transition as well
+    transition: opacity 750ms ease-out;
+  }
+
+  .swiper-navigation button {
+    transition: opacity 750ms ease-out;
+  }
+
+  &.menu-bar--sticky {
+    .image-header__label { // this can be another class later, and transition as well
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .swiper-navigation button {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  .image-header--context {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;  //for the animation placeholder
+    transform-origin: top left;
+    transition: transform .1s;
+  }
+
+  &.image_animatin {
+    header.header {
+      pointer-events: none; //at least for dev purposes
+    }
+
+    .image-header {
+      .swiper-container,
+      .image-header__label {
+        display: none; // we copy the image over
+      }
+    }
+
+    .image-header--context {
+      //transform: scale(.5, .5);
+    }
+  }
+
+  .article-detail__main-image {
+    .detail-image__title-container,
+    .swiper-container .swiper-navigation {
+      opacity: 0;
+      transition: opacity 750ms ease-out;
+    }
+
+    .swiper-container {
+      .swiper-wrapper {
+        opacity: 0;
+      }
+    }
+  }
+
+  &.image_animatin_endstate {
+    .image-header--context {
+      opacity: 0;
+    }
+
+    .article-detail__main-image {
+      position: fixed;
+      top: 60px;
+
+      .detail-image__title-container,
+      .swiper-container .swiper-navigation {
+        opacity: 1;
+      }
+
+      .swiper-container {
+        .swiper-wrapper {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.image_notsticky_endstate {
+    .article-detail__main-image {
+      margin-top: 60px; // same as top offset when being fixed
+      position: absolute;
+      //top is set by JS onscrolling
+    }
+  }
+}

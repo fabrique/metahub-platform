@@ -1,0 +1,24 @@
+
+{% macro _number_button_content(title = '', icon = '') %}
+  {% if icon %}
+    <span class="number-button__icon">
+      {% include 'assets/icons/' + icon + '.svg' %}
+    </span>
+
+    <span class="number-button__title" hidden="screen">{{ title }}</span>
+  {% else %}
+    <span class="number-button__title">{{ title }}</span>
+  {% endif %}
+{% endmacro %}
+
+{% macro regular(classes = '', variant = 'default', title = '', href = '', target = '', icon = '') %}
+  <a class="number-button number-button--{{ variant }} {{ classes }}" href="{{ href }}" {% if target %}target="{{ target }}"{% endif %}>
+    {{ _number_button_content(title = title, icon = icon) }}
+  </a>
+{% endmacro %}
+
+{% macro span(classes = '', variant = 'default', title = '', icon = '') %}
+  <span class="number-button number-button--{{ variant }} {{ classes }}">
+    {{ _number_button_content(title = title, icon = icon) }}
+  </span>
+{% endmacro %}

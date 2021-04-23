@@ -1,0 +1,52 @@
+
+.picture {
+  background-color: transparent;
+  display: block;
+  position: relative;
+  user-select: none;
+
+  .picture__image {
+    height: 100%;
+    opacity: 0;
+    transform: translate3d(0, 0, 0); // Edge bug
+    transition: opacity $easing-change-slower;
+    width: 100%;
+  }
+
+  .picture__placeholder-notice {
+    background: $color-blue;
+    color: $color-white;
+    left: 50%;
+    margin-top: 100px; // quick fix
+    opacity: .4;
+    padding: 30px;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    @include typography(sub-heading, $replica-font-stack);
+  }
+}
+
+.picture--loaded {
+  background-color: transparent; //prevent hairlines
+  .picture__image {
+    opacity: 1;
+  }
+}
+
+.picture--background {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+
+  ~ * {
+    color: $color-white;
+    position: relative;
+    z-index: 1;
+  }
+}

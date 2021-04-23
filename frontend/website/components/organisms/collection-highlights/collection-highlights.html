@@ -1,0 +1,138 @@
+
+{% import 'components/atoms/picture/picture.html' as atom_picture %}
+{% import 'components/atoms/button/button.html' as atom_button %}
+{% import 'components/atoms/richtext/richtext.html' as atom_richtext %}
+
+{% macro regular(id = '', title = '', introduction = '', cards = [], all_highlights_url='/') %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="collection-highlights">
+    <div class="collection-highlights__grid-container">
+      <h2 class="collection-highlights__title">{{ title }}</h2>
+      {% call atom_richtext.regular(classes = 'collection-highlights__introduction') %}
+        {{ introduction }}
+      {% endcall%}
+
+      {% if cards[0] %}
+        <div class="collection-highlights__highlight-container">
+          <div class="collection-highlights__highlight-image--left">
+            <a class="collection-highlights__picture-anchor" href="{{ cards[0].href }}">
+              {{ atom_picture.regular(images = cards[0].picture.images, positions = cards[0].picture.positions, alt = cards[0].picture.alt) }}
+            </a>
+          </div>
+
+          <div class="collection-highlights__highlight-information--right">
+            <p class="collection-highlights__info-description">{{ cards[0].description }}</p>
+            <a class="collection-highlights__info-link" href="{{ cards[0].href }}">{% include 'assets/icons/custom/ic-arrow-right.svg' %}{{ cards[0].title }}</a>
+            <p class="collection-highlights__info-detail">{{ cards[0].detail }} <br> {{ cards[0].subdetail }}</p>
+
+            {% if cards[0].location %}
+              <div class="collection-highlights__info-location">
+                <span class="collection-highlights__location-icon">
+                  {% include 'assets/icons/custom/eye-icon.svg' %}
+                </span>
+                <p class="collection-highlights__location-text">{{ cards[0].location }}</p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if cards[1] %}
+        <div class="collection-highlights__highlight-container">
+          <div class="collection-highlights__highlight-image--right">
+            <a class="collection-highlights__picture-anchor" href="{{ cards[1].href }}">
+              {{ atom_picture.regular(images = cards[1].picture.images, positions = cards[1].picture.positions, alt = cards[1].picture.alt) }}
+            </a>
+
+            <a class="collection-highlights__info-link" href="{{ cards[1].href  }}">{% include 'assets/icons/custom/ic-arrow-right.svg' %}{{ cards[1].title }}</a>
+            <p class="collection-highlights__info-detail">{{ cards[1].detail }}<br> {{ cards[1].subdetail }}</p>
+
+            {% if cards[1].location %}
+              <div class="collection-highlights__info-location">
+                <span class="collection-highlights__location-icon">
+                  {% include 'assets/icons/custom/eye-icon.svg' %}
+                </span>
+                <p class="collection-highlights__location-text">{{ cards[1].location }}</p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if cards[2] %}
+        <div class="collection-highlights__highlight-container">
+          <div class="collection-highlights__highlight-image--centered-left">
+            <a class="collection-highlights__picture-anchor" href="{{ cards[2].href }}">
+              {{ atom_picture.regular(images = cards[2].picture.images, positions = cards[2].picture.positions, alt = cards[2].picture.alt) }}
+            </a>
+          </div>
+
+          <div class="collection-highlights__highlight-information--centered-right">
+            <p class="collection-highlights__info-description">{{ cards[2].description }}</p>
+            <a class="collection-highlights__info-link" href="{{ cards[2].href  }}">{% include 'assets/icons/custom/ic-arrow-right.svg' %}{{ cards[2].title }}</a>
+            <p class="collection-highlights__info-detail">{{ cards[2].detail }}<br> {{ cards[2].subdetail }}</p>
+
+            {% if cards[2].location %}
+              <div class="collection-highlights__info-location">
+                <span class="collection-highlights__location-icon">
+                  {% include 'assets/icons/custom/eye-icon.svg' %}
+                </span>
+                <p class="collection-highlights__location-text">{{ cards[2].location }}</p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if cards[3] %}
+        <div class="collection-highlights__highlight-container">
+          <div class="collection-highlights__highlight-image--left">
+            <a class="collection-highlights__picture-anchor" href="{{ cards[3].href }}">
+              {{ atom_picture.regular(images = cards[3].picture.images, positions = cards[3].picture.positions, alt = cards[3].picture.alt) }}
+            </a>
+          </div>
+
+          <div class="collection-highlights__highlight-information--right">
+            <p class="collection-highlights__info-description">{{ cards[3].description }}</p>
+            <a class="collection-highlights__info-link" href="{{ cards[3].href  }}">{% include 'assets/icons/custom/ic-arrow-right.svg' %}{{ cards[3].title }}</a>
+            <p class="collection-highlights__info-detail">{{ cards[3].detail }}<br> {{ cards[3].subdetail }}</p>
+
+            {% if cards[3].location %}
+              <div class="collection-highlights__info-location">
+                <span class="collection-highlights__location-icon">
+                  {% include 'assets/icons/custom/eye-icon.svg' %}
+                </span>
+                <p class="collection-highlights__location-text">{{ cards[3].location }}</p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      {% if cards[4] %}
+        <div class="collection-highlights__highlight-container">
+          <div class="collection-highlights__highlight-image--right">
+            <a class="collection-highlights__picture-anchor" href="{{ cards[4].href }}">
+              {{ atom_picture.regular(images = cards[4].picture.images, positions = cards[4].picture.positions, alt = cards[4].picture.alt) }}
+            </a>
+
+            <a class="collection-highlights__info-link" href="{{ cards[4].href  }}">{% include 'assets/icons/custom/ic-arrow-right.svg' %}{{ cards[4].title }}</a>
+            <p class="collection-highlights__info-detail">{{ cards[4].detail }}<br> {{ cards[4].subdetail }}</p>
+
+            {% if cards[4].location %}
+              <div class="collection-highlights__info-location">
+                <span class="collection-highlights__location-icon">
+                  {% include 'assets/icons/custom/eye-icon.svg' %}
+                </span>
+                <p class="collection-highlights__location-text">{{ cards[4].location }}</p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+
+      <div class="collection-highlights__button-container">
+        {{ atom_button.regular(classes = 'collection-highlights__button', href = all_highlights_url, title = 'Alle Highlights', long_title = 'Alle Highlights', icon_after='custom/ic-arrow-right')}}
+      </div>
+    </div>
+  </div>
+{% endmacro %}

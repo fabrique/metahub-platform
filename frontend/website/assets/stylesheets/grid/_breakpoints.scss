@@ -1,0 +1,32 @@
+
+// Grid breakpoints
+//
+// You can add or remove breakpoints at will,
+// but be sure to add/remove/modify the relevant mixins as well!
+
+// The breakpoints
+$breakpoints: (
+  mobile: 320px,
+  portrait: 530px,
+  landscape: 800px,
+  notebook: 1180px,
+  desktop: 1480px,
+);
+
+// Constraints
+$min-width: 320px;
+$max-width: 2560px;
+
+// Pre-assigned variables - for performance reasons
+$mobile: map-get($breakpoints, mobile);
+$portrait: map-get($breakpoints, portrait);
+$landscape: map-get($breakpoints, landscape);
+$notebook: map-get($breakpoints, notebook);
+$desktop: map-get($breakpoints, desktop);
+
+// Pre-assigned variables - for convenience reasons
+$almost-mobile: $mobile - 1;
+$almost-portrait: $portrait - 1;
+$almost-landscape: $landscape - 1;
+$almost-notebook: $notebook - 1;
+$almost-desktop: $desktop  -1;

@@ -1,0 +1,16 @@
+
+{% import 'components/molecules/form/form.html' as molecule_form %}
+
+{% macro regular(id = '', render_example = true) %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="article-form">
+    <div class="article-form__grid">
+      <div class="article-form__wrapper">
+        {% call molecule_form.regular() %}
+          {% if render_example %}
+            {{ molecule_form.example() }}
+          {% endif %}
+        {% endcall %}
+      </div>
+    </div>
+  </div>
+{% endmacro %}

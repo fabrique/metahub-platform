@@ -1,0 +1,88 @@
+
+@mixin audio {
+  .audio__outer-container {
+    align-items: center;
+    background-color: $color-grey-extralight;
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px;
+  }
+
+  .audio__info-container {
+    display: inline-block;
+  }
+
+  .audio__controls-container {
+    align-items: center;
+    display: inline-block;
+    display: flex;
+    margin-right: 30px;
+
+    .audio__button {
+      border-width: 0;
+      margin-right: 15px;
+      outline: none;
+      position: relative;
+    }
+
+    .audio__play-button,
+    .audio__pause-button {
+      height: 40px;
+      left: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+
+      svg {
+        stroke: none;
+      }
+    }
+
+    .audio__button--hide {
+      display: none;
+    }
+
+    .audio__current-time {
+      @include typography(sub-heading, $replica-font-stack);
+
+      color: $color-blue;
+      margin-left: 40px;
+      width: 40px;
+    }
+  }
+
+  .audio__title {
+    @include typography(sub-heading, $replica-font-stack);
+
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .audio__name {
+    @include typography(sub-heading, $replica-font-stack);
+
+    color: $color-blue;
+    display: block;
+
+    @include landscape {
+      text-transform: uppercase;
+    }
+  }
+
+  .audio__author {
+    @include typography(sub-heading, $replica-font-stack);
+
+    color: $color-blue;
+    display: none;
+    margin-top: -.5em;
+
+    @include landscape {
+      display: block;
+    }
+  }
+}
+
+.audio {
+  @include audio;
+}

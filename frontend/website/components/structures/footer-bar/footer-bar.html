@@ -1,0 +1,50 @@
+
+{% import 'components/atoms/button/button.html' as atom_button %}
+{% import 'components/atoms/icon-button/icon-button.html' as atom_icon_button %}
+{% import 'components/atoms/logo/logo.html' as atom_logo %}
+{% import 'components/atoms/link/link.html' as atom_link %}
+{% import 'components/molecules/link-list/link-list.html' as molecule_link_list %}
+
+{% macro regular(columns = [],  bottom_links = [], context = false, content_page = false) %}
+  <div class="footer-bar {% if context %}footer-bar--context{% endif %} {% if content_page %}footer-bar--content-page{% endif %}">
+      <div class="footer-bar__wrapper">
+
+      <div class="footer-bar__grid">
+        {% for column in columns %}
+          <div class="footer-bar__column">
+            {% if column.link_list|length %}
+              {{ molecule_link_list.regular(direction = 'vertical', title = column.link_list.title, links = column.link_list.links) }}
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+
+        <div class="footer-bar__logo">
+          {{ atom_logo.regular() }}
+        </div>
+
+        <div class="footer-bar__links">
+          {% for link in bottom_links %}
+            {{ atom_link.regular(classes = link.classes, href = link.href, title = link.title, target = link.target, icon_before = link.icon_before, icon_after = link.icon_after, long_title = link.long_title, aria_label = link.aria_label) }}
+          {% endfor %}
+        </div>
+    </div>
+  </div>
+{% endmacro %}
+
+
+{% macro simple(links = [], context = false, content_page = false) %}
+  <div class="footer-bar {% if context %}footer-bar--context{% endif %} {% if content_page %}footer-bar--content-page{% endif %}">
+    <div class="footer-bar__grid">
+      <div class="footer-bar__logo">
+        {{ atom_logo.regular() }}
+      </div>
+
+      <div class="footer-bar__links">
+        {% for link in links %}
+          {{ atom_link.regular(classes = link.classes, href = link.href, title = link.title, target = link.target, icon_before = link.icon_before, icon_after = link.icon_after, long_title = link.long_title, aria_label = link.aria_label) }}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endmacro %}

@@ -1,0 +1,26 @@
+
+// Adaptive margin helper
+//
+// To automagically collapse the top or bottom margin when in the beginning or end of a content component.
+
+@mixin adaptive-margin($margin-top: false, $margin-bottom: false, $undo-first-child: true, $undo-last-child: true) {
+  @if ($margin-top) {
+    margin-top: $margin-top;
+  }
+
+  @if ($margin-bottom) {
+    margin-bottom: $margin-bottom;
+  }
+
+  @if ($undo-first-child) {
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  @if ($undo-last-child) {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

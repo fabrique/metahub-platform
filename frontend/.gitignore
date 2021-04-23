@@ -1,0 +1,38 @@
+
+; Prefix files or folders with two dashes or two underscores to exclude them
+**/--*
+**/__*
+
+; PyCharm exclusions
+**/___*/
+**/__tmp__/
+**/.idea/
+
+; Atom exclusions
+**/.imdone/
+
+; Sass exclusions
+**/.sass-cache/
+
+; NPM exclusions
+**/node_modules/
+**/npm-debug.log
+
+; Yarn exclusions
+**/yarn-error.log
+/.pnp/
+.pnp.js
+
+; Sonic exclusions
+sonic.local.js
+; **/.file-cache # add file caches to git, speeds up builds in new environments
+
+; Project exclusions
+/archives/
+/build/
+
+; OSX Metadata files
+.DS_Store
+
+; Temporary files
+.stylelintcache

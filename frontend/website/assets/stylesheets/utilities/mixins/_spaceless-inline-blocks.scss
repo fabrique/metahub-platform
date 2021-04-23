@@ -1,0 +1,9 @@
+
+@mixin spaceless-inline-blocks {
+  letter-spacing: -4px;
+
+  > * {
+    display: inline-block;
+    letter-spacing: initial;
+  }
+}

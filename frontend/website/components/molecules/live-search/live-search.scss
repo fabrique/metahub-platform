@@ -1,0 +1,143 @@
+
+@mixin live-search {
+  background-color: rgba(41, 41, 41, .6);
+  border-bottom: 2px solid $color-white;
+  display: flex;
+  justify-content: space-between;
+  max-width: 968px;
+  padding: 10px;
+  position: relative;
+  width: calc(100% - 30px);
+
+  .live-search__form {
+    width: 100%;
+  }
+
+  .live-search__input-field {
+    @include typography(description, $replica-font-stack);
+
+    background: none;
+    color: $color-white;
+    width: 100%;
+
+    @include placeholder {
+      color: $color-white;
+      opacity: 1;
+    }
+
+    &:focus {
+      //outline: none; // NO!!
+
+      @include placeholder {
+        //color: $color-white;
+        opacity: .2;
+      }
+    }
+  }
+
+  .live-search__search-icon {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    top: 4px;
+    width: 20px;
+
+    svg {
+      > g {
+        > g {
+          fill: $color-white;
+        }
+      }
+    }
+
+    @include landscape {
+      width: 35px;
+    }
+  }
+
+  &.live-search--active {
+    background-color: $color-white;
+
+    .live-search__input-field {
+      color: $color-blue;
+    }
+
+    .live-search__search-icon {
+      svg {
+        > g {
+          > g {
+            fill: $color-blue;
+          }
+        }
+      }
+    }
+
+    .live-search__results {
+      display: block;
+    }
+  }
+
+  @include landscape {
+    padding: 15px;
+    width: calc(100% - 50px);
+  }
+}
+
+@mixin live-search__results {
+  background-color: $color-blue;
+  border-bottom: 2px solid $color-white;
+  border-left: 2px solid $color-white;
+  border-right: 2px solid $color-white;
+  color: $color-white;
+  display: none;
+  left: 0;
+  padding: 0 15px;
+  position: absolute;
+  top: calc(100% + 2px);
+  width: 100%;
+
+  .live-search__result-item {
+    color: $color-white;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    text-transform: none;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba(255, 255, 255, .6);
+    }
+
+    &:hover,
+    &:focus {
+      background: $color-white;
+      color: $color-blue;
+      margin: -1px -16px;
+      padding: 13px 16px;
+    }
+  }
+
+  .live-search__result-title {
+    @include typography(introduction, $replica-font-stack);
+
+    text-transform: capitalize;
+  }
+
+  .live-search__result-number {
+    font-weight: light;
+  }
+
+  .live-search__result-type {
+    @include typography(sub-heading, $replica-font-stack);
+
+    opacity: .6;
+    text-transform: capitalize;
+  }
+}
+
+.live-search {
+  @include live-search;
+
+  .live-search__results {
+    @include live-search__results;
+  }
+}

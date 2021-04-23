@@ -1,0 +1,27 @@
+
+@mixin count-children($amount: 1, $selector: li) {
+  @if ($amount == 1) {
+    #{$selector}:first-child:nth-last-child(#{$amount}) {
+      @content;
+    }
+  } @else {
+    #{$selector}:first-child:nth-last-child(#{$amount}),
+    #{$selector}:first-child:nth-last-child(#{$amount}) ~ #{$selector} {
+      @content;
+    }
+  }
+}
+
+@mixin odd-children($selector: li) {
+  #{$selector}:first-child:nth-child(odd),
+  #{$selector}:first-child:nth-child(odd) ~ #{$selector} {
+    @content;
+  }
+}
+
+@mixin even-children($selector: li) {
+  #{$selector}:first-child:nth-child(even),
+  #{$selector}:first-child:nth-child(even) ~ #{$selector} {
+    @content;
+  }
+}

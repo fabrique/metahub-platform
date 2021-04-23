@@ -1,0 +1,390 @@
+{% extends 'templates/_base.html' %}
+
+{% import 'components/atoms/richtext/richtext.html' as atom_richtext %}
+{% import 'components/organisms/article-content/article-content.html' as organism_article_content %}
+{% import 'components/organisms/article-quote/article-quote.html' as organism_article_quote %}
+{% import 'components/organisms/article-quote-and-text/article-quote-and-text.html' as organism_article_quote_and_text %}
+{% import 'components/organisms/article-detail/article-detail.html' as organism_article_detail %}
+{% import 'components/organisms/context-cards/context-cards.html' as organism_context_cards %}
+{% import 'components/organisms/image-header/image-header.html' as organism_image_header %}
+{% import 'components/organisms/lightbox/lightbox.html' as organism_lightbox %}
+{% import 'components/organisms/object-details/object-details.html' as organism_object_details %}
+{% import 'components/organisms/related-objects/related-objects.html' as organism_related_objects %}
+{% import 'components/structures/menu-overlay/menu-overlay.html' as structure_menu_overlay %}
+{% import 'components/organisms/lightbox/lightbox.html' as lightbox %}
+{% import 'components/organisms/context-cards-overlay/context-cards-overlay.html' as context_overlay %}
+
+{% block page_theme %}transition-animated{% endblock %}
+
+{% block header %}
+  {{ organism_image_header.regular(
+    pictures = [
+    {
+      images: {
+        mobile: '/static/media/unsplash/cropped/article-detail-image.jpg',
+        portrait: '/static/media/unsplash/cropped/article-detail-image.jpg',
+        landscape: '/static/media/unsplash/cropped/article-detail-image.jpg'
+      },
+      positions: { mobile: '50% 100%', portrait: '50% 66.6%', landscape: '50% 50%' },
+      width: '1920',
+      height: '1280',
+      alt: 'test description'
+    },
+    {
+      images: {
+        mobile: '/static/media/unsplash/cropped/kevin-young-portrait.jpg',
+        portrait: '/static/media/unsplash/cropped/kevin-young-portrait.jpg',
+        landscape: '/static/media/unsplash/cropped/kevin-young-landscape.jpg'
+      },
+      positions: { mobile: '50% 100%', portrait: '50% 66.6%', landscape: '50% 50%' },
+      width: '1920',
+      height: '1280',
+      alt: 'test description'
+    }],
+    information = {
+      name: 'Carl Wilhelm Rauch',
+      title: 'Chanukka-Leuchter',
+      date: 'Silber, 1772'
+    },
+    expandable = true,
+    variation = 'white',
+    context = true
+  ) }}
+{% endblock %}
+
+{% block content %}
+  {{ organism_article_detail.regular(
+    type = 'object',
+    download_link = "/test",
+    expandable = true,
+    information = {
+      id: '123456',
+      title: 'Chanukka-Leuchter',
+      name: 'Carl Wilhelm Rauch',
+      date: '1772'
+    },
+    pictures = [{
+      images: { mobile: '/static/media/unsplash/cropped/article-detail-image.jpg' },
+      positions: { mobile: '50% 50%' },
+      fits: { mobile: 'cover' },
+      width: 1920,
+      height: 640
+    },
+    {
+     images: {
+        mobile: '/static/media/unsplash/cropped/kevin-young-portrait.jpg',
+        portrait: '/static/media/unsplash/cropped/kevin-young-portrait.jpg',
+        landscape: '/static/media/unsplash/cropped/kevin-young-landscape.jpg'
+      },
+      positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 100%' },
+      width: '1920',
+      height: '1280',
+      alt: 'test description'
+    }],
+    description = {
+      text: 'Ein solch prächtiger Leuchter wurde sicher nicht nur zum Chanukka-Fest benutzt, sondern diente das ganze Jahr über als kostbarer Zimmerschmuck. Er ist vielfach geschmückt: Er steht auf Löwenfüßen, auf seinem Schaft sind vier geflügelte Engelsköpfe angeordnet.',
+      location: 'Museum Judengasse',
+      location_icon: 'eye-icon',
+      scroll_link: true
+    },
+    audio = {
+      title: 'Das dritte Inteview mit Jussuf, 25 aus Frankfurt hören sie im Podcast:',
+      file_title: 'Jüdische Identität in Deutschland',
+      file_subtitle: 'Jussuf, 25 erzählt von seinem Alltag in Frankfurt',
+      file: 'https://www2.cs.uic.edu/~i101/SoundFiles/BabyElephantWalk60.wav',
+      audio_transcript: '/test'
+    }
+  ) }}
+
+  {% call organism_article_content.regular(classes = component + '__text-content') %}
+    <p>
+      Wenn Havlin vor die Tür geht, fällt er auf. Dieser Anzug, dieser Bart. Viele sprechen ihn an. An manchen Tagen, sagt Havlin, brauche er von seiner Wohnung zur Synagoge doppelt so lange wie geplant.
+      Wenn er vor Schulklassen steht, ist er oft der erste Jude, mit dem die Jugendlichen bewusst Kontakt haben. Jüdisches Leben, das ist immer noch etwas, das nicht selbstverständlich ist in Deutschland.
+    </p>
+  {% endcall %}
+
+  {{ organism_article_quote.regular(
+    quote = 'Vor dem Holocaust lebten in Hamburg 50.000 Jüdinnen und Juden – heute hat die Gemeinde etwa 2500 Mitglieder.',
+    name = 'Halvi, Rabbiner in Berlin'
+  ) }}
+
+  {{ organism_object_details.regular(
+    id = 'object-details',
+    title = 'Objekt Details',
+    categories = [
+      {
+        title: 'Basisdaten',
+        information: [
+          { name: 'Titel', value: 'Ohne Titel', link: { href: '/test' } },
+          { name: 'Künstler', value: 'Peter Loewy, *1951, Fotograf' },
+          { name: 'Datierung', value: '1996' },
+          { name: 'Objektbezeichnung', value: 'Fotografie', link: { href: '/test' } },
+          { name: 'Maße', value: 'Objektmaß: 30 x 40 cm' },
+          { name: 'Material und Technik', value: 'digitaler Print, kaschiert' },
+          { name: 'Signatur', value: 'signiert verso' },
+          { name: 'Beschriftung', value: 'Beispielbeschriftung' },
+          { name: 'Sammlungsbereich', value: 'Gegenwartskulturen', link: { href: '/test' } },
+          { name: 'Provinienz', value: 'Beispiel' },
+          { name: 'Ausgestellt', value: 'Museum Judengasse, Erdgeschoss, Raum 4' },
+          { name: 'Permalink', value: 'Beispiellink', link: { href: '/test' } }
+        ]
+      },
+      {
+        title: 'Eigentum und Erwerbung',
+        information: [
+          { name: 'Titel', value: 'Ohne Titel' },
+          { name: 'Künstler', value: 'Peter Loewy, *1951, Fotograf' },
+          { name: 'Datierung', value: '1996' },
+          { name: 'Objektbezeichnung', value: 'Fotografie' },
+          { name: 'Maße', value: 'Objektmaß: 30 x 40 cm' },
+          { name: 'Material und Technik', value: 'digitaler Print, kaschiert' },
+          { name: 'Signatur', value: 'signiert verso' },
+          { name: 'Beschriftung', value: 'Beispielbeschriftung' },
+          { name: 'Sammlungsbereich', value: 'Gegenwartskulturen' },
+          { name: 'Provinienz', value: 'Beispiel' },
+          { name: 'Ausgestellt', value: 'Museum Judengasse, Erdgeschoss, Raum 4' },
+          { name: 'Permalink', value: 'Beispiellink' }
+        ]
+      }
+    ],
+    tags = {
+      title: 'Schlagworte',
+      tag_items: [
+        'Schrank',
+        'Kippa',
+        'buch',
+        'alltag',
+        'wohnen'
+      ]
+    }
+  ) }}
+
+  {{ organism_related_objects.regular(
+    title = 'Verwandte Objekte',
+    related_objects = [
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/related-object-1.png' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        },
+        title: 'Besamim-Turm',
+        name: 'Carl Wilhelm Rauch',
+        type: 'Behälter',
+        date: '1875 - 1910',
+        link: {
+          href: '/test'
+        }
+      },
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/related-object-2.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        },
+        title: 'Besamim-Turm',
+        name: 'Carl Wilhelm Rauch',
+        type: 'Behälter',
+        date: '1875 - 1910',
+        link: {
+          href: '/test'
+        }
+      },
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/related-object-3.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        },
+        title: 'Besamim-Turm',
+        name: 'Carl Wilhelm Rauch',
+        type: 'Behälter',
+        date: '1875 - 1910',
+        link: {
+          href: '/test'
+        }
+      },
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/related-object-4.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        },
+        title: 'Besamim-Turm',
+        name: 'Carl Wilhelm Rauch',
+        type: 'Behälter',
+        date: '1875 - 1910',
+        link: {
+          href: '/test'
+        }
+      }
+    ]
+  ) }}
+
+
+  {{ organism_context_cards.regular(
+    title_1 = 'Entdecken sie',
+    title_2 = 'das werk  im Kontext',
+    cards = [
+      {
+        href: '/test',
+        target: '',
+        title: 'Jüdische Identität in Deutschland',
+        type: 'geschichten',
+        color: 'blurple',
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/story-detail-main.jpg' },
+          positions: { mobile: '80% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        }
+      },
+      {
+        href: '/test',
+        target: '',
+        title: 'Leviten-Kanne und Waschschüssel',
+        type: 'objekt',
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/context-card-2.jpg' },
+          positions: { mobile: '40% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        }
+      },
+      {
+        href: '/test',
+        target: '',
+        title: 'Peter Loewy, Fotograf',
+        type: 'BIOGRAFIE',
+        color: 'blurple',
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/context-card-3.jpg' },
+          positions: { mobile: '85% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        }
+      }
+    ]
+  ) }}
+
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
+
+{% block overlays %}
+  {{ lightbox.photo_series(
+    items = [
+      {
+        picture: {
+          images: {
+          mobile: '/static/media/unsplash/cropped/article-detai-image.jpg',
+          portrait: '/static/media/unsplash/cropped/article-detai-image.jpg',
+          landscape: '/static/media/unsplash/cropped/article-detail-image.jpg'
+          },
+          positions: { mobile: '50% 100%', portrait: '50% 66.6%', landscape: '50% 50%' },
+          width: '1920',
+          height: '1280',
+          alt: 'test description'
+        },
+        information: {
+          title: 'Ohne Titel',
+          name: 'New name',
+          date: 'Fotografie 200',
+          description: 'This is a new description',
+          credits: 'BY ND',
+          link: {
+            href: '/test',
+            title: 'Objekt Details'
+          }
+        }
+      },
+      {
+        picture: {
+          images: {
+          mobile: '/static/media/unsplash/cropped/kevin-young-portrait.jpg',
+          portrait: '/static/media/unsplash/cropped/kevin-young-portrait.jpg',
+          landscape: '/static/media/unsplash/cropped/kevin-young-landscape.jpg'
+          },
+          positions: { mobile: '50% 100%', portrait: '50% 66.6%', landscape: '50% 50%' },
+          width: '1920',
+          height: '1280',
+          alt: 'test description'
+        },
+        information: {
+          title: 'This is a new title',
+          name: 'New name',
+          date: 'and a new description',
+          description: 'Platzhaltertext mit langer Bildunterschrift. Die jiddische Übersetzung eines Texts von Berl Katznelson (1887 – 1944) hat Yosef Dov Sheinson (1907-1990) mit detailreich geschmückten und aussagekräftigen Umrandungen versehen. Von rechts nach links bildet er die Geschichte Israels von der Volkwerdung bis in die Gegenwart ab und schließt darin die Schrecken der Schoa mit ein. München 1946 © Jüdisches Museum Frankfurt',
+          credits: 'BY ND',
+          link: {
+            href: '/test',
+            title: 'Objekt Details'
+          }
+        }
+      }
+    ]
+  ) }}
+
+  {{ context_overlay.regular(
+    title = 'das werk im kontext',
+    title_top = 'Entdecken SIe',
+    title_bottom = 'das werk im kontext',
+    cards = [
+      {
+        href: '/test',
+        target: '',
+        title: 'Jüdische Identität in Deutschland',
+        type: 'geschichten',
+        color: 'blurple',
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/story-detail-main.jpg' },
+          positions: { mobile: '80% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        }
+      },
+      {
+        href: '/test',
+        target: '',
+        title: 'Leviten-Kanne und Waschschüssel',
+        type: 'objekt',
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/context-card-2.jpg' },
+          positions: { mobile: '40% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        }
+      },
+      {
+        href: '/test',
+        target: '',
+        title: 'Peter Loewy, Fotograf',
+        type: 'BIOGRAFIE',
+        color: 'blurple',
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/context-card-3.jpg' },
+          positions: { mobile: '85% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920,
+          height: 640
+        }
+      }
+    ]
+  )}}
+{% endblock %}

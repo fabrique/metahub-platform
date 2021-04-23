@@ -1,0 +1,8 @@
+
+@mixin browserhack-ie11plus {
+  /* stylelint-disable-next-line */
+  _:-ms-fullscreen,
+  :root & {
+    @content;
+  }
+}

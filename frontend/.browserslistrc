@@ -1,0 +1,17 @@
+
+# Browsers in scope
+# See: https://browserl.ist/?q=last+2+Chrome+versions%2C+last+2+Firefox+versions%2C+last+2+Safari+versions%2C+last+2+Edge+versions%2C+last+2+ChromeAndroid+versions%2C+last+2+iOS+versions
+
+#last 2 Chrome versions
+#last 2 Firefox versions
+#last 2 Safari versions
+#last 2 Edge versions
+#last 2 ChromeAndroid versions
+#last 2 iOS versions
+
+chrome 79
+firefox 71
+safari 13
+ios_saf 13.0-13.1
+and_chr 77
+edge 18

@@ -1,0 +1,4 @@
+Translations files go here, one directory per language.
+
+This file is only here to keep this directory in git.
+This directory is needed to use the update command without errors.

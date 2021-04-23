@@ -1,0 +1,56 @@
+{% import 'components/atoms/richtext/richtext.html' as atom_richtext %}
+{% import 'components/atoms/picture/picture.html' as atom_picture %}
+
+{% macro regular(id = '', picture_large = '', picture_small = '', text = '') %}
+  {% set component = 'article-photos-and-text' %}
+  {% set pictures = [picture_large, picture_small] %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }}">
+    <div class="{{ component }}__grid">
+
+      <div class="{{ component }}__wrapper-left">
+        <div class="{{ component }}__pictures-container">
+          {{ atom_picture.regular(classes = component + "__picture--large", images = picture_large.images, fits = picture_large.fits, positions = picture_large.positions, width = picture_large.width, height = picture_large.height, loading = picture_large.loading, alt = picture_large.alt) }}
+          {{ atom_picture.regular(classes = component + "__picture--small", images = picture_small.images, fits = picture_small.fits, positions = picture_small.positions, width = picture_small.width, height = picture_small.height, loading = picture_small.loading, alt = picture_small.alt) }}
+        </div>
+      </div>
+
+      <div class="{{ component }}__wrapper-right">
+        {% call atom_richtext.regular() %}
+          {{ text }}
+        {% endcall %}
+      </div>
+
+      <div class="{{ component }}__wrapper-right {{ component }}__slideshow">
+        <div class="swiper-container">
+          <ul class="swiper-wrapper">
+            {% for picture in pictures %}
+              <li class="swiper-slide">
+                {{ atom_picture.background(
+                  classes = component + '__picture',
+                  images = picture.images,
+                  fits = { 'mobile': 'contain' },
+                  positions = picture.positions,
+                  width = picture.width,
+                  height = picture.height,
+                  loading = picture.loading,
+                  alt = picture.alt
+                ) }}
+              </li>
+            {% endfor %}
+          </ul>
+          <div class="swiper-navigation" role="swiper-controls">
+          <div class="swiper-pagination">
+          </div>
+          <button class="swiper-button-prev" aria-label="scroll-left">
+            {% include 'assets/icons/custom/ic-arrow-left.svg' %}
+          </button>
+          <button class="swiper-button-next" aria-label="scroll-right">
+          {% include 'assets/icons/custom/ic-arrow-right.svg' %}
+          </button>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+{% endmacro %}

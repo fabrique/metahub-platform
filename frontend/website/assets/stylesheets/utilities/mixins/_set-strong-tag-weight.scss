@@ -1,0 +1,10 @@
+
+// Set strong tag weight helper
+//
+// To set the correct strong weights relative to the base weight.
+
+@mixin set-strong-tag-weight($value: bold) {
+  strong {
+    font-weight: $value;
+  }
+}

@@ -1,0 +1,51 @@
+
+@mixin quote-single {
+  align-items: baseline;
+  contain: content;
+  display: flex;
+  margin-block-end: 0;
+  margin-block-start: 0;
+  margin-inline-end: 0;
+  margin-inline-start: 0;
+  position: relative;
+
+  .quote-single__attribution {
+    @include typography(quote-name, $replica-font-stack);
+  }
+
+  .quote-single__attribution-name {
+    font-size: 16px;
+    line-height: 18px;
+    margin-left: 20px;
+    margin-right: 25px;
+    margin-top: 10px;
+    text-align: right;
+  }
+
+  .quote-single__mark-icon {
+    display: block;
+    height: 20px;
+    width: 30px;
+  }
+
+  .quote-single__text {
+    @include typography(quote, $replica-font-stack);
+
+    color: $color-blue;
+  }
+
+  .quote-single__quote-mark {
+    color: $color-blue;
+    font-size: 60px;
+    line-height: 1em;
+    margin-bottom: -10px;
+
+    @include landscape {
+      margin-top: 5px;
+    }
+  }
+}
+
+.quote-single {
+  @include quote-single;
+}

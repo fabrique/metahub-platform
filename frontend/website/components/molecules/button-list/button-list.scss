@@ -1,0 +1,51 @@
+
+.button-list {
+  contain: content;
+  position: relative;
+
+  .button-list__title {
+    @include typography(heading-6);
+
+    margin-bottom: var(--heading-6-margin-bottom);
+  }
+
+  .button-list__buttons {
+    margin-bottom: -10px;
+
+    + .button-list__buttons {
+      margin-top: 20px;
+    }
+  }
+}
+
+.button-list--horizontal {
+  .button-list__buttons {
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .button,
+  .icon-button,
+  .share-button {
+    flex-basis: auto;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
+}
+
+.button-list--vertical {
+  .button-list__buttons {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .button,
+  .icon-button,
+  .share-button {
+    flex-basis: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: var(--paragraph-margin-bottom);
+    }
+  }
+}

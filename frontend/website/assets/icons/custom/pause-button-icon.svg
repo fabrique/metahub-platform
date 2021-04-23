@@ -1,0 +1,7 @@
+<svg width="40" height="40" xmlns="http://www.w3.org/2000/svg"  role="img">
+  <title>Pause Icon</title>
+  <g fill="none" fill-rule="evenodd">
+    <circle cx="20" cy="20" r="20" fill="#232D8C" opacity=".90000004"/>
+    <path fill="#FFF" d="M12 11h5v18h-5zM23 11h5v18h-5z"/>
+  </g>
+</svg>

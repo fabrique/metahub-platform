@@ -1,0 +1,20 @@
+
+{% macro regular(id = '', classes = '', results = [], placeholder_long = '', placeholder_short = '', settings = {}, is_homepage = false, live_search_url='', search_url='') %}
+  {% set component = 'live-search' %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}" {% if is_homepage %}data-id="homepage"{% endif %}>
+    <form class="{{ component }}__form" data-lsurl="{{ live_search_url }}" data-surl="{{ search_url }}">
+      <input class="{{ component }}__input-field" type="text" placeholder="{{ placeholder_long }}" />
+    </form>
+    <span class="{{ component }}__search-icon">{% include 'assets/icons/custom/ic_search.svg' %}</span>
+    <ul class="{{ component }}__results">
+
+      {% for result in results %}
+        <a class="{{ component }}__result-item" href="{{ result.href }}">
+          <p class="{{ component }}__result-title">{{ result.title }}<span class="{{ component }}__result-number"> ({{ result.number }})</span></p>
+          <p class="{{ component }}__result-type">{{ result.type }}</p>
+        </a>
+      {% endfor %}
+
+    </ul>
+  </div>
+{% endmacro%}

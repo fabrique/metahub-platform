@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags starling_tags %}
+
+{% block page_content %}
+    {% include_component 'organisms.my-collection.regular' title=page.title download=page.get_download_info %}
+{% endblock %}

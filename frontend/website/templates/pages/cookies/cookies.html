@@ -1,0 +1,57 @@
+{% extends 'templates/_base.html' %}
+
+{% import 'components/organisms/article-video-embed/article-video-embed.html' as article_video_embed %}
+{% import 'components/organisms/article-cookies/article-cookies.html' as organism_article_cookies %}
+{% import 'components/organisms/article-content/article-content.html' as organism_article_content %}
+
+{% block page_title %}Cookies{% endblock %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+  {% call organism_article_content.regular(classes = component + '__text-content') %}
+    <p>
+      Wenn Havlin vor die Tür geht, fällt er auf. Dieser Anzug, dieser Bart. Viele sprechen ihn an. An manchen Tagen, sagt Havlin, brauche er von seiner Wohnung zur Synagoge doppelt so lange wie geplant.
+      Wenn er vor Schulklassen steht, ist er oft der erste Jude, mit dem die Jugendlichen bewusst Kontakt haben. Jüdisches Leben, das ist immer noch etwas, das nicht selbstverständlich ist in Deutschland.
+    </p>
+  {% endcall %}
+
+  {{ organism_article_cookies.regular() }}
+
+  {% call organism_article_content.regular(classes = component + '__text-content') %}
+    <p>
+      Wenn Havlin vor die Tür geht, fällt er auf. Dieser Anzug, dieser Bart. Viele sprechen ihn an. An manchen Tagen, sagt Havlin, brauche er von seiner Wohnung zur Synagoge doppelt so lange wie geplant.
+      Wenn er vor Schulklassen steht, ist er oft der erste Jude, mit dem die Jugendlichen bewusst Kontakt haben. Jüdisches Leben, das ist immer noch etwas, das nicht selbstverständlich ist in Deutschland.
+    </p>
+  {% endcall %}
+
+  {{ article_video_embed.regular(
+    caption = 'Their success serves to remind us that readers are not sick of content',
+    video = {
+      video_preview: {
+        images: { mobile: '/static/media/unsplash/cropped/video-placeholder.jpg' },
+        positions: { mobile: '50% 50%' },
+        fits: { mobile: 'cover' },
+        width: 1920,
+        height: 640
+      },
+      href: 'https://vimeo.com/329812936',
+      video_id: '329812936',
+      video_type: 'vimeo',
+      duration: '1.23',
+      autoplay: false,
+      link: {
+        href: '?',
+        title: 'Link zu Video-transcript'
+      }
+    }
+  ) }}
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block overlays %}
+{% endblock %}

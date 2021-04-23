@@ -1,0 +1,55 @@
+
+.number-button {
+  @include typography(button);
+
+  background-color: $color-grey-light;
+  border: 0;
+  border-radius: 20px;
+  color: $color-grey-extradark;
+  contain: content;
+  cursor: pointer;
+  display: inline-block;
+  height: 40px;
+  overflow: hidden;
+  padding: 10px;
+  position: relative;
+  transition: color $easing-change, background-color $easing-change;
+  user-select: none;
+  vertical-align: bottom;
+  white-space: nowrap;
+  width: 40px;
+
+  &:hover,
+  &:focus {
+    background-color: $color-grey-extradark;
+    color: $color-grey-extralight;
+  }
+
+  .number-button__icon {
+    display: block;
+    height: var(--button-line-height);
+    width: var(--button-line-height);
+
+    > svg {
+      display: block;
+      fill: currentColor;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.number-button--default {
+  //
+}
+
+.number-button--clean {
+  background-color: transparent;
+  color: currentColor;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    color: $color-blue;
+  }
+}

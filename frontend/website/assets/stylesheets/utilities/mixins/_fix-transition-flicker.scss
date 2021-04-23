@@ -1,0 +1,10 @@
+
+@mixin fix-transition-flicker($alternate-method: false) {
+  @if $alternate-method {
+    -webkit-backface-visibility: hidden;
+  } @else {
+    -webkit-transform: translate3d(0, 0, 0);
+  }
+
+  // Note: Research support of "will-change" property
+}

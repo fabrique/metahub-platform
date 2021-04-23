@@ -1,0 +1,22 @@
+
+{% import 'components/atoms/link/link.html' as atom_link %}
+
+{% macro regular(classes = '', text = '', location = '', location_icon = 'eye-icon', scroll_link = true) %}
+  {% set component = 'description' %}
+  <div class="{{ component }} {{ classes }}">
+    {% if scroll_link %}
+      {{ atom_link.regular(classes = component + "__scroll-link", href="#object-details", title = 'Objektdetails', icon_before = 'custom/ic-arrow-scroll-down', aria_label = 'down-arrow' ) }}
+    {% endif %}
+    <p class="{{ component }}__text">{{ text }}</p>
+
+    {% if location %}
+      <div class="{{ component }}__location">
+        <span class="{{ component }}__location-icon">
+          {% include 'assets/icons/custom/' + location_icon + '.svg' %}
+        </span>
+        <p class="{{ component }}__location-text">{{ location }}</p>
+      </div>
+    {% endif %}
+
+  </div>
+{% endmacro %}

@@ -1,0 +1,15 @@
+
+.form-fieldset {
+  margin: calc(var(--margin) / 2) 0;
+
+  > p {
+    @include typography(caption, true, true);
+  }
+
+  .form-fieldset__legend {
+    @include typography(heading-4);
+
+    display: block;
+    width: 100%;
+  }
+}

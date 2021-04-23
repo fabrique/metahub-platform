@@ -1,0 +1,20 @@
+
+@mixin idangerous-swiper-fade {
+  .swiper-container-fade {
+    .swiper-slide,
+    .swiper-slide .swiper-slide { // Is this needed? double?
+      pointer-events: none;
+    }
+
+    .swiper-slide-active,
+    .swiper-slide-active .swiper-slide-active { // Is this needed? double?
+      pointer-events: auto;
+    }
+
+    &.swiper-container-free-mode {
+      .swiper-slide {
+        transition-timing-function: ease-out;
+      }
+    }
+  }
+}

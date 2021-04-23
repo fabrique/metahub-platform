@@ -1,0 +1,72 @@
+
+@mixin simple-image-header {
+  background-color: transparent;
+  color: transparent;
+  height: calc(50vh - 109px);
+  padding-bottom: var(--margin);
+  padding-top: calc(var(--margin) * 1.5);
+  position: relative;
+
+  @include landscape {
+    height: calc(50vh - 123px);
+  }
+
+  &.simple-image-header__no-image {
+    height: 100%;
+
+    .simple-image-header__label {
+      position: static;
+    }
+  }
+}
+
+@mixin simple-image-header__label {
+  bottom: 0;
+  left: 0;
+  max-width: 90%;
+  min-width: 250px;
+  padding: 15px;
+  position: absolute;
+  z-index: 500;
+
+  @include landscape {
+    max-width: 60%;
+    min-width: 550px;
+    padding: 20px 30px;
+  }
+
+  .simple-image-header__subtitle,
+  .simple-image-header__title {
+    word-wrap: break-word;
+  }
+
+  .simple-image-header__subtitle {
+    text-transform: uppercase;
+
+    @include typography(sub-heading, $replica-font-stack);
+  }
+
+  .simple-image-header__title {
+    text-transform: uppercase;
+
+    @include typography(heading-1, $replica-font-stack);
+  }
+
+  &.simple-image-header__label--white {
+    background: $color-white;
+    color: $color-blue;
+  }
+
+  &.simple-image-header__label--blue {
+    background: $color-blue;
+    color: $color-white;
+  }
+}
+
+.simple-image-header {
+  @include simple-image-header;
+
+  .simple-image-header__label {
+    @include simple-image-header__label;
+  }
+}

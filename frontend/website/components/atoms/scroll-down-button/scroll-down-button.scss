@@ -1,0 +1,16 @@
+
+.scroll-down-button {
+  color: currentColor;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+
+  &:hover {
+    background-color: $color-grey-dark;
+    color: $color-white;
+  }
+
+  .scroll-down-button__title {
+    display: none;
+  }
+}

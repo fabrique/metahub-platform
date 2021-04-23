@@ -1,0 +1,42 @@
+
+{% macro regular(classes = '', type = '', title = 'Share on social media', share_url = '', share_text = '', share_image_url = '', share_subject = '') %}
+  {% set open_popup = true %}
+
+  {% if not share_url %}
+    {% set share_url = 'https://127.0.0.1:8000' %}
+  {% endif %}
+
+  {% if type == 'facebook' %}
+    {% set title = 'Facebook' %}
+    {% set share_url = 'https://facebook.com/sharer/sharer.php?u=' + share_url %}
+    {% set icon = 'assets/icons/fontawesome/brands/' + type + '.svg' %}
+  {% elif type == 'twitter' %}
+    {% set title = 'Twitter' %}
+    {% set share_url = 'https://twitter.com/home?status=' + share_text + ' ' + share_url %}
+    {% set icon = 'assets/icons/fontawesome/brands/' + type + '.svg' %}
+  {% elif type == 'pinterest' %}
+    {% set title = 'Pinterest' %}
+    {% set share_url = 'https://pinterest.com/pin/create/button/?url=' + share_url + '&media=' + share_image_url + '&description=' + share_text %}
+    {% set icon = 'assets/icons/fontawesome/brands/' + type + '.svg' %}
+  {% elif type == 'linkedin' %}
+    {% set title = 'LinkedIn' %}
+    {% set share_url = 'https://linkedin.com/sharing/share-offsite/?url=' + share_url %}
+    {% set icon = 'assets/icons/fontawesome/brands/' + type + '.svg' %}
+  {% elif type == 'whatsapp' %}
+    {% set title = 'WhatsApp' %}
+    {% set encoded_url = share_url|urlencode %}
+    {% set share_url = 'https://api.whatsapp.com/send?text=' + share_text + ' ' %}
+    {% set icon = 'assets/icons/fontawesome/brands/' + type + '.svg' %}
+    {% set attributes = { 'data-action': 'share/whatsapp/share' } %}
+  {% elif type == 'email' %}
+    {% set title = 'E-mail' %}
+    {% set share_url = 'mailto:subject=' + share_subject + '&body=' + share_text + ' ' + share_url %}
+    {% set icon = 'assets/icons/fontawesome/regular/envelope.svg' %}
+    {% set open_popup = false %}
+  {% endif %}
+
+  <a class="share-button {{ classes }}" href="{{ share_url|escape + encoded_url }}" target="_blank" {% if open_popup %}data-open-popup{% endif %} {% for key, value in attributes %}{{ key }}="{{ value }}" {% endfor %}>
+    <span class="share-button__icon">{% include icon %}</span>
+    <span class="share-button__span" hidden="screen">{{ title }}</span>
+  </a>
+{% endmacro %}

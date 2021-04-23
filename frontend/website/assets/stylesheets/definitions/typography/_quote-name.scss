@@ -1,0 +1,19 @@
+
+:root {
+  --quote-name-font-size: 12px;
+  --quote-name-font-style: normal;
+  --quote-name-font-variant: normal;
+  --quote-name-font-weight: #{get-replica-weight(regular)};
+  --quote-name-letter-spacing: 0;
+  --quote-name-line-height: 1.16em;
+  --quote-name-margin-bottom: .5em;
+  --quote-name-margin-top: 1em;
+
+  @include portrait {
+    //
+  }
+
+  @include landscape {
+    //
+  }
+}

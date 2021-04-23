@@ -1,0 +1,8 @@
+
+{% import 'components/atoms/button/button.html' as atom_button %}
+
+{% macro regular(classes = '', variant = '') %}
+  <div class="form-row {% if variant %}form-row--{{ variant }}{% endif %} {{ classes }}">
+    {{ caller() }}
+  </div>
+{% endmacro %}

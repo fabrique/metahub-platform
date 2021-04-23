@@ -1,0 +1,22 @@
+
+.article-cookies {
+  margin: var(--margin-lg) 0 0 0;
+  position: relative;
+
+  .article-cookies__grid {
+    @include grid-container;
+  }
+
+  .article-cookies__wrapper {
+    grid-column: var(--layout-right);
+  }
+
+  .article-cookies__title,
+  .option-field__input-label {
+    @include typography(heading-2, $replica-font-stack, true, true);
+  }
+
+  .article-cookies__text {
+    @include typography(introduction, $replica-font-stack, true, true);
+  }
+}

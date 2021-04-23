@@ -1,0 +1,25 @@
+/* Several tweaks for the admin */
+
+.menu-item .icon::before {
+  display: inline-block
+}
+
+.checkbox_select_multiple .input li {
+  width: 100%;
+  display: inline-block
+}
+
+.checkbox_select_multiple .input label {
+  width: auto;
+  white-space: nowrap;
+  padding-top: 0;
+  cursor: pointer;
+}
+
+.multi-field .field-row li:first-child {
+  padding-left: 0;
+}
+
+.multi-field .field-row li:last-child {
+  padding-right: 0;
+}

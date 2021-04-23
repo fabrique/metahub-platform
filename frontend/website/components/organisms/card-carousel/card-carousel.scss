@@ -1,0 +1,157 @@
+
+.card-carousel {
+  contain: content;
+  margin: var(--margin) 0;
+  position: relative;
+
+  .card-carousel__grid {
+    @include grid-container;
+  }
+
+  .card-carousel__wrapper {
+    grid-column: column 1 / span 12;
+  }
+
+  .card-carousel__title {
+    @include typography(heading-2);
+
+    margin-bottom: var(--heading-2-margin-bottom);
+  }
+
+  .card-carousel__cards {
+    //display: grid;
+    //grid-gap: var(--grid-spacing) var(--grid-gutter);
+    //grid-template-columns: unquote('repeat(auto-fill, minmax(280px, 1fr))');
+    //
+    //.card {
+    //  flex: 1 1 33.33%;
+    //  justify-self: center;
+    //}
+    clip-path: polygon(10px 0, calc(100% - 10px) 0, calc(100% - 10px) 100%, 10px 100%);
+    margin: 0 -10px;
+    width: calc(100% + 20px);
+
+    .swiper-container {
+      //overflow: visible;
+    }
+
+    .swiper-wrapper {
+      align-items: stretch;
+    }
+
+    .swiper-slide {
+      height: auto;
+      padding: 0 10px;
+    }
+
+    .card {
+      flex: 1 1 33.33%;
+      height: 100%;
+      justify-self: center;
+    }
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  // override default
+  background: none;
+  display: inline-block;
+  height: 40px;
+  padding: 10px;
+  width: 40px;
+}
+
+.swiper-button-prev {
+  left: 10px;
+  position: absolute;
+  top: 50%;
+
+  @include landscape {
+    left: 40px;
+  }
+
+  @include notebook {
+    left: 100px;
+  }
+
+  @include desktop {
+    left: 230px;
+  }
+}
+
+.swiper-button-next {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+
+  @include landscape {
+    right: 40px;
+  }
+
+  @include notebook {
+    right: 100px;
+  }
+
+  @include desktop {
+    right: 230px;
+  }
+}
+
+.swiper-button-disabled {
+  opacity: .4;
+  pointer-events: none;
+}
+
+@mixin card-carousel-swiper {
+  //@include idangerous-swiper-base;
+  //@include idangerous-swiper-arrows;
+  //@include idangerous-swiper-pagination;
+
+  //@include mobile {
+  .swiper-container {
+    //padding-bottom: 40px;
+  }
+
+  .swiper-wrapper {
+    align-items: stretch;
+  }
+
+  .swiper-slide {
+    height: auto;
+
+    .card {
+      height: 100%;
+    }
+  }
+
+  .swiper-pagination-bullet {
+    background-color: $color-white;
+    height: 10px;
+    margin-right: 10px;
+    opacity: 1;
+    transition: background-color $easing-change;
+    width: 10px;
+
+    &:hover,
+    &:focus {
+      background-color: $color-grey-dark;
+    }
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: $color-green-light;
+
+    &:hover,
+    &:focus {
+      background-color: $color-green-dark;
+    }
+  }
+  //}
+
+  @include landscape {
+    .swiper-pagination {
+      display: none;
+    }
+  }
+}

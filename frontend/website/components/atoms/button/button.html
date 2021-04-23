@@ -1,0 +1,34 @@
+
+{% macro _button_content(title = '', type = '', icon_before = '', icon_after = '', long_title = '', role = 'button' ) %}
+  {% if icon_before %}
+    <span class="button__icon button__icon--before">
+      {% include 'assets/icons/' + icon_before + '.svg' %}
+    </span>
+  {% endif %}
+
+  {% if title %}
+    <span class="button__span">{{ title }}</span>
+  {% endif %}
+
+  {% if long_title %}
+    <span class="button__long-title" hidden="screen">{{ long_title }}</span>
+  {% endif %}
+
+  {% if icon_after %}
+    <span class="button__icon button__icon--after">
+      {% include 'assets/icons/' + icon_after + '.svg' %}
+    </span>
+  {% endif %}
+{% endmacro %}
+
+{% macro regular(classes = '', type = '', variant = 'primary', title = '', href = '', target = '', disabled = false, selected = false, icon_before = '', icon_after = '', long_title = '') %}
+  <a class="button button--{{ variant }} {% if disabled %}button--disabled{% endif %} {% if selected %}button--selected{% endif %} {{ classes }}" href="{{ href }}" {% if target %}target="{{ target }}"{% endif %} role="{{ role }}" {% if type == 'download' %}download{% endif %}>
+    {{ _button_content(title = title, icon_before = icon_before, icon_after = icon_after, long_title = long_title) }}
+  </a>
+{% endmacro %}
+
+{% macro button(classes = '', variant = 'primary', title = '', disabled = false, selected = false, icon_before = '', icon_after = '', type = '', long_title = '') %}
+  <button class="button button--{{ variant }} {% if selected %}button--selected{% endif %} {{ classes }}" {% if disabled %}disabled{% endif %} {% if type %}type="{{ type }}"{% endif %}>
+    {{ _button_content(title = title, icon_before = icon_before, icon_after = icon_after, long_title = long_title) }}
+  </button>
+{% endmacro %}

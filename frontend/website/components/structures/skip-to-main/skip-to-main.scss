@@ -1,0 +1,25 @@
+
+.skip-to-main {
+  height: 0;
+  overflow: visible;
+  text-align: center;
+  width: 100%;
+
+  .link {
+    background-color: $color-black;
+    color: $color-white;
+    float: left;
+    left: -200vw;
+    padding: 10px 20px;
+    position: absolute;
+    top: 20px;
+
+    &:focus,
+    &:active {
+      float: none;
+      left: auto;
+      position: relative;
+      z-index: 9999;
+    }
+  }
+}

@@ -1,0 +1,87 @@
+
+{% import 'components/atoms/button/button.html' as atom_button %}
+{% import 'components/atoms/link/link.html' as atom_link %}
+{% import 'components/atoms/option-field/option-field.html' as atom_option_field %}
+
+{% macro regular(
+  text = 'Diese Website verwendet Cookies und ähnliche Techniken für eine optimale Benutzererfahrung.',
+  button_accept_title = 'Zustimmen',
+  button_reject_title = 'Ablehnen',
+  button_save_title = 'Speichern',
+  button_accept_all_title = 'Alle akzeptieren',
+  customize_title = 'Einstellungen anpassen',
+  customize_text = 'Durch Deaktivieren einzelner Kategorien kann es vorkommen, dass einige Funktionen der Website nicht mehr funktionieren. Sie können die Einstellungen jederzeit anpassen.',
+  link_information = { 'href': '/cookies/', 'title': 'Mehr Informationen' },
+  categories = [
+    { 'name': 'functional', 'title': 'Funktionale Cookies', 'text': 'Diese Cookies stellen sicher, dass die Website fehlerfrei funktioniert. Diese Cookies können nicht deaktiviert werden.' },
+    { 'name': 'embeds', 'title': 'Externe Cookies', 'text': 'Diese Cookies können von Dritten wie YouTube oder Vimeo platziert werden.' },
+    { 'name': 'analytics', 'title': 'Cookies zur Websiteanalyse', 'text': 'Mit diesen Cookies messen wir die Nutzung der Webseite und nehmen Verbesserungen vor.' }
+  ]) %}
+  <div class="cookie-bar">
+    {% if categories|length %}
+      <div id="cookie-bar__details" class="cookie-bar__details">
+        <div class="cookie-bar__categories">
+          <div class="cookie-bar__grid">
+            {% for category in categories %}
+              <div class="cookie-bar__category">
+                {% if category.name == 'functional' %}
+                  {{ atom_option_field.regular(classes = 'cookie-bar--category', variant = 'checkbox', name = category.name, label = false, items = [
+                    { 'value': 'agree', 'title': category.title, 'checked': true, 'required': true, 'disabled': true }
+                  ]) }}
+                {% else %}
+                  {{ atom_option_field.regular(classes = 'cookie-bar--category', variant = 'checkbox', name = category.name, label = false, items = [
+                    { 'value': 'agree', 'title': category.title, 'checked': false }
+                  ]) }}
+                {% endif %}
+
+                <p class="cookie-bar__category-text" data-for="id_{{ category.name }}_agree">{{ category.text }}</p>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="cookie-bar__grid">
+          <div class="cookie-bar__bar-wrapper">
+            {% if customize_text %}
+              <div class="cookie-bar__text-container">
+                <p class="cookie-bar__text">
+                  <span class="text__span">{{ customize_text }}</span>
+
+                  {{ atom_link.regular(href = link_information.href, title = link_information.title, target = '_blank') }}
+                </p>
+              </div>
+            {% endif %}
+
+            <div class="cookie-bar__buttons">
+              {{ atom_button.button(classes = 'button--accept-all', title = button_accept_all_title, long_title = button_accept_all_title, variant = 'secondary') }}
+              {{ atom_button.button(classes = 'button--save', title = button_save_title, long_title = button_save_title, variant = 'primary') }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    <div id="cookie-bar__bar" class="cookie-bar__bar">
+      <div class="cookie-bar__grid">
+        <div class="cookie-bar__bar-wrapper">
+          <div class="cookie-bar__text-container">
+            <p class="cookie-bar__text">
+              <span class="text__span">{{ text }}</span>
+
+              {{ atom_link.regular(href = link_information.href, title = link_information.title, target = '_blank') }}
+
+              {% if categories and customize_title %}
+                {{ atom_link.regular(classes = 'link--details', href = '#cookie-bar__details', title = customize_title) }}
+              {% endif %}
+            </p>
+          </div>
+
+          <div class="cookie-bar__buttons">
+            {{ atom_button.button(classes = 'button--reject', title = button_reject_title, long_title = button_reject_title, variant = 'secondary') }}
+            {{ atom_button.button(classes = 'button--accept', title = button_accept_title, long_title = button_accept_title, variant = 'primary') }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endmacro %}

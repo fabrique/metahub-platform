@@ -1,0 +1,13 @@
+{% macro regular(result={}) %}
+    <a class="live-search__result-item" href="{{ result.url }}">
+      <p class="live-search__result-title">{{ result.title }}</p>
+      <p class="live-search__result-type">{{ result.type }}</p>
+    </a>
+{% endmacro %}
+
+{% macro no_results(variant = '') %}
+    <li class="live-search__result-item">
+      <p class="live-search__result-title">No results found</p>
+    </li>
+{% endmacro %}
+

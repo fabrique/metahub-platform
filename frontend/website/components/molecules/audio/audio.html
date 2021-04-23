@@ -1,0 +1,30 @@
+
+{% macro regular(id = '', classes = '', title = '', file_title = '', file_subtitle = '', file = '', audio_transcript = '') %}
+  {% set component = 'audio' %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+    <h2 class="{{ component }}__title">{{ title }}</h2>
+    <div class="{{ component }}__outer-container">
+
+      <div class="{{ component }}__controls-container">
+       <button class="{{ component }}__button" aria-label="play-button">
+          <span class="{{ component }}__play-button">
+            {% include 'assets/icons/custom/ic_play.svg' %}
+          </span>
+          <span class="{{ component }}__pause-button {{ component }}__button--hide">
+            {% include 'assets/icons/custom/ic_pause.svg' %}
+          </span>
+        </button>
+        <span class="{{ component }}__current-time"></span>
+        <audio class="{{ component }}__audio">
+          <source src="{{ file }}" type="audio/mpeg">
+        </audio>
+      </div>
+
+      <div class="{{ component }}__info-container">
+        <span class="{{ component }}__name">{{ file_title }}</span>
+        <span class="{{ component }}__author"><strong>{{ file_subtitle }}</strong></span>
+      </div>
+
+    </div>
+  </div>
+{% endmacro %}

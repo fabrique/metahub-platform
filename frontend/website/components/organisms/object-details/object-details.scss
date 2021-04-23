@@ -1,0 +1,195 @@
+
+@mixin object-details {
+  contain: content;
+  margin: var(--margin-lg) 0 0 0;
+  position: relative;
+
+  &.object-details--minimal {
+    contain: initial;
+    display: inline-block;
+    width: 100%;
+
+    @include landscape {
+      padding-right: calc(50% - 720px);
+      width: 49%;
+    }
+
+    .object-details__wrapper {
+      grid-column: column 1 / span 12;
+    }
+
+    .object-details__icon-favorite {
+      float: right;
+      height: 20px;
+      margin-top: 5px;
+      width: 20px;
+
+      @include landscape {
+        display: none;
+      }
+
+      .heart-filled {
+        display: none;
+      }
+
+      .heart-empty {
+        display: block;
+      }
+    }
+
+    .object-details__icon-favorite--active {
+      .heart-filled {
+        display: block;
+      }
+
+      .heart-empty {
+        display: none;
+      }
+    }
+  }
+
+  .object-details__divider {
+    background-color: $color-grey-light;
+    display: block;
+    height: 10px;
+  }
+
+  .object-details__grid {
+    @include grid-container;
+  }
+
+  .object-details__title {
+    @include typography(heading-2, $replica-font-stack);
+
+    color: $color-blue;
+    font-weight: bold;
+    margin-bottom: 10px;
+
+    @include landscape {
+      color: $color-grey-extradark;
+    }
+  }
+
+  .object-details__wrapper {
+    grid-column: var(--layout-right);
+  }
+}
+
+@mixin object-details__dropdown {
+  overflow: hidden;
+  padding: 15px 0 0;
+
+  .object-details__title-container {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    pointer-events: none;
+    width: 100%;
+  }
+
+  .object-details__category-title {
+    color: $color-blue;
+    font-size: 14px;
+    text-transform: uppercase;
+
+    @include typography(location, $replica-font-stack);
+  }
+
+  .object-details__dropdown-arrow {
+    margin-right: 15px;
+    transition: transform .3s ease;
+
+    &.object-details__dropdown-arrow--inverted {
+      transform: rotate(180deg);
+    }
+  }
+
+  .object-details__information-container {
+    display: block;
+    height: 0;
+    overflow: hidden;
+    width: 100%;
+
+    tbody {
+      display: block;
+      width: 100%;
+    }
+
+    .object-details__information-wrapper {
+      @include grid-container;
+
+      margin-bottom: 20px;
+      padding: 0;
+
+      @include landscape {
+        margin-bottom: 10px;
+      }
+    }
+
+    &.object-details__information-container--active {
+      height: auto;
+      padding: 15px 0;
+    }
+  }
+
+  .object-details__information-name {
+    color: $color-grey;
+    grid-column: column 1 / span 12;
+    text-align: left;
+
+    @include typography(location, $replica-font-stack);
+
+    @include landscape {
+      grid-column: column 1 / span 4;
+    }
+
+    @include mobile-only {
+      font-size: 14px;
+    }
+  }
+
+  .object-details__information-value {
+    grid-column: column 1 / span 12;
+
+    @include typography(location, $replica-font-stack);
+
+    @include landscape {
+      grid-column: column 5 / span 8;
+    }
+
+    a {
+      border-bottom: 2px solid $color-blue;
+      color: $color-grey-extradark;
+    }
+  }
+
+  .object-details__tags-container {
+    width: 100%;
+
+    @include landscape {
+      width: 50%;
+    }
+  }
+
+  .object-details__tag {
+    background-color: $color-grey-light;
+    border-radius: 14px;
+    color: $color-blue;
+    display: inline-block;
+    margin: 0 15px 15px 0;
+    padding: 5px 20px;
+    text-transform: capitalize;
+
+    @include typography(location, $replica-font-stack);
+  }
+}
+
+.object-details {
+  @include object-details;
+
+  .object-details__dropdown {
+    @include object-details__dropdown;
+  }
+}

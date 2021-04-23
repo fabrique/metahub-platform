@@ -1,0 +1,30 @@
+.highlight {
+  contain: content;
+  margin: var(--margin) 0;
+  position: relative;
+  text-align: center;
+
+  .highlight__grid {
+    @include grid-container;
+  }
+
+  .highlight__wrapper {
+    background-color: $color-grey-extralight;
+    border: 1px solid $color-grey-medium;
+    grid-column: column 1 / span 12;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 32em;
+    padding: 30px;
+  }
+
+  .highlight__title {
+    @include typography(heading-3);
+
+    margin-bottom: var(--heading-3-margin-bottom);
+  }
+
+  .highlight__text {
+    margin-bottom: 30px;
+  }
+}

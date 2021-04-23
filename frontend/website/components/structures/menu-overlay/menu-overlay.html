@@ -1,0 +1,39 @@
+
+{% import 'components/atoms/icon-button/icon-button.html' as atom_icon_button %}
+{% import 'components/atoms/link/link.html' as atom_link %}
+
+{% macro regular(classes = '', menu_items = [], links = [], close_button_title = 'Sluiten', overlay_aria_label = 'Menu venster') %}
+  <div class="menu-overlay {{ classes }}" role="dialog" aria-label="{{ overlay_aria_label }}">
+    <div class="menu-overlay__grid">
+      <div class="menu-overlay__wrapper">
+        {{ atom_icon_button.button(classes = 'button--close', variant = 'clean', title = close_button_title, icon = 'custom/close') }}
+      </div>
+    </div>
+
+  <div class="menu-overlay__scroll-container">
+    <div class="menu-overlay__scroll-object">
+      <div class="menu-overlay__grid">
+        <div class="menu-overlay__wrapper">
+
+          {% if menu_items.length %}
+            <div class="menu-overlay__menu-items">
+              {% for menu_item in menu_items %}
+                {{ atom_link.regular(variant = 'inverted', href = menu_item.href, title = menu_item.title, icon_before = menu_item.icon_before) }}
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          {% if links.length %}
+            <div class="menu-overlay__links">
+              {% for link in links %}
+                {{ atom_link.regular(variant = 'inverted', href = link.href, title = link.title, icon_before = link.icon_before) }}
+              {% endfor %}
+            </div>
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endmacro %}

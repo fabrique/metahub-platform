@@ -1,0 +1,58 @@
+
+// This is the main stylesheet target
+@charset 'UTF-8';
+
+/* fonts */
+
+// Project fonts - Early in the chain so the browser can start loading the webfonts immediately
+@import 'fonts/**/*';
+//@import 'fonts/replica.scss';
+
+/* grid */
+
+// Grid system
+@import 'grid/breakpoints';
+@import 'grid/mixins';
+@import 'grid/variables';
+
+/* utilities */
+
+// Common definitions, functions and mixins
+@import 'utilities/definitions/**/*';
+@import 'utilities/functions/**/*';
+@import 'utilities/mixins/**/*';
+
+/* definitions */
+
+// Project environment
+@import 'definitions/variables';
+@import 'definitions/keyframes';
+@import 'definitions/mixins';
+@import 'definitions/typography/*';
+@import 'definitions/typography';
+@import 'definitions/layouts';
+@import 'definitions/styles';
+
+/* normalize */
+
+// Normalization
+@import 'utilities/normalize/normalize';
+
+// Add a few structures on top for faster rendering
+@import '../../components/structures/content/content';
+@import '../../components/structures/document/document';
+@import '../../components/structures/footer/footer';
+@import '../../components/structures/header/header';
+@import '../../components/structures/main/main';
+
+// Project output
+@import '../../components/atoms/**/*';
+@import '../../components/molecules/**/*';
+@import '../../components/organisms/**/*';
+@import '../../components/structures/**/*';
+
+/* plugins */
+
+// Plugins
+//@import 'plugins/**/*';
+@import 'swiper/swiper';

@@ -1,0 +1,21 @@
+{#
+  Richtext content.
+#}
+
+{% macro regular(classes = '') %}
+  <div class="richtext richtext--regular {{ classes }}">
+    {{ caller() }}
+  </div>
+{% endmacro %}
+
+{% macro introduction(classes = '') %}
+  <div class="richtext richtext--introduction {{ classes }}">
+    {{ caller() }}
+  </div>
+{% endmacro %}
+
+{% macro simple(classes = '') %}
+  <div class="richtext richtext--simple {{ classes }}">
+    {{ caller() }}
+  </div>
+{% endmacro %}

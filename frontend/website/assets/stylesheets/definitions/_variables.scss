@@ -1,0 +1,55 @@
+
+// Base colors
+$color-black: #000;
+$color-white: #fff;
+
+// Theme colors
+$color-pink: #871987;
+$color-blue: #242d8c;
+$color-green: #39e492;
+
+// Darkened theme colors
+$color-pink-dark: #f2026a;
+$color-blue-dark: #11717e;
+$color-green-dark: #16a25e;
+
+// Greyscale colors
+$color-grey-extradark: #434343;
+$color-grey-dark: #696969;
+$color-grey-medium: #787878;
+$color-grey: #a1a1a1;
+$color-grey-light: #f3f1ee;
+$color-grey-extralight: #f6f6f6;
+
+// Functional colors
+$color-error: #ff4735;
+
+// Transparencies
+$transparency-overlay: rgba($color-white, .8);
+
+// Beziers
+$bezier-fancy: cubic-bezier(.26, .88, .57, .9);
+
+// Easings
+$easing-change: .15s $bezier-fancy;
+$easing-change-slower: .35s $bezier-fancy;
+$easing-change-faster: .05s $bezier-fancy;
+$easing-change-extraslow: 1s $bezier-fancy;
+$easing-linear: .15s linear;
+
+// Layers / z-indexes
+$z-index-hide: -1;
+$z-index-hit-target: 100;
+$z-index-form-field-button: 10;
+$z-index-context-ribbon: 400;
+$z-index-menu: 500;
+$z-index-menu-overlay: 2048;
+
+// Text shadows
+//$text-shadow-on-photo: 1px 1px 15px rgba(0, 0, 0, .15);
+
+// Exposed variables
+:root {
+  // None yet
+  //--bezier-fancy: $bezier-fancy;
+}

@@ -1,0 +1,15 @@
+// Fix buggy vh device mixin
+//
+// To prevent jerky VH resizing when the address bar dis-/appears on mobile devices.
+// Works in combination with a simple script in the base html.
+
+@mixin fix-buggy-vh-device {
+  // scss-lint:disable QualifyingElement
+  html.is-buggy-vh-device & {
+    -webkit-transition-delay: 5184000s; // 24 hours
+    transition-delay: 5184000s;
+
+    @content;
+  }
+  // scss-lint:enable QualifyingElement
+}

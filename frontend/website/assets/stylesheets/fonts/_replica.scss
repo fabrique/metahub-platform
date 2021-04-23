@@ -1,0 +1,77 @@
+
+// Flexible webfont base file
+// NOTE: When using this file as a base, rename all $*-font variables.
+
+$prevent-font-face-declarations: false !default;
+
+// Variable font settings
+$replica-font-name: 'Replica Webfont';
+$replica-font-cleanname: 'replica';
+$replica-font-path: '/static/fonts/' + $replica-font-cleanname + '/';
+$replica-font-stack: $replica-font-name, 'Arial', 'Helvetica', sans-serif;
+$replica-font-feature-settings: 'kern' 1, 'calt' 1, 'liga' 1, 'frac' 1, 'dlig' 0;
+
+// Weight names and their real values
+// Defined here, since these names can vary per font family. Foundries get up the the weirdest things sometimes.
+
+// Reminder: Font style is not supposed to be selected by name (ie: 'black-italic'),
+// this is done automatically by setting font-style italic. However, it's still in the
+// list in order for the @font-face to work
+$replica-font-weights: (
+  regular: (weight: normal, style: normal),
+  regular-italic: (weight: normal, style: italic),
+  bold: (weight: bold, style: normal),
+);
+
+// Automatically map weights
+@each $weight, $properties in $replica-font-weights {
+  $font-style: map-get($properties, style);
+  $font-weight: map-get($properties, weight);
+
+  @if not ($prevent-font-face-declarations) {
+    @font-face {
+      font-display: swap;
+      font-family: $replica-font-name;
+      font-style: $font-style;
+      font-weight: $font-weight;
+      src: url($replica-font-path + $replica-font-cleanname + '-' + $weight + '.woff2') format('woff2');
+    }
+  }
+}
+
+// Font mixin whereby you can use the real font weights as displayed in Sketch, such as 'book' or 'black'.
+// MKR: this seems to be unused in general?
+@mixin font-plaax($font-weight: null) {
+  // Set the basics
+  font-family: $replica-font-stack;
+  font-feature-settings: $replica-font-feature-settings;
+  font-size-adjust: initial;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  @if ($font-weight) {
+    font-weight: get-replica-weight($font-weight);
+  }
+}
+
+// Given the weight name, get the real weight value. For example: 'black' returns 900.
+@function get-replica-weight($font-weight) {
+  // Convert possible 'normal' font-weight strings to 'regular', which is the font's actual weight name
+  @if not $font-weight or $font-weight == 'normal' {
+    $font-weight: 'regular';
+  }
+
+  // Look up the actual weight
+  @if not (map-get($replica-font-weights, $font-weight)) {
+    @error 'Variant "' + $font-weight + '" not found in "' + $replica-font-name + '" definition.';
+  }
+
+  $mapped-weight: map-get($replica-font-weights, $font-weight);
+  $mapped-value-weight: map-get($mapped-weight, 'weight');
+
+  @if ($mapped-value-weight) {
+    $font-weight: $mapped-value-weight;
+  }
+
+  @return $font-weight;
+}

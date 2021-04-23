@@ -1,0 +1,40 @@
+
+{% macro _link_content(title = '', icon_before = '', icon_after = '', long_title = '', aria_label = '') %}
+  {% if icon_before %}
+    <span class="link__icon link__icon--before" {% if aria_label %}aria-label="{{ aria_label }}"{% endif %}>
+      {% include 'assets/icons/' + icon_before + '.svg' %}
+    </span>
+  {% endif %}
+
+  {% if title %}
+    <span class="link__span">{{ title }}</span>
+  {% endif %}
+
+  {% if icon_after %}
+    <span class="link__icon link__icon--after" {% if aria_label %}aria-label="{{ aria_label }}"{% endif %}>
+      {% include 'assets/icons/' + icon_after + '.svg' %}
+    </span>
+  {% endif %}
+
+  {% if long_title %}
+    <span class="link__long-title" hidden="screen">{{ long_title }}</span>
+  {% endif %}
+{% endmacro %}
+
+{% macro regular(classes = '', href = '', title = '', target = '', icon_before = '', icon_after = '', long_title = '', aria_label = '') %}
+  <a class="link {{ classes }}" href="{{ href }}" {% if target %}target="{{ target }}"{% endif %} {% if aria_label %}aria-label="{{ aria_label }}"{% endif %}>
+    {{ _link_content(title = title, icon_before = icon_before, icon_after = icon_after, long_title = long_title) }}
+  </a>
+{% endmacro %}
+
+{% macro span(classes = '', title = '', icon_before = '', icon_after = '', long_title = '', aria_label = '') %}
+  <span class="link {{ classes }}" {% if aria_label %}aria-label="{{ aria_label }}"{% endif %}>
+    {{ _link_content(title = title, icon_before = icon_before, icon_after = icon_after, long_title = long_title) }}
+  </span>
+{% endmacro %}
+
+{% macro button(classes = '', title = '', icon_before = '', icon_after = '', long_title = '', aria_label = '') %}
+  <button class="link {{ classes }}" {% if aria_label %}aria-label="{{ aria_label }}"{% endif %}>
+    {{ _link_content(title = title, icon_before = icon_before, icon_after = icon_after, long_title = long_title) }}
+  </button>
+{% endmacro %}

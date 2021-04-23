@@ -1,0 +1,17 @@
+
+@mixin set-link-color($value: false, $visited: false) {
+  @if ($value) {
+    &,
+    &:link,
+    &:active,
+    &:visited {
+      color: $value;
+    }
+  }
+
+  @if ($visited) {
+    &:visited {
+      color: $visited;
+    }
+  }
+}

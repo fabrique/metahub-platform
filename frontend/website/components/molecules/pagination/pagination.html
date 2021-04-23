@@ -1,0 +1,16 @@
+
+{% import 'components/atoms/number-button/number-button.html' as atom_number_button %}
+
+{% macro regular() %}
+  <nav class="pagination">
+    {{ atom_number_button.regular(classes = 'number-button--previous', variant = 'clean', href = '?', title = 'Next', icon = 'custom/chevron-left') }}
+    {{ atom_number_button.regular(href = '?', title = '1') }}
+    {{ atom_number_button.span(classes = 'number-button--selected', variant = 'clean', title = '2') }}
+    {{ atom_number_button.regular(href = '?', title = '3') }}
+    {{ atom_number_button.regular(href = '?', title = '4') }}
+    {{ atom_number_button.span(classes = 'number-button--dots', variant = 'clean', title = '...') }}
+    {{ atom_number_button.regular(href = '?', title = '43') }}
+    {{ atom_number_button.regular(href = '?', title = '44') }}
+    {{ atom_number_button.regular(classes = 'number-button--next', variant = 'clean', href = '?', title = 'Next', icon = 'custom/chevron-right') }}
+  </nav>
+{% endmacro %}

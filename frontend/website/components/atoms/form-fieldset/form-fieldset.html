@@ -1,0 +1,10 @@
+
+{% macro regular(classes = '', title = '') %}
+  <fieldset class="form-fieldset {{ classes }}">
+    {% if title %}
+      <legend class="form-fieldset__legend">{{ title }}</legend>
+    {% endif %}
+
+    {{ caller() }}
+  </fieldset>
+{% endmacro %}

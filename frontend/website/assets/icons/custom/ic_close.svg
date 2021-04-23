@@ -1,0 +1,10 @@
+
+<svg width="22px" height="23px" viewBox="0 0 22 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_close</title>
+    <g id="Ontwerp" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_close" transform="translate(0.000000, 0.213203)" fill="#434343" fill-rule="nonzero">
+            <polygon id="Path" points="2.30926389e-13 1.41421356 2.30926389e-13 2.27373675e-13 1.41421356 2.27373675e-13 21.8284271 20.4142136 21.8284271 21.8284271 20.4142136 21.8284271"></polygon>
+            <polygon id="Path" transform="translate(10.914214, 10.914214) scale(-1, 1) translate(-10.914214, -10.914214) " points="2.29150032e-13 1.41421356 2.29150032e-13 2.29150032e-13 1.41421356 2.29150032e-13 21.8284271 20.4142136 21.8284271 21.8284271 20.4142136 21.8284271"></polygon>
+        </g>
+    </g>
+</svg>

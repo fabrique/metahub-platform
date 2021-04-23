@@ -1,0 +1,19 @@
+{% import 'components/atoms/disclosure/disclosure.html' as atom_disclosure %}
+
+{% macro regular(classes = '', title = '', disclosures = []) %}
+  <div class="article-accordeon {{ classes }}">
+    <div class="article-accordeon__grid">
+      <div class="article-accordeon__wrapper">
+        {% if title %}
+          <h2 class="article-accordeon__title">{{ title }}</h2>
+        {% endif %}
+
+        <div class="article-accordeon__disclosures">
+          {% for disclosure in disclosures %}
+            {{ atom_disclosure.regular(title = disclosure.title, simple_richtext = disclosure.simple_richtext) }}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endmacro %}

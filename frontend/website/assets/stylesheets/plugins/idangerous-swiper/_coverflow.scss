@@ -1,0 +1,9 @@
+
+@mixin idangerous-swiper-coverflow {
+  .swiper-container-coverflow {
+    .swiper-wrapper {
+      // Windows 8 IE 10 fix
+      -ms-perspective: 1200px; /* stylelint-disable-line property-no-vendor-prefix */
+    }
+  }
+}

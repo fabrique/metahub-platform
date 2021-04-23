@@ -1,0 +1,28 @@
+
+{% macro regular(classes = '', name = '', placeholder = '', label = '', label_hidden = false, required = false, disabled = false, error = '', items = []) %}
+  <div class="dropdown-field {% if required %}dropdown-field--required{% endif %} {% if error %}dropdown-field--error{% endif %} {{ classes }}">
+    {% if label %}
+      <label for="id_{{ name }}" class="dropdown-field__label" {% if label_hidden %}hidden="screen"{% endif %}>{{ label }}</label>
+    {% endif %}
+
+    <div class="dropdown-field__wrapper">
+      <div class="dropdown-field__container">
+        <select id="id_{{ name }}" class="dropdown-field__input" name="{{ name }}" {% if required %}required{% endif %} {% if disabled %}disabled{% endif %}>
+          {% if placeholder %}
+            <option value="" selected disabled>{{ placeholder }}</option>
+          {% endif %}
+
+          {% for item in items %}
+            <option {% if item.value %}value="{{ item.value }}"{% endif %} {% if item.selected %}selected{% endif %} {% if item.disabled %}disabled{% endif %}>{{ item.title }}</option>
+          {% endfor %}
+        </select>
+
+        <span class="dropdown-field__icon">{% include 'assets/icons/custom/triangle-down.svg' %}</span>
+      </div>
+    </div>
+
+    {% if error %}
+      <span class="dropdown-field__error">{{ error|safe }}</span>
+    {% endif %}
+  </div>
+{% endmacro %}

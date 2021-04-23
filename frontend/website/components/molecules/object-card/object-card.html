@@ -1,0 +1,33 @@
+{% import 'components/atoms/picture/picture.html' as atom_picture %}
+
+{% macro regular(id = '', classes = '', title = '', name = '', type = '', date = '', link = {}, picture = {}, href = '', variant = '', is_restricted = false) %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="object-card {{ classes }}">
+    <a href="{{ href }}">
+      <span class="object-card__picture-wrapper">
+        {{ atom_picture.regular(classes = 'object-card__picture', images = picture.images, fits = picture.fits, positions = picture.positions, width = picture.width, height = picture.height, loading = picture.loading, alt = picture.alt ) }}
+
+        {% if is_restricted %}
+          <span class="object-card__restricted" aria-label="Bild mit eingeschränkten Rechten" title="Bild mit eingeschränkten Rechten">⊗</span>
+        {% endif %}
+      </span>
+
+      {% if title %}
+        <p class="object-card__title">{{ title }}</p>
+      {% endif %}
+
+      {% if name %}
+        <p class="object-card__name">
+          {{ name }}
+          {% if type and date %}
+            <br/>{{ type }}, {{ date }}
+          {% else %}
+            {% if type %}
+              <br/>{{ type }} {% endif %}
+            {% if date %}
+              <br/>{{ date }} {% endif %}
+          {% endif %}
+        </p>
+      {% endif %}
+    </a>
+  </div>
+{% endmacro %}

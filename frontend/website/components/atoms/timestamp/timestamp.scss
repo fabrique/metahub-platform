@@ -1,0 +1,15 @@
+
+.timestamp {
+  @include typography(caption);
+
+  contain: content;
+  display: inline-flex;
+  position: relative;
+  text-decoration: none;
+  vertical-align: bottom;
+
+  .timestamp__span {
+    display: inline-block;
+    vertical-align: baseline;
+  }
+}

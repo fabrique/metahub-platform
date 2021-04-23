@@ -1,0 +1,8 @@
+@import '../../../assets/stylesheets/utilities/mixins/clearfix';
+
+.header {
+  @include clearfix;
+
+  position: relative;
+  z-index: 100;
+}

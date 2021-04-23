@@ -1,0 +1,70 @@
+
+.card {
+  color: inherit;
+  contain: content;
+  cursor: pointer;
+  overflow: hidden;
+  padding-bottom: 75%;
+  position: relative;
+  user-select: none;
+  width: 100%;
+
+  .card__image {
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40%;
+
+    &::before {
+      content: '';
+      display: block;
+      padding-top: 56.25%;
+    }
+
+    .picture {
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 0;
+    }
+  }
+
+  .card__info-container {
+    background-color: $color-white;
+    color: $color-blue;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    left: 0;
+    padding: 15px 40px 15px 20px;
+    position: absolute;
+    top: 0;
+    width: 70%;
+
+    &.card__info-container--gradient {
+      background: linear-gradient(180deg, rgba(35, 45, 140, 1) 0%, rgba(135, 26, 135, 1) 100%);
+      color: $color-white;
+    }
+  }
+
+  .card__type {
+    margin-bottom: auto;
+    text-transform: uppercase;
+
+    @include typography(sub-heading, $replica-font-stack);
+  }
+
+  .card__title {
+    @include typography(caption, $replica-font-stack);
+
+    font-weight: bold;
+
+    @include landscape {
+      @include typography(heading-2, $replica-font-stack);
+    }
+  }
+}

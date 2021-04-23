@@ -1,0 +1,111 @@
+
+.richtext {
+  contain: content;
+  position: relative;
+}
+
+.richtext--regular {
+  h1 {
+    @include typography(heading-1, $replica-font-stack, true, true);
+
+    color: $color-blue;
+  }
+
+  h2 {
+    @include typography(heading-2, $replica-font-stack, true, true);
+
+    color: $color-blue;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    @include typography(sub-heading, $replica-font-stack, true, true);
+
+    color: $color-blue;
+    font-weight: bold;
+  }
+
+  p {
+    // @include typography(body-text, $libre-font-stack);
+  }
+}
+
+.richtext--regular,
+.richtext--simple {
+  p,
+  ul,
+  ol {
+    &:not(:first-child) {
+      margin-top: var(--paragraph-margin-top);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: var(--paragraph-margin-bottom);
+    }
+  }
+
+  li {
+    &,
+    > ul,
+    > ol {
+      &:not(:first-child) {
+        margin-top: calc(var(--paragraph-margin-top) / 2);
+      }
+
+      &:not(:last-child) {
+        margin-bottom: calc(var(--paragraph-margin-bottom) / 2);
+      }
+    }
+  }
+
+  p,
+  li {
+    > a {
+      &,
+      &:link,
+      &:active,
+      &:visited {
+        color: inherit;
+        text-decoration: underline;
+
+        &:hover {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  ul {
+    @include style-list-base;
+    @include style-list-unordered;
+  }
+
+  ol {
+    @include style-list-base;
+    @include style-list-ordered;
+  }
+}
+
+.richtext--introduction {
+  p {
+    @include typography(introduction, true, true);
+
+    > a {
+      &,
+      &:link,
+      &:active,
+      &:visited {
+        color: inherit;
+        text-decoration: underline;
+
+        &:hover {
+          color: inherit;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

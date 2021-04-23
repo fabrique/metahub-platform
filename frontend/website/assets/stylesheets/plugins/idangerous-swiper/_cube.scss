@@ -1,0 +1,46 @@
+
+@mixin idangerous-swiper-cube {
+  .swiper-container-cube {
+    overflow: visible;
+
+    .swiper-slide {
+      backface-visibility: hidden;
+      height: 100%;
+      pointer-events: none;
+      transform-origin: 0 0;
+      visibility: hidden;
+      width: 100%;
+    }
+
+    &.swiper-container-rtl {
+      .swiper-slide {
+        transform-origin: 100% 0;
+      }
+    }
+
+    .swiper-slide-active,
+    .swiper-slide-next,
+    .swiper-slide-prev,
+    .swiper-slide-next + .swiper-slide {
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    .swiper-cube-shadow {
+      background: #000;
+      bottom: 0;
+      filter: blur(50px);
+      height: 100%;
+      left: 0;
+      opacity: .6;
+      position: absolute;
+      width: 100%;
+    }
+
+    &.swiper-container-vertical {
+      .swiper-cube-shadow {
+        z-index: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+
+{% macro _icon_button_content(title = '', icon = '') %}
+  {% if icon %}
+    <span class="icon-button__icon">
+      {% include 'assets/icons/' + icon + '.svg' %}
+    </span>
+  {% endif %}
+
+  {% if title %}
+    <span class="icon-button__title" hidden="screen">{{ title }}</span>
+  {% endif %}
+{% endmacro %}
+
+{% macro regular(classes = '', variant = 'default', title = '', href = '', target = '', icon = '') %}
+  <a class="icon-button icon-button--{{ variant }} {{ classes }}" href="{{ href }}" {% if target %}target="{{ target }}"{% endif %}>
+    {{ _icon_button_content(title = title, icon = icon) }}
+  </a>
+{% endmacro %}
+
+{% macro span(classes = '', variant = 'default', title = '', icon = '') %}
+  <span class="icon-button icon-button--{{ variant }} {{ classes }}">
+    {{ _icon_button_content(title = title, icon = icon) }}
+  </span>
+{% endmacro %}
+
+{% macro button(classes = '', variant = 'default', title = '', icon = '') %}
+  <button class="icon-button icon-button--{{ variant }} {{ classes }}">
+    {{ _icon_button_content(title = title, icon = icon) }}
+  </button>
+{% endmacro %}

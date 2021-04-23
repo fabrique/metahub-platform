@@ -1,0 +1,124 @@
+<!doctype html>
+{% load staticfiles i18n analytics_tags core_tags wagtailimages_tags starling_tags menu_tags wagtailcore_tags wagtailuserbar %}
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+  <head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    
+    <title>{% block page_title %}{{ page.title }}{% endblock %}</title>
+    <meta name="description" content="{% block site_description %}{{ settings.core.GlobalSettings.default_site_description }}{% endblock %}">
+
+    <meta name="DC.Contributor" content="Fabrique">
+    <link rel="DC.Contributor" href="https://fabrique.nl">
+
+    <link rel="preload" href="{% static 'stylesheets/main.css' %}" as="style">
+    <link rel="preload" href="{% static 'scripts/base.js' %}" as="script" crossorigin>
+    <link rel="preload" href="{% static 'scripts/main.js' %}" as="script" crossorigin>
+
+    {% block share %}
+      {% if settings.core.GlobalSettings.default_share_image %}
+        {% image settings.core.GlobalSettings.default_share_image fill-1200x630 as share_image %}
+      {% endif %}
+
+      <meta property="og:type" content="website">
+      <meta property="og:title" content="{% block og_title %}{{ request.site.site_name }}{% endblock %}">
+      <meta property="og:url" content="{% block og_url %}{% endblock %}">
+      <meta property="og:image" content="{% block og_image %}{% if share_image %}{{ share_image.url }}{% endif %}{% endblock %}">
+      <meta property="og:description" content="{% block og_description %}{{ settings.core.GlobalSettings.default_site_description }}{% endblock %}">
+      <meta property="og:site_name " content="{% block og_sitename %}{{ request.site.site_name }}{% endblock %}">
+      {% trans "core.head.fb_admins" as fb_admins %}
+      {% if fb_admins and fb_admins != "core.head.fb_admins" %}
+        <meta property="fb:admins" content="{{ fb_admins }}">
+      {% endif %}
+      {% trans "core.head.fb_appid" as fb_appid %}
+      {% if fb_appid and fb_appid != "core.head.fb_appid" %}
+        <meta property="fb:app_id" content="{{ fb_appid }}">
+      {% endif %}
+      <meta name="twitter:title" content="{% block twitter_title %}{{ request.site.site_name }}{% endblock %}">
+      <meta name="twitter:description" content="{% block twitter_description %}{{ settings.core.GlobalSettings.default_site_description }}{% endblock %}">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:site" content="{% block twitter_site %}{{ request.site.site_name }}{% endblock %}">
+      <meta property="twitter:image:src" content="{% block twitter_image %}{% if share_image %}{{ share_image.url }}{% endif %}{% endblock %}">
+    {% endblock share %}
+
+    <meta name="application-name" content="{{ request.site.site_name }}"/>
+
+    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+    <link rel="icon" type="image/png" href="{% static 'images/favicons/favicon-32x32.png' %}" sizes="32x32">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="{% static 'images/favicons/apple-touch-icon-152x152.png' %}">
+
+    <meta name="theme-color" content="#fff">
+    <meta name="msapplication-TileColor" content="#fff">
+
+    {% block css %}
+      <link rel="stylesheet" href="{% static 'stylesheets/main.css' %}">
+    {% endblock %}
+
+    {% matomo_script %}
+  </head>
+
+  <body class="{% block bodyclass %}{% endblock %}">
+    <script src="{% static 'scripts/base.js' %}" type="module" crossorigin></script>
+
+      {% block navigation_header %}
+          {% get_menu_items as menu %}
+          {% with page.get_my_collection_url as fav_url %}
+              {% include_component 'structures.menu-bar.regular' fav_url=fav_url menu_items=menu.menu_items address='Bertha-Pappenheim-Platz 1' address2='Battonnstrasse 47' languages="['Deutsch', 'English']" %}
+          {% endwith %}
+      {% endblock navigation_header %}
+
+    <div class="content">
+      {% include_component 'structures.skip-to-main.regular' %}
+      
+      {% block header_bar %}
+      {% endblock %}
+
+
+      <header class="header" role="banner">
+        {% block header %}
+        {% endblock %}
+        
+        {% block page_header %}
+        {% endblock page_header %}
+      </header>
+        
+      {% block main %}
+        <main id="main" class="main page-content" role="main">
+          {% block content %}
+          {% endblock %}
+          
+          {% block page_content %}
+          {% endblock page_content %}
+
+        </main>
+      {% endblock %}
+        
+      <footer class="footer" role="contentinfo">
+        {% block footer_bar %}
+        {% endblock %}
+        
+        {% block footer %}
+          {% for block in settings.core.GlobalSettings.footer_content_simple %}
+            {% include_block block %}
+          {% endfor %}
+        {% endblock %}
+      </footer>
+    </div>
+
+    <div class="overlays" role="dialog">
+      {% block overlays %}
+      {% endblock %}
+      
+      {% include_component 'structures.cookie-bar.regular' %}
+    </div>
+
+    {% block javascript %}
+        <script src="{% static 'scripts/main.js' %}" type="module" crossorigin></script>
+    {% endblock javascript %}
+
+    {% wagtailuserbar %}
+  </body>
+</html>

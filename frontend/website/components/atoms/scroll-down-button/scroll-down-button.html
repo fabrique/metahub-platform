@@ -1,0 +1,7 @@
+
+{% macro regular(classes = '', title = 'Scroll down') %}
+  <a class="scroll-down-button {{ classes }}" href="#main">
+    <span class="scroll-down-button__title">{{ title }}</span>
+    {% include 'assets/icons/custom/chevron-down.svg' %}
+  </a>
+{% endmacro %}

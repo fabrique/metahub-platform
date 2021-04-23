@@ -1,0 +1,4 @@
+
+@mixin remove-box-shadow {
+  box-shadow: 0 0 0; // IE 10 doesn't recognize :none or :initial in some cases
+}

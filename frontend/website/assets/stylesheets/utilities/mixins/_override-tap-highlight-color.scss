@@ -1,0 +1,8 @@
+
+@mixin override-tap-highlight-color($color: transparent) {
+  // NOTE: This only works on a class, and don't put it in the focus state!
+
+  // These first two are for older Android devices
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: $color;
+}

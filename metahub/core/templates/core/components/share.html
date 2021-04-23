@@ -1,0 +1,43 @@
+
+{% load core_tags i18n wagtailimages_tags %}
+<div class="share {% if variant %}share--{{ variant }}{% endif %}">
+  <ul class="social-list social-list--vertical share__wrapper">
+    <li class="social-list__item  social-list__item--facebook">
+      <a href="https://facebook.com/sharer/sharer.php?u={{ url|urlencode }}"
+         target="_blank">
+        {% include "svg/social/facebook.svg" %}
+        Facebook
+      </a>
+    </li>
+    <li class="social-list__item  social-list__item--twitter">
+      <a href="https://twitter.com/intent/tweet?text={{ twitter_text|urlencode }}&amp;hashtags={{ twitter_hashtags|urlencode }}&amp;url={{ url|urlencode }}"
+         target="_blank">
+        Twitter
+      </a>
+    </li>
+    <li class="social-list__item  social-list__item--linkedin">
+      <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ url|urlencode }}&amp;source={{ source|urlencode }}"
+         target="_blank">
+        Linkedin
+      </a>
+    </li>
+    {% if show_pinterest %}
+      
+      {% image image width-1920 as share_image %}
+      {% absolute_uri request share_image.url %}
+      
+      <li class="social-list__item social-list__item--pinterest">
+        <a href="https://pinterest.com/pin/create/button/?url={{ url|urlencode }}&amp;media={{ share_image_url|urlencode }}&amp;description={{ title|pinterest_fix|urlencode }}"
+           target="_blank">
+          Pinterest
+        </a>
+      </li>
+    {% endif %}
+    <li class="social-list__item social-list__item--email">
+      <a href="mailto:?subject={{ mailto_subject|urlencode }}&body={{ mailto_body|urlencode }}">
+        E-mail
+      </a>
+    </li>
+  </ul>
+</div>
+

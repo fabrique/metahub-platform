@@ -1,0 +1,50 @@
+{% import 'components/atoms/button/button.html' as atom_button %}
+{% import 'components/atoms/link/link.html' as atom_link %}
+{% import 'components/atoms/richtext/richtext.html' as atom_richtext %}
+
+{% macro regular(id = '', theme = '', link = {}, title = '', introduction = '', pre_title = '', post_title = '', buttons = []) %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="article-header {% if theme %}article-header--theme-{{ theme }}{% endif %}">
+    <div class="article-header__grid">
+      <div class="article-header__wrapper">
+        <header class="article-header__header">
+          {% if link.title %}
+            <div class="article-header__link">
+            {{ atom_link.regular(classes = link.classes, href = link.href, title = link.title, target = link.target, icon_before = link.icon_before, icon_after = link.icon_after, long_title = link.long_title) }}
+            </div>
+            {% endif %}
+
+          {% if pre_title %}
+            <p class="article-header__pre-title">{{ pre_title }}</p>
+          {% endif %}
+
+          {% if title %}
+            <h1 class="article-header__title">{{ title }}</h1>
+          {% endif %}
+
+          {% if post_title %}
+            <p class="article-header__post-title">{{ post_title }}</p>
+          {% endif %}
+        </header>
+
+        {% if introduction %}
+          <div class="article-header__introduction">
+            {# Allowed tags: <p>, <a> #}
+            {% call atom_richtext.introduction() %}
+              {{ introduction }}
+            {% endcall %}
+          </div>
+        {% endif %}
+
+        {% if buttons.length %}
+          <footer class="article-header__footer">
+            <div class="article-header__buttons">
+              {% for button in buttons %}
+                {{ atom_button.regular(variant = button.variant, title = button.title, href = button.href, target = button.target, icon_before = button.icon_before, icon_after = button.icon_after, long_title = button.long_title) }}
+              {% endfor %}
+            </div>
+          </footer>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endmacro %}

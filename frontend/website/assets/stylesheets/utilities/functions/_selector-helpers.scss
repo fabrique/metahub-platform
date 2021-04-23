@@ -1,0 +1,36 @@
+
+// Get parent from selector
+// Level can be any negative number
+@function get-parent-from-selector($level: -1) {
+  $unsigned-level: $level * -1; // Negative to positive number
+  $selector: split(#{&}, ' ');
+  $selector-length: length($selector);
+
+  @if ($selector-length < ($unsigned-level + 1)) {
+    @warn 'get-parent-from-selector: selector "' + $selector + '" too short for level "' + $level + '", cannot find that parent.';
+
+    @return null;
+  }
+
+  @return nth($selector, -($unsigned-level + 1));
+}
+
+// Insert styles higher in the tree
+// Level can be any negative number
+@mixin insert-at($level: -1) {
+  $unsigned-level: $level * -1; // Negative to positive number
+  $selector: split(#{&}, ' ');
+  $selector-length: length($selector);
+
+  @if ($selector-length < ($unsigned-level + 1)) {
+    @warn 'insert-in-tree-at: selector "' + $selector + '" too short for level "' + $level '", cannot find that parent.';
+  } @else {
+    @for $i from $selector-length through ($selector-length - $level - 1) {
+      $selector: remove-nth($selector, -1);
+    }
+
+    @at-root #{$selector} {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+
+@mixin article-quote {
+  margin: var(--margin-lg) 0 0 0;
+
+  .article-quote__grid {
+    @include grid-container;
+  }
+
+  .article-quote__wrapper {
+    grid-column: var(--layout-right);
+  }
+}
+
+.article-quote {
+  @include article-quote;
+}

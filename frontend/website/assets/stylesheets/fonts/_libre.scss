@@ -1,0 +1,77 @@
+
+// Flexible webfont base file
+// NOTE: When using this file as a base, rename all $*-font variables.
+
+$prevent-font-face-declarations: false !default;
+
+// Variable font settings
+$libre-font-name: 'Libre Baskerville';
+$libre-font-cleanname: 'libre';
+$libre-font-path: '/static/fonts/' + $libre-font-cleanname + '/';
+$libre-font-stack: $libre-font-name, 'Arial', 'Helvetica', sans-serif;
+$libre-font-feature-settings: 'kern' 1, 'calt' 1, 'liga' 1, 'frac' 1, 'dlig' 0;
+
+// Weight names and their real values
+// Defined here, since these names can vary per font family. Foundries get up the the weirdest things sometimes.
+
+// Reminder: Font style is not supposed to be selected by name (ie: 'black-italic'),
+// this is done automatically by setting font-style italic. However, it's still in the
+// list in order for the @font-face to work
+$libre-font-weights: (
+  regular: (weight: normal, style: normal),
+  regular-italic: (weight: normal, style: italic),
+  bold: (weight: bold, style: normal),
+);
+
+// Automatically map weights
+@each $weight, $properties in $libre-font-weights {
+  $font-style: map-get($properties, style);
+  $font-weight: map-get($properties, weight);
+
+  @if not ($prevent-font-face-declarations) {
+    @font-face {
+      font-display: swap;
+      font-family: $libre-font-name;
+      font-style: $font-style;
+      font-weight: $font-weight;
+      src: url($libre-font-path + $libre-font-cleanname + '-' + $weight + '.woff2') format('woff2');
+    }
+  }
+}
+
+// Font mixin whereby you can use the real font weights as displayed in Sketch, such as 'book' or 'black'.
+// MKR: this seems to be unused in general?
+@mixin font-plaax($font-weight: null) {
+  // Set the basics
+  font-family: $libre-font-stack;
+  font-feature-settings: $libre-font-feature-settings;
+  font-size-adjust: initial;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  @if ($font-weight) {
+    font-weight: get-libre-weight($font-weight);
+  }
+}
+
+// Given the weight name, get the real weight value. For example: 'black' returns 900.
+@function get-libre-weight($font-weight) {
+  // Convert possible 'normal' font-weight strings to 'regular', which is the font's actual weight name
+  @if not $font-weight or $font-weight == 'normal' {
+    $font-weight: 'regular';
+  }
+
+  // Look up the actual weight
+  @if not (map-get($libre-font-weights, $font-weight)) {
+    @error 'Variant "' + $font-weight + '" not found in "' + $libre-font-name + '" definition.';
+  }
+
+  $mapped-weight: map-get($libre-font-weights, $font-weight);
+  $mapped-value-weight: map-get($mapped-weight, 'weight');
+
+  @if ($mapped-value-weight) {
+    $font-weight: $mapped-value-weight;
+  }
+
+  @return $font-weight;
+}

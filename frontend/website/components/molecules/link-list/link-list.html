@@ -1,0 +1,15 @@
+{% import 'components/atoms/link/link.html' as atom_link %}
+
+{% macro regular(classes = '', direction = 'vertical', title = '', links = []) %}
+  <div class="link-list link-list--{{ direction }} {{ classes }}">
+    {% if title %}
+      <p class="link-list__title">{{ title }}</p>
+    {% endif %}
+
+    <div class="link-list__links">
+      {% for link in links %}
+        {{ atom_link.regular(href = link.href, title = link.title, target = link.target, icon_before = link.icon_before, icon_after = link.icon_after, long_title = link.long_title) }}
+      {% endfor %}
+    </div>
+  </div>
+{% endmacro %}

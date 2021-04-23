@@ -1,0 +1,19 @@
+{% import 'components/molecules/audio/audio.html' as molecule_audio %}
+
+{% macro regular(id = '', classes = '', title = '', file = {}) %}
+  {% set component = 'article-audio' %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }}">
+    <div class="{{ component }}__grid">
+      <div class="{{ component }}__wrapper">
+        {{ molecule_audio.regular(
+          classes = classes,
+          title = file.title,
+          file_title = file.file_title,
+          file_subtitle = file.file_subtitle,
+          file = file.file,
+          audio_transcript = file.audio_transcript
+        ) }}
+      </div>
+    </div>
+  </div>
+{% endmacro %}

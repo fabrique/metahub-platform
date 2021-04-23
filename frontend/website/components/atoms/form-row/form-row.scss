@@ -1,0 +1,37 @@
+
+.form-row {
+  margin: 0 calc(var(--grid-gutter) * -.5);
+
+  > div {
+    margin: 0 calc(var(--grid-gutter) / 2);
+  }
+
+  &.form-row--footer {
+    margin: calc(var(--margin) / 2) 0;
+
+    .button + .button {
+      margin-left: 10px;
+    }
+  }
+
+  @include mobile-only {
+    &.form-row--footer {
+      .button {
+        width: 100%;
+      }
+
+      .button + .button {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  @include portrait {
+    display: flex;
+
+    > div {
+      flex: 1 1 50%;
+    }
+  }
+}

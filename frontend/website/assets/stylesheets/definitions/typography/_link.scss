@@ -1,0 +1,19 @@
+
+:root {
+  --link-font-size: 18px;
+  --link-font-style: normal;
+  --link-font-variant: normal;
+  --link-font-weight: #{get-replica-weight(regular)};
+  --link-letter-spacing: -.005em;
+  --link-line-height: 1.55em;
+  --link-margin-bottom: .5em;
+  --link-margin-top: 1em;
+
+  @include portrait {
+    --link-line-height: 1.75em;
+  }
+
+  @include landscape {
+    //
+  }
+}

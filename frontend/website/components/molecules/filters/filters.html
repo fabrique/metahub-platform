@@ -1,0 +1,33 @@
+
+{% import 'components/atoms/button/button.html' as atom_button %}
+{% import 'components/atoms/dropdown-filter/dropdown-filter.html' as atom_dropdown_filter %}
+
+{% macro regular(id = '', classes = '', button_text = '', button_text_long = '', dropdowns = [], label = '') %}
+  {% set component = 'filters' %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+    {{ atom_button.button(classes = component + '__button', title = 'Filter anzeigen', long_title = 'Filter anzeigen', icon_before = 'custom/ic_filters')}}
+    <div class="{{ component }}__container">
+      {% for dropdown in dropdowns %}
+        {% if dropdown.type == 'select' %}
+{#          {% if dropdown.options|length > 0 %}#}
+            {{ atom_dropdown_filter.regular(
+              classes = component + '__dropdown-filter',
+              name = dropdown.name,
+              placeholder = dropdown.placeholder,
+              options = dropdown.options
+            )}}
+{#          {% endif %}#}
+        {% else %}
+          {{ atom_dropdown_filter.regular(
+            id = component + '__dropdown-date',
+            classes = component + '__dropdown-date',
+            placeholder = dropdown.placeholder,
+            type = dropdown.type,
+            options = dropdown.options
+          )}}
+        {% endif %}
+      {% endfor %}
+
+    </div>
+  </div>
+{% endmacro %}

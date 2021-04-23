@@ -1,0 +1,6 @@
+
+@mixin browserhack-firefox {
+  @supports (-moz-appearance: meterbar) {
+    @content;
+  }
+}

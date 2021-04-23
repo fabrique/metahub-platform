@@ -1,0 +1,12 @@
+
+// CSS 'repeat()' polyfill
+// NOTE: Take care; not all properties are correctly supported by IE 11
+@function repeat($repeat, $stuff: 1fr, $separator: space) {
+  $list: ();
+
+  @for $i from 1 through $repeat {
+    $list: append($list, $stuff, $separator);
+  }
+
+  @return $list;
+}

@@ -1,0 +1,20 @@
+
+:root {
+  --description-font-size: 20px;
+  --description-font-style: normal;
+  --description-font-variant: normal;
+  --description-font-weight: #{get-replica-weight(regular)};
+  --description-letter-spacing: 0;
+  --description-line-height: 1.45em;
+  --description-margin-bottom: .5em;
+  --description-margin-top: 1em;
+
+  // @include portrait {
+  //   --description-font-size: 25px;
+  //   --description-line-height: 1.28em;
+  // }
+
+  @include landscape {
+    //
+  }
+}

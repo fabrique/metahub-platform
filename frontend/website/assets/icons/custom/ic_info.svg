@@ -1,0 +1,12 @@
+
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_info</title>
+    <g id="Ontwerp" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_info">
+            <g id="Group-12">
+                <circle id="Oval" fill="#434343" cx="15" cy="15" r="15"></circle>
+                <path d="M16.6,10.4 L16.8,10.2 L16.8,8.2 L16.6,8 L14.2,8 L14,8.2 L14,10.2 L14.2,10.4 L16.6,10.4 Z M16.6,22 L16.8,21.8 L16.8,12.2 L16.6,12 L14.2,12 L14,12.2 L14,21.8 L14.2,22 L16.6,22 Z" id="i" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

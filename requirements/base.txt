@@ -1,0 +1,28 @@
+iPython==7.8
+
+Django==2.2
+django-environ==0.4.5
+django-cache-url==3.0.0
+django-axes==5.0.13
+django-embed-video==1.3.2
+djangorestframework==3.12.2
+django-pure-pagination==0.3.0
+django-cors-headers==3.4.0
+
+psycopg2-binary==2.8.6  #for catalina?
+pytz==2019.2
+urllib3==1.23
+
+Pillow==8.2.0
+redis==2.10.6  # this is for compatibility with py3
+
+wagtail>=2.11,<2.12
+wagtailfontawesome==1.1.4
+
+django-webpack-loader==0.6.0
+git+ssh://git@bitbucket.org/fabrique/starling.git@alpha-1.34.0#egg=starling
+git+ssh://git@bitbucket.org/fabrique/wagtail-embed.git@1.4#egg=fabrique-wagtail-embed
+
+#for search!
+django-elasticsearch-dsl==6.4.2
+django-ipware==2.1.0

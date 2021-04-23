@@ -1,0 +1,26 @@
+.grid-overlay {
+  display: none;
+  height: 100%;
+  width: 100%;
+
+  &.grid-overlay-visible {
+    display: block;
+  }
+
+  &::before {
+    background-image: var(--background-columns);
+    background-size: var(--background-width) 100%;
+    bottom: 0;
+    content: '';
+    left: 0;
+    margin-left: calc(var(--grid-gutter) + var(--grid-margin));
+    margin-right: calc(var(--grid-gutter) + var(--grid-margin));
+    max-width: calc(var(--grid-max-width) + (var(--grid-gutter) * 2) + (var(--grid-margin) * 2));
+    opacity: .25;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 1;
+  }
+}

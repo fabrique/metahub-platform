@@ -1,0 +1,15 @@
+
+.article-form {
+  contain: content;
+  margin: var(--margin) 0;
+  position: relative;
+
+  .article-form__grid {
+    @include grid-container;
+  }
+
+  .article-form__wrapper {
+    grid-column: var(--layout-full);
+    max-width: 800px;
+  }
+}

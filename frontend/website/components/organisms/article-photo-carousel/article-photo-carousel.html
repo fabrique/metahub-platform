@@ -1,0 +1,37 @@
+{% import 'components/atoms/figure/figure.html' as atom_figure %}
+
+{% macro regular(id = '', figures = []) %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="article-photo-carousel">
+    <div class="article-photo-carousel__grid">
+      <div class="article-photo-carousel__wrapper">
+
+      <div class="article-photo-carousel__image">
+        <div class="swiper-navigation">
+          <button class="swiper-button-prev">
+            {% include 'assets/icons/custom/chevron-left.svg' %}
+          </button>
+
+          <button class="swiper-button-next">
+            {% include 'assets/icons/custom/chevron-right.svg' %}
+          </button>
+        </div>
+
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            {% for figure in figures %}
+              <div class="swiper-slide">
+                 {% if figure.picture and not figure.picture.images %}
+                {{ object_replace_value(figure.picture, 'images', 'placeholders', generate_placeholders({ mobile: '494x279', portrait: '739x416', landscape: '1109x624', notebook: '1360x765' })) }}
+                {% endif %}
+                <!-- Image ratio: Original. Preferred: around 16:9 or 9:16 -->
+                {{ atom_figure.regular(picture = figure.picture, caption = figure.caption) }}
+              </div>
+            {% endfor %}
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endmacro %}

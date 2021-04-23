@@ -1,0 +1,18 @@
+
+.article-content {
+  contain: content;
+  margin: var(--margin-lg) 0 0 0;
+  position: relative;
+
+  .article-content__grid {
+    @include grid-container;
+  }
+
+  .article-content__wrapper {
+    grid-column: var(--layout-right);
+  }
+
+  p {
+    @include typography(body-text, $libre-font-stack);
+  }
+}

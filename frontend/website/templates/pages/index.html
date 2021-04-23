@@ -1,0 +1,26 @@
+{% extends 'templates/_base.html' %}
+
+{% import 'components/organisms/article-content/article-content.html' as article_content %}
+{% import 'components/organisms/card-grid/card-grid.html' as card_grid %}
+
+{% block page_title -%}
+  Static Templates
+{%- endblock %}
+
+{% block content %}
+  {% call article_content.regular() %}
+    <h2>PLEASE NOTE: The static templates seem to be out of date in some places. -EKL</h2>
+
+    <h3>Detail Pages</h3>
+    <ul>
+      <li><a href="/landing/landing.html">Landing Page</a></li>
+      <li><a href="/object-detail/object-detail.html">Object Detail Page</a></li>
+      <li><a href="/object-detail/object-detail-alt.html">Object Detail Page (Minimal)</a></li>
+      <li><a href="/story-detail/story-detail.html">Story Detail Page</a></li>
+      <li><a href="/object-series/object-series.html">Object Series Page</a></li>
+      <li><a href="/search-results/search-results.html">Search Results Page</a></li>
+      <li><a href="/my-collection/my-collection.html">My Collection</a></li>
+      <li><a href="/cookies/cookies.html">Cookies</a></li>
+    </ul>
+  {% endcall %}
+{% endblock %}

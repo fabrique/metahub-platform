@@ -1,0 +1,95 @@
+
+.menu-overlay {
+  background-color: $color-white;
+  bottom: 0;
+  color: $color-black;
+  display: none;
+  left: 0;
+  padding-top: 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: $z-index-menu-overlay;
+
+  html.has-js & {
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity $easing-change;
+  }
+
+  html.has-js.overlay-visible & {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  html:not(.has-js).overlay-visible & {
+    display: block;
+  }
+
+  .menu-overlay__grid,
+  .menu-overlay__wrapper {
+    height: 100%;
+  }
+
+  .menu-overlay__grid {
+    @include grid-container;
+  }
+
+  .menu-overlay__wrapper {
+    grid-column: column 1 / span 12;
+    position: relative;
+  }
+
+  .menu-overlay__scroll-container {
+    bottom: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: fixed;
+    top: 100px;
+    width: 100%;
+  }
+
+  .menu-overlay__scroll-object {
+    padding: 20px;
+  }
+
+  .link {
+    display: block;
+    line-height: 30px;
+  }
+
+  .button--close {
+    height: 35px;
+    padding: 7px;
+    position: absolute;
+    right: 0;
+    top: 13px;
+    width: 35px;
+
+    &:focus {
+      outline: none;
+    }
+
+    .button__icon {
+      height: 27px;
+      width: 27px;
+    }
+
+    @include landscape {
+      right: 0;
+      top: 13px;
+    }
+  }
+
+  .menu-overlay__menu-items {
+    .link {
+      padding: 5px 0;
+    }
+  }
+
+  .menu-overlay__links {
+    margin-top: 30px;
+  }
+}

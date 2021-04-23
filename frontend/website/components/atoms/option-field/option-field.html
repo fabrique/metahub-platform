@@ -1,0 +1,36 @@
+
+{% macro regular(classes = '', variant = 'checkbox', name = '', label = '', label_hidden = false, required = false, items = [], inline = false, error = '') %}
+  <div class="option-field option-field--{{ variant }} {% if inline %}option-field--inline{% endif %} {% if required %}option-field--required{% endif %} {% if error %}option-field--error{% endif %} {{ classes }}">
+    {% if label %}
+      <span class="option-field__label" {% if label_hidden %}hidden="screen"{% endif %}>{{ label }}</span>
+    {% endif %}
+
+    <div class="option-field__wrapper">
+      {% for item in items %}
+        <div class="option-field__item">
+          {% if variant == 'radio' %}
+            <input id="id_{{ name }}_{{ item.value }}" class="option-field__input" value="{{ item.value }}" type="radio" name="{{ name }}" {% if item.checked %}checked{% endif %} {% if item.required %}required{% endif %} {% if item.disabled %}disabled{% endif %}/>
+          {% else %}
+            <input id="id_{{ name }}_{{ item.value }}" class="option-field__input" type="checkbox" name="{{ name }}" {% if item.checked %}checked{% endif %} {% if item.required %}required{% endif %} {% if item.disabled %}disabled{% endif %}/>
+          {% endif %}
+
+          <label class="option-field__input-label" for="id_{{ name }}_{{ item.value }}">
+            <span class="option-field__input-label-span">{{ item.title|safe }}</span>
+
+            {% if variant == 'radio' %}
+              <span class="option-field__icon option-field__icon-background">{% include 'assets/icons/custom/radio-background.svg' %}</span>
+              <span class="option-field__icon option-field__icon-foreground">{% include 'assets/icons/custom/radio-foreground.svg' %}</span>
+            {% else %}
+              <span class="option-field__icon option-field__icon-background">{% include 'assets/icons/custom/checkbox-background.svg' %}</span>
+              <span class="option-field__icon option-field__icon-foreground">{% include 'assets/icons/custom/checkbox-foreground.svg' %}</span>
+            {% endif %}
+          </label>
+        </div>
+      {% endfor %}
+    </div>
+
+    {% if error %}
+      <span class="option-field__error">{{ error|safe }}</span>
+    {% endif %}
+  </div>
+{% endmacro %}

@@ -1,0 +1,10 @@
+@import '../../../assets/stylesheets/utilities/mixins/clearfix';
+
+.footer {
+  @include clearfix;
+
+  contain: content;
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
+}

@@ -1,0 +1,254 @@
+
+.dropdown-filter {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+  @include landscape {
+    width: 300px;
+  }
+
+  &.dropdown-filter--date {
+    display: inline-block;
+    min-height: 40px;
+    min-width: 150px;
+    vertical-align: top;
+
+    @include portrait {
+      min-height: 51px;
+    }
+  }
+
+  .dropdown-filter__select { // the native select element
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-position-x: 100%;
+    background-position-y: .8rem;
+    background-repeat: no-repeat;
+    max-width: 300px; // arbitrary, but prevents really wide lists
+    padding: 0 .8rem;
+  }
+
+  //hide custom select by default
+  .custom-select {
+    display: none;
+  }
+
+  @media (hover: hover) {
+    // Since we are using a mouse, it's safe to show the custom select.
+    .custom-select {
+      display: block;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 100%; //same width as native select
+    }
+
+    .select-dropdown__button {
+      display: flex;
+    }
+
+    .select-dropdown__list {
+      display: block;
+    }
+
+    // In a computer using keyboard? Then let's hide back the custom select
+    // while the native one is focused:
+    .dropdown-filter__select:focus {
+      + .custom-select {
+        display: none;
+      }
+    }
+  }
+
+  .dropdown-filter__select,
+  .select-dropdown__button {
+    @include typography(sub-heading, $replica-font-stack);
+
+    background-color: #fff;
+    color: $color-blue;
+    cursor: pointer;
+    //display: flex;
+    //justify-content: space-between;
+    //min-width: 100%;
+    padding: 10px 15px;
+    text-align: left;
+    text-transform: capitalize;
+  }
+
+  .dropdown-filter__title {
+    color: #fff;
+    font-weight: 400;
+    margin-bottom: 25px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .select-dropdown {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: calc(100% - 50px);
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  .select-dropdown__button--active {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, .1);
+    transition: box-shadow .1s ease .2s;
+  }
+
+  .select-dropdown__disabled {
+    .select-dropdown__button {
+      background-color: $color-grey-extralight;
+      color: $color-grey-dark;
+      cursor: pointer;
+      pointer-events: none;
+    }
+
+    // Brr, this is what you get when icons are not properly prepared
+    svg {
+      g,
+      path,
+      polygon,
+      rect {
+        fill: inherit;
+      }
+    }
+  }
+
+  .select-dropdown__button {
+    //@include typography(sub-heading, $replica-font-stack);
+    //
+    //align-items: center;
+    //background-color: #fff;
+    //color: $color-blue;
+    //cursor: pointer;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+    min-width: 100%;
+    //padding: 10px 15px;
+    text-align: left;
+    text-transform: capitalize;
+    transition: box-shadow .1s ease .1s;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+
+    .dropdown-filter__button-icon {
+      &.dropdown-filter__button-icon--active {
+        transform: rotate(180deg);
+      }
+
+      display: inline-block;
+      height: 24px;
+      margin-left: 20px;
+      transform-origin: 50% 50%;
+      transition: transform .2s ease;
+      width: 24px;
+    }
+  }
+
+  .select-dropdown__list {
+    &.select-dropdown__list--active {
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, .1);
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1, 1);
+    }
+
+    @include landscape {
+      min-width: 220px;
+    }
+
+    background-color: $color-white;
+    border-top: 0 solid transparent;
+    left: 0;
+    list-style-type: none;
+    margin: 0;
+    max-height: 350px;
+    opacity: 0;
+    overflow: auto;
+    padding: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    //scrollbar-color: red yellow;
+    transform: scale(1, 0);
+    transform-origin: top left;
+    transition: all ease-in-out .3s;
+    z-index: 2;
+  }
+
+  .select-dropdown__list-item {
+    @include typography(sub-heading, $replica-font-stack);
+
+    &:hover {
+      background-color: $color-blue;
+      color: #fff;
+      transition: all ease-in-out .3s;
+    }
+
+    background: #fff;
+    color: $color-blue;
+    cursor: pointer;
+    display: block;
+    list-style-type: none;
+    padding: 5px 15px;
+    text-align: left;
+    transition: all ease-in-out .3s;
+  }
+
+  .dropdown-filter__date-container {
+    display: inline-block;
+    width: 80px;
+
+    &:first-child {
+      &::after {
+        background: $color-blue;
+        bottom: 30px;
+        content: '';
+        display: inline-block;
+        height: 1px;
+        left: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+        width: 13px;
+      }
+    }
+  }
+
+  .select-dropdown__list--date {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px 15px;
+  }
+
+  .dropdown-filter__date-label,
+  .dropdown-filter__date-input {
+    @include typography(sub-heading, $replica-font-stack);
+
+    color: $color-blue;
+  }
+
+  .dropdown-filter__date-input {
+    &:focus {
+      outline: none;
+    }
+
+    border: 1px solid $color-blue;
+    height: 32px;
+    text-align: right;
+    width: 100%;
+  }
+}

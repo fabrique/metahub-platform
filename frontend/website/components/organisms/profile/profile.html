@@ -1,0 +1,49 @@
+{% import 'components/molecules/object-card/object-card.html' as molecule_object_card %}
+{% import 'components/atoms/button/button.html' as atom_button %}
+{% import 'components/atoms/picture/picture.html' as atom_picture %}
+
+{% macro regular(id = '', classes = '', subtitle = '', title = '', theme_categories = [],  themes = []) %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="profile {{ classes }}">
+    {% for profile in themes %}
+      {% set profileLoopIndex = loop.index %}
+
+      {% for background_image in profile.background_images %}
+        <span class="profile__background-image profile__background-image--{{ loop.index }}  profile__background-image--profile-{{ profileLoopIndex }} {% if profileLoopIndex == 1 %}profile__background-image--active{% endif %}">
+          {{ atom_picture.regular(images = background_image.images, positions = background_image.positions, width = background_image.width, height = background_image.height, alt = background_image.alt) }}
+        </span>
+      {% endfor %}
+    {% endfor %}
+
+    <div class="profile__grid-container">
+      <h3 class="profile__subtitle">{{ subtitle }}</h3>
+      <h2 class="profile__title">
+        {{ title }}
+
+        <ul class="profile__title-words">
+          {% for word in theme_categories %}
+            <li class="profile__title-word">{{ word }}</li>
+          {% endfor %}
+        </ul>
+      </h2>
+
+      <div class="profile__themes">
+        {% for profile in themes %}
+          <div class="profile__picture-container {% if loop.index == 1 %}profile__picture-container--active{% endif %}">
+            {{ atom_picture.background(classes = 'profile__main-image', images = profile.picture.images, positions = profile.picture.positions, alt = profile.picture.alt) }}
+
+            <div class="profile__information-container">
+              <h4 class="profile__information-title">{{ profile.title }}</h4>
+              <p class="profile__information-description">{{ profile.description }}</p>
+              {{ atom_button.regular(classes = 'profile__button', href = profile.link.href, variant = 'secondary', title = profile.link.title, long_title = profile.link.long_title, icon_before = 'custom/ic-arrow-right') }}
+            </div>
+          </div>
+        {% endfor %}
+
+        <button class="profile__refresh-button">
+          <span class="profile__refresh-icon">{% include 'assets/icons/custom/refresh-icon.svg' %}</span>
+          <span class="profile__refresh-text">Andere Geschichte</span>
+        </button>
+      </div>
+    </div>
+  </div>
+{% endmacro %}

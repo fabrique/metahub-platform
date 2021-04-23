@@ -1,0 +1,197 @@
+
+@mixin cookie-bar-layout {
+  position: relative;
+
+  .cookie-bar__grid {
+    @include grid-container;
+  }
+
+  .cookie-bar__bar-wrapper,
+  .cookie-bar__categories {
+    grid-column: var(--layout-full);
+  }
+
+  .cookie-bar__bar,
+  .cookie-bar__details {
+    bottom: 0;
+    height: auto;
+    left: 0;
+    padding: 30px 0;
+    position: fixed;
+    width: 100%;
+  }
+
+  .cookie-bar__bar {
+    z-index: 9998;
+  }
+
+  .cookie-bar__details {
+    z-index: 9999;
+
+    .cookie-bar__grid {
+      padding-top: 20px;
+    }
+  }
+
+  .cookie-bar__bar-wrapper {
+    display: flex;
+    flex-direction: row;
+    padding: 30px 0 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
+  }
+
+  .cookie-bar__text-container,
+  .cookie-bar__buttons {
+    transform: translate3d(0, 0, 0); // iOS 12 text visibility bug
+  }
+
+  .cookie-bar__buttons,
+  .cookie-bar__details-buttons {
+    //white-space: nowrap;
+  }
+
+  .cookie-bar__buttons {
+    flex: 0 0 auto;
+
+    .button {
+      min-width: 160px;
+    }
+  }
+
+  .cookie-bar__text-container {
+    flex: 0 1 100%;
+    padding-right: var(--grid-gutter);
+    width: 100%;
+
+    .text__span,
+    .link {
+      margin-right: 10px;
+    }
+  }
+
+  .cookie-bar__categories {
+    display: inline;
+  }
+
+  .cookie-bar__category {
+    grid-column: var(--layout-half);
+    padding-bottom: 20px;
+  }
+
+  @include mobile-only {
+    .cookie-bar__category {
+      grid-column: var(--layout-full);
+    }
+
+    .cookie-bar__bar-wrapper {
+      flex-direction: column;
+    }
+
+    .cookie-bar__buttons {
+      padding-top: 20px;
+
+      .button {
+        max-width: 160px;
+        min-width: 100px;
+        width: 50%;
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .cookie-bar__buttons {
+      white-space: normal;
+
+      .button {
+        max-width: 100%;
+        min-width: 100px;
+        width: 100%;
+
+        + .button {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+
+@mixin cookie-bar-styling {
+  .cookie-bar__bar {
+    background-color: $color-grey-light;
+    border-top: 3px solid $color-white;
+    color: $color-black;
+  }
+
+  .cookie-bar__details {
+    background-color: $color-grey-light;
+    border-top: 3px solid $color-white;
+    color: $color-black;
+  }
+
+  .cookie-bar__title {
+    @include typography(caption, $replica-font-stack, false, true);
+
+    font-weight: bold;
+  }
+
+  .cookie-bar__text,
+  .cookie-bar__category-text,
+  .cookie-bar__text .link {
+    @include typography(caption, $replica-font-stack);
+  }
+
+  .cookie-bar__category-text {
+    @include disable-user-select;
+
+    cursor: pointer;
+    display: inline-block;
+    max-width: 32em;
+    padding-left: 40px;
+  }
+
+  .cookie-bar__text {
+    .link {
+      .link__span {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .cookie-bar__text-container {
+    .cookie-bar__text {
+      max-width: 35em;
+    }
+  }
+
+  .link {
+    display: inline;
+  }
+}
+
+@mixin cookie-bar-display-logic {
+  .cookie-bar__bar,
+  .cookie-bar__details {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(0, 32px, 0);
+    transition: opacity $easing-change, transform $easing-change;
+  }
+
+  .cookie-bar__bar:target,
+  .cookie-bar__bar--visible,
+  .cookie-bar__details:target,
+  .cookie-bar__details--visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.cookie-bar {
+  @include cookie-bar-layout;
+  @include cookie-bar-styling;
+  @include cookie-bar-display-logic;
+}

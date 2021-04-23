@@ -1,0 +1,39 @@
+{% import 'components/molecules/card/card.html' as molecule_card %}
+
+{% macro regular(id = '', title = '', title_top = '', title_bottom = '', cards = []) %}
+{% set component = 'context-cards-overlay' %}
+  {% if cards %}
+    <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }}">
+      <button class="{{ component }}__overlay-button">
+        <h3 class="{{ component }}__title">
+          {{ title }}
+          <span class="{{ component }}__button-icon"> {% include 'assets/icons/custom/context-chevron.svg' %}</span>
+        </h3>
+      </button>
+
+       <div class=" {{ component }}__slideshow">
+          <div class="swiper-container">
+            <ul class="swiper-wrapper">
+              {% for card in cards %}
+                <li class="swiper-slide">
+                  {{ molecule_card.regular(classes = component + "__card", href = card.href, target = card.target, title = card.title, type = card.type, color = card.color, picture = card.picture) }}
+                </li>
+              {% endfor %}
+            </ul>
+        </div>
+      </div>
+    </div>
+
+  <!-- Ribbon -->
+    <div class="{{ component }}__ribbon">
+      <h2 class="{{ component }}__title">
+        <span class="{{ component }}__title-top">{{ title_top }}</span>
+        <span class="{{ component }}__title-bottom">{{ title_bottom }}</span>
+      </h2>
+      {% for card in cards %}
+        {{ molecule_card.regular(classes = component + "__ribbon-card", href = card.href, target = card.target, title = card.title, type = card.type, color = card.color, picture = card.picture) }}
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endmacro %}
+

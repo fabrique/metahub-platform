@@ -1,0 +1,59 @@
+
+{% macro regular(id = '', classes = '', name = '', placeholder = '', required = false, disabled = false, error = '', options = [], type = 'select', label='whut') %}
+  {% set component = 'dropdown-filter' %}
+  <div id="{{ id }}" class="{{ component }} {{ component }}--{{ type }} {{ classes }}">
+   {% if type == 'select' %}
+      <select id="id_{{ name }}" class="{{ component }}__select" {% if not options %}disabled{% endif %}>
+        <option value="" class="select-dropdown__list-item">{{ placeholder }}</option>
+        {% for option in options %}
+          <option value="{{ option.value }}" class="select-dropdown__list-item">{{ option.title }} {% if option.number %}({{ option.number }}){% endif %}</option>
+        {% endfor %}
+      </select>
+    {% endif %}
+
+   {% if type == 'date' %}
+      <select id="id_dating_from" class="{{ component }}__select">
+        <option value="" class="select-dropdown__list-item">Von</option>
+        {% for option in options %}
+          {% if loop.index >= 3 %}
+          <option value="{{ option}}" class="select-dropdown__list-item--{{ loop.index }}">{{ option }} {% if option.number %}({{ option.number }}){% endif %}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+      <select id="id_dating_to" class="{{ component }}__select">
+        <option value="" class="select-dropdown__list-item">Bis</option>
+        {% for option in options %}
+          {% if loop.index >= 3 %}
+          <option value="{{ option }}" class="select-dropdown__list-item">{{ option }} {% if option.number %}({{ option.number }}){% endif %}</option>
+          {% endif %}
+        {% endfor %}
+      </select>
+    {% endif %}
+
+
+    <div class="custom-select {% if type == 'select' and not options %}select-dropdown__disabled{% endif %}">
+      <button class="select-dropdown__button" data-value="">
+        <span class="select-dropdown select-dropdown-text">{{ placeholder }}</span>
+        <div class="{{ component }}__button-icon">{% include 'assets/icons/custom/dropdown-down.svg' %}</div>
+      </button>
+      <ul class="select-dropdown__list select-dropdown__list--{{ type }}">
+        {% if type == 'select' %}
+          {% for option in options %}
+            <li class="select-dropdown__list-item" data-value="{{ option.value }}">{{ option.title }}</li>
+          {% endfor %}
+        {% else %}
+          <li class="{{ component }}__date-container">
+            <label for="id_dating_from" class="{{ component }}__date-label">Von</label>
+            <input id="id_dating_from" class="{{ component }}__date-input" type="number" value="{{ options[0] }}"/>
+          </li>
+          <li class="{{ component }}__date-container">
+            <label for="id_dating_to" class="{{ component }}__date-label">Bis</label>
+            <input  id="id_dating_to" class="{{ component }}__date-input" type="number" value="{{ options[1] }}"/>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+
+	</div>
+
+{% endmacro %}

@@ -1,0 +1,36 @@
+
+@mixin idangerous-swiper-arrows {
+  .swiper-button-prev,
+  .swiper-button-next {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 27px 44px;
+    cursor: pointer;
+    height: 44px;
+    margin-top: -22px;
+    position: absolute;
+    top: 50%;
+    width: 27px;
+    z-index: 10;
+
+    &.swiper-button-disabled {
+      cursor: auto;
+      opacity: .35;
+      pointer-events: none;
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-container-rtl .swiper-button-next {
+    content: '>';
+    left: 10px;
+    right: auto;
+  }
+
+  .swiper-button-next,
+  .swiper-container-rtl .swiper-button-prev {
+    content: '<';
+    left: auto;
+    right: 10px;
+  }
+}

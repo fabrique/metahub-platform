@@ -1,0 +1,45 @@
+
+@mixin idangerous-swiper-scrollbar {
+  .swiper-scrollbar {
+    background: rgba($color-black, .1);
+    border-radius: 10px;
+    position: relative;
+    -ms-touch-action: none; /* stylelint-disable-line property-no-vendor-prefix */
+  }
+
+  .swiper-container-horizontal {
+    > .swiper-scrollbar {
+      bottom: 3px;
+      height: 5px;
+      left: 1%;
+      position: absolute;
+      width: 98%;
+      z-index: 50;
+    }
+  }
+
+  .swiper-container-vertical {
+    > .swiper-scrollbar {
+      height: 98%;
+      position: absolute;
+      right: 3px;
+      top: 1%;
+      width: 5px;
+      z-index: 50;
+    }
+  }
+
+  .swiper-scrollbar-drag {
+    background: rgba($color-black, .5);
+    border-radius: 10px;
+    height: 100%;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 100%;
+  }
+
+  .swiper-scrollbar-cursor-drag {
+    cursor: move;
+  }
+}

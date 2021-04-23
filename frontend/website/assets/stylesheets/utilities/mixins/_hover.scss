@@ -1,0 +1,27 @@
+
+@mixin hover {
+  body.no-touch &:hover {
+    @content;
+  }
+
+  body.touch &:active {
+    @content;
+  }
+}
+
+@mixin focus {
+  body.no-touch &:active,
+  body.no-touch &:focus {
+    @content;
+  }
+}
+
+@mixin hover-and-focus {
+  @include hover {
+    @content;
+  }
+
+  @include focus {
+    @content;
+  }
+}

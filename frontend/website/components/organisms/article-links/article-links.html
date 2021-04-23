@@ -1,0 +1,19 @@
+{% import 'components/atoms/link/link.html' as atom_link %}
+
+{% macro regular(id = '', title = '', links = []) %}
+  {% set component = 'article-links' %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }}">
+    <div class="{{ component }}__grid">
+      <div class="{{ component }}__wrapper">
+        <h5 class="{{ component }}__title">{{ title }}</h5>
+        <ul class="{{ component }}__container">
+          {% for link in links %}
+            <li class="{{ component }}__link">
+              {{ atom_link.regular(title = link.title, href = link.href, target = link.target, icon_before = 'custom/link-arrow' ) }}
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endmacro %}

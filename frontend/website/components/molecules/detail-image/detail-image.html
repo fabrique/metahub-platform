@@ -1,0 +1,76 @@
+
+{% import 'components/atoms/picture/picture.html' as atom_picture %}
+
+{% macro regular(id = false, classes = '', pictures = [], information = {}, type = '', expandable = false, download_link = '', favinfo = {}) %}
+  {% set component = 'detail-image' %}
+  <div class="{{ component }} {{ classes }}" data-id="{{ favinfo.id }}" data-category="{{ favinfo.category }}">
+    <div class="{{ component }}__title-container">
+      <span class="{{ component }}__title">
+        {% if information.title %}<strong>{{ information.title }}</strong>{% endif %}{% if information.name %}, {{ information.name }}{% endif %}{% if information.date %}, {{ information.date }}{% endif %}
+      </span>
+      <div class="{{ component }}__icons-container">
+        <button class="{{ component }}__icon button-favorite" aria-label="favorite">
+          <span class="heart-empty">{% include 'assets/icons/custom/heart-icon.svg' %}</span>
+          <span class="heart-filled">{% include 'assets/icons/custom/heart-filled.svg' %}</span>
+        </button>
+        {% if download_link %}<a class="{{ component }}__icon" href="{{ download_link }}" aria-label="download" download><span class="{{ component }}__icon">{% include 'assets/icons/custom/download-icon.svg' %}</span></a>{% endif %}
+        {% if expandable %} <button class="{{ component }}__icon expand-button" aria-label="expand"><span class="{{ component }}__icon">{% include 'assets/icons/custom/ic-expand.svg' %}</span></button>{% endif %}
+      </div>
+    </div>
+
+    {% if pictures|length == 0 %}
+      {{ atom_picture.regular(
+        images = { mobile: '/static/media/unsplash/cropped/object-detail-placeholder.jpg' },
+        positions =  { mobile: '50% 50%' },
+        fits = { mobile: 'cover' },
+        width = 1920,
+        height = 640,
+        type = 'placeholder',
+        placeholder_text = 'Leider liegen für dieses Bild keine Bildrechte vor.'
+      ) }}
+    {% elif pictures|length == 1 %}
+      {{ atom_picture.regular(
+        classes = component + '__main-image',
+        images = pictures[0].images,
+        fits = pictures[0].fits,
+        positions = pictures[0].positions,
+        width = pictures[0].width,
+        height = pictures[0].height,
+        loading = pictures[0].loading,
+        alt = pictures[0].alt
+      ) }}
+    {% else %}
+      <div class="swiper-container">
+        <ul class="swiper-wrapper">
+          {% for picture in pictures %}
+            <li class="swiper-slide">
+              {{ atom_picture.regular(
+                classes = component + '__main-image',
+                images = picture.images,
+                fits = picture.fits,
+                positions = picture.positions,
+                width = picture.width,
+                height = picture.height,
+                loading = picture.loading,
+                alt = picture.alt
+              ) }}
+            </li>
+          {% endfor %}
+        </ul>
+
+        <div class="swiper-navigation" role="swiper-controls">
+          <div class="swiper-pagination">
+          </div>
+          <button class="swiper-button-prev-di" aria-label="scroll-left">
+            {% include 'assets/icons/custom/ic-arrow-left.svg' %}
+          </button>
+          <button class="swiper-button-next-di" aria-label="scroll-right">
+          {% include 'assets/icons/custom/ic-arrow-right.svg' %}
+          </button>
+        </div>
+
+      </div>
+    {% endif %}
+
+  </div>
+{% endmacro %}

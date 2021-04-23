@@ -1,0 +1,35 @@
+
+{% import 'components/atoms/icon-button/icon-button.html' as atom_icon_button %}
+
+{% macro regular(classes = '', variant = 'text', name = '', value = '', placeholder = '', label = '', label_hidden = false, required = false, disabled = false, maxlength = false, autocomplete = 'off', error = '', pattern = false, search_button_title = 'Search') %}
+  <div class="text-field text-field--{{ variant }} {% if required %}text-field--required{% endif %} {% if error %}text-field--error{% endif %} {{ classes }}">
+    {% if label %}
+      <label for="id_{{ name }}" class="text-field__label" {% if label_hidden %}hidden="screen"{% endif %}>{{ label }}</label>
+    {% endif %}
+
+    <div class="text-field__wrapper">
+      {% if variant == 'number' and maxlength %}
+        <input id="id_{{ name }}" class="text-field__input" type="text" name="{{ name }}" value="{{ value }}" pattern="\d*" {% if placeholder %}placeholder="{{ placeholder }}"{% endif %} maxlength="{{ maxlength }}" {% if required %}required{% endif %} autocomplete="{{ autocomplete }}" {% if disabled %}disabled{% endif %}/>
+      {% elif variant == 'number' %}
+        <input id="id_{{ name }}" class="text-field__input" type="number" name="{{ name }}" value="{{ value }}" {% if pattern %}pattern="{{ pattern }}"{% endif %} {% if placeholder %}placeholder="{{ placeholder }}"{% endif %} {% if required %}required{% endif %} autocomplete="{{ autocomplete }}" {% if disabled %}disabled{% endif %}/>
+      {% elif variant == 'password' %}
+        <input id="id_{{ name }}" class="text-field__input" type="password" name="{{ name }}" value="{{ value }}" {% if pattern %}pattern="{{ pattern }}"{% endif %} {% if placeholder %}placeholder="{{ placeholder }}"{% endif %} {% if maxlength %}maxlength="{{ maxlength }}"{% endif %} {% if required %}required{% endif %} autocomplete="{{ autocomplete }}" {% if disabled %}disabled{% endif %}/>
+      {% elif variant == 'textarea' %}
+        <textarea id="id_{{ name }}" class="text-field__input" name="{{ name }}" {% if required %}required{% endif %} {% if disabled %}disabled{% endif %}>{{ value }}</textarea>
+      {% elif variant == 'search' %}
+        <input id="id_{{ name }}" class="text-field__input" type="search" name="{{ name }}" value="{{ value }}" {% if placeholder %}placeholder="{{ placeholder }}"{% endif %} {% if maxlength %}maxlength="{{ maxlength }}"{% endif %} {% if required %}required{% endif %}  autocomplete="{{ autocomplete }}" {% if disabled %}disabled{% endif %}/>
+        <span class="text-field__icon">{% include 'assets/icons/fontawesome/solid/search.svg' %}</span>
+        <button class="text-field__button text-field__button--search-submit">
+          <span class="text-field__button-icon">{% include 'assets/icons/fontawesome/solid/arrow-right.svg' %}</span>
+          <span class="text-field__button-title" hidden="screen">{{ search_button_title }}</span>
+        </button>
+      {% else %}
+        <input id="id_{{ name }}" class="text-field__input" type="text" name="{{ name }}" value="{{ value }}" {% if pattern %}pattern="{{ pattern }}"{% endif %} {% if placeholder %}placeholder="{{ placeholder }}"{% endif %} {% if maxlength %}maxlength="{{ maxlength }}"{% endif %} {% if required %}required{% endif %} autocomplete="{{ autocomplete }}" {% if disabled %}disabled{% endif %}/>
+      {% endif %}
+    </div>
+
+    {% if error %}
+      <span class="text-field__error">{{ error|safe }}</span>
+    {% endif %}
+  </div>
+{% endmacro %}

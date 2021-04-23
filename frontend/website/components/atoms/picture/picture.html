@@ -1,0 +1,60 @@
+
+{% macro _picture_content(classes = '', images = 'placeholders', fits = {}, positions = {}, width = '', height = '', loading = '', alt = '') %}
+
+{% if images and images != 'None' %}
+
+  {% if images == 'placeholders' %}
+    {% set images = generate_placeholders({ mobile: '1920x1080' }) %}
+  {% elif images.placeholders %}
+    {% set images = generate_placeholders(images.placeholders) %}
+  {% endif %}
+
+  {% set fits = propagate_value(fits, [ 'mobile', 'portrait', 'landscape', 'notebook', 'desktop' ], 'cover') %}
+  {% set positions = propagate_value(positions, [ 'mobile', 'portrait', 'landscape', 'notebook', 'desktop' ], '50% 50%') %}
+
+  {% set max_width = '' %}
+
+  {% if images.desktop %}
+    <source srcset="{{ images.desktop }}{% if images.desktop2x %}, {{ images.desktop2x }} 2x{% endif %}" media="(min-width: 1480px){% if max_width %} and {{ max_width }}{% endif %}" style="object-fit: {{ fits.notebook }}; object-position: {{ positions.notebook }};"/>
+    {% set max_width = '(max-width: 1479px)' %}
+  {% endif %}
+
+  {% if images.notebook %}
+    <source srcset="{{ images.notebook }}{% if images.notebook2x %}, {{ images.notebook2x }} 2x{% endif %}" media="(min-width: 1180px){% if max_width %} and {{ max_width }}{% endif %}" style="object-fit: {{ fits.notebook }}; object-position: {{ positions.notebook }};"/>
+    {% set max_width = '(max-width: 1179px)' %}
+  {% endif %}
+
+  {% if images.landscape %}
+    <source srcset="{{ images.landscape }}{% if images.landscape2x %}, {{ images.landscape2x }} 2x{% endif %}" media="(min-width: 800px){% if max_width %} and {{ max_width }}{% endif %}" style="object-fit: {{ fits.landscape }}; object-position: {{ positions.landscape }};"/>
+    {% set max_width = '(max-width: 799px)' %}
+  {% endif %}
+
+  {% if images.portrait %}
+    <source srcset="{{ images.portrait }}{% if images.portrait2x %}, {{ images.portrait2x }} 2x{% endif %}" media="(min-width: 530px){% if max_width %} and {{ max_width }}{% endif %}" style="object-fit: {{ fits.portrait }}; object-position: {{ positions.portrait }};"/>
+    {% set max_width = '(max-width: 529px)' %}
+  {% endif %}
+
+  <source srcset="{{ images.mobile }}{% if images.mobile2x %}, {{ images.mobile2x }} 2x{% endif %}" media="screen{% if max_width %} and {{ max_width }}{% endif %}" style="object-fit: {{ fits.mobile }}; object-position: {{ positions.mobile }};"/>
+
+  <img class="picture__image" src="{{ images.mobile }}" alt="{{ alt }}" loading="{{ loading|default('lazy') }}" {% if width %}width="{{ width }}"{% endif %} {% if height %}height="{{ height }}"{% endif %} style="object-fit: {{ fits.mobile }}; object-position: 50% 50%;"/>
+
+{% endif %}
+
+{% endmacro %}
+
+{% macro regular(classes = '', images = 'placeholders', fits = {}, positions = {}, width = '', height = '', loading = '', alt = '', type = '', placeholder_text = '') %}
+  <picture class="picture {{ classes }}">
+    {{ _picture_content(images = images, fits = fits, positions = positions, width = width, height = height, loading = loading, alt = alt) }}
+    {% if type == 'placeholder' %}
+      <p class="picture__placeholder-notice">
+        {{ placeholder_text }}
+      </p>
+    {% endif %}
+  </picture>
+{% endmacro %}
+
+{% macro background(classes = '', images = 'placeholders', fits = {}, positions = {}, width = '', height = '', loading = '', alt = '') %}
+  <picture class="picture picture--background {{ classes }}">
+    {{ _picture_content(images = images, fits = fits, positions = positions, width = width, height = height, loading = loading, alt = alt) }}
+  </picture>
+{% endmacro %}

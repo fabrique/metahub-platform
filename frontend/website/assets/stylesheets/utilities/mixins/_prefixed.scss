@@ -1,0 +1,18 @@
+
+@mixin prefixed($property, $value, $unprefixed: true, $webkit: true, $mozilla: true, $trident: true) {
+  @if ($webkit) {
+    -webkit-#{$property}: $value;
+  }
+
+  @if ($mozilla) {
+    -moz-#{$property}: $value;
+  }
+
+  @if ($trident) {
+    -ms-#{$property}: $value;
+  }
+
+  @if ($unprefixed) {
+    #{$property}: $value;
+  }
+}

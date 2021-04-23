@@ -1,0 +1,24 @@
+// Selected text mixin
+//
+// To color selected text
+// DEPRECATED! Just use ::selection
+
+@mixin selected-text {
+  @if (&) {
+    &::selection {
+      @content;
+    }
+
+    &::-moz-selection {
+      @content;
+    }
+  } @else {
+    ::selection {
+      @content;
+    }
+
+    ::-moz-selection {
+      @content;
+    }
+  }
+}

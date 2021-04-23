@@ -1,0 +1,54 @@
+@mixin object-card {
+  position: relative;
+
+  a {
+    text-decoration: none;
+  }
+
+  .object-card__name,
+  .object-card__date {
+    color: $color-grey-extradark;
+  }
+
+  .object-card__title,
+  .object-card__name,
+  .object-card__date {
+    @include typography(caption, $replica-font-stack);
+  }
+
+  .object-card__title {
+    color: $color-blue;
+    font-weight: bold;
+  }
+
+  .object-card__picture {
+    margin-bottom: 10px;
+  }
+
+  .object-card__picture-wrapper {
+    display: block;
+    position: relative;
+  }
+
+  .object-card__restricted {
+    @include typography(caption, $replica-font-stack);
+
+    background: $color-white;
+    bottom: 0;
+    color: $color-black;
+    height: 2em;
+    line-height: 1em;
+    min-width: 2em;
+    overflow: hidden;
+    padding: .5em;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.object-card {
+  @include object-card;
+}
