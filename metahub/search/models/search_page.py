@@ -1,3 +1,18 @@
+from random import randint
+
+from django.core.paginator import PageNotAnInteger
+from django.http import JsonResponse
+from django.template.loader import render_to_string
+from pure_pagination import Paginator
+from wagtail.admin.edit_handlers import StreamFieldPanel
+from wagtail.contrib.routable_page.models import RoutablePageMixin, route
+from wagtail.core.fields import StreamField
+from wagtail.core.models import Page
+
+from metahub.core.models import MetahubBasePage
+from metahub.search.search import do_search, get_search_results, get_result_as_cards, get_result_filters
+from metahub.starling_metahub.organisms.blocks import OrganismSearchHeaderRegularBlock
+
 
 class MetaHubSearchPage(RoutablePageMixin, MetahubBasePage):
     """
@@ -50,7 +65,7 @@ class MetaHubSearchPage(RoutablePageMixin, MetahubBasePage):
         """
 
         # Required to avoid circular imports
-        from ..collection.search import do_search
+
 
         query = request.GET.get('search')
         context = super(MetaHubSearchPage, self).get_context(request, *args, **kwargs)
@@ -107,8 +122,6 @@ class MetaHubSearchPage(RoutablePageMixin, MetahubBasePage):
         return af
 
     def get_context(self, request, *args, **kwargs):
-        # Required to avoid circular imports
-        from ..collection.search import get_search_results, get_result_as_cards, get_result_filters
 
         context = super(MetaHubSearchPage, self).get_context(request, *args, **kwargs)
         search_string = request.GET.get('search')

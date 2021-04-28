@@ -1,0 +1,1 @@
+from .my_collection_page import * #noqa
