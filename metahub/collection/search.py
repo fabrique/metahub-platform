@@ -2,9 +2,9 @@ from datetime import timedelta, datetime
 
 from django.conf import settings
 from django_elasticsearch_dsl import Index
-from elasticsearch_dsl import FacetedSearch, iteritems
+from elasticsearch_dsl import iteritems
 from elasticsearch_dsl.faceted_search import Facet
-from elasticsearch_dsl.query import MultiMatch, Q, Range
+from elasticsearch_dsl.query import Q, Range
 
 from elasticsearch_dsl import FacetedSearch, TermsFacet
 
@@ -61,7 +61,7 @@ class ObjectSearch(FacetedSearch):
 
     # Circular import circumvention
     from metahub.collection.documents import CollectionObjectDocument
-    from metahub.core.documents import StoryDocument
+    from metahub.search.documents import StoryDocument
     doc_types = [CollectionObjectDocument, StoryDocument]
     index = settings.ES_INDEX_NAME  #important, otherwise it queries all indices...
 

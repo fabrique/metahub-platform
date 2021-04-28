@@ -6,7 +6,7 @@ from django.core.management import BaseCommand
 from wagtail.core.models import Page
 
 from metahub.collection.models import *
-from metahub.core.models import MetaHubObjectPage, metahubImage, MetaHubObjectSeriesPage
+from metahub.core.models import MetaHubObjectPage, MetahubImage, MetaHubObjectSeriesPage
 from metahub.sync.mapping import BeeCollectMapping
 from metahub.sync.utils import add_fabrique_image
 
@@ -19,14 +19,14 @@ class Command(BaseCommand):
         #cleanup double images
         DOUBLE_IMG_CLEAN = False
         if DOUBLE_IMG_CLEAN:
-            imgs = metahubImage.objects.all()
+            imgs = MetahubImage.objects.all()
             for i in imgs:
                 try:
-                    mytest = metahubImage.objects.get(title=i.title)
+                    mytest = MetahubImage.objects.get(title=i.title)
                 except MultipleObjectsReturned:
                     print('multiple for', i.title)
-                    print('{} found'.format(len(metahubImage.objects.filter(title=i.title))))
-                    double = metahubImage.objects.filter(title=i.title)[1]
+                    print('{} found'.format(len(MetahubImage.objects.filter(title=i.title))))
+                    double = MetahubImage.objects.filter(title=i.title)[1]
                     double.delete()
 
             return 'done'

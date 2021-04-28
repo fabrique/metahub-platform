@@ -1,0 +1,1 @@
+from .content_page import * #noqa
