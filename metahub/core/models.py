@@ -78,7 +78,7 @@ class AbstractMetaHubRichBasePage(MetahubBasePage):
 
     # Dtefines the broader category of this page, for example "artwork" or "family legacy"
     collection_category = models.ForeignKey(
-        'collection.CollectionCategory',
+        'tagging.CollectionCategory',
         null=True,
         on_delete=models.SET_NULL,
         related_name='+',
