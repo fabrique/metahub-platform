@@ -20,6 +20,7 @@ from ..starling_metahub.molecules.blocks import MoleculeAudioPlayerBlock
 from ..starling_metahub.organisms.blocks import OrganismContextDiscoveryChoiceRegularBlock
 from ..starling_metahub.organisms.interfaces import OrganismImageIntroRegular
 from ..starling_metahub.structures.blocks import StructureFooterBarSimpleBlock
+from ..tagging.models.categorization import CollectionCategory
 
 
 class MetahubBasePage(PagePromoMixin, Page):
@@ -78,7 +79,7 @@ class AbstractMetaHubRichBasePage(MetahubBasePage):
 
     # Dtefines the broader category of this page, for example "artwork" or "family legacy"
     collection_category = models.ForeignKey(
-        'tagging.CollectionCategory',
+        CollectionCategory,
         null=True,
         on_delete=models.SET_NULL,
         related_name='+',
