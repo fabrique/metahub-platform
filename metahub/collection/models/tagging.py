@@ -22,7 +22,7 @@ class CollectionObjectTag(TaggedItemBase):
     upon import but can also be changed and added upon in the CMS.
     """
     content_object = ParentalKey(
-        'core.MetaHubObjectPage',
+        'collection.MetaHubObjectPage',
         related_name='tagged_objects',
         on_delete=models.CASCADE,
     )
@@ -35,7 +35,7 @@ class CollectionObjectSeriesTag(TaggedItemBase):
     and expanded upon in the CMS.
     """
     content_object = ParentalKey(
-        'core.MetaHubObjectSeriesPage',
+        'collection.MetaHubObjectSeriesPage',
         related_name='tagged_object_series',
         on_delete=models.CASCADE,
     )
