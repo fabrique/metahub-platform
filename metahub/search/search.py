@@ -2,7 +2,7 @@ from datetime import timedelta, datetime
 
 from django.conf import settings
 from django_elasticsearch_dsl import Index
-from elasticsearch_dsl import iteritems
+# from elasticsearch_dsl import iteritems # this does not exist anymore?
 from elasticsearch_dsl.faceted_search import Facet
 from elasticsearch_dsl.query import Q, Range
 
@@ -70,7 +70,8 @@ class ObjectSearch(FacetedSearch):
         #date variables for range search
         self.getvars = getvars
 
-        for name, value in iteritems(filters):
+        # for name, value in iteritems(filters):
+        for name, value in filters:
             self.add_filter(name, value)
         self._s = self.build_search()
 

@@ -1,16 +1,10 @@
-import json
-import zipfile
-from io import BytesIO
 from itertools import chain
 
 from django.db import models
 from django.conf import settings
-from django.http import JsonResponse, HttpResponse
 
 from django.utils.translation import ugettext_lazy as _
 from django.forms.widgets import Textarea
-from starling.utils import render, if2context
-from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
@@ -22,15 +16,10 @@ from wagtail.search import index
 
 from .mixins import PagePromoMixin
 
-from ..collection.models.object_page import MetaHubObjectPage
-from ..collection.models.object_series_page import MetaHubObjectSeriesPage
-from ..search.models import MetaHubSearchPage
-
 from ..starling_metahub.molecules.blocks import MoleculeAudioPlayerBlock
 from ..starling_metahub.organisms.blocks import OrganismContextDiscoveryChoiceRegularBlock
 from ..starling_metahub.organisms.interfaces import OrganismImageIntroRegular
 from ..starling_metahub.structures.blocks import StructureFooterBarSimpleBlock
-from ..stories.models.story_page import MetaHubStoryPage
 
 
 class MetahubBasePage(PagePromoMixin, Page):
@@ -38,6 +27,7 @@ class MetahubBasePage(PagePromoMixin, Page):
     Base page for all MetaHub online collection pages
     """
     def get_my_collection_url(self):
+        from metahub.my_collection.models import MetaHubMyCollectionPage
         my_collection = MetaHubMyCollectionPage.objects.live().first()
         if my_collection:
             return my_collection.url
@@ -48,6 +38,7 @@ class MetahubBasePage(PagePromoMixin, Page):
         Used by the tags that redirect to search with a predefined param
         as well as the object series "see all objects in this series"
         """
+        from metahub.search.models import MetaHubSearchPage
         search =  MetaHubSearchPage.objects.live().first()
         if search:
             return search.search_url()
@@ -59,6 +50,12 @@ class MetahubBasePage(PagePromoMixin, Page):
         highlights and creates a card representation to show.
         """
         cards = []
+
+        # To avoid circular imports
+        from metahub.collection.models.object_page import MetaHubObjectPage
+        from metahub.collection.models.object_series_page import MetaHubObjectSeriesPage
+        from metahub.stories.models import MetaHubStoryPage
+
         obj_highlights = MetaHubObjectPage.objects.all().specific().live().filter(is_highlight=True)
         obj_series_highlights = MetaHubObjectSeriesPage.objects.all().specific().live().filter(is_highlight=True)
         story_highlights = MetaHubStoryPage.objects.all().specific().live().filter(is_highlight=True)

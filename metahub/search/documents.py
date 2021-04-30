@@ -3,6 +3,7 @@ from django_elasticsearch_dsl import Document, fields
 from django_elasticsearch_dsl.registries import registry
 
 from metahub.collection.models import BaseCollectionObject
+from metahub.stories.models import MetaHubStoryPage
 
 
 @registry.register_document
@@ -51,7 +52,6 @@ class StoryDocument(Document):
         return ''
 
     class Django:
-        from metahub.core.models import MetaHubStoryPage
         model = MetaHubStoryPage
 
         # The fields of the model you want to be indexed in Elasticsearch

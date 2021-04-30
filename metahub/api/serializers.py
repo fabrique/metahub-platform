@@ -3,7 +3,7 @@ from wagtail.core.models import Site
 from wagtail.images.api.fields import ImageRenditionField
 
 from metahub.collection.models import BaseCollectionObject
-from metahub.core.models import MetaHubStoryPage
+from metahub.stories.models import MetaHubStoryPage
 
 
 class StoryPageSerializer(serializers.ModelSerializer):

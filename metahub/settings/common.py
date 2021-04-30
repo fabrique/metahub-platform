@@ -91,7 +91,13 @@ LOCAL_APPS = (
     'metahub.frontend',
     'metahub.sync',
     'metahub.collection',
-    'metahub.api'
+    'metahub.api',
+    'metahub.stories',
+    'metahub.content',
+    'metahub.home',
+    'metahub.tagging',
+    'metahub.search',
+    'metahub.my_collection',
 
     # custom apps go here
 )

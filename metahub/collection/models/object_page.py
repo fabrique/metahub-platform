@@ -1,3 +1,20 @@
+from django.db import models
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from starling.interfaces.atoms import AtomPictureRegular
+from starling.interfaces.generic import Resolution
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.core.fields import StreamField
+
+from metahub.collection.models import CollectionObjectTag
+from metahub.core.models import AbstractMetaHubRichBasePage
+from metahub.starling_metahub.molecules.interfaces import MoleculeObjectCardRegular, MoleculeContextCardRegular
+from metahub.starling_metahub.organisms.blocks import OrganismContentSingleRichTextRegularBlock, \
+    OrganismContentSingleVideoRegularBlock, OrganismContentSingleImageRegularBlock, \
+    OrganismContentSingleAudioRegularBlock, OrganismContentDoubleQuoteRichTextRegularBlock, \
+    OrganismContentDoubleImageRichTextRegularBlock
+from metahub.starling_metahub.organisms.interfaces import OrganismRelatedItemsRegular, \
+    OrganismHeroHeaderMultiImageRegular
+
 
 class MetaHubObjectPage(AbstractMetaHubRichBasePage):
     """
@@ -13,7 +30,7 @@ class MetaHubObjectPage(AbstractMetaHubRichBasePage):
     """
 
     # Page object
-    object = models.ForeignKey(BaseCollectionObject, null=True, on_delete=models.SET_NULL, blank=True, related_name='associated_page')
+    object = models.ForeignKey('collection.BaseCollectionObject', null=True, on_delete=models.SET_NULL, blank=True, related_name='associated_page')
 
     # Maximum of related objects shown
     MAX_RELATED_OBJECTS = 4

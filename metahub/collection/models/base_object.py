@@ -1,5 +1,6 @@
 from django.db import models
 from modelcluster.models import ClusterableModel
+from wagtail.images.api.fields import ImageRenditionField
 
 
 class BaseCollectionObject(ClusterableModel):
@@ -53,7 +54,7 @@ class BaseCollectionObject(ClusterableModel):
     description = models.CharField(max_length=1024, default='', blank=True)
     signatures = models.CharField(max_length=1024, default='', blank=True, verbose_name='Signatur')
     object_type = models.CharField(max_length=1024, default='', blank=True, verbose_name='Objektbezeichnung')
-    artist = models.ForeignKey(BaseCollectionArtist, on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Künstler')
+    artist = models.ForeignKey('collection.BaseCollectionArtist', on_delete=models.SET_NULL, null=True, blank=True, verbose_name='Künstler')
 
     # Physicalities
     material = models.CharField(max_length=1024, blank=True)

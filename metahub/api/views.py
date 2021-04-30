@@ -5,7 +5,7 @@ from .serializers import BaseCollectionObjectSerializer, StoryPageSerializer
 
 
 from ..collection.models import BaseCollectionObject
-from ..core.models import MetaHubStoryPage
+from ..stories.models import MetaHubStoryPage
 
 
 def get_object_by_inventory_number(request):

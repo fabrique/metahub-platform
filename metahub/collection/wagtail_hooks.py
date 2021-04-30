@@ -1,5 +1,6 @@
 from wagtail.contrib.modeladmin.options import ModelAdmin, modeladmin_register
-from .models import CollectionCategory, BaseCollectionArtist, BaseCollectionObject
+
+from metahub.collection.models import BaseCollectionArtist, BaseCollectionObject
 
 
 class BaseCollectionArtistAdmin(ModelAdmin):
