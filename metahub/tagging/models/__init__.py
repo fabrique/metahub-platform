@@ -1,1 +1,1 @@
-from categorization import * #noqa
+from .categorization import * #noqa
