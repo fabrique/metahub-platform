@@ -87,15 +87,15 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     # Our apps
     'metahub.core',
-    # 'metahub.tagging',
+    'metahub.tagging',
     # 'metahub.menu',
     # 'metahub.frontend',
     # 'metahub.sync',
-    # 'metahub.collection',
+    'metahub.collection',
     # 'metahub.api',
-    # 'metahub.stories',
+    'metahub.stories',
     # 'metahub.content',
-    # 'metahub.home',
+    'metahub.home',
     # 'metahub.search',
     # 'metahub.my_collection',
 
