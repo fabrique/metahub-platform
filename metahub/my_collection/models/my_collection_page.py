@@ -11,20 +11,22 @@ from wagtail.core.models import Page
 
 from metahub.collection.models.object_page import MetaHubObjectPage
 from metahub.collection.models.object_series_page import MetaHubObjectSeriesPage
-from metahub.core.models import MetahubBasePage
+from metahub.core.models import MetaHubBasePage
 from metahub.stories.models.story_page import MetaHubStoryPage
 
 
-class MetaHubMyCollectionPage(RoutablePageMixin, MetahubBasePage):
+class MetaHubMyCollectionPage(RoutablePageMixin, MetaHubBasePage):
     """
     Simple page that allows users to see an overview of their favourite items of
     the collection. Also has a possibility to allow a bulk download of the contents.
     Favourites are stored on the user's device through cookies, not in our DB.
     """
 
+    parent_page_types = ['home.MetahubHomePage']
+
     allow_download = models.BooleanField(default=True)
 
-    content_panels = MetahubBasePage.content_panels + [
+    content_panels = MetaHubBasePage.content_panels + [
         FieldPanel('title'),
         FieldPanel('allow_download')
     ]

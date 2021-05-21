@@ -23,7 +23,7 @@ from ..starling_metahub.structures.blocks import StructureFooterBarSimpleBlock
 # from ..tagging.models.categorization import CollectionCategory
 
 
-class MetahubBasePage(PagePromoMixin, Page):
+class MetaHubBasePage(PagePromoMixin, Page):
     """
     Base page for all MetaHub online collection pages
     """
@@ -72,7 +72,9 @@ class MetahubBasePage(PagePromoMixin, Page):
         abstract = True
 
 
-class AbstractMetaHubRichBasePage(MetahubBasePage):
+class AbstractMetaHubRichBasePage(MetaHubBasePage):
+
+    parent_page_types = ['collection.MetaHubCategoryOverviewPage']
 
     class Meta:
         abstract = True

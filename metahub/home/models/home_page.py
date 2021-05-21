@@ -6,7 +6,7 @@ from wagtail.core.fields import StreamField
 
 from metahub.collection.models.object_page import MetaHubObjectPage
 from metahub.collection.models.object_series_page import MetaHubObjectSeriesPage
-from metahub.core.models import MetahubBasePage
+from metahub.core.models import MetaHubBasePage
 # from metahub.search.models import MetaHubSearchPage
 from metahub.starling_metahub.organisms.blocks import OrganismSearchHeaderRegularBlock, \
     OrganismThemeHighlightsRegularBlock, OrganismObjectHighlightsRegularBlock, OrganismCollectionCategoriesRegularBlock
@@ -14,7 +14,7 @@ from metahub.starling_metahub.organisms.interfaces import OrganismThemeHighlight
     OrganismObjectHighlightsRegular
 
 
-class MetaHubHomePage(RoutablePageMixin, MetahubBasePage):
+class MetaHubHomePage(RoutablePageMixin, MetaHubBasePage):
     """
     Homepage of the collection website. Features a header that supports livesearch, but
     directs user to search result when executing actual query. Other content includes a

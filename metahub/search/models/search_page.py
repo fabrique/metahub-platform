@@ -9,16 +9,19 @@ from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 
-from metahub.core.models import MetahubBasePage
+from metahub.core.models import MetaHubBasePage
 from metahub.search.search import do_search, get_search_results, get_result_as_cards, get_result_filters
 from metahub.starling_metahub.organisms.blocks import OrganismSearchHeaderRegularBlock
 
 
-class MetaHubSearchPage(RoutablePageMixin, MetahubBasePage):
+class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
     """
     Page with search header that supports live search on top, and filters below.
     Results are rendered on a card grid and refreshed using AJAX.
     """
+
+    parent_page_types = ['home.MetahubHomePage']
+
     # search_header = StreamField([
     #     ('search_header', OrganismSearchHeaderRegularBlock())
     # ])
