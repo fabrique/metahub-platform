@@ -10,7 +10,7 @@ from ..helpers import HelperDocumentBlock, HelperPageURLBlock, HelperOptionalHre
 
 
 class MoleculeObjectCardRegularBlock(AdapterStructBlock):
-    page = blocks.PageChooserBlock(required=False, target_model='core.MetaHubObjectPage')
+    page = blocks.PageChooserBlock(required=False, target_model='collection.MetaHubObjectPage')
 
 
 class MoleculeThemeHighlightRegularBlock(AdapterStructBlock):
@@ -19,7 +19,7 @@ class MoleculeThemeHighlightRegularBlock(AdapterStructBlock):
     Does not have its own interface, rather the page and intro text are resolved
     in the page model to return the correct components.
     """
-    page = blocks.PageChooserBlock(target_model=('core.MetaHubStoryPage'))
+    page = blocks.PageChooserBlock(target_model=('collection.MetaHubStoryPage'))
     intro_text = blocks.TextBlock(required=False, help_text='Leave blank to use the text of the story page')
 
 
@@ -29,7 +29,7 @@ class MoleculeObjectHighlightRegularBlock(AdapterStructBlock):
     Does not have its own interface, rather the page and intro text are resolved
     in the page model to return the correct components.
     """
-    page = blocks.PageChooserBlock(target_model=('core.MetaHubObjectPage'))
+    page = blocks.PageChooserBlock(target_model=('collection.MetaHubObjectPage'))
     intro_text = blocks.TextBlock(required=False, help_text='Leave blank to use the text of the object page')
 
 
@@ -45,7 +45,7 @@ class MoleculeCollectionCategoryCardRegularBlock(AdapterStructBlock):
 
 
 class MoleculeContextCardRegularBlock(AdapterStructBlock):
-    page = PageChooserBlock(target_model=('core.MetaHubStoryPage', 'core.MetaHubObjectPage', 'core.MetaHubObjectSeriesPage'))
+    page = PageChooserBlock(target_model=('stories.MetaHubStoryPage', 'collection.MetaHubObjectPage', 'collection.MetaHubObjectSeriesPage'))
 
     class Meta:
         defaults = {}

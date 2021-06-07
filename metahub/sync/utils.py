@@ -7,7 +7,7 @@ from django.core.files.images import ImageFile
 from wagtail.core.blocks import StreamValue
 from wagtail.core.models import Collection
 
-from metahub.core.models import metahubImage
+from metahub.core.models import MetahubImage
 
 def add_stream_child(stream_value: StreamValue, type_name: str, value):
     if stream_value.is_lazy:
@@ -38,10 +38,10 @@ def add_fabrique_image(file_name, title=None, is_url=False,
     title = title or file_name
 
     try:
-        wagtail_image = metahubImage.objects.get(title=title)
+        wagtail_image = MetahubImage.objects.get(title=title)
         created = False
-    except metahubImage.DoesNotExist:
-        wagtail_image = metahubImage()
+    except MetahubImage.DoesNotExist:
+        wagtail_image = MetahubImage()
         wagtail_image.title = title
         created = True
 

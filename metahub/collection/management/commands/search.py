@@ -1,14 +1,12 @@
 from django_elasticsearch_dsl import Index
-from elasticsearch_dsl import FacetedSearch, iteritems
 from elasticsearch_dsl.query import MultiMatch
 
 from metahub.collection.documents import CollectionObjectDocument
 
 from django.core.management import BaseCommand
 
-from elasticsearch_dsl import FacetedSearch, TermsFacet, DateHistogramFacet
 from django.conf import settings
-from ...search import ObjectSearch
+from metahub.search.search import ObjectSearch
 
 #https://iridakos.com/programming/2018/10/22/elasticsearch-bucket-aggregations
 #First you add a filter, then you define the aggregations and finally you execute your search.
