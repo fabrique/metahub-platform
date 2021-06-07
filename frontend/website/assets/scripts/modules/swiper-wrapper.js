@@ -20,7 +20,7 @@ const DEFAULT_SWIPER_OPTIONS = {
   spaceBetween: 0,
   threshold: 5,
   touchRatio: 1,
-  watchOverflow: false
+  watchOverflow: true
 }
 
 const OBSERVER_DELAY = 350
@@ -56,7 +56,7 @@ const DEFAULT_INTERSECT_HOOKS = [
 */
 
 export default class SwiperWrapper {
-  constructor (element, options = {}, intersectHooks = [], swiperEvents = {}) {
+  constructor (element, options = {}, intersectHooks = [], swiperEvents = {}, callback = () => {}) {
     this.element = element
     this.options = { ...DEFAULT_SWIPER_OPTIONS, ...options }
     this.intersectHooks = [].concat(intersectHooks) // No [...] array spread - this adds 100KB with current browserslist settings!
@@ -64,12 +64,12 @@ export default class SwiperWrapper {
     this.swiper = null
     this.observer = null
 
-    this.init()
+    this.init(callback)
 
     return this
   }
 
-  async init () {
+  async init (callback = () => {}) {
     const Swiper = (await import('../plugins/swiper')).default()
 
     this.swiper = new Swiper(this.element, this.options)
@@ -98,6 +98,8 @@ export default class SwiperWrapper {
       this.observer = null
       window.setTimeout(() => attachObservers(), OBSERVER_DELAY)
     }
+
+    callback.apply(this)
   }
 
   update () {

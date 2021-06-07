@@ -1,0 +1,134 @@
+
+# dotfolders
+.github/
+.idea/
+
+# dotfiles
+.DS_Store
+.editorconfig
+.eslint*
+.git*
+.npm*
+.yarn
+.babel*
+.prettier*
+.travis*
+.zuul*
+.jshint*
+.coveralls*
+.airtap*
+.nvm*
+.nyc*
+.jscs*
+.istanbul*
+.testem*
+.iron*
+.tonic*
+zuul*.yml
+codecov*.yml
+appveyor*.yml
+circle*.yml
+bower*.json
+karma*.js
+gulpfile*
+gruntfile*
+rollup*
+tsconfig*
+Makefile
+component.json
+yarn.lock
+renovate.json
+x-package.json5
+
+# logfiles
+*.log
+
+# temporary files
+*~
+
+# extras (docs, examples)
+**/demo/
+**/doc/
+**/docs/
+**/man/
+**/example*
+**/examples/
+**/samples/
+**/usage.txt
+
+# tests
+**/coverage/
+**/test/
+**/tests/
+**/spec/
+**/bench/
+
+# sourcemaps
+*.map
+
+# type definitions
+#*.ts
+*.flow
+*.mli
+*.iml
+
+# patchfiles
+*.patch
+
+# package-specific files
+lazystream/secret
+ajv/scripts/
+
+# platform-specific
+**/linux-ia32*/
+**/linux-x64*/
+**/win32-ia32*/
+**/win32-x64*/
+**/vendor/linux/
+**/vendor/win32/
+*.exe
+
+# UNQUOTE THESE FOR EASIER .YARNCLEAN CHECKUP
+#API
+#API.*
+#AUTHORS
+#AUTHORS.*
+#CHANGELOG
+#CHANGELOG.*
+#CHANGES
+#CHANGES.*
+#CONTRIBUTE
+#CONTRIBUTE.*
+#CONTRIBUTING
+#CONTRIBUTING.*
+#CREDITS
+#CREDITS.*
+#GOVERNANCE
+#GOVERNANCE.*
+#HISTORY
+#HISTORY.*
+#LICENSE
+#LICENSE.*
+#MAINTENANCE
+#MAINTENANCE.*
+#MIGRATION
+#MIGRATION.*
+#PATRONS
+#PATRONS.*
+#SECURITY
+#SECURITY.*
+#SPECS
+#SPECS.*
+#TODO
+#TODO.*
+#VISION
+#VISION.*
+#!README
+#!README.*
+
+# misspellings
+#LICENCE
+#LICENCE.*
+
+# downloaded files
+#webassemblyjs-*.tgz

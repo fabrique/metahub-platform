@@ -16,17 +16,13 @@
 }
 
 :root {
-  overflow-y: auto; // All browsers without overlaying scrollbars
+  //overflow-y: auto; // All browsers without overlaying scrollbars - NOTE: Prevents navigation bar from collapsing on iOS
 }
 
 html {
   background-color: #fff;
   color: #000;
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0; /* removing the default body margin */
+  //scroll-behavior: smooth; // NOTE: UIT! Want gruwlijk irritant als je naar een cached pagina terug tabbed, dan scrollt ie naar z'n oude plek
 }
 
 input[type='search'] {
@@ -56,11 +52,16 @@ button {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+label {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 svg {
   fill: currentColor;
-  //height: 100%; this makes the filter iconsnsuper big somehow
+  height: 100%;
   stroke: transparent;
-  //width: 100%;
+  //stroke: currentColor;
+  width: 100%;
 }
 
 img {
@@ -152,6 +153,7 @@ option {
 }
 
 textarea {
+  max-height: 50vh;
   resize: vertical;
 }
 
@@ -178,23 +180,23 @@ textarea {
 //}
 
 // specify text selection background color and omit drop shadow
-//::selection {
-//  background-color: #000; // required when declaring ::selection
-//  color: #fff;
-//  text-shadow: none;
-//}
+::selection {
+  background-color: #ede4e5; // required when declaring ::selection
+  color: #000;
+  text-shadow: none;
+}
 
 // hide content from screens but not screenreaders
-//@media screen {
-//  [hidden~='screen'] {
-//    display: inherit;
-//  }
-//
-//  [hidden~='screen']:not(:active):not(:focus):not(:target) {
-//    clip: rect(0 0 0 0) !important;
-//    position: absolute !important;
-//  }
-//}
+@media screen {
+  [hidden~='screen'] {
+    display: inherit;
+  }
+
+  [hidden~='screen']:not(:active):not(:focus):not(:target) {
+    clip: rect(0 0 0 0) !important;
+    position: absolute !important;
+  }
+}
 
 // Style HR
 //hr {
@@ -339,10 +341,35 @@ legend {
   padding: 0;
 }
 
+@keyframes focusanimation {
+  0% {
+    background-color: rgba(#39a935, .5);
+  }
+
+  100% {
+    background-color: rgba(#39a935, .001);
+  }
+}
+
+button,
+summary,
+a,
+figcaption[tabindex='0'] {
+  &:focus {
+    //animation: 1s focusanimation ease-out 1;
+    //outline: 2px solid #000;
+    //outline-offset: 2px;
+    outline: 1px solid #000;
+  }
+}
+
 @media (hover: hover) {
   html:not(.key-pressed) {
     button,
-    summary {
+    summary,
+    a,
+    [tabindex='0'],
+    select {
       &:focus {
         outline: none;
       }
@@ -358,6 +385,38 @@ summary {
   list-style: none; // Firefox
 }
 
-font {
-  pointer-events: none; // Google Translate interferes with click events
+em,
+i {
+  font-style: inherit;
+}
+
+strong,
+b {
+  font-weight: inherit;
+}
+
+p,
+ul,
+ol {
+  em,
+  i {
+    font-style: normal;
+  }
+
+  strong,
+  b {
+    font-weight: bold;
+  }
+}
+
+// WCAG max text length
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+  //max-width: 80ch;
 }

@@ -61,7 +61,8 @@ module.exports.scripts = {
   watchGlobs: [`${assets}/scripts/**/*.js`, `${components}/**/*.js`],
   lintGlobs: [`${assets}/scripts/**/*.js`, `${components}/**/*.js`],
   sourcePath: `${assets}/scripts`,
-  destinationPath: `${destination}/${statics}/scripts`
+  destinationPath: `${destination}/${statics}/scripts`,
+  relativeDestinationPath: `/${statics}/scripts`
 }
 
 module.exports.templates = {

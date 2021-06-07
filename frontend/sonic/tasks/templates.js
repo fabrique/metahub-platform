@@ -1,6 +1,6 @@
 
 const { patchPipe } = require('../utilities/handle-errors.js')
-const paths = require('../paths.js')
+const paths = require('../../config/sonic.paths.js')
 const { dest, src } = require('vinyl-fs')
 const { apply, changed, replace } = require('@eklingen/vinyl-stream-gears')
 const nunjucks = require('@eklingen/vinyl-stream-nunjucks')
@@ -32,7 +32,7 @@ function templates () {
   stream = stream.pipe(dest(paths.templates.destinationPath))
 
   stream = stream.on('finish', () => {
-    console.log(`     `, global.templateCount, `templates generated`)
+    console.log('     ', global.templateCount, 'templates generated')
   })
 
   return stream

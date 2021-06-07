@@ -1,7 +1,7 @@
 
 const { patchPipe } = require('../utilities/handle-errors.js')
-const paths = require('../paths.js')
-const { src, symlink } = require('vinyl-fs')
+const paths = require('../../config/sonic.paths.js')
+const { dest, src, symlink } = require('vinyl-fs')
 const { changed, apply } = require('@eklingen/vinyl-stream-gears')
 
 // Symlink vendor assets from source to destination
@@ -12,10 +12,10 @@ function vendor () {
 
   stream = stream.pipe(changed(paths.vendor.destinationpath, { method: 'exists ' }))
   stream = stream.pipe(apply(() => { global.vencorCounter++ }))
-  stream = stream.pipe(symlink(paths.vendor.destinationPath, { overwrite: true }))
+  stream = stream.pipe(global.useSymlinks ? symlink(paths.vendor.destinationPath, { overwrite: true }) : dest(paths.vendor.destinationPath))
 
   stream = stream.on('finish', () => {
-    console.log(`     `, global.vendorCounter, `vendor files symlinked`)
+    console.log('     ', global.vendorCounter, 'vendor files', global.useSymlinks ? 'symlinked' : 'copied')
   })
 
   return stream

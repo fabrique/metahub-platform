@@ -1,7 +1,7 @@
 // Babel configuration
 
 module.exports = (api) => {
-  const API_ENV = api.env() // Also sets caching
+  const API_ENV = api.env() // NOT just an empty assignment; Also sets caching!
 
   const sourceMap = false // Setting this to true breaks sourcemaps
   const comments = true // Setting this to false breaks Webpack chunk names
@@ -17,10 +17,12 @@ module.exports = (api) => {
     corejs: 3,
     targets: {
       // TODO: THIS IS A TEST, PRESET-ENV SEEMS TO GET THE WRONG TARGETS FROM THE BROWSERSLIST FILE
-      chrome: 79,
-      firefox: 71,
-      safari: 14,
-      edge: 17
+      chrome: '84',
+      firefox: '79',
+      safari: '13.1',
+      ios: '13.5',
+      // and_chr: 80,
+      edge: '84'
 
       // TODO: Edge in different build! Perhaps pull babel and terser away from webpack!
 

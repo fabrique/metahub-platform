@@ -1,6 +1,6 @@
 
 const { patchPipe } = require('../utilities/handle-errors.js')
-const paths = require('../paths.js')
+const paths = require('../../config/sonic.paths.js')
 const { dest, src } = require('vinyl-fs')
 const { apply, changedInPlace } = require('@eklingen/vinyl-stream-gears')
 const optimizeImages = require('@eklingen/vinyl-stream-optimize-images')
@@ -19,7 +19,7 @@ function icons () {
   stream = stream.pipe(dest(file => file.base)) // Write back to source
 
   stream = stream.on('finish', () => {
-    console.log(`     `, global.iconsCounter, `icons optimized`)
+    console.log('     ', global.iconsCounter, 'icons optimized')
     changedInPlace.remember(paths.icons.sourcePath) // Save cache file for next time
   })
 

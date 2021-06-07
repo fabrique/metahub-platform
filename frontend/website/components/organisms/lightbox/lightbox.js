@@ -1,5 +1,5 @@
 
-import focusTrap from 'focus-trap'
+import { createFocusTrap } from 'focus-trap'
 import throttle from 'lodash/throttle'
 import panzoom from 'panzoom'
 
@@ -334,7 +334,7 @@ export default class Lightbox extends Component {
     this.setAriaHiddenOnOtherElements(false)
     this.hideOverlayTabbableElements(true)
 
-    this.overlayFocusTrap = focusTrap(this.element, {
+    this.overlayFocusTrap = createFocusTrap(this.element, {
       onActivate: () => { },
       onDeactivate: () => {
         this.toggleOverlay(true)

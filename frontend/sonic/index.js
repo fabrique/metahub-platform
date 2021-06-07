@@ -19,6 +19,7 @@ const tasks = require('./tasks.js')
 // Set some globals
 global.exitOnError = false
 global.isWatching = false
+global.useSymlinks = true
 global.buildEnv = 'development'
 global.showNotifications = config.options.showNotifications
 global.verboseOutput = process.argv.includes('--verbose')

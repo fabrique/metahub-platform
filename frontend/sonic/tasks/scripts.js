@@ -1,8 +1,8 @@
 
 const { patchPipe } = require('../utilities/handle-errors.js')
-const paths = require('../paths.js')
+const paths = require('../../config/sonic.paths.js')
 const { dest, src } = require('vinyl-fs')
-const { changed, filesize, replace } = require('@eklingen/vinyl-stream-gears')
+const { changed, filesize } = require('@eklingen/vinyl-stream-gears')
 const webpack = require('@eklingen/vinyl-stream-webpack')
 const eslint = require('@eklingen/vinyl-stream-eslint')
 

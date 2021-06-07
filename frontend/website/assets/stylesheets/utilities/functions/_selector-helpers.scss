@@ -1,6 +1,7 @@
 
 // Get parent from selector
 // Level can be any negative number
+
 @function get-parent-from-selector($level: -1) {
   $unsigned-level: $level * -1; // Negative to positive number
   $selector: split(#{&}, ' ');
@@ -17,6 +18,7 @@
 
 // Insert styles higher in the tree
 // Level can be any negative number
+
 @mixin insert-at($level: -1) {
   $unsigned-level: $level * -1; // Negative to positive number
   $selector: split(#{&}, ' ');

@@ -136,7 +136,7 @@ let rules = {
   'no-useless-call': 'error',
   'no-useless-computed-key': 'error',
   'no-useless-constructor': 'error',
-  'no-useless-escape': 'error',
+  'no-useless-escape': 'off',
   'no-useless-rename': 'error',
   'no-useless-return': 'error',
   'no-void': 'error',
@@ -212,7 +212,8 @@ rules = {
   ...rules,
   ...{
     'sort-imports': 0,
-    'simple-import-sort/sort': 1
+    'simple-import-sort/imports': 1,
+    'simple-import-sort/exports': 1
   }
 }
 

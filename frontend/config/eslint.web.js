@@ -213,7 +213,8 @@ rules = {
   ...rules,
   ...{
     'sort-imports': 0,
-    'simple-import-sort/sort': 1
+    'simple-import-sort/imports': 1,
+    'simple-import-sort/exports': 1
   }
 }
 

@@ -10,7 +10,7 @@ function handleErrors (error) {
   }
 
   if (error.toString().indexOf('\n    at ') === -1 && error.stack) {
-    error = error.toString() + '\n' + error.stack.split('\n')[1]
+    error = `${error.toString()}\n${error.stack.split('\n')[1]}`
   } else {
     error = error.toString().split('\n    at ')[0]
   }

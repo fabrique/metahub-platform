@@ -1,5 +1,5 @@
 
-import focusTrap from 'focus-trap'
+import { createFocusTrap } from 'focus-trap'
 import throttle from 'lodash/throttle'
 
 import Component from '../../../assets/scripts/modules/component'
@@ -57,7 +57,7 @@ export default class MenuOverlayComponent extends Component {
     this.setAriaHiddenOnOtherElements(false)
     this.hideOverlayTabbableElements(true)
 
-    this.overlayFocusTrap = focusTrap(this.overlay, {
+    this.overlayFocusTrap = createFocusTrap(this.overlay, {
       onActivate: () => {},
       onDeactivate: () => {
         this.toggleOverlay(true)

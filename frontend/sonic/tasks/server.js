@@ -1,7 +1,7 @@
 
 const config = require('../../config/sonic.js')
 const { patchPipe } = require('../utilities/handle-errors.js')
-const paths = require('../paths.js')
+const paths = require('../../config/sonic.paths.js')
 const { src } = require('vinyl-fs')
 const connect = require('@eklingen/vinyl-stream-connect')
 

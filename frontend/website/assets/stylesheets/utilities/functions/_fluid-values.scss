@@ -1,6 +1,7 @@
 
 // Return a calc() with a fluid value between min and max, stretched over the min/max screen width values
 // NOTE: Based on font-size calculation example. See https://www.smashingmagazine.com/2016/05/fluid-typography/
+
 @function get-fluid-value($min: 1.25rem, $max: 2rem, $min-screen-width: $website-min-width, $max-screen-width: $website-max-width) {
   @if ($min == $max) {
     @return $min;

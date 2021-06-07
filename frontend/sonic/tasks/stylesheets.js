@@ -1,9 +1,9 @@
 // Stylesheet related tasks
 
 const { patchPipe } = require('../utilities/handle-errors.js')
-const paths = require('../paths.js')
+const paths = require('../../config/sonic.paths.js')
 const { dest, src } = require('vinyl-fs')
-const { changed, prepend, filesize, log } = require('@eklingen/vinyl-stream-gears')
+const { apply, changed, prepend, filesize } = require('@eklingen/vinyl-stream-gears')
 const unglob = require('@eklingen/vinyl-stream-unglob')
 const postcss = require('@eklingen/vinyl-stream-postcss')
 const sass = require('@eklingen/vinyl-stream-sass')
@@ -21,6 +21,7 @@ function stylesheets () {
   stream = stream.pipe(sass({ sass: { includePaths: ['node_modules'], ...sassConfig }, tryBinary: false })) // TODO: BUG WITH BINARY DEBUG OUTPUT NOT SHOWING!
   stream = stream.pipe(postcss({ postcss: postcssConfig }))
   stream = stream.pipe(changed(paths.stylesheets.destinationPath, { method: 'contents', injectSourceMapComment: true }))
+  stream = stream.pipe(apply(file => { file.stat.birthtime = file.stat.mtime = file.stat.ctime = file.stat.atime = (new Date()).toISOString() })) // To work around a dart-sass bug where the file date of the main entry point is taken
   stream = stream.pipe(dest(paths.stylesheets.destinationPath, { sourcemaps: '.' }))
   stream = stream.pipe(filesize())
 

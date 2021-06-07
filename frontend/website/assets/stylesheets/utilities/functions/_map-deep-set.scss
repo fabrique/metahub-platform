@@ -12,12 +12,14 @@
 
   // If the last key is a map already
   // Warn the user we will be overriding it with $value
+
   @if (type-of(nth($keys, -1)) == 'map') {
     @warn 'The last key you specified is a map; it will be overrided with `#{$value}`.';
   }
 
   // If $keys is a single key
   // Just merge and return
+
   @if length($keys) == 1 {
     @return map-merge($map, ($keys: $value));
   }
@@ -39,6 +41,7 @@
 
   // Loop from the last map to the first one
   // Merge it with the previous one
+
   @for $i from length($maps) through 1 {
     $current-map: nth($maps, $i);
     $current-key: nth($keys, $i);

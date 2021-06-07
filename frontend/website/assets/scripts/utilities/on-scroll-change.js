@@ -3,9 +3,9 @@
 // A simple throttled event listener would bunch up in the queue, causing lag
 // A normal interval would cause high cpu usage
 // This is the best of both worlds - 60FPS ALL THE THINGS
+let interval
 
 export default function onScrollChange (cb, ms = 10, scrollElement = window) {
-  let interval
   let scrollY = scrollElement.scrollY
 
   const check = () => {

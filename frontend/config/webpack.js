@@ -1,6 +1,7 @@
 // Webpack configuration
 
-const { join, relative } = require('path')
+const { join } = require('path')
+const paths = require('./sonic.paths.js')
 
 const basename = (suffix = '', name = '[name].[ext]') => (suffix ? name.replace(/\[name]/i, `[name]-${suffix}`) : name).replace(/\[ext]/i, 'js')
 // TODO: Add -[contenthash] after name - but how to load it in templates?
@@ -13,7 +14,7 @@ module.exports = env => {
 
   const mode = env.mode === 'production' ? 'production' : 'development'
   const src = `${env.src}/`
-  const dest = '/static/scripts/'
+  const dest = `${paths.scripts.relativeDestinationPath}/`
 
   const devtool = 'source-map'
   const target = 'web'
@@ -63,8 +64,8 @@ module.exports = env => {
 
   const optimization = {
     minimize: false,
-    chunkIds: (mode === 'production') ? 'deterministic' : 'named',
-    moduleIds: (mode === 'production') ? 'deterministic' : 'named'
+    chunkIds: 'named', // (mode === 'production') ? 'deterministic' : 'named',
+    moduleIds: 'named' // (mode === 'production') ? 'deterministic' : 'named'
   }
 
   if (mode === 'production') {

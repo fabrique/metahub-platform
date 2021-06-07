@@ -1,0 +1,7 @@
+
+@mixin enable-emphasized {
+  em,
+  i {
+    font-style: italic;
+  }
+}

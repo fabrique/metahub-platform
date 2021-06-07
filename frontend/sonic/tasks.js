@@ -4,6 +4,7 @@ const config = require('../config/sonic.js')
 
 // Import base tasks
 const clean = require('./tasks/clean.js')
+const cleanCache = require('./tasks/clean-cache.js')
 const fonts = require('./tasks/fonts.js')
 const icons = require('./tasks/icons.js')
 const images = require('./tasks/images.js')
@@ -16,11 +17,8 @@ const templates = require('./tasks/templates.js')
 const vendor = require('./tasks/vendor.js')
 
 const { basename } = require('path')
-const paths = require('./paths.js')
+const paths = require('../config/sonic.paths.js')
 const watch = require('@eklingen/watch-debounced')
-
-const { utimesSync, closeSync, openSync } = require('fs')
-const { resolve } = require('path')
 
 // Switch from development to production
 const env = callback => {
@@ -29,26 +27,22 @@ const env = callback => {
   callback()
 }
 
+// Switch to copying files instead of symlinking (for Drupal)
+const fullcopy = callback => {
+  global.useSymlinks = false
+  console.log(`❯   Will \x1b[31mcopy files\x1b[0m instead of symlinking them`)
+  callback()
+}
+
 // Compose end-user tasks
 const links = series(cb => cb(console.log('❯   \x1b[34mProcessing\x1b[0m links...')), parallel(vendor, fonts, images, media))
 const lint = series(cb => cb(console.log('❯   \x1b[34mLinting\x1b[0m sources...')), stylesheets.lint, scripts.lint)
 const assets = series(cb => cb(console.log('❯   \x1b[34mBuilding\x1b[0m assets...')), icons, scripts, stylesheets, templates)
 
-const build = series(env, clean, cb => cb(console.log('    \x1b[33mStarting from scratch!\x1b[0m')), links, lint, assets)
-const deploy = series(build, cb => cb(console.log(`❯   \x1b[34mDeploying\x1b[0m to \x1b[36;4mhttps://${config.staging.url}\x1b[0m...`)), sync)
-const start = series(lint, links, assets, parallel(server, watchFiles))
-
-// Trigger python runserver
-function triggerPythonRunserver () {
-  const filePath = resolve(process.cwd(), './../metahub/', '__init__.py')
-  const time = new Date()
-
-  try {
-    utimesSync(filePath, time, time)
-  } catch (err) {
-    closeSync(openSync(filePath, 'w'))
-  }
-}
+const buildPackage = series(cleanCache, env, fullcopy, clean, cb => cb(console.log('❯   \x1b[33mStarting build package from scratch!\x1b[0m')), links, lint, assets)
+const build = series(cleanCache, env, clean, cb => cb(console.log('❯   \x1b[33mStarting build from scratch!\x1b[0m')), links, lint, assets)
+const deploy = series(cleanCache, build, cb => cb(console.log(`❯   \x1b[34mDeploying\x1b[0m to \x1b[36;4mhttps://${config.staging.url}\x1b[0m...`)), sync)
+const start = series(cleanCache, lint, links, assets, parallel(server, watchFiles))
 
 // Watch files for changes
 // TODO: Refactor glob-watch so that we can run multiple different tasks per source, per event. Add single file linting and such
@@ -62,14 +56,10 @@ function watchFiles (callback) {
       return
     }
 
-    const result = queues[taskName]()
+    queues[taskName]() // Don't do anything with the result
 
     queues[taskName] = null
     clearTimeout(timeouts[taskName])
-
-    if (taskName === 'templates') {
-      triggerPythonRunserver()
-    }
   }
 
   const watchGlobCallback = (taskName = 'default', waitDelay = 150, event, path, stats, ...callbacks) => {
@@ -108,8 +98,8 @@ function watchFiles (callback) {
 }
 
 // Basic task exports
-module.exports = { env, clean, fonts, icons, images, media, scripts, server, stylesheets, sync, templates, vendor }
+module.exports = { env, fullcopy, clean, 'clean-cache': cleanCache, fonts, icons, images, media, scripts, server, stylesheets, sync, templates, vendor }
 // Composited task exports
-module.exports = { ...module.exports, lint, assets, links, build, deploy, start, watch: watchFiles }
+module.exports = { ...module.exports, lint, assets, links, build, package: buildPackage, deploy, start, watch: watchFiles }
 // Alias exports
-module.exports = { ...module.exports, serve: server, default: start, optimizeImages: images.optimize, optimizeMedia: media.optimize, lintScripts: scripts.lint, lintStylesheets: stylesheets.lint }
+module.exports = { ...module.exports, serve: server, default: start, 'optimize-images': images.optimize, 'optimize-media': media.optimize, 'lint-scripts': scripts.lint, 'lint-stylesheets': stylesheets.lint }

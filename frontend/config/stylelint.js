@@ -28,7 +28,7 @@ rules = {
     'block-opening-brace-space-before': 'always',
     'color-hex-case': 'lower',
     'color-hex-length': 'short',
-    'color-named': 'never',
+    'color-named': ['never', { ignore: ['inside-function'] }],
     'color-no-invalid-hex': true,
     'declaration-bang-space-after': 'never',
     'declaration-bang-space-before': 'always',
@@ -38,18 +38,18 @@ rules = {
     'declaration-block-trailing-semicolon': 'always',
     'declaration-colon-space-after': 'always-single-line',
     'declaration-colon-space-before': 'never',
-    'declaration-property-value-blacklist': {
-      border: ['none'],
-      'border-top': ['none'],
-      'border-right': ['none'],
-      'border-bottom': ['none'],
-      'border-left': ['none']
-    },
+    // 'declaration-property-value-disallowed-list': {
+    //  border: ['none'],
+    //  'border-top': ['none'],
+    //  'border-right': ['none'],
+    //  'border-bottom': ['none'],
+    //  'border-left': ['none']
+    // },
     'function-comma-space-after': 'always-single-line',
     'function-parentheses-space-inside': 'never',
     'function-url-quotes': 'always',
     indentation: 2,
-    'length-zero-no-unit': true,
+    'length-zero-no-unit': null, // breaks calc() in some calculations
     'max-nesting-depth': [5, { ignoreAtRules: ['each', 'media', 'supports', 'include'] }],
     'media-feature-parentheses-space-inside': 'never',
     'no-missing-end-of-source-newline': true,

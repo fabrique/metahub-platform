@@ -79,7 +79,7 @@ class LiveSearch extends Component {
     }
 
     // Cannot fake with Tab and Shift+Tab, since event.shitKey only has a getter.
-    const activeElement = document.activeElement
+    // const activeElement = document.activeElement
     let nextElement
 
     if (event.keyCode === 40) { // Arrow down

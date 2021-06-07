@@ -4,9 +4,10 @@
 
 const { plugin, parse } = require('postcss')
 const CleanCSS = require('clean-css')
-const instance = new CleanCSS(options)
 
 module.exports = plugin('clean', (options = {}) => {
+  const instance = new CleanCSS(options)
+
   return (css, res) => new Promise((resolve, reject) => {
     const callback = (err, min) => {
       if (err) {

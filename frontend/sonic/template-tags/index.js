@@ -1,8 +1,10 @@
 // Nunjucks Template Tags
+// TODO: Rename functions without underscores, due to linting differences between javascript and python implementations.
 
 const { createHash } = require('crypto')
 const { existsSync, statSync, readFileSync } = require('fs')
 const { join } = require('path')
+const { readdirSync } = require('glob')
 
 // Object iterator
 function * entries (obj) {
@@ -10,6 +12,10 @@ function * entries (obj) {
     yield [key, obj[key]]
   }
 }
+
+// Support translatable strings via dummy function
+// The underscore function is automatically recognized by Django's translation system.
+const fakeTranslate = string => string
 
 // Convert from Base64 to ASCII
 const atob = string => Buffer.from(string, 'base64').toString('ascii')
@@ -24,22 +30,19 @@ const copy = object => ({ ...object })
 const debug = (...args) => console.log(...args)
 
 // Enable expanding of globbing patterns - for, for example, component imports
-const expand = (pattern = '**/*', cwd = './') => glob.readdirSync(pattern, { cwd: cwd })
+const expand = (pattern = '**/*', cwd = './') => readdirSync(pattern, { cwd: cwd })
 
 // Is number even?
-const even = number => number === parseFloat(number) ? !(number % 2) : void 0
-
-// Get string length
-const length = string => string.toString().length
+const even = number => number === parseFloat(number) ? !(number % 2) : undefined
 
 // Fill an array with the number form 0 to 19, given a 20
-const number_to_filled_array = number => [...Array(parseInt(number, 10)).keys()]
+const numberToFilledArray = number => [...Array(parseInt(number, 10)).keys()]
 
 // Get a random hash with optional prefix
-const random_hash = (prefix = '') => prefix + Math.random().toString(36).slice(2, -2)
+const randomHash = (prefix = '') => prefix + Math.random().toString(36).slice(2, -2)
 
 // Get random int between min and max
-const random_int = (min = 0, max = 1) => Math.floor(Math.random() * (max - min + 1) + min)
+const randomInt = (min = 0, max = 1) => Math.floor(Math.random() * (max - min + 1) + min)
 
 // Round number
 const round = number => Math.round(number)
@@ -51,14 +54,14 @@ const split = (string, key) => (string || '').toString().split(key)
 const trim = string => string.toString().trim()
 
 // Set an object's property
-const object_add = (object, key, value) => {
+const objectAdd = (object, key, value) => {
   object[key] = value
 
   return ''
 }
 
 // Replace an objects value
-const object_replace_value = (object, key, value_original, value_replacement) => {
+const objectReplaceValue = (object, key, value_original, value_replacement) => {
   if (value_original !== null || object[key] === value_original) {
     object[key] = value_replacement
   }
@@ -67,7 +70,7 @@ const object_replace_value = (object, key, value_original, value_replacement) =>
 }
 
 // Left pad string
-const left_pad = (string, length, character) => {
+const leftPad = (string, length, character) => {
   let i = -1
 
   string = String(string)
@@ -82,7 +85,7 @@ const left_pad = (string, length, character) => {
 }
 
 // Object to string
-const object_dump = obj => {
+const objectDump = obj => {
   let ret = '{'
 
   for (const [key, value] of entries(obj)) {
@@ -95,7 +98,7 @@ const object_dump = obj => {
 }
 
 // Get object keys
-const object_keys = (obj, sort = false) => {
+const objectKeys = (obj, sort = false) => {
   const ret = []
 
   for (const [key, value] of entries(obj)) {
@@ -110,7 +113,7 @@ const object_keys = (obj, sort = false) => {
 }
 
 // Get object values as string
-const object_values_to_string = obj => {
+const objectValuesToString = obj => {
   let ret = ''
 
   for (const [key, value] of entries(obj)) {
@@ -121,7 +124,7 @@ const object_values_to_string = obj => {
 }
 
 // Get object values
-const object_values = (obj, sort = false) => {
+const objectValues = (obj, sort = false) => {
   const ret = []
 
   for (const [key, value] of entries(obj)) {
@@ -141,8 +144,8 @@ const object_values = (obj, sort = false) => {
 // We can specify height and width for each 'breakpoint' like so: sizes = { mobile: '640x480', portrait: '800x600' }
 // Or, we can only specify heights and a ratio, like so: sizes = { mobile: 640, portrait: 800 }, ratio = '16:9'
 // We can also specify the amount of retina values that need to be generated, like so: retinas = [2, 3, 4] for up to 4x
-const generate_placeholders = (sizes, ratio = '16:9', retinas = [2/*, 3, 4 */], inverted = false) => {
-  // Get widths if not supplied — from ratio, if possible
+const generatePlaceholders = (sizes, ratio = '16:9', retinas = [2/*, 3, 4 */], inverted = false) => {
+  // Get widths if not supplied - from ratio, if possible
   for (const [key, value] of entries(sizes)) {
     let size = value.toString().split('x')
 
@@ -190,10 +193,8 @@ const generate_placeholders = (sizes, ratio = '16:9', retinas = [2/*, 3, 4 */], 
 
 const FILE_HASH_CACHE = {}
 
-const file_hash = function (filepath, algorithm = 'sha256') {
-  let shasum
+const fileHash = function (filepath = '', algorithm = 'sha256') {
   let data
-  let hash
 
   filepath = join(process.cwd(), filepath)
 
@@ -208,7 +209,7 @@ const file_hash = function (filepath, algorithm = 'sha256') {
     return FILE_HASH_CACHE[filepath].hash
   }
 
-  shasum = createHash(algorithm)
+  const shasum = createHash(algorithm)
   data = readFileSync(filepath, 'utf-8')
 
   if (!data) {
@@ -216,14 +217,14 @@ const file_hash = function (filepath, algorithm = 'sha256') {
   }
 
   data = shasum.update(data, 'utf-8')
-  hash = shasum.digest('base64')
+  const hash = shasum.digest('base64')
 
   FILE_HASH_CACHE[filepath] = { hash: hash, mtime: mtime }
 
   return hash
 }
 
-const include_raw = function (filepath) {
+const includeRaw = function (filepath) {
   filepath = join(process.cwd(), filepath)
 
   if (!existsSync(filepath)) {
@@ -244,27 +245,27 @@ const slugify = function (str = '') {
   ret = ret.toLowerCase()
   ret = ret.replace(/\s+/g, '-') // Replace spaces with -
   ret = ret.replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
-  ret = ret.replace(/&/g, '-and-') // Replace & with ‘and’
+  ret = ret.replace(/&/g, '-and-') // Replace & with 'and'
   ret = ret.replace(/[^\w\-]+/g, '') // Remove all non-word characters
-  ret = ret.replace(/\-\-+/g, '-') // Replace multiple - with single -
+  ret = ret.replace(/\-\-+/g, '-') // Replace multiple dashes with a single dash
   ret = ret.replace(/^-+/, '') // Trim - from start of text
   ret = ret.replace(/-+$/, '') // Trim - from end of text
 
   return ret
 }
 
-// Merge objects
-const merge_objects = (...args) => Object.assign(...args)
+// Merge objects (shallow)
+const merge = (...args) => Object.assign(...args)
 
 // Trim contents
-const trim_contents = (str, tighten = true) => {
+const trimContents = (str, tighten = true) => {
   // str = str.replace(/\r?\n|\r/g, ' ')
   str = tighten ? str.replace(/\s\s+/g, ' ') : str
   return str.trim()
 }
 
 // Propagate value through object
-const propagate_value = (object = {}, keys = [], defaultValue = '') => {
+const propagateValue = (object = {}, keys = [], defaultValue = '') => {
   let previousValue
 
   keys.forEach(key => {
@@ -278,34 +279,35 @@ const propagate_value = (object = {}, keys = [], defaultValue = '') => {
 }
 
 // timestamp to locale date string
-const friendly_timestamp = (timestamp, locale = 'en-US', options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) => new Date(timestamp).toLocaleDateString(locale, options)
+const friendlyTimestamp = (timestamp, locale = 'en-US', options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }) => new Date(timestamp).toLocaleDateString(locale, options)
 
 module.exports = {
+  _: fakeTranslate,
   atob,
   btoa,
   copy,
   debug,
   expand,
   even,
-  number_to_filled_array,
-  random_hash,
-  random_int,
+  number_to_filled_array: numberToFilledArray,
+  random_hash: randomHash,
+  random_int: randomInt,
   round,
   split,
   trim,
-  object_add,
-  left_pad,
-  object_dump,
-  object_keys,
-  object_values_to_string,
-  object_values,
-  generate_placeholders,
-  file_hash,
-  include_raw,
-  object_replace_value,
+  object_add: objectAdd,
+  left_pad: leftPad,
+  object_dump: objectDump,
+  object_keys: objectKeys,
+  object_values_to_string: objectValuesToString,
+  object_values: objectValues,
+  generate_placeholders: generatePlaceholders,
+  file_hash: fileHash,
+  include_raw: includeRaw,
+  object_replace_value: objectReplaceValue,
   slugify,
-  merge_objects,
-  trim_contents,
-  propagate_value,
-  friendly_timestamp
+  merge,
+  trim_contents: trimContents,
+  propagate_value: propagateValue,
+  friendly_timestamp: friendlyTimestamp
 }

@@ -5,12 +5,14 @@ const { join } = require('path')
 
 module.exports = function (api) {
   const sass = require('sass')
-  const config = require(join(process.cwd(), 'config/sonic'))
+  // const config = require(join(process.cwd(), 'config/sonic.js'))
+  const paths = require('./sonic.paths.js')
 
   const outputStyle = (api.env === 'production') ? 'compressed' : 'expanded'
   const precision = 2
 
   const functions = {
+    'static()': () => new sass.types.String(paths.project.staticURI),
     'timestamp()': () => new sass.types.Number(new Date().getTime(), 'ms'),
     'readfile($filepath)': filepath => {
       const realpath = join(process.cwd(), 'website/', filepath.dartValue.text)

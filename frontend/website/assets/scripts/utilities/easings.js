@@ -2,6 +2,7 @@
 // Basic easing functions
 // Based on https://github.com/mattdesl/eases, which are basically Robert Penner's equations
 // You know, from back in the ActionScript days ;-)
+// These expect an input ranging from 0 (0%) to 1 (100%).
 
 export function backInOut (t) {
   const s = 1.70158 * 1.525

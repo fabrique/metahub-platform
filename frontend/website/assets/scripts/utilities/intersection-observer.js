@@ -1,5 +1,5 @@
 
-import IntersectionObserver from 'intersection-observer-polyfill/dist/IntersectionObserver'
+// import IntersectionObserver from 'intersection-observer-polyfill/dist/IntersectionObserver'
 
 // Simple IntersectionObserver wrapper; allows fine-grained control options by generating a list of thresholds,
 // and easier live debugging of intersections.
@@ -78,9 +78,6 @@ function printDebugInfo (change) {
 // @param handler: function (passed to IntersectionObserver)
 // @param options: object (passed to IntersectionObserver)
 // @param thresholdCount: boolean or number (if specified, options.threshold will be overwritten)
-// @param measureCenter: boolean (if false, then it measures the viewport edges like default, if true it measures the offset from the center of the viewport)
-//   NOTE: even if true, you can still influence the offset by using the IntersectionObserver rootMargin option.
-//   The element option is then ignored when given.
 // @param stopWatchenWhenVisible: boolean
 // @param debug: boolean
 // @returns the IntersectionObserver instance

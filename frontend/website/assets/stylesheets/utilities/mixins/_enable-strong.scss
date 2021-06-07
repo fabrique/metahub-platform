@@ -1,0 +1,7 @@
+
+@mixin enable-strong {
+  strong,
+  b {
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,5 @@
+
+@mixin fluid-font-size($min-font-size: 16px, $max-font-size: 20px, $min-screen-width: $website-min-width, $max-screen-width: $website-max-width) {
+  // NOTE: See https://www.smashingmagazine.com/2016/05/fluid-typography/
+  font-size: calc(#{$min-font-size} + (#{strip-units($max-font-size)} - #{strip-units($min-font-size)}) * (100vw - #{$min-screen-width}) / (#{strip-units($max-screen-width)} - #{strip-units($min-screen-width)}));
+}

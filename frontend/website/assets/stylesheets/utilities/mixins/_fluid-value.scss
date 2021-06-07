@@ -1,0 +1,5 @@
+
+@function fluid-value($min: 16px, $max: 20px, $min-total: $website-min-width, $max-total: $website-max-width) {
+  // NOTE: See https://www.smashingmagazine.com/2016/05/fluid-typography/
+  @return calc(#{$min} + (#{strip-units($max)} - #{strip-units($min)}) * (100vw - #{$min-total}) / (#{strip-units($max-total)} - #{strip-units($min-total)}));
+}
