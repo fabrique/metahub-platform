@@ -66,7 +66,7 @@
 
   .dropdown-filter__select,
   .select-dropdown__button {
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
 
     background-color: #fff;
     color: $color-blue;
@@ -125,7 +125,6 @@
   }
 
   .select-dropdown__button {
-    //@include typography(sub-heading, $replica-font-stack);
     //
     //align-items: center;
     //background-color: #fff;
@@ -191,7 +190,7 @@
   }
 
   .select-dropdown__list-item {
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
 
     &:hover {
       background-color: $color-blue;
@@ -236,7 +235,7 @@
 
   .dropdown-filter__date-label,
   .dropdown-filter__date-input {
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
 
     color: $color-blue;
   }

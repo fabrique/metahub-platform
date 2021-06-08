@@ -5,7 +5,7 @@
   position: relative;
 
   p {
-    @include typography(body-text, $libre-font-stack);
+    @include typography(body-text, $lora-font-stack);
   }
 
   .article-photos-and-text__grid {

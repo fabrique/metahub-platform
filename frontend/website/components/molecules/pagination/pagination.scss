@@ -8,7 +8,7 @@
   text-align: center;
   transform: translateX(-50%);
 
-  @include typography(link, $replica-font-stack);
+  @include typography(link, $montserrat-font-stack);
 
   .number-button {
     margin: 0 5px;

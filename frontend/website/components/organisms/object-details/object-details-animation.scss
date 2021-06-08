@@ -29,18 +29,6 @@
     transition: opacity 750ms ease-out;
   }
 
-  &.menu-bar--sticky {
-    .image-header__label { // this can be another class later, and transition as well
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .swiper-navigation button {
-      opacity: 0;
-      pointer-events: none;
-    }
-  }
-
   .image-header--context {
     background-position: 50% 50%;
     background-repeat: no-repeat;

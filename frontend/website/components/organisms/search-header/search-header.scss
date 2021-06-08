@@ -30,14 +30,14 @@
   }
 
   .search-header__title {
-    @include typography(heading-1, $replica-font-stack);
+    @include typography(heading-1, $montserrat-font-stack);
 
     margin-bottom: 10px;
     text-transform: uppercase;
   }
 
   .search-header__subtitle {
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
   }
 
   .search-header__live-search {

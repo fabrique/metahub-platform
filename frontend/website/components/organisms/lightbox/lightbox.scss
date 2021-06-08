@@ -204,7 +204,7 @@
   }
 
   .lightbox__information-title {
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
 
     cursor: pointer;
     font-weight: bold;
@@ -247,7 +247,7 @@
   }
 
   .lightbox__details-link {
-    @include typography(link, $replica-font-stack);
+    @include typography(link, $montserrat-font-stack);
 
     align-items: center;
     display: flex;
@@ -260,7 +260,7 @@
 
   .lightbox__information-description,
   .lightbox__information-credits {
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
 
     color: $color-grey-extradark;
   }

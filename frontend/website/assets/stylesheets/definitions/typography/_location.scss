@@ -3,14 +3,14 @@
   --location-font-size: 16px;
   --location-font-style: normal;
   --location-font-variant: normal;
-  --location-font-weight: #{get-replica-weight(regular)};
+  --location-font-weight: #{get-montserrat-weight(regular)};
   --location-letter-spacing: 0;
   --location-line-height: 1.25em;
   --location-margin-bottom: .5em;
   --location-margin-top: 1em;
 
   @include portrait {
-    --location-font-weight: #{get-replica-weight(regular)};
+    --location-font-weight: #{get-montserrat-weight(regular)};
   }
 
   @include landscape {

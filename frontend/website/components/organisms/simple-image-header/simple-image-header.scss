@@ -43,13 +43,13 @@
   .simple-image-header__subtitle {
     text-transform: uppercase;
 
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
   }
 
   .simple-image-header__title {
     text-transform: uppercase;
 
-    @include typography(heading-1, $replica-font-stack);
+    @include typography(heading-1, $montserrat-font-stack);
   }
 
   &.simple-image-header__label--white {

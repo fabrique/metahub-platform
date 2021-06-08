@@ -14,7 +14,7 @@
   }
 
   .live-search__input-field {
-    @include typography(description, $replica-font-stack);
+    @include typography(description, $montserrat-font-stack);
 
     background: none;
     color: $color-white;
@@ -117,7 +117,7 @@
   }
 
   .live-search__result-title {
-    @include typography(introduction, $replica-font-stack);
+    @include typography(introduction, $montserrat-font-stack);
 
     text-transform: capitalize;
   }
@@ -127,7 +127,7 @@
   }
 
   .live-search__result-type {
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
 
     opacity: .6;
     text-transform: capitalize;

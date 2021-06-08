@@ -4,6 +4,7 @@
 {% import 'components/organisms/profile/profile.html' as organisms_profile %}
 {% import 'components/organisms/collection-highlights/collection-highlights.html' as organisms_collection_highlights %}
 {% import 'components/organisms/card-grid/card-grid.html' as organism_card_grid %}
+{% import 'components/structures/header/header.html' as header %}
 
 {% block page_title %}Home{% endblock %}
 
@@ -28,8 +29,8 @@
 {% endblock %}
 
 {% block content %}
-
-{{ organisms_profile.regular(
+{{ header.regular(hasLogo = false) }}
+<!-- {{ organisms_profile.regular(
   subtitle = 'Lernen Sie die Sammlung kennen',
   title = 'Eine Sammlung voll',
   title_list = [
@@ -351,7 +352,7 @@
       description: 'Zeremonialkunst in Geschichte und Gegenwart'
     }
   ]
-)}}
+)}} -->
 
 
 {% endblock %}

@@ -1,10 +1,15 @@
-@import '../../../assets/stylesheets/utilities/mixins/clearfix';
-
 .footer {
-  @include clearfix;
+  @include container;
 
-  contain: content;
-  margin-top: auto;
-  position: relative;
-  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
+
+// .footer__links {
+
+// }
+
+// .footer__copyright {
+
+// }

@@ -22,7 +22,7 @@
     margin-bottom: 20px;
     text-transform: uppercase;
 
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
 
     .context-cards__title-top,
     .context-cards__title-bottom {

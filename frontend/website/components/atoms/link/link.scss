@@ -1,6 +1,6 @@
 
 .link {
-  @include typography(link, $replica-font-stack);
+  @include typography(link, $montserrat-font-stack);
 
   color: inherit;
   display: inline-block;

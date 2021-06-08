@@ -3,7 +3,7 @@
   position: relative;
 
   .option-field__label {
-    @include typography(field-label, $replica-font-stack, false, true, false);
+    @include typography(field-label, $montserrat-font-stack, false, true, false);
 
     cursor: pointer;
     display: block;
@@ -20,7 +20,7 @@
   }
 
   .option-field__item {
-    @include typography(body-text, $replica-font-stack, false, true);
+    @include typography(body-text, $montserrat-font-stack, false, true);
 
     display: block;
   }
@@ -56,7 +56,7 @@
   }
 
   .option-field__input-label {
-    @include typography(caption, $replica-font-stack);
+    @include typography(caption, $montserrat-font-stack);
 
     cursor: pointer;
     display: block;
@@ -126,7 +126,7 @@
 
   &.option-field--error {
     .option-field__error {
-      @include typography(caption, $replica-font-stack);
+      @include typography(caption, $montserrat-font-stack);
 
       color: $color-error;
       display: inline-block;

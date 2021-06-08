@@ -33,7 +33,7 @@ html {
 
 body {
   background-color: $color-white;
-  color: $color-grey-extradark;
+  color: $color-black;
   //contain: content;
   display: flex;
   flex: 1 0 100%;
@@ -45,8 +45,4 @@ body {
   min-width: var(--document-min-width);
   position: relative;
   width: 100%;
-
-  &.menu-bar--sticky {
-    padding-top: 126px;
-  }
 }

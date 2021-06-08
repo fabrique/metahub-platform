@@ -1,0 +1,24 @@
+{% import 'components/atoms/logo/logo.html' as logo %}
+{% import 'components/structures/menu-bar/menu-bar.html' as menu_bar %}
+
+{% macro regular(hasLogo = true) %}
+  <header class="header" role="banner">
+
+    <div class="header__logo-wrapper">
+      {% if hasLogo %}
+        {{ logo.regular() }}
+      {% endif %}
+    </div>
+    <div class="header__menu-bar">
+      {{ menu_bar.regular(
+        menu_items = [
+          { href: '?', title: 'Explore' },
+          { href: '?', title: 'News & Events' },
+          { href: '?', title: 'About' },
+          { href: '?', title: 'Contact' }
+        ],
+        languages = ['Deutsche', 'English']
+      ) }}
+    </div>
+  </header>
+{% endmacro %}

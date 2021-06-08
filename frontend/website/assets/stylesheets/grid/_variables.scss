@@ -108,15 +108,20 @@
   --background-columns: repeating-linear-gradient(to right, var(--grid-debug-color), var(--grid-debug-color) var(--column-width), transparent var(--column-width), transparent var(--repeating-width));
 }
 
-@mixin grid-container($columns: 'repeat(var(--grid-columns), [column] minmax(0, 1fr))') {
-  display: grid;
-  grid-gap: var(--grid-spacing) var(--grid-gutter);
-  grid-template-columns: unquote($columns);
+@mixin container() {
   margin-left: auto;
   margin-right: auto;
   max-width: 1440px;
   padding-left: var(--grid-gutter);
   padding-right: var(--grid-gutter);
+}
+
+@mixin grid-container($columns: 'repeat(var(--grid-columns), [column] minmax(0, 1fr))') {
+  display: grid;
+  grid-gap: var(--grid-spacing) var(--grid-gutter);
+  grid-template-columns: unquote($columns);
+
+  @include container;
 }
 
 @mixin subgrid-container($columns: auto) {

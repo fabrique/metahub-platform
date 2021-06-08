@@ -20,7 +20,7 @@
   }
 
   .article-video-embed__caption {
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
 
     color: $color-blue;
   }

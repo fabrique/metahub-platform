@@ -8,7 +8,7 @@
   }
 
   .card-grid__title {
-    @include typography(heading-1, $replica-font-stack);
+    @include typography(heading-1, $montserrat-font-stack);
 
     color: $color-blue;
     font-weight: bold;
@@ -41,13 +41,13 @@
   }
 
   .card-grid__card-title {
-    @include typography(heading-2, $replica-font-stack);
+    @include typography(heading-2, $montserrat-font-stack);
 
     color: $color-blue;
   }
 
   .card-grid__card-description {
-    @include typography(body-text, $libre-font-stack);
+    @include typography(body-text, $lora-font-stack);
 
     color: $color-grey-dark;
   }

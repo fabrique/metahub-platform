@@ -1,0 +1,362 @@
+{% extends 'templates/_base.html' %}
+
+{% import 'components/organisms/search-header/search-header.html' as organisms_search_header %}
+{% import 'components/organisms/profile/profile.html' as organisms_profile %}
+{% import 'components/organisms/collection-highlights/collection-highlights.html' as organisms_collection_highlights %}
+{% import 'components/organisms/card-grid/card-grid.html' as organism_card_grid %}
+{% import 'components/structures/header/header.html' as header %}
+
+{% block page_title %}Content{% endblock %}
+
+{% block header %}
+  {{ organisms_search_header.regular(
+    variant = 'large',
+    pictures = [{
+      images: {
+        mobile: '/static/media/unsplash/cropped/landing-header.jpg',
+        portrait: '/static/media/unsplash/cropped/landing-header.jpg',
+        landscape: '/static/media/unsplash/cropped/landing-header.jpg'
+      },
+      positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 50%' },
+      width: '1920',
+      height: '1280',
+      alt: 'test description'
+    }],
+    title = 'Suchen in der Sammlung',
+    subtitle = 'Jüdische Geschichte, Biografien, Kunst, Kultur.',
+    is_homepage = true
+  )}}
+{% endblock %}
+
+{% block content %}
+{{ header.regular() }}
+<!-- {{ organisms_profile.regular(
+  subtitle = 'Lernen Sie die Sammlung kennen',
+  title = 'Eine Sammlung voll',
+  title_list = [
+    'Geschichten',
+    'Biografien'
+  ],
+  profiles = [
+    {
+      picture: {
+        images: {
+          mobile: '/static/media/unsplash/cropped/story-detail-main.jpg',
+          portrait: '/static/media/unsplash/cropped/story-detail-main.jpg',
+          landscape: '/static/media/unsplash/cropped/story-detail-main.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 50%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+      },
+      title: 'Jüdische Identität in Deutschland',
+      description: 'Was bedeutet Jüdische Identität in Deutschland im Jahre 2020?
+          Und was hat diese Frage mit dem Jüdischen Museum Frankfurt zu tun?
+          Endecken Sie unseren Sammlung durch Geschichten.',
+      link: {
+        href: '?',
+        title: 'Starte bei diesem Thema',
+        long_title: 'Starte bei diesem Thema'
+      },
+      background_images: [
+        {
+          images: {
+            mobile: '/static/media/unsplash/cropped/kevin-young-portrait.jpg',
+            portrait: '/static/media/unsplash/cropped/kevin-young-portrait.jpg',
+            landscape: '/static/media/unsplash/cropped/kevin-young-landscape.jpg'
+          },
+          positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 100%' },
+          width: '1920',
+          height: '1280',
+          alt: 'test description'
+        },
+        {
+          images: {
+          mobile: '/static/media/unsplash/cropped/article-detail-image.jpg',
+          portrait: '/static/media/unsplash/cropped/article-detail-image.jpg',
+          landscape: '/static/media/unsplash/cropped/article-detail-image.jpg'
+          },
+          positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 100%' },
+          width: '1920',
+          height: '1280',
+          alt: 'test description'
+        },
+        {
+         images: {
+          mobile: '/static/media/unsplash/cropped/luke-porter-letterbox.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 100%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+        }
+      ]
+    },
+    {
+      picture: {
+        images: {
+          mobile: '/static/media/unsplash/cropped/article-detail-image.jpg',
+          portrait: '/static/media/unsplash/cropped/article-detail-image.jpg',
+          landscape: '/static/media/unsplash/cropped/article-detail-image.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 50%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+      },
+      title: 'Deutschland',
+      description: 'Was bedeutet Jüdische Identität in Deutschland im Jahre 2020?
+          Und was hat diese Frage mit dem Jüdischen Museum Frankfurt zu tun?
+          Endecken Sie unseren Sammlung durch Geschichten.',
+      link: {
+        href: '?',
+        title: 'Starte bei diesem Thema',
+        long_title: 'Starte bei diesem Thema'
+      },
+      background_images: [
+        {
+          images: {
+            mobile: '/static/media/unsplash/cropped/article-detail-image.jpg',
+            portrait: '/static/media/unsplash/cropped/article-detail-image.jpg',
+            landscape: '/static/media/unsplash/cropped/article-detail-image.jpg'
+          },
+          positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 100%' },
+          width: '1920',
+          height: '1280',
+          alt: 'test description'
+        },
+        {
+          images: {
+          mobile: '/static/media/unsplash/cropped/highlight-4.jpg',
+          portrait: '/static/media/unsplash/cropped/highlight-4.jpg',
+          landscape: '/static/media/unsplash/cropped/highlight-4.jpg'
+          },
+          positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 100%' },
+          width: '1920',
+          height: '1280',
+          alt: 'test description'
+        },
+        {
+         images: {
+          mobile: '/static/media/unsplash/cropped/article-detail-image.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 100%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+        }
+      ]
+    }
+  ]
+)}}
+
+{{ organisms_collection_highlights.regular(
+  title = 'Highlights der Sammlung',
+  introduction = '<p>Das Jüdische Museum Frankfurt ist das älteste kommunale jüdische Museum in Deutschland. Die Sammlung umfasst mehr als 20.000 Objekte. Dazu gehören <a href="/search-results/search-results.html?search=objekte">Objekte</a>, <a>Kunstwerke</a>, <a>Geschichten</a>, <a>Biografien</a> und <a>Familiennachlässe</a> aus unseren sechs <a>Sammlungsbereichen.</a> </p>',
+  cards = [
+    {
+      picture: {
+        images: {
+          mobile: '/static/media/unsplash/cropped/highlight-1.jpg',
+          portrait: '/static/media/unsplash/cropped/highlight-1.jpg',
+          landscape: '/static/media/unsplash/cropped/highlight-1.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 100%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+      },
+      description: 'Dieses Geschirr stammt aus der jüdischen Gemeinde Adelsberg in Unterfranken. Kanne und Schüssel gehörten ursprünglich nicht zusammen. Die Sogenannte Leviten-Kanne wird in der Synagoge benutzt.',
+      link: {
+        title: 'Vorbesitzerin Alice Betty Frank',
+        href: '?'
+      },
+      detail: 'orbesitzerin Alice Betty Frank',
+      location: 'museum judengasse'
+    },
+    {
+      picture: {
+        images: {
+          mobile: '/static/media/unsplash/cropped/highlight-2.jpg',
+          portrait: '/static/media/unsplash/cropped/highlight-2.jpg',
+          landscape: '/static/media/unsplash/cropped/highlight-2.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 100%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+      },
+      description: 'Dieses Geschirr stammt aus der jüdischen Gemeinde Adelsberg in Unterfranken. Kanne und Schüssel gehörten ursprünglich nicht zusammen. Die Sogenannte Leviten-Kanne wird in der Synagoge benutzt.',
+      link: {
+        title: 'Vorbesitzerin Alice Betty Frank',
+        href: '?'
+      },
+      detail: 'orbesitzerin Alice Betty Frank',
+      location: 'museum judengasse'
+    },
+    {
+      picture: {
+        images: {
+          mobile: '/static/media/unsplash/cropped/highlight-3.jpg',
+          portrait: '/static/media/unsplash/cropped/highlight-3.jpg',
+          landscape: '/static/media/unsplash/cropped/highlight-3.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 100%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+      },
+      description: 'Dieses Geschirr stammt aus der jüdischen Gemeinde Adelsberg in Unterfranken. Kanne und Schüssel gehörten ursprünglich nicht zusammen. Die Sogenannte Leviten-Kanne wird in der Synagoge benutzt.',
+      link: {
+        title: 'Vorbesitzerin Alice Betty Frank',
+        href: '?'
+      },
+      detail: 'orbesitzerin Alice Betty Frank',
+      location: 'museum judengasse'
+    },
+    {
+      picture: {
+        images: {
+          mobile: '/static/media/unsplash/cropped/highlight-4.jpg',
+          portrait: '/static/media/unsplash/cropped/highlight-4.jpg',
+          landscape: '/static/media/unsplash/cropped/highlight-4.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 100%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+      },
+      description: 'Dieses Geschirr stammt aus der jüdischen Gemeinde Adelsberg in Unterfranken. Kanne und Schüssel gehörten ursprünglich nicht zusammen. Die Sogenannte Leviten-Kanne wird in der Synagoge benutzt.',
+      link: {
+        title: 'Vorbesitzerin Alice Betty Frank',
+        href: '?'
+      },
+      detail: 'orbesitzerin Alice Betty Frank',
+      location: 'museum judengasse'
+    },
+    {
+      picture: {
+        images: {
+          mobile: '/static/media/unsplash/cropped/highlight-5.jpg',
+          portrait: '/static/media/unsplash/cropped/highlight-5.jpg',
+          landscape: '/static/media/unsplash/cropped/highlight-5.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 100%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+      },
+      description: 'Dieses Geschirr stammt aus der jüdischen Gemeinde Adelsberg in Unterfranken. Kanne und Schüssel gehörten ursprünglich nicht zusammen. Die Sogenannte Leviten-Kanne wird in der Synagoge benutzt.',
+      link: {
+        title: 'Vorbesitzerin Alice Betty Frank',
+        href: '?'
+      },
+      detail: 'orbesitzerin Alice Betty Frank',
+      location: 'museum judengasse'
+    }
+  ]
+)}}
+
+{{ organism_card_grid.regular(
+  title = 'Unsere Sammlungsbereiche',
+  cards = [
+    {
+      picture: {
+        images: {
+          mobile: '/static/media/unsplash/cropped/card-1.jpg',
+          portrait: '/static/media/unsplash/cropped/card-1.jpg',
+          landscape: '/static/media/unsplash/cropped/card-1.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 50%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+      },
+      title: 'Die Judaicasammlung',
+      description: 'Zeremonialkunst in Geschichte und Gegenwart'
+    },
+    {
+      picture: {
+        images: {
+          mobile: '/static/media/unsplash/cropped/card-2.jpg',
+          portrait: '/static/media/unsplash/cropped/card-2.jpg',
+          landscape: '/static/media/unsplash/cropped/card-2.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 50%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+      },
+      title: 'Die Judaicasammlung',
+      description: 'Zeremonialkunst in Geschichte und Gegenwart'
+    },
+    {
+      picture: {
+        images: {
+          mobile: '/static/media/unsplash/cropped/card-3.jpg',
+          portrait: '/static/media/unsplash/cropped/card-3.jpg',
+          landscape: '/static/media/unsplash/cropped/card-3.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 50%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+      },
+      title: 'Die Judaicasammlung',
+      description: 'Zeremonialkunst in Geschichte und Gegenwart'
+    },
+    {
+      picture: {
+        images: {
+          mobile: '/static/media/unsplash/cropped/card-4.jpg',
+          portrait: '/static/media/unsplash/cropped/card-4.jpg',
+          landscape: '/static/media/unsplash/cropped/card-4.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 50%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+      },
+      title: 'Die Judaicasammlung',
+      description: 'Zeremonialkunst in Geschichte und Gegenwart'
+    },
+    {
+      picture: {
+        images: {
+          mobile: '/static/media/unsplash/cropped/card-5.jpg',
+          portrait: '/static/media/unsplash/cropped/card-5.jpg',
+          landscape: '/static/media/unsplash/cropped/card-5.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 50%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+      },
+      title: 'Die Judaicasammlung',
+      description: 'Zeremonialkunst in Geschichte und Gegenwart'
+    },
+    {
+      picture: {
+        images: {
+          mobile: '/static/media/unsplash/cropped/card-6.jpg',
+          portrait: '/static/media/unsplash/cropped/card-6.jpg',
+          landscape: '/static/media/unsplash/cropped/card-6.jpg'
+        },
+        positions: { mobile: '100% 100%', portrait: '100% 66.6%', landscape: '50% 50%' },
+        width: '1920',
+        height: '1280',
+        alt: 'test description'
+      },
+      title: 'Die Judaicasammlung',
+      description: 'Zeremonialkunst in Geschichte und Gegenwart'
+    }
+  ]
+)}} -->
+
+
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

@@ -46,7 +46,7 @@
   }
 
   .context-cards-overlay__title {
-    @include typography(caption, $replica-font-stack);
+    @include typography(caption, $montserrat-font-stack);
 
     text-align: center;
     text-transform: uppercase;
@@ -92,11 +92,6 @@
   width: 300px;
   z-index: $z-index-context-ribbon;
 
-  .menu-bar--sticky & {
-    //top: 350px - 126px;  // MKR enable this for animations smoothness not for now
-    top: 350px;
-  }
-
   @include landscape {
     display: flex;
   }
@@ -114,7 +109,7 @@
     margin-bottom: 20px;
     text-transform: uppercase;
 
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
 
     .context-cards-overlay__title-top,
     .context-cards-overlay__title-bottom {

@@ -6,13 +6,13 @@
 
 .richtext--regular {
   h1 {
-    @include typography(heading-1, $replica-font-stack, true, true);
+    @include typography(heading-1, $montserrat-font-stack, true, true);
 
     color: $color-blue;
   }
 
   h2 {
-    @include typography(heading-2, $replica-font-stack, true, true);
+    @include typography(heading-2, $montserrat-font-stack, true, true);
 
     color: $color-blue;
   }
@@ -21,14 +21,14 @@
   h4,
   h5,
   h6 {
-    @include typography(sub-heading, $replica-font-stack, true, true);
+    @include typography(sub-heading, $montserrat-font-stack, true, true);
 
     color: $color-blue;
     font-weight: bold;
   }
 
   p {
-    // @include typography(body-text, $libre-font-stack);
+    @include typography(body-text, $lora-font-stack);
   }
 }
 

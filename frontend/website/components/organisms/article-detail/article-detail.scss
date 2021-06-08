@@ -59,7 +59,7 @@
   }
 
   .article-detail__reading-time {
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
 
     color: $color-blue;
     margin-bottom: -.5em;
