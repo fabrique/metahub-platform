@@ -1,10 +1,20 @@
-@import '../../../assets/stylesheets/utilities/mixins/clearfix';
-
 .footer {
-  @include clearfix;
+  @include container;
 
-  contain: content;
-  margin-top: auto;
-  position: relative;
-  z-index: 1;
+  display: flex;
+  font-family: $montserrat-font-stack;
+  font-size: 14px;
+  font-weight: #{get-montserrat-weight(normal)};
+  justify-content: space-between;
+  width: 100%;
 }
+
+.footer__links {
+  a {
+    color: $color-black;
+  }
+}
+
+// .footer__copyright {
+
+// }

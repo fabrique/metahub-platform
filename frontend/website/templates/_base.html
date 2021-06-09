@@ -3,9 +3,8 @@
 {% import 'components/organisms/context-cards-overlay/context-cards-overlay.html' as context_overlay %}
 {% import 'components/organisms/lightbox/lightbox.html' as lightbox %}
 {% import 'components/structures/cookie-bar/cookie-bar.html' as cookie_bar %}
-{% import 'components/structures/footer-bar/footer-bar.html' as footer_bar %}
+{% import 'components/structures/footer/footer.html' as footer %}
 {% import 'components/structures/grid-overlay/grid-overlay.html' as grid_overlay %}
-{% import 'components/structures/menu-bar/menu-bar.html' as menu_bar %}
 {% import 'components/structures/menu-overlay/menu-overlay.html' as menu_overlay %}
 {% import 'components/structures/skip-to-main/skip-to-main.html' as skip_to_main %}
 
@@ -53,54 +52,26 @@
     {#<script src="{{ static }}/scripts/base.js{{ cachebuster }}" type="module" crossorigin></script>#}
 
     <div class="content">
-      {{ skip_to_main.regular() }}
-      {% block header_bar %}
-        {{ menu_bar.regular(
-          menu_items = [
-            { href: '?', title: 'Die Sammlung' },
-            { href: '?', title: 'Suchen in der Sammlung', icon_before: 'custom/ic_slash', icon_after: 'custom/ic_search' }
-          ],
-          address = 'Derzeit im Umbau, Bertha-Pappenheim-Platz 1',
-          address2 = 'Heute geschlossen, Battonnstrasse 47',
-          languages = ['Deutsche', 'English']
-        ) }}
-      {% endblock %}
-
-      <header class="header" role="banner">
-        {% block header %}
-        {% endblock %}
-      </header>
+      <!-- {{ skip_to_main.regular() }} -->
 
       <main id="main" class="main page-content" role="main">
         {% block content %}
         {% endblock %}
       </main>
 
-      <footer class="footer" role="contentinfo">
-        {% block footer_bar %}
-          {{ footer_bar.simple(
-            links = [
-              { href: '?', title: 'Kontakt' },
-              { href: '?', title: 'Impressum' },
-              { href: '?', title: 'Datenschutz' },
-              { href: '?', title: 'Barrierefreiheit' }
-            ],
-            context = true
-          ) }}
-        {% endblock %}
-
-        {% block footer %}
-        {% endblock %}
-      </footer>
+      {{ footer.regular(
+        footer_links = [
+          { href: '?', title: 'Privacy' },
+          { href: '?', title: 'Term of use' }
+        ]
+      ) }}
     </div>
 
     <div class="overlays" role="dialog">
       {% block overlays %}
       {% endblock %}
-
       {{ cookie_bar.regular() }}
     </div>
-
     {# Browser support for type=module is Chrome 61+, Firefox 60+, Edge 16+, Safari 10.1+, Opera 48+ #}
     {# Assume the fallback is executed for all other browsers and plan polyfills accordingly #}
     <script src="{{ static }}/scripts/main.js{{ cachebuster }}" type="module" crossorigin></script>

@@ -3,68 +3,29 @@
 {% import 'components/atoms/link/link.html' as atom_link %}
 {% import 'components/atoms/icon-button/icon-button.html' as atom_icon_button %}
 
-{% macro regular(menu_items = [], languages = [], address = '', address2 = '', navigation_aria_label = '', main_navigation_aria_label = '', menu_button_title = '', logo_href = '', is_home_page = false, fav_url = '/', back_url = '/') %}
+{% macro regular(menu_items = [], languages = [], navigation_aria_label = '', main_navigation_aria_label = '') %}
   <section class="menu-bar">
-    <nav class="menu-bar__top-bar" aria-label="{{ navigation_aria_label }}">
-      <a class="menu-bar__left-wrapper" href="https://www.juedischesmuseum.de/besuchen/juedisches-museum-frankfurt/">
-        <div class="menu-bar__logo">
-          {{ atom_logo.regular() }}
-        </div>
-
-        <div class="menu-bar__address">
-          <span class="menu-bar__address-link">{{ address }}</span>
-          <span class="menu-bar__address-arrow">{% include 'assets/icons/custom/arrow-right-icon.svg' %}</span>
-        </div>
-      </a>
-
-      <a class="menu-bar__right-wrapper"  href="https://www.juedischesmuseum.de/besuchen/museum-judengasse/">
-        <div class="menu-bar__logo-alt">
-          {{ atom_logo.reuse() }}
-        </div>
-
-        <div class="menu-bar__address">
-          <span class="menu-bar__address-link">{{ address2 }}</span>
-          <span class="menu-bar__address-arrow">{% include 'assets/icons/custom/arrow-right-icon.svg' %}</span>
-        </div>
-      </a>
-    </nav>
-
     <nav class="menu-bar__nav-bar">
-      <div class="menu-bar__grid menu-bar__wrapper" aria-label="{{ main_navigation_aria_label }}">
-        <button class="menu-bar__menu-btn" aria-expanded="false">MENÜ</button>
+      <div class="menu-bar__wrapper" aria-label="{{ main_navigation_aria_label }}">
+        <button class="menu-bar__menu-btn" aria-expanded="false">
+          <svg class="menu-bar__menu-btn__icon" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line y1="2" x2="36" y2="2" stroke="currentColor" stroke-width="4"/>
+            <line y1="12" x2="36" y2="12" stroke="currentColor" stroke-width="4"/>
+            <line y1="22" x2="36" y2="22" stroke="currentColor" stroke-width="4"/>
+          </svg>
+        </button>
 
-        <ul class="menu-bar__links" hidden role="menubar">
-          <li class="menu-bar__menu-item">
-              {{ atom_link.regular(classes = 'menu-bar__back-link', href = 'https://www.juedischesmuseum.de/', title = 'zurück zur Homepage', icon_before = 'custom/chevron-left') }}
-          </li>
-
+        <ul class="menu-bar__links" role="menubar" hidden>
           {% for link in menu_items %}
             <li class="menu-bar__menu-item">
               {{ atom_link.regular(classes = link.classes, href = link.href, title = link.title, target = link.target, icon_before = link.icon_before, icon_after = link.icon_after) }}
             </li>
           {% endfor %}
-
           <li class="menu-bar__menu-item">
-            {{ atom_link.regular(classes = 'menu-bar__favorites-link', href = fav_url, title = '', icon_before = 'custom/ic_slash', icon_after = 'custom/heart-icon') }}
+            {{ atom_link.regular(classes = link.classes, href = "?", title = "EN", target = link.target) }}
           </li>
         </ul>
 
-        <ul class="menu-bar__links-mobile" hidden role="menubar">
-          {% for link in menu_items %}
-            <li class="menu-bar__menu-item">
-              {{ atom_link.regular(classes = link.classes, href = link.href, title = link.title, target = link.target ) }}
-              <span class="menu-bar__item-slash">{% include 'assets/icons/custom/ic_slash.svg' %}</span>
-            </li>
-          {% endfor %}
-
-          <li class="menu-bar__menu-item">
-            {{ atom_link.regular(classes = 'menu-bar__favorites-link', href = fav_url, title = 'Meine Sammlung', icon_before = 'custom/heart-icon') }}
-          </li>
-
-           <li class="menu-bar__menu-item">
-            {{ atom_link.regular(classes = 'menu-bar__back-link', href = back_url, title = 'zurück zur Homepage', icon_before = 'custom/chevron-left') }}
-          </li>
-        </ul>
       </div>
     </nav>
   </section>

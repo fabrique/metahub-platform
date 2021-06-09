@@ -1,8 +1,13 @@
-@import '../../../assets/stylesheets/utilities/mixins/clearfix';
-
 .header {
-  @include clearfix;
+  @include grid-container;
 
-  position: relative;
-  z-index: 100;
+  padding: 15px var(--grid-gutter);
+}
+
+.header__logo-wrapper {
+  grid-column: auto / span 2;
+}
+
+.header__menu-bar {
+  grid-column: auto / span 10;
 }

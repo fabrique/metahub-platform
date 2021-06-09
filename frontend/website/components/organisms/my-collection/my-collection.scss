@@ -2,7 +2,7 @@
   background-color: $color-white;
 
   .my-collection__title {
-    @include typography(heading-1, $replica-font-stack);
+    @include typography(heading-1, $montserrat-font-stack);
 
     color: $color-blue;
     grid-column: column 1 / span 12;
@@ -16,7 +16,7 @@
   }
 
   .my-collection__subtitle {
-    @include typography(heading-2, $replica-font-stack);
+    @include typography(heading-2, $montserrat-font-stack);
 
     color: $color-grey-extradark;
     grid-column: column 1 / span 12;
@@ -38,7 +38,7 @@
   }
 
   .my-collection__download-button-text {
-    @include typography(caption, $replica-font-stack);
+    @include typography(caption, $montserrat-font-stack);
 
     margin-top: 10px;
   }
@@ -145,7 +145,7 @@
   margin-bottom: 40px;
 
   .my-collection__total-results {
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
 
     margin-bottom: 60px;
   }

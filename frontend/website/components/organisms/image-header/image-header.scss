@@ -140,19 +140,19 @@
   }
 
   .image-header__date {
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
   }
 
   .image-header__name {
     text-transform: uppercase;
 
-    @include typography(sub-heading, $replica-font-stack);
+    @include typography(sub-heading, $montserrat-font-stack);
   }
 
   .image-header__title {
     text-transform: uppercase;
 
-    @include typography(heading-1, $replica-font-stack);
+    @include typography(heading-1, $montserrat-font-stack);
   }
 
   &.image-header__label--white {
