@@ -1,4 +1,4 @@
-{% import 'components/atoms/logo/logo.html' as logo %}
+{% import 'components/atoms/logo/logo.html' as atom_logo %}
 {% import 'components/structures/menu-bar/menu-bar.html' as menu_bar %}
 
 {% macro regular(hasLogo = true) %}
@@ -6,7 +6,7 @@
 
     <div class="header__logo-wrapper">
       {% if hasLogo %}
-        {{ logo.regular() }}
+        {{ atom_logo.regular() }}
       {% endif %}
     </div>
     <div class="header__menu-bar">

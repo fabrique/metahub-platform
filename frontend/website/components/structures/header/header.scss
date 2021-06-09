@@ -1,7 +1,7 @@
 .header {
   @include grid-container;
 
-  padding: 15px var(--grid-gutter);
+  padding: 15px var(--grid-margin);
 }
 
 .header__logo-wrapper {
