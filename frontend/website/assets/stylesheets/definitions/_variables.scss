@@ -54,8 +54,6 @@ $z-index-menu-overlay: 2048;
 // Text shadows
 //$text-shadow-on-photo: 1px 1px 15px rgba(0, 0, 0, .15);
 
-// Header height for menu collapse
-$header-height: 63px;
 // Exposed variables
 :root {
   // None yet
@@ -65,4 +63,9 @@ $header-height: 63px;
   --color-pink: #{$color-pink};
   --color-magenta: #{$color-magenta};
   --theme-color: var(--color-magenta);
+  --header-height: 63px;
+
+  @include landscape {
+    --header-height: 70.75px;
+  }
 }

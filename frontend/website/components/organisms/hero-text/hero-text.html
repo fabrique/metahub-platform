@@ -1,0 +1,29 @@
+{% macro regular(title = '', text = '', date = '', author = '') %}
+  <section class="hero-text">
+    <article class="hero-text__container">
+      <div class="hero-text__inner">
+        {% if title %}
+          <h1>{{ title }}</h1>
+        {% endif %}
+
+        {% if text %}
+          <p>
+            {{ text }}
+          </p>
+        {% endif %}
+      </div>
+      <div class="hero-text__meta">
+        {% if date %}
+          <span class="hero-text__meta__date">
+            {{ date }}
+          </span>
+        {% endif %}
+        {% if author %}
+          <span class="hero-text__meta__author">
+            {{ author }}
+          </span>
+        {% endif %}
+      </div>
+    </article>
+  </section>
+{% endmacro %}

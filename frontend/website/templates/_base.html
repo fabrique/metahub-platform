@@ -7,7 +7,7 @@
 {% import 'components/structures/grid-overlay/grid-overlay.html' as grid_overlay %}
 {% import 'components/structures/menu-overlay/menu-overlay.html' as menu_overlay %}
 {% import 'components/structures/skip-to-main/skip-to-main.html' as skip_to_main %}
-
+{% import 'components/structures/header/header.html' as header %}
 {% set cachebuster = '' if environment == 'development' else '?v=' + random_hash() %}
 
 <html lang="de" class="{% if debug_grid %}debug-layout debug-grid debug-names{% endif %}">
@@ -51,10 +51,11 @@
     <script>{{ include_raw('build/static/scripts/base.js')|replace('\n;\n', '\n')|replace('\n//# sourceMappingURL=base.js.map', '') }}</script>
     {#<script src="{{ static }}/scripts/base.js{{ cachebuster }}" type="module" crossorigin></script>#}
 
-    <div class="content">
+      {% block header %}
+        {{ header.regular() }}
+      {% endblock %}
       <!-- {{ skip_to_main.regular() }} -->
-
-      <main id="main" class="main page-content" role="main">
+      <main class="content" role="main">
         {% block content %}
         {% endblock %}
       </main>
@@ -65,7 +66,6 @@
           { href: '?', title: 'Term of use' }
         ]
       ) }}
-    </div>
 
     <div class="overlays" role="dialog">
       {% block overlays %}
