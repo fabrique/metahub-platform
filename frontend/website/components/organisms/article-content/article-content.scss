@@ -1,5 +1,6 @@
 
 .article-content {
+  color: var(--theme-color); // NOTE: TEST
   contain: content;
   margin: var(--margin-lg) 0 0 0;
   position: relative;
