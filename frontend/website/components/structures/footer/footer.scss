@@ -2,13 +2,18 @@
   @include container;
 
   display: flex;
+  font-family: $montserrat-font-stack;
+  font-size: 14px;
+  font-weight: #{get-montserrat-weight(normal)};
   justify-content: space-between;
   width: 100%;
 }
 
-// .footer__links {
-
-// }
+.footer__links {
+  a {
+    color: $color-black;
+  }
+}
 
 // .footer__copyright {
 

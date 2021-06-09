@@ -5,9 +5,9 @@
 }
 
 .header__logo-wrapper {
-  grid-column: column 1 / span 2;
+  grid-column: auto / span 2;
 }
 
 .header__menu-bar {
-  grid-column: column 4 / span 9;
+  grid-column: auto / span 10;
 }
