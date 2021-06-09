@@ -7,6 +7,10 @@
   Static Templates
 {%- endblock %}
 
+{% block page_theme -%}
+  theme--blue
+{%- endblock %}
+
 {% block content %}
   {% call article_content.regular() %}
     <h2>PLEASE NOTE: The static templates seem to be out of date in some places. -EKL</h2>
@@ -22,5 +26,7 @@
       <li><a href="/my-collection/my-collection.html">My Collection</a></li>
       <li><a href="/cookies/cookies.html">Cookies</a></li>
     </ul>
+
+    <p>Bla kleurtest</p>
   {% endcall %}
 {% endblock %}

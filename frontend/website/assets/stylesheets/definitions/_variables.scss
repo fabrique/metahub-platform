@@ -4,11 +4,17 @@ $color-black: #000;
 $color-white: #fff;
 
 // Theme colors
+$color-blue: #00f;
+$color-purple: #8700ff;
+$color-pink: #d200c8;
+$color-magenta: #e6006e;
+
+// OLD colors
 $color-pink: #871987;
 $color-blue: #242d8c;
 $color-green: #39e492;
 
-// Darkened theme colors
+// OLD Darkened theme colors
 $color-pink-dark: #f2026a;
 $color-blue-dark: #11717e;
 $color-green-dark: #16a25e;
@@ -52,4 +58,9 @@ $z-index-menu-overlay: 2048;
 :root {
   // None yet
   //--bezier-fancy: $bezier-fancy;
+  --color-blue: #{$color-blue};
+  --color-purple: #{$color-purple};
+  --color-pink: #{$color-pink};
+  --color-magenta: #{$color-magenta};
+  --theme-color: var(--color-magenta);
 }
