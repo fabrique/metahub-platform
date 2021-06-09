@@ -1,13 +1,23 @@
 .header {
-  @include grid-container;
+  min-height: $header-height;
+  padding-bottom: 15px;
+  padding-top: 15px;
 
-  padding: 15px var(--grid-margin);
+  @include grid-container;
 }
 
 .header__logo-wrapper {
-  grid-column: auto / span 2;
+  grid-column: auto / span 6;
+
+  @include landscape {
+    grid-column: auto / span 2;
+  }
 }
 
 .header__menu-bar {
-  grid-column: auto / span 10;
+  grid-column: auto / span 6;
+
+  @include landscape {
+    grid-column: auto / span 10;
+  }
 }

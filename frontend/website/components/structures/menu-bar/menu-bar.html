@@ -7,15 +7,20 @@
   <section class="menu-bar">
     <nav class="menu-bar__nav-bar">
       <div class="menu-bar__wrapper" aria-label="{{ main_navigation_aria_label }}">
-        <button class="menu-bar__menu-btn" aria-expanded="false">
-          <svg class="menu-bar__menu-btn__icon" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button class="menu-bar__menu-btn js-menu-bar__menu-btn" aria-expanded="false">
+          <svg class="menu-bar__menu-btn__icon menu-bar__menu-btn__icon--open" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line y1="2" x2="36" y2="2" stroke="currentColor" stroke-width="4"/>
             <line y1="12" x2="36" y2="12" stroke="currentColor" stroke-width="4"/>
             <line y1="22" x2="36" y2="22" stroke="currentColor" stroke-width="4"/>
           </svg>
+          <svg class="menu-bar__menu-btn__icon menu-bar__menu-btn__icon--close" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M25 2L2 25" stroke="currentColor" stroke-width="4"/>
+            <path d="M2 2L25 25" stroke="currentColor" stroke-width="4"/>
+          </svg>
+
         </button>
 
-        <ul class="menu-bar__links" role="menubar" hidden>
+        <ul class="menu-bar__links js-menu-bar__links" role="menubar" hidden>
           {% for link in menu_items %}
             <li class="menu-bar__menu-item">
               {{ atom_link.regular(classes = link.classes, href = link.href, title = link.title, target = link.target, icon_before = link.icon_before, icon_after = link.icon_after) }}

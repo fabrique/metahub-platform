@@ -5,10 +5,8 @@ import onScrollChange from '../../../assets/scripts/utilities/on-scroll-change'
 export default class MenuBarComponent extends Component {
   init () {
     this.menu = this.element
-    this.sticky = this.element.querySelector('.menu-bar__nav-bar').offsetTop
-    this.menuButton = this.element.querySelector('.menu-bar__menu-btn')
-    this.links = this.element.querySelector('.menu-bar__links')
-    this.mobileLinks = this.element.querySelector('.menu-bar__links')
+    this.menuButton = this.element.querySelector('.js-menu-bar__menu-btn')
+    this.links = this.element.querySelector('.js-menu-bar__links')
 
     this.menuIsOpen = false
     this.menuButton.addEventListener('click', () => this.toggleMobileMenu())
@@ -31,18 +29,6 @@ export default class MenuBarComponent extends Component {
     }, { passive: true })
   }
 
-  makeStickyMenu () {
-    // match media for mobile
-    const isMobile = window.matchMedia('(max-width: 800px)').matches
-    if (!isMobile) {
-      if (window.scrollY >= (this.sticky - 10)) { // 10 pixel offset
-        document.body.classList.add('menu-bar--sticky') // add to body to easier compensate the fixed element void of 126 pixels...
-      } else {
-        document.body.classList.remove('menu-bar--sticky')
-      }
-    }
-  }
-
   toggleMobileMenu () {
     if (this.isTogglingMenu) {
       return
@@ -51,10 +37,11 @@ export default class MenuBarComponent extends Component {
     this.isTogglingMenu = true
 
     if (!this.menuIsOpen) {
-      this.mobileLinks.classList.add('menu-bar__links--open')
+      this.links.classList.add('js-menu-bar__links--open')
+      this.menuButton.classList.add('js-menu-bar__menu-btn--open')
       this.menuIsOpen = true
       this.menuButton.setAttribute('aria-expanded', 'true')
-      this.mobileLinks.removeAttribute('hidden')
+      this.links.removeAttribute('hidden')
 
       document.body.style.overflow = 'hidden'
       document.body.style.height = '100%'
@@ -63,10 +50,11 @@ export default class MenuBarComponent extends Component {
 
       window.dispatchEvent(new CustomEvent('open-menu'))
     } else if (this.menuIsOpen) {
-      this.mobileLinks.classList.remove('menu-bar__links--open')
+      this.links.classList.remove('js-menu-bar__links--open')
+      this.menuButton.classList.remove('js-menu-bar__menu-btn--open')
       this.menuIsOpen = false
       this.menuButton.setAttribute('aria-expanded', 'false')
-      this.mobileLinks.hidden = true
+      this.links.hidden = true
 
       document.body.style.overflow = 'visible'
       document.body.style.height = 'auto%'

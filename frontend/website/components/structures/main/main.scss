@@ -1,8 +1,0 @@
-@import '../../../assets/stylesheets/utilities/mixins/clearfix';
-
-.main {
-  @include clearfix;
-  //padding-top: var(--margin);
-  position: relative;
-  z-index: 1;
-}

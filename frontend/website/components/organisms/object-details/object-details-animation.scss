@@ -16,11 +16,6 @@
     }
   }
 
-  .page-content { // give top margin to compensate for fixed positioned header
-    margin-top: calc(100vh - 123px);
-    padding-top: 130vh; // to make room for animating the image
-  }
-
   .image-header__label { // this can be another class later, and transition as well
     transition: opacity 750ms ease-out;
   }
