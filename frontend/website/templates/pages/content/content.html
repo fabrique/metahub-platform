@@ -2,7 +2,7 @@
 
 {% import 'components/structures/header/header.html' as header %}
 {% import 'components/organisms/hero-text/hero-text.html' as organisms_hero_text %}
-
+{% import 'components/organisms/hero-image/hero-image.html' as organisms_hero_image %}
 {% block page_title %}Content{% endblock %}
 
 {% block header %}
@@ -11,12 +11,14 @@
 
 {% block content %}
 
-{{ organisms_hero_text.regular(
-  title = 'LUDWIG MEIDNER ARCHIVE - Exiled Jewish Artists',
-  text = 'The Jewish Museum has been in charge of the artistic estate of Ludwig Meidner since 1994 and administers it through its Ludwig Meidner Archive. Other estates of artists forced into exile during the Nazi era because of their Jewish origins have been added in the meantime.',
-  date = 'November 17, 2020',
-  author = 'Article By Alma Fabiani'
-) }}
+  {{ organisms_hero_image.regular() }}
+
+  {{ organisms_hero_text.regular(
+    title = 'LUDWIG MEIDNER ARCHIVE - Exiled Jewish Artists',
+    text = 'The Jewish Museum has been in charge of the artistic estate of Ludwig Meidner since 1994 and administers it through its Ludwig Meidner Archive. Other estates of artists forced into exile during the Nazi era because of their Jewish origins have been added in the meantime.',
+    date = 'November 17, 2020',
+    author = 'Article By Alma Fabiani'
+  ) }}
 
 {% endblock %}
 
