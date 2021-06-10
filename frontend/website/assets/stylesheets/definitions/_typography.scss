@@ -7,6 +7,7 @@
 // 3. when applying, use @typography(name) (inside breakpoint is fine)
 
 @mixin typography($name: '', $font-stack:'' ,$margin-top: false, $margin-bottom: false, $adaptive-margins: true) {
+  color: var(--#{$name}-color);
   // @if meta.mixin-exists($name) {
   //   @warn 'Typography mixin "#{$name}" does not exist';
   // } @else {
