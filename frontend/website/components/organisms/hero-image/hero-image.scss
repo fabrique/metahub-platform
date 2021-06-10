@@ -1,8 +1,8 @@
 .hero-image {
   background-color: var(--theme-color);
-}
 
-.hero-image__image {
-  min-height: calc(100vh - var(--header-height));
-  object-fit: cover;
+  .picture__image {
+    height: calc(100vh - var(--header-height));
+    object-fit: cover;
+  }
 }

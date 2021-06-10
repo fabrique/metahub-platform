@@ -6,18 +6,24 @@
   @include grid-container;
 }
 
-.header__logo-wrapper {
-  grid-column: auto / span 6;
+.header__inner {
+  display: flex;
+  grid-column: auto / span 12;
+  justify-content: space-between;
+}
 
-  @include landscape {
-    grid-column: auto / span 2;
+.header__logo-wrapper {
+  max-width: 208px;
+
+  @include notebook {
+    max-width: 238px;
   }
 }
 
 .header__menu-bar {
-  grid-column: auto / span 6;
+  flex: 1;
 
-  @include landscape {
-    grid-column: column 4 / span 9;
+  @include notebook {
+    margin-left: 8%;
   }
 }

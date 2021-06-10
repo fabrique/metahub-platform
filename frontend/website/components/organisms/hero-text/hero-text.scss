@@ -4,8 +4,8 @@
   color: $color-white;
   display: flex;
   font-family: $montserrat-font-stack;
-  padding-bottom: 30px;
-  padding-top: 30px;
+  padding-bottom: 40px;
+  padding-top: 40px;
 
   &:first-child {
     min-height: calc(100vh - var(--header-height));
@@ -46,7 +46,7 @@
 }
 
 .hero-text__meta {
-  grid-column: column 2 / span 12;
+  grid-column: column 2 / span 11;
 }
 
 .hero-text__meta__date,

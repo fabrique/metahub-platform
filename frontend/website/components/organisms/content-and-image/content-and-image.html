@@ -1,0 +1,12 @@
+{% import 'components/atoms/richtext/richtext.html' as atom_richtext %}
+
+{% macro regular() %}
+  <section class="text-and-image">
+    <div class="text-and-image_grid">
+      {% call atom_richtext.regular() %}
+        {% set child_context = caller() %}
+        {{ child_context }}
+      {% endcall %}
+    </div>
+  </section>
+{% endmacro %}

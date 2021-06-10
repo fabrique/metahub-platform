@@ -1,6 +1,5 @@
 {% extends 'templates/_base.html' %}
 
-{% import 'components/organisms/article-video-embed/article-video-embed.html' as article_video_embed %}
 {% import 'components/organisms/article-cookies/article-cookies.html' as organism_article_cookies %}
 {% import 'components/organisms/article-content/article-content.html' as organism_article_content %}
 
@@ -26,27 +25,6 @@
     </p>
   {% endcall %}
 
-  {{ article_video_embed.regular(
-    caption = 'Their success serves to remind us that readers are not sick of content',
-    video = {
-      video_preview: {
-        images: { mobile: '/static/media/unsplash/cropped/video-placeholder.jpg' },
-        positions: { mobile: '50% 50%' },
-        fits: { mobile: 'cover' },
-        width: 1920,
-        height: 640
-      },
-      href: 'https://vimeo.com/329812936',
-      video_id: '329812936',
-      video_type: 'vimeo',
-      duration: '1.23',
-      autoplay: false,
-      link: {
-        href: '?',
-        title: 'Link zu Video-transcript'
-      }
-    }
-  ) }}
 
 {% endblock %}
 

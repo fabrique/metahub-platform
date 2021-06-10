@@ -1,5 +1,22 @@
-{% macro regular() %}
+{% import 'components/atoms/figure/figure.html' as atom_figure %}
+
+{% macro regular(id = '', align = 'default', figure = {}) %}
   <section class="hero-image">
-    <img class="hero-image__image" src="https://via.placeholder.com/1500x700" alt="big image" />
+    <div {% if id %}id="{{ id }}"{% endif %} class="article-photo article-photo--align-{{ align }}">
+      <div class="hero-image__wrapper">
+        {% if figure.picture and not figure.picture.images %}
+          {% if (variant == 'align-fullbleed') %}
+            {{ object_replace_value(figure.picture, 'images', 'placeholders', generate_placeholders({ mobile: '530x299', portrait: '800x450', landscape: '1180x664', notebook: '1480x833', desktop: '1920x1080' })) }}
+          {% elif (variant == 'align-full') %}
+            {{ object_replace_value(figure.picture, 'images', 'placeholders', generate_placeholders({ mobile: '494x279', portrait: '739x416', landscape: '1109x624', notebook: '1360x765' })) }}
+          {% else %}
+            {{ object_replace_value(figure.picture, 'images', 'placeholders', generate_placeholders({ mobile: '576x324' })) }}
+          {% endif %}
+        {% endif %}
+
+        <!-- Image ratio: Original. Preferred: around 16:9 or 9:16 -->
+        {{ atom_figure.regular(picture = figure.picture, caption = figure.caption, subtitle = figure.caption_subtitle) }}
+      </div>
+    </div>
   </section>
 {% endmacro %}

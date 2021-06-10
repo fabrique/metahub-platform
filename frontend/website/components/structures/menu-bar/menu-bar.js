@@ -21,7 +21,7 @@ export default class MenuBarComponent extends Component {
 
       this.oldWidth = window.innerWidth
 
-      if (window.innerWidth < 800) {
+      if (window.innerWidth < 1180) {
         return
       }
 

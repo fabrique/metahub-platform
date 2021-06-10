@@ -1,0 +1,11 @@
+.text-and-image {
+  @include grid-container;
+}
+
+.text-and-image_grid {
+  grid-column: auto / span 12;
+
+  @include landscape {
+    grid-column: column 2 / span 6;
+  }
+}

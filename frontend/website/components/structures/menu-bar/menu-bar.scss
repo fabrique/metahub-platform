@@ -1,7 +1,7 @@
 .menu-bar__menu-btn {
   margin-left: auto;
 
-  @include landscape {
+  @include notebook {
     display: none;
   }
 }
@@ -27,7 +27,7 @@
   display: flex;
   justify-content: flex-end;
 
-  @include landscape {
+  @include notebook {
     display: block;
   }
 }
@@ -39,7 +39,7 @@
   margin: 0;
   padding: 0;
 
-  @include landscape {
+  @include notebook {
     display: flex;
   }
 }
@@ -47,14 +47,14 @@
 .menu-bar__menu-item {
   margin-bottom: 30px;
 
-  @include landscape {
+  @include notebook {
     margin-bottom: 0;
   }
 
   &:last-child {
     margin-top: auto;
 
-    @include landscape {
+    @include notebook {
       margin-top: 0;
     }
   }
