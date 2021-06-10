@@ -27,7 +27,7 @@ class BeeCollectMapping:
         self.log = BeeCollectSyncOccurrence(
             date_data_dump=self.data.get('ExportDate'),
             objects_in_dump=self.data.get('NumberOfObjects'),
-            artists_in_dump=self.data.get('NumberOfArtists'),
+            artists_in_dump=self.data.get('NumberOfArtists', 0),
         )
         self.log.save()
 
@@ -63,20 +63,20 @@ class BeeCollectMapping:
                     bc_inventory_number=object_data.get('InventoryNumber'),
                     bc_change_date=object_data.get('ChangeDate'),
                     bc_change_user=object_data.get('ChangeUser'),
-                    bc_object_name=object_data.get('ObjectName'),
-                    bc_credits=object_data.get('Creditline'),
-                    bc_notes=object_data.get('Notes'),
+                    bc_object_name=object_data.get('ObjectName', ''),
+                    bc_credits=object_data.get('Creditline', ''),
+                    bc_notes=object_data.get('Notes', ''),
                     bc_tags='|'.join(self.get_object_keywords_as_list(object_data)),
                     bc_images=self.get_images(object_data.get('Images')),
                     bc_image_license=self.get_image_licenses(object_data.get('Images')),
 
-                    date_acquired=object_data.get('AcquisitionDate'),
+                    date_acquired=object_data.get('AcquisitionDate', ''),
                     datings=self.get_datings_str(object_data.get('Datings')),
                     dating_from_df=self.get_datings_from(object_data.get('Datings')),
                     dating_to_df=self.get_datings_to(object_data.get('Datings')),
-                    provenance=self.get_provenance(object_data.get('Provenance')),
-                    signatures=self.get_signatures(object_data.get('Signatures')),
-                    publications=self.get_publications(object_data.get('Publications')),
+                    provenance=self.get_provenance(object_data.get('Provenance', [])),
+                    signatures=self.get_signatures(object_data.get('Signatures', [])),
+                    publications=self.get_publications(object_data.get('Publications', [])),
                     is_highlight=object_data.get('IsHighlight', False),
 
                     current_location=object_data.get('CurrentLocation'),
@@ -84,7 +84,7 @@ class BeeCollectMapping:
                     container_id=object_data.get('ContainerId'),
                     geographic_location=self.get_geographic_location(object_data.get('Keywords')),
 
-                    convolute=object_data.get('Convolute'),
+                    convolute=object_data.get('Convolute', ''),
                     series_id=self.get_series_id(object_data),
                     material=self.get_material(object_data.get('Material_Technique')),
                     dimensions=self.get_dimensions(object_data.get('Dimensions')),
@@ -101,20 +101,20 @@ class BeeCollectMapping:
                 bc_inventory_number=object_data.get('InventoryNumber'),
                 bc_change_date=object_data.get('ChangeDate'),
                 bc_change_user=object_data.get('ChangeUser'),
-                bc_object_name=object_data.get('ObjectName'),
-                bc_credits=object_data.get('Creditline'),
-                bc_notes=object_data.get('Notes'),
+                bc_object_name=object_data.get('ObjectName', ''),
+                bc_credits=object_data.get('Creditline', ''),
+                bc_notes=object_data.get('Notes', ''),
                 bc_tags='|'.join(self.get_object_keywords_as_list(object_data)),
                 bc_images=self.get_images(object_data.get('Images')),
                 bc_image_license=object_data.get('ImageLicense', 'No license specified'),
 
-                date_acquired=object_data.get('AcquisitionDate'),
+                date_acquired=object_data.get('AcquisitionDate', ''),
                 datings=self.get_datings_str(object_data.get('Datings')),
                 dating_from_df=self.get_datings_from(object_data.get('Datings')),
                 dating_to_df=self.get_datings_to(object_data.get('Datings')),
-                provenance=self.get_provenance(object_data.get('Provenance')),
-                signatures=self.get_signatures(object_data.get('Signatures')),
-                publications=self.get_publications(object_data.get('Publications')),
+                provenance=self.get_provenance(object_data.get('Provenance', [])),
+                signatures=self.get_signatures(object_data.get('Signatures', [])),
+                publications=self.get_publications(object_data.get('Publications', [])),
                 is_highlight=object_data.get('IsHighlight', False),
 
                 current_location=object_data.get('CurrentLocation'),
@@ -122,7 +122,7 @@ class BeeCollectMapping:
                 container_id=object_data.get('ContainerId'),
                 geographic_location=self.get_geographic_location(object_data.get('Keywords')),
 
-                convolute=object_data.get('Convolute'),
+                convolute=object_data.get('Convolute', ''),
                 series_id=self.get_series_id(object_data),
                 material=self.get_material(object_data.get('Material_Technique')),
                 dimensions=self.get_dimensions(object_data.get('Dimensions')),
@@ -402,7 +402,7 @@ class BeeCollectMapping:
         return ''
 
     def get_series_id(self, object_data):
-        if len(object_data.get('OtherObjects')) > 0:
+        if len(object_data.get('OtherObjects', [])) > 0:
             inv_no = object_data.get('InventoryNumber')
             if inv_no:
                 parts = inv_no.split('-')
