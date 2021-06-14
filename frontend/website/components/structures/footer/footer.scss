@@ -6,15 +6,14 @@
   font-size: 14px;
   font-weight: #{get-montserrat-weight(normal)};
   justify-content: space-between;
+  padding-bottom: 10px;
+  padding-top: 10px;
   width: 100%;
 }
 
 .footer__links {
   a {
     color: $color-black;
+    margin-right: 20px;
   }
 }
-
-// .footer__copyright {
-
-// }
