@@ -4,6 +4,7 @@
 {% import 'components/organisms/hero-text/hero-text.html' as organisms_hero_text %}
 {% import 'components/organisms/hero-image/hero-image.html' as organisms_hero_image %}
 {% import 'components/organisms/content-and-image/content-and-image.html' as organisms_content_and_image %}
+{% import 'components/organisms/article-content/article-content.html' as organisms_article_content %}
 {% import 'components/organisms/images/images.html' as organisms_images %}
 {% block page_title %}Content{% endblock %}
 
@@ -85,7 +86,7 @@
       },
       {
         picture: {
-          images: { mobile: '/static/media/unsplash/cropped/highlight-1.jpg' },
+          images: { mobile: '/static/media/unsplash/cropped/object-series-4.jpg' },
           positions: { mobile: '50% 50%' },
           fits: { mobile: 'cover' },
           width: 1920
@@ -105,7 +106,7 @@
       },
       {
         picture: {
-          images: { mobile: '/static/media/unsplash/cropped/highlight-1.jpg' },
+          images: { mobile: '/static/media/unsplash/cropped/object-series-4.jpg' },
           positions: { mobile: '50% 50%' },
           fits: { mobile: 'cover' },
           width: 1920
@@ -125,6 +126,32 @@
       }
     ]
   ) }}
+
+  {% call organisms_article_content.regular() %}
+    <h4>H4 here</h4>
+    <p>
+      Im Sommer 1990 wurden am Börneplatz die letzten erhaltenen Überreste der ehemaligen Synagoge freigelegt und dokumentiert. Im mit Abbruchschutt verfüllten Untergeschoß des Gebäudes entdeckten die Archäologinnen und Archäologen zahlreiche Fragmente des zerstörten Thoraschreins der Synagoge. Bislang ließen sich dessen Aussehen und Dimensionen lediglich anhand historischer Texte und Fotografien rekonstruieren.
+    </p>
+    <p>
+      In der Präsentation sollen die Fragmente des Thoraschreins aus der „Gemeindeorthodoxen Synagoge“ am Börneplatz – auch Horowitz-Synagoge genannt – ein Zeugnis davon ablegen, mit welcher Gewalt vor mehr als 80 Jahren das jüdische Leben in Frankfurt zerstört wurde.
+    </p>
+    <ol>
+      <li>Im Sommer 1990 wurden am Börneplatz die letzten erhaltenen Überreste der ehemaligen Synagoge freigelegt und dokumentiert.</li>
+      <li>Im Sommer 1990 wurden am Börneplatz die letzten erhaltenen Überreste.</li>
+      <li>Bislang ließen sich dessen Aussehen und Dimensionen lediglich anhand historischer Texte und Fotografien rekonstruieren.</li>
+    </ol>
+  {% endcall %}
+
+  TODOOOOO Hero dingie
+  {% call organisms_article_content.regular() %}
+    <h5>H5 here</h5>
+    <p>
+      Im Sommer 1990 wurden am Börneplatz die letzten erhaltenen Überreste der ehemaligen Synagoge freigelegt und dokumentiert. Im mit Abbruchschutt verfüllten Untergeschoß des Gebäudes entdeckten die Archäologinnen und Archäologen zahlreiche Fragmente des zerstörten Thoraschreins der Synagoge. Bislang ließen sich dessen Aussehen und Dimensionen lediglich anhand historischer Texte und Fotografien rekonstruieren.
+    </p>
+    <p>
+      In der Präsentation sollen die Fragmente des Thoraschreins aus der „Gemeindeorthodoxen Synagoge“ am Börneplatz – auch Horowitz-Synagoge genannt – ein Zeugnis davon ablegen, mit welcher Gewalt vor mehr als 80 Jahren das jüdische Leben in Frankfurt zerstört wurde.
+    </p>
+  {% endcall %}
 
 {% endblock %}
 

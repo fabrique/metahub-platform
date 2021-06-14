@@ -2,8 +2,6 @@
 $margin-top: 50px;
 
 .richtext--regular {
-  @include style-list-unordered;
-
   h2 {
     @include typography(heading-2, $montserrat-font-stack, $margin-bottom: true);
 
@@ -26,44 +24,42 @@ $margin-top: 50px;
     }
   }
 
+  h4 {
+    @include typography(heading-4, $montserrat-font-stack, $margin-bottom: true);
+
+    color: var(--theme-color);
+    text-transform: uppercase;
+
+    &:not(:first-child) {
+      margin-top: $margin-top;
+    }
+  }
+
+  h5 {
+    @include typography(heading-5, $montserrat-font-stack, $margin-bottom: true);
+
+    color: var(--theme-color);
+    text-transform: uppercase;
+
+    &:not(:first-child) {
+      margin-top: $margin-top;
+    }
+  }
+
   p {
     @include typography(body-text, $lora-font-stack, $margin-bottom: true);
   }
 
-  ul {
-    font-size: var(--body-text-font-size);
-    line-height: var(--body-text-line-height);
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  ul,
+  ol {
+    @include style-list-base;
   }
 
-  li {
-    --list-spacing: 20px;
+  ul {
+    @include style-list-unordered;
+  }
 
-    @include landscape {
-      --list-spacing: 50px;
-    }
-
-    padding-left: var(--list-spacing);
-    position: relative;
-
-    &:not(:last-child) {
-      margin-bottom: 20px;
-    }
-
-    &::before {
-      color: var(--theme-color);
-      content: '•';
-      font-size: 22px;
-      left: 0;
-      position: absolute;
-      top: 0;
-      transform: translateX(-50%);
-
-      @include landscape {
-        left: calc(#{var(--list-spacing)} / 2);
-      }
-    }
+  ol {
+    @include style-list-ordered;
   }
 }

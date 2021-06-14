@@ -11,6 +11,6 @@
   --heading-3-color: #{var(--theme-color)};
 
   @include landscape {
-    --heading-2-font-size: 32px;
+    --heading-3-font-size: 32px;
   }
 }

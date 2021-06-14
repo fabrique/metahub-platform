@@ -1,0 +1,17 @@
+
+:root {
+  --heading-5-font-size: 16px;
+  --heading-5-font-style: normal;
+  --heading-5-font-variant: normal;
+  --heading-5-font-weight: #{get-montserrat-weight(bold)};
+  --heading-5-letter-spacing: 150%;
+  --heading-5-line-height: 18px;
+  --heading-5-margin-bottom: 10px;
+  --heading-5-margin-top: 0;
+  --heading-5-color: #{var(--theme-color)};
+
+  @include landscape {
+    --heading-5-line-height: 22px;
+    --heading-5-font-size: 18px;
+  }
+}
