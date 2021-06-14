@@ -124,8 +124,8 @@
   @include container;
 }
 
-@mixin subgrid-container($columns: auto) {
+@mixin subgrid-container($columns: 'repeat(var(--grid-columns), [column] minmax(0, 1fr))') {
   display: grid;
   grid-gap: var(--grid-spacing) var(--grid-gutter);
-  grid-template-columns: $columns;
+  grid-template-columns: unquote($columns);
 }

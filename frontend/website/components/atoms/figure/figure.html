@@ -5,7 +5,9 @@
     {{ atom_picture.regular(images = picture.images, fits = picture.fits, positions = picture.positions, width = picture.width, height = picture.height, loading = picture.loading, alt = picture.alt) }}
 
     {% if caption or caption_number %}
-      <figcaption class="figure__caption">{% if caption_number %} <span class="figure__caption__number">({{ caption_number }})</span> {% endif %} {{ caption }}</figcaption>
+      <div class="figure__caption__wrapper">
+        <figcaption class="figure__caption">{% if caption_number %} <span class="figure__caption__number">({{ caption_number }})</span> {% endif %} {{ caption }}</figcaption>
+      </div>
     {% endif %}
   </figure>
 {% endmacro %}

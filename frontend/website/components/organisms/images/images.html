@@ -1,0 +1,15 @@
+{% import 'components/atoms/richtext/richtext.html' as atom_richtext %}
+{% import 'components/atoms/figure/figure.html' as atom_figure %}
+{% import 'components/atoms/link/link.html' as atom_link %}
+
+{% macro regular(figures = []) %}
+  <section class="images">
+    <div class="images__grid">
+      {% for figure in figures %}
+        <div class="image">
+          {{ atom_figure.regular(picture = figure.picture, caption = figure.caption, caption_number = figure.caption_number) }}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endmacro %}

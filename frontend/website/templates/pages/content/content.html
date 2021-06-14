@@ -4,6 +4,7 @@
 {% import 'components/organisms/hero-text/hero-text.html' as organisms_hero_text %}
 {% import 'components/organisms/hero-image/hero-image.html' as organisms_hero_image %}
 {% import 'components/organisms/content-and-image/content-and-image.html' as organisms_content_and_image %}
+{% import 'components/organisms/images/images.html' as organisms_images %}
 {% block page_title %}Content{% endblock %}
 
 {% block header %}
@@ -68,6 +69,62 @@
       <li>Bislang ließen sich dessen Aussehen und Dimensionen lediglich anhand historischer Texte und Fotografien rekonstruieren.</li>
     </ul>
   {% endcall %}
+
+  <!-- Max 5 images -->
+  {{ organisms_images.regular(
+    figures = [
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/highlight-1.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920
+        },
+        caption: 'This is the caption of this picture, only if we need one, it is not mandatory',
+        caption_number: 2
+      },
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/highlight-1.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920
+        },
+        caption: 'This is the caption of this picture, only if we need one, it is not mandatory',
+        caption_number: 3
+      },
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/highlight-1.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920
+        },
+        caption: 'This is the caption of this picture, only if we need one, it is not mandatory',
+        caption_number: 4
+      },
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/highlight-1.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920
+        },
+        caption: 'This is the caption of this picture, only if we need one, it is not mandatory',
+        caption_number: 5
+      },
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/highlight-1.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 1920
+        },
+        caption: 'This is the caption of this picture, only if we need one, it is not mandatory',
+        caption_number: 6
+      }
+    ]
+  ) }}
 
 {% endblock %}
 
