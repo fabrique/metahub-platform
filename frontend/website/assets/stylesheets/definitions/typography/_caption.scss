@@ -1,13 +1,13 @@
 
 :root {
-  --caption-font-size: 18px;
+  --caption-font-size: 16px;
   --caption-font-style: normal;
   --caption-font-variant: normal;
   --caption-font-weight: #{get-montserrat-weight(regular)};
   --caption-letter-spacing: -.005em;
-  --caption-line-height: 1.2em;
-  --caption-margin-bottom: .5em;
-  --caption-margin-top: 1em;
+  --caption-line-height: 18px;
+  --caption-margin-bottom: 0;
+  --caption-margin-top: 15px;
 
   @include landscape {
     //

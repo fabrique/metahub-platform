@@ -7,8 +7,18 @@
     height: 100%;
     width: 100%;
   }
+}
 
-  .figure__caption {
-    @include typography(caption, true, false);
-  }
+.figure__caption {
+  @include typography(caption, $montserrat-font-stack, true, true);
+
+  color: var(--theme-color);
+  padding-left: 25px;
+  position: relative;
+}
+
+.figure__caption__number {
+  left: 0;
+  position: absolute;
+  top: 0;
 }

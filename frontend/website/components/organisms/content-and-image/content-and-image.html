@@ -1,12 +1,18 @@
 {% import 'components/atoms/richtext/richtext.html' as atom_richtext %}
+{% import 'components/atoms/figure/figure.html' as atom_figure %}
 
-{% macro regular() %}
+{% macro regular(id = '', align = 'default', figure = {}) %}
   <section class="text-and-image">
     <div class="text-and-image_grid">
-      {% call atom_richtext.regular() %}
-        {% set child_context = caller() %}
-        {{ child_context }}
-      {% endcall %}
+      <div class="text-and-image__text">
+        {% call atom_richtext.regular() %}
+          {% set child_context = caller() %}
+          {{ child_context }}
+        {% endcall %}
+      </div>
+      <div class="text-and-image__image">
+        {{ atom_figure.regular(picture = figure.picture, caption = figure.caption, caption_number = figure.caption_number) }}
+      </div>
     </div>
   </section>
 {% endmacro %}

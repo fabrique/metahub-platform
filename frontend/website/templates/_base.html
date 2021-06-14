@@ -44,7 +44,7 @@
     <link rel="stylesheet" href="{{ static }}/stylesheets/main.css{{ cachebuster }}">
   </head>
 
-  <body class="{% block page_theme %}{% endblock %}">
+  <body class="{% block page_theme %}theme--purple{% endblock %}">
     <script>{{ include_raw('build/static/scripts/base.js')|replace('\n;\n', '\n')|replace('\n//# sourceMappingURL=base.js.map', '') }}</script>
     {#<script src="{{ static }}/scripts/base.js{{ cachebuster }}" type="module" crossorigin></script>#}
 

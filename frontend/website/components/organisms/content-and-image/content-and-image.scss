@@ -1,11 +1,22 @@
 .text-and-image {
-  @include grid-container;
-
   margin-bottom: var(--section-space);
 }
 
 .text-and-image_grid {
+  @include grid-container;
+}
+
+.text-and-image__image {
   grid-column: column 2 / span 12;
+
+  @include landscape {
+    grid-column: column 9 / span 4;
+  }
+}
+
+.text-and-image__text {
+  grid-column: column 2 / span 12;
+  margin-bottom: var(--section-space);
 
   @include landscape {
     grid-column: column 2 / span 6;

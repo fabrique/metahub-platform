@@ -32,7 +32,18 @@
   ) }}
 
 
-  {% call organisms_content_and_image.regular() %}
+  {% call organisms_content_and_image.regular(
+    figure = {
+      picture: {
+        images: { mobile: '/static/media/unsplash/portrait/kelsey-chance.jpg' },
+        positions: { mobile: '50% 50%' },
+        fits: { mobile: 'cover' },
+        width: 1920
+      },
+      caption: 'This is the caption of this picture, only if we need one, it is not mandatory',
+      caption_number: 1
+    }
+  ) %}
     <h2>h2 here</h2>
     <p>
       For many artists, exile represented a dramatic break in their career. Emigration often meant the loss of museum commissions, scholarships, patrons and gallery owners. Not all the artists succeeded in making a new beginning abroad; many of them also fell into oblivion in Germany.

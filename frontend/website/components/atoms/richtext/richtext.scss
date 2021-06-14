@@ -7,21 +7,23 @@ $margin-top: 50px;
   h2 {
     @include typography(heading-2, $montserrat-font-stack, $margin-bottom: true);
 
+    color: var(--theme-color);
+    text-transform: uppercase;
+
     &:not(:first-child) {
       margin-top: $margin-top;
     }
-
-    text-transform: uppercase;
   }
 
   h3 {
     @include typography(heading-3, $montserrat-font-stack, $margin-bottom: true);
 
+    color: var(--theme-color);
+    text-transform: uppercase;
+
     &:not(:first-child) {
       margin-top: $margin-top;
     }
-
-    text-transform: uppercase;
   }
 
   p {
@@ -30,7 +32,7 @@ $margin-top: 50px;
 
   ul {
     font-size: var(--body-text-font-size);
-    line-height: 32px;
+    line-height: var(--body-text-line-height);
     list-style: none;
     margin: 0;
     padding: 0;
