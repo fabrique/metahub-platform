@@ -1,5 +1,7 @@
 .text-and-image {
   @include grid-container;
+
+  margin-bottom: var(--section-space);
 }
 
 .text-and-image_grid {

@@ -30,23 +30,38 @@ $margin-top: 50px;
 
   ul {
     font-size: var(--body-text-font-size);
+    line-height: 32px;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
   li {
-    $list-spacing: 50px;
+    --list-spacing: 20px;
+
+    @include landscape {
+      --list-spacing: 50px;
+    }
+
+    padding-left: var(--list-spacing);
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
 
     &::before {
       color: var(--theme-color);
       content: '•';
-      left: $list-spacing / 2;
+      font-size: 22px;
+      left: 0;
       position: absolute;
       top: 0;
-    }
+      transform: translateX(-50%);
 
-    padding-left: $list-spacing;
-    position: relative;
+      @include landscape {
+        left: calc(#{var(--list-spacing)} / 2);
+      }
+    }
   }
 }
