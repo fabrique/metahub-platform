@@ -1,7 +1,8 @@
 {% import 'components/atoms/richtext/richtext.html' as atom_richtext %}
 {% import 'components/atoms/figure/figure.html' as atom_figure %}
+{% import 'components/atoms/link/link.html' as atom_link %}
 
-{% macro regular(id = '', align = 'default', figure = {}) %}
+{% macro regular(id = '', align = 'default', figure = {}, link = {}) %}
   <section class="text-and-image">
     <div class="text-and-image_grid">
       <div class="text-and-image__text">
@@ -10,8 +11,13 @@
           {{ child_context }}
         {% endcall %}
       </div>
-      <div class="text-and-image__image">
-        {{ atom_figure.regular(picture = figure.picture, caption = figure.caption, caption_number = figure.caption_number) }}
+      <div class="text-and-image__image-and-link">
+        <div class="text-and-image__image__image-wrapper">
+          {{ atom_figure.regular(picture = figure.picture, caption = figure.caption, caption_number = figure.caption_number) }}
+        </div>
+
+        {{ atom_link.regular(classes = link.classes, href = link.href, title = link.title, target = link.target, icon_before = link.icon_before, icon_after = link.icon_after) }}
+
       </div>
     </div>
   </section>

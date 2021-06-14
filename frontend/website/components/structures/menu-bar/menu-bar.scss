@@ -58,6 +58,17 @@
       margin-top: 0;
     }
   }
+
+  .link:not(:hover) {
+    text-decoration: none;
+  }
+
+  .link__span {
+    font-family: $montserrat-font-stack;
+    font-size: 24px;
+    font-weight: #{get-montserrat-weight(bold)};
+    text-transform: uppercase;
+  }
 }
 
 .js-menu-bar__links--open {
@@ -72,11 +83,4 @@
   right: 0;
   top: 58px;
   z-index: 2;
-}
-
-.link__span {
-  font-family: $montserrat-font-stack;
-  font-size: 24px;
-  font-weight: #{get-montserrat-weight(bold)};
-  text-transform: uppercase;
 }

@@ -6,7 +6,9 @@
   @include grid-container;
 }
 
-.text-and-image__image {
+.text-and-image__image-and-link {
+  display: flex;
+  flex-direction: column;
   grid-column: column 2 / span 12;
 
   @include landscape {
@@ -15,10 +17,30 @@
 }
 
 .text-and-image__text {
-  grid-column: column 2 / span 12;
+  grid-column: auto / span 12;
   margin-bottom: var(--section-space);
 
   @include landscape {
     grid-column: column 2 / span 6;
+  }
+}
+
+.text-and-image__image__image-wrapper {
+  flex-grow: 1;
+}
+
+.content-and-image__link {
+  justify-self: flex-end;
+  margin-top: var(--section-space);
+
+  &.link {
+    align-items: center;
+    color: var(--theme-color);
+    display: inline-flex;
+    text-transform: uppercase;
+  }
+
+  .link__span {
+    text-decoration: underline;
   }
 }

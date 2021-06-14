@@ -2,35 +2,20 @@
 .link {
   @include typography(link, $montserrat-font-stack);
 
-  color: inherit;
-  display: inline-block;
-  position: relative;
-  text-decoration: none;
-  transition: color $easing-change;
-  vertical-align: bottom;
-
-  .link__icon {
-    display: inline-block;
-    height: var(--link-line-height);
-    margin-right: .2em;
-    position: relative;
-    top: -1px;
-    vertical-align: text-top;
-    width: var(--link-line-height);
-
-    > svg {
-      height: 100%;
-      position: relative;
-      top: 0;
-      vertical-align: middle;
-      width: 100%;
+  &:hover {
+    .link__icon svg {
+      margin-left: 5px;
     }
   }
+}
 
-  &:hover,
-  &:focus {
-    .link__span {
-      text-decoration: underline;
-    }
+.link__icon {
+  display: flex;
+
+  svg {
+    margin-left: 10px;
+    max-height: 19.35px;
+    max-width: 24px;
+    transition: margin-left .2s;
   }
 }

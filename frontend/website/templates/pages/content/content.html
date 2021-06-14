@@ -35,13 +35,20 @@
   {% call organisms_content_and_image.regular(
     figure = {
       picture: {
-        images: { mobile: '/static/media/unsplash/portrait/kelsey-chance.jpg' },
+        images: { mobile: '/static/media/unsplash/cropped/highlight-1.jpg' },
         positions: { mobile: '50% 50%' },
         fits: { mobile: 'cover' },
         width: 1920
       },
       caption: 'This is the caption of this picture, only if we need one, it is not mandatory',
       caption_number: 1
+    },
+    link = {
+      classes: 'content-and-image__link',
+      href: '?',
+      title: 'Buy Ticket here',
+      target: '_blank',
+      icon_after: 'custom/arrow-right-icon'
     }
   ) %}
     <h2>h2 here</h2>

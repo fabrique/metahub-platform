@@ -5,9 +5,9 @@
   --link-font-variant: normal;
   --link-font-weight: #{get-montserrat-weight(regular)};
   --link-letter-spacing: -.005em;
-  --link-line-height: 1.55em;
-  --link-margin-bottom: .5em;
-  --link-margin-top: 1em;
+  --link-line-height: 22px;
+  --link-margin-bottom: 0;
+  --link-margin-top: 15px;
 
   @include portrait {
     --link-line-height: 1.75em;
