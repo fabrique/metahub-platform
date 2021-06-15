@@ -8,6 +8,9 @@
 {% import 'components/organisms/content-and-image/content-and-image.html' as organisms_content_and_image %}
 {% import 'components/organisms/article-content/article-content.html' as organisms_article_content %}
 {% import 'components/organisms/images/images.html' as organisms_images %}
+{% import 'components/organisms/article-video/article-video.html' as organisms_article_video %}
+{% import 'components/atoms/video-embed/video-embed.html' as atoms_video_embed %}
+
 {% block page_title %}Content{% endblock %}
 
 {% block header %}
@@ -173,6 +176,25 @@
       In der Präsentation sollen die Fragmente des Thoraschreins aus der „Gemeindeorthodoxen Synagoge“ am Börneplatz – auch Horowitz-Synagoge genannt – ein Zeugnis davon ablegen, mit welcher Gewalt vor mehr als 80 Jahren das jüdische Leben in Frankfurt zerstört wurde.
     </p>
   {% endcall %}
+
+
+  {{ organisms_article_video.regular(
+    classes = '',
+    href = 'https://www.youtube.com/watch?v=PkZNo7MFNFg&t=2s',
+    video_id = 'PkZNo7MFNFg',
+    video_type = 'youtube',
+    picture = {
+      images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
+      positions: { mobile: '50% 50%' },
+      fits: { mobile: 'cover' },
+      width: 430
+    },
+    autoplay = false,
+    button_play_title = 'Play',
+    caption = 'This is the caption of this picture, only if we need one, it is not mandatory',
+    caption_number = 2
+  ) }}
+
 
   {{ organisms_relevant_stories.regular(
     title = 'Relevant stories',

@@ -1,13 +1,9 @@
 {% import 'components/atoms/picture/picture.html' as atom_picture %}
+{% import 'components/atoms/caption/caption.html' as atom_caption %}
 
 {% macro regular(classes = '', picture = {}, caption = '', caption_number = '') %}
   <figure class="figure {{ classes }}">
     {{ atom_picture.regular(images = picture.images, fits = picture.fits, positions = picture.positions, width = picture.width, height = picture.height, loading = picture.loading, alt = picture.alt) }}
-
-    {% if caption or caption_number %}
-      <div class="figure__caption__wrapper">
-        <figcaption class="figure__caption">{% if caption_number %} <span class="figure__caption__number">({{ caption_number }})</span> {% endif %} {{ caption }}</figcaption>
-      </div>
-    {% endif %}
+    {{ atom_caption.figure(caption = caption, caption_number = caption_number) }}
   </figure>
 {% endmacro %}

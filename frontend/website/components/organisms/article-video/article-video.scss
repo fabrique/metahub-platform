@@ -1,0 +1,24 @@
+
+.article-video {
+  margin-bottom: var(--section-space);
+}
+
+.article-video__grid {
+  @include grid-container;
+}
+
+.article-video__figure {
+  grid-column: auto / span 12;
+
+  @include landscape {
+    grid-column: column 2 / span 10;
+  }
+}
+
+.article-video__caption-wrapper {
+  grid-column: auto / span 12;
+
+  @include landscape {
+    grid-column: column 2 / span 10;
+  }
+}

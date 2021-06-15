@@ -62,7 +62,7 @@ $z-index-menu-overlay: 2048;
   --color-purple: #{$color-purple};
   --color-pink: #{$color-pink};
   --color-magenta: #{$color-magenta};
-  --theme-color: var(--color-magenta);
+  --theme-color: #{var(--color-magenta)};
   --header-height: 63px;
 
   @include landscape {

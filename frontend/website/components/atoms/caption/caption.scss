@@ -1,0 +1,16 @@
+.figure__caption,
+.caption {
+  @include typography(caption, $montserrat-font-stack, true, true);
+
+  color: var(--theme-color);
+  margin-top: 15px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.figure__caption__number,
+.caption__number {
+  left: 0;
+  position: absolute;
+  top: 0;
+}

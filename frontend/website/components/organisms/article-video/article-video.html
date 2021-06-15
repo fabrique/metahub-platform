@@ -1,0 +1,33 @@
+{% import 'components/atoms/video-embed/video-embed.html' as atoms_video_embed %}
+{% import 'components/atoms/caption/caption.html' as atom_caption %}
+
+{% macro regular(
+  id = '',
+  classes = '',
+  href = '',
+  video_id = '',
+  video_type = '',
+  picture = {},
+  autoplay = false,
+  button_play_title = '',
+  caption = '',
+  caption_number = ''
+) %}
+  {% set component = 'article-video' %}
+  <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+    <div class="{{ component }}__grid">
+      {{ atoms_video_embed.regular(
+        classes =  component + '__figure',
+        href = href,
+        video_id = video_id,
+        video_type = video_type,
+        picture = picture,
+        autoplay = autoplay,
+        button_play_title = button_play_title
+      ) }}
+      <div class="{{ component }}__caption-wrapper">
+        {{ atom_caption.regular(caption = caption, caption_number = caption_number) }}
+      </div>
+    </div>
+  </section>
+{% endmacro %}

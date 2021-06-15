@@ -30,6 +30,17 @@
     width: 100%;
   }
 
+  .video-embed__overlay {
+    background-color: var(--theme-color);
+    bottom: 0;
+    display: block;
+    left: 0;
+    opacity: .5;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
   .video-embed__video {
     background-color: $color-black;
   }
@@ -76,7 +87,18 @@
     }
 
     .video-embed__button--play {
+      color: $color-white;
       display: block;
+      font-family: $montserrat-font-stack;
+      font-size: 36px;
+      font-weight: #{get-montserrat-weight(bold)};
+      line-height: 36px;
+      text-transform: uppercase;
+
+      @include landscape {
+        font-size: 56px;
+        line-height: 58px;
+      }
     }
   }
 }
