@@ -9,6 +9,7 @@
   --heading-1-margin-bottom: .5em;
   --heading-1-margin-top: 1em;
   --heading-1-word-spacing: normal;
+  --heading-1-text-transform: uppercase;
 
   @include portrait {
     --heading-1-font-size: 45px;

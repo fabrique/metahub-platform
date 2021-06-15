@@ -9,6 +9,7 @@
   --heading-2-margin-bottom: 15px;
   --heading-2-margin-top: 0;
   --heading-2-color: #{var(--theme-color)};
+  --heading-2-text-transform: uppercase;
 
   @include landscape {
     --heading-2-font-size: 56px;

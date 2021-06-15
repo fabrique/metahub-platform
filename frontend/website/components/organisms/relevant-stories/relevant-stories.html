@@ -1,0 +1,16 @@
+{% import 'components/atoms/story/story.html' as atom_story %}
+
+{% macro regular(stories = [], title = '') %}
+  <section class="relevant-stories">
+    <div class="relevant-stories__grid">
+      <h2 class="relevant-stories__title">{{ title }}</h2>
+    </div>
+    <div class="relevant-stories__grid">
+      {% for story in stories %}
+        <div class="relevant-stories__item">
+          {{ atom_story.regular(classes = story.classes, href = story.href, title = story.title,  theme_color = story.theme_color, figure = story.figure) }}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endmacro %}

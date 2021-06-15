@@ -1,7 +1,5 @@
 .hero-image-title {
-  // background-color: var(--theme-color);
   margin-bottom: var(--section-space);
-  padding: var(--section-space) 0;
 }
 
 .hero-image-title__grid {
@@ -28,7 +26,6 @@
     @include typography(heading-2, $montserrat-font-stack, $margin-top: true, $margin-bottom: true);
 
     color: var(--theme-color);
-    text-transform: uppercase;
   }
 
   @include landscape {
