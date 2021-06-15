@@ -11,7 +11,7 @@
   --breakpoint-landscape: #{$landscape};
   --breakpoint-notebook: #{$notebook};
   --breakpoint-desktop: #{$desktop};
-  --section-space: 50px;
+  --section-space: 60px;
   // Breakpoint reference (for javascript)
   --breakpoint: var(--breakpoint-mobile);
 
@@ -21,6 +21,7 @@
 
   @include landscape {
     --breakpoint: var(--breakpoint-landcape);
+    --section-space: 100px;
   }
 
   @include notebook {
