@@ -29,18 +29,7 @@
   flex-grow: 1;
 }
 
-.content-and-image__link {
+.text-and-image__image-and-link .hero-link {
   justify-self: flex-end;
   margin-top: var(--section-space);
-
-  &.link {
-    align-items: center;
-    color: var(--theme-color);
-    display: inline-flex;
-    text-transform: uppercase;
-  }
-
-  .link__span {
-    text-decoration: underline;
-  }
 }

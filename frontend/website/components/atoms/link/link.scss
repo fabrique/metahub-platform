@@ -19,3 +19,30 @@
     transition: margin-left .2s;
   }
 }
+
+.hero-link {
+  --link-font-size: 16px;
+  --link-font-style: normal;
+  --link-font-variant: normal;
+  --link-font-weight: #{get-montserrat-weight(regular)};
+  --link-letter-spacing: -.005em;
+  --link-line-height: 18px;
+  --link-margin-bottom: 0;
+  --link-margin-top: 15px;
+
+  @include landscape {
+    --link-font-size: 18px;
+    --link-line-height: 22px;
+  }
+
+  &.link {
+    align-items: center;
+    color: var(--theme-color);
+    display: inline-flex;
+    text-transform: uppercase;
+  }
+
+  .link__span {
+    text-decoration: underline;
+  }
+}

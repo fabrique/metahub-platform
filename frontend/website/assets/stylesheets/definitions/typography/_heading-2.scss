@@ -5,12 +5,13 @@
   --heading-2-font-variant: normal;
   --heading-2-font-weight: #{get-montserrat-weight(bold)};
   --heading-2-letter-spacing: 150%;
-  --heading-2-line-height: 1.28em;
+  --heading-2-line-height: 36px;
   --heading-2-margin-bottom: 15px;
   --heading-2-margin-top: 0;
   --heading-2-color: #{var(--theme-color)};
 
   @include landscape {
     --heading-2-font-size: 56px;
+    --heading-2-line-height: 58px;
   }
 }

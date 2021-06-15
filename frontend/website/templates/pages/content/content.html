@@ -3,6 +3,7 @@
 {% import 'components/structures/header/header.html' as header %}
 {% import 'components/organisms/hero-text/hero-text.html' as organisms_hero_text %}
 {% import 'components/organisms/hero-image/hero-image.html' as organisms_hero_image %}
+{% import 'components/organisms/hero-image-title/hero-image-title.html' as organisms_hero_image_title %}
 {% import 'components/organisms/content-and-image/content-and-image.html' as organisms_content_and_image %}
 {% import 'components/organisms/article-content/article-content.html' as organisms_article_content %}
 {% import 'components/organisms/images/images.html' as organisms_images %}
@@ -46,7 +47,7 @@
       caption_number: 1
     },
     link = {
-      classes: 'content-and-image__link',
+      classes: 'hero-link',
       href: '?',
       title: 'Buy Ticket here',
       target: '_blank',
@@ -142,7 +143,26 @@
     </ol>
   {% endcall %}
 
-  TODOOOOO Hero dingie
+
+  {{ organisms_hero_image_title.regular(
+    link = {
+      classes: 'hero-link',
+      href: '?',
+      title: 'Buy Ticket here',
+      target: '_blank',
+      icon_after: 'custom/arrow-right-icon'
+    },
+    align = 'fullbleed',
+    figure = {
+      picture: {
+        images: { mobile: '/static/media/unsplash/landscape/adam-jang.jpg' },
+        positions: { mobile: '50% 50%' },
+        fits: { mobile: 'cover' },
+        width: 1920
+      }
+    }
+  ) }}
+
   {% call organisms_article_content.regular() %}
     <h5>H5 here</h5>
     <p>
