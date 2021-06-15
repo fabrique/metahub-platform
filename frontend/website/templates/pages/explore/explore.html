@@ -1,0 +1,23 @@
+{% extends 'templates/_base.html' %}
+
+{% import 'components/structures/header/header.html' as header %}
+{% import 'components/organisms/explore-intro/explore-intro.html' as organisms_explore_intro %}
+
+{% block page_title %}Explore{% endblock %}
+
+{% block header %}
+  {{ header.regular() }}
+{% endblock %}
+
+{% block content %}
+
+  {{ organisms_explore_intro.regular(
+    title = 'Explore'
+  ) }}
+
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}

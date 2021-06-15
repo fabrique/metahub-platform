@@ -1,0 +1,15 @@
+
+.explore-intro {
+  margin-bottom: var(--section-space);
+}
+
+.explore-intro__grid {
+  @include grid-container;
+}
+
+.explore-intro__title {
+  @include typography(heading-1, $montserrat-font-stack, true, true);
+
+  color: var(--theme-color);
+  grid-column: auto / span 12;
+}

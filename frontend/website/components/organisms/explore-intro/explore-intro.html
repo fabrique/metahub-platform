@@ -1,0 +1,15 @@
+{% import 'components/atoms/video-embed/video-embed.html' as atoms_video_embed %}
+{% import 'components/atoms/caption/caption.html' as atom_caption %}
+
+{% macro regular(
+  id = '',
+  classes = '',
+  title = ''
+) %}
+  {% set component = 'explore-intro' %}
+  <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+    <div class="{{ component }}__grid">
+      <h1 class="{{ component }}__title">{{ title }}</h1>
+    </div>
+  </section>
+{% endmacro %}

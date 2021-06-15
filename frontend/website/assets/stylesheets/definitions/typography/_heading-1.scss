@@ -1,18 +1,18 @@
 
 :root {
-  --heading-1-font-size: 41px;
+  --heading-1-font-size: 40px;
   --heading-1-font-style: normal;
   --heading-1-font-variant: normal;
   --heading-1-font-weight: #{get-montserrat-weight(bold)};
   --heading-1-letter-spacing: -.01em;
-  --heading-1-line-height: 1em;
-  --heading-1-margin-bottom: .5em;
-  --heading-1-margin-top: 1em;
+  --heading-1-line-height: 40px;
+  --heading-1-margin-bottom: 50px;
+  --heading-1-margin-top: 50px;
   --heading-1-word-spacing: normal;
   --heading-1-text-transform: uppercase;
 
   @include portrait {
-    --heading-1-font-size: 45px;
-    --heading-1-line-height: 1em;
+    --heading-1-font-size: 120px;
+    --heading-1-line-height: 120px;
   }
 }
