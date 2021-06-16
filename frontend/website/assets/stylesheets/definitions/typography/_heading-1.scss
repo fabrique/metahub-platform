@@ -6,13 +6,15 @@
   --heading-1-font-weight: #{get-montserrat-weight(bold)};
   --heading-1-letter-spacing: -.01em;
   --heading-1-line-height: 40px;
-  --heading-1-margin-bottom: 50px;
-  --heading-1-margin-top: 50px;
+  --heading-1-margin-bottom: 30px;
+  --heading-1-margin-top: 30px;
   --heading-1-word-spacing: normal;
   --heading-1-text-transform: uppercase;
 
-  @include portrait {
+  @include landscape {
     --heading-1-font-size: 120px;
     --heading-1-line-height: 120px;
+    --heading-1-margin-bottom: 50px;
+    --heading-1-margin-top: 50px;
   }
 }

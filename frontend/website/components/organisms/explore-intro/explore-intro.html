@@ -1,15 +1,28 @@
 {% import 'components/atoms/video-embed/video-embed.html' as atoms_video_embed %}
 {% import 'components/atoms/caption/caption.html' as atom_caption %}
+{% import 'components/atoms/link/link.html' as atom_link %}
 
 {% macro regular(
   id = '',
   classes = '',
-  title = ''
+  title = '',
+  search_button_title = ''
 ) %}
   {% set component = 'explore-intro' %}
   <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
     <div class="{{ component }}__grid">
       <h1 class="{{ component }}__title">{{ title }}</h1>
+      <form class="{{ component }}__search-wrapper">
+        <input class="{{ component }}__search-input type="text" placeholder="Search here" />
+        <div class="{{ component }}__search-button-wrapper">
+          {{ atom_link.button(classes =  component + '__search-button', href = '?', title = search_button_title, icon_after = 'custom/arrow-right-icon') }}
+        </div>
+      </form>
+      <div class="{{ component }}__filter-wrapper">
+        {{ atom_link.regular(classes =  component + '__filter ' + component + '__filter--active', href = '?', title = 'All') }}
+        {{ atom_link.regular(classes =  component + '__filter', href = '?', title = 'Objects') }}
+        {{ atom_link.regular(classes =  component + '__filter', href = '?', title = 'Stories') }}
+      </div>
     </div>
   </section>
 {% endmacro %}
