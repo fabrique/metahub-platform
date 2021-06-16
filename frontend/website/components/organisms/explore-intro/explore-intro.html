@@ -1,12 +1,11 @@
-{% import 'components/atoms/video-embed/video-embed.html' as atoms_video_embed %}
-{% import 'components/atoms/caption/caption.html' as atom_caption %}
 {% import 'components/atoms/link/link.html' as atom_link %}
 
 {% macro regular(
   id = '',
   classes = '',
   title = '',
-  search_button_title = ''
+  search_button_title = '',
+  search_button_icon = ''
 ) %}
   {% set component = 'explore-intro' %}
   <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
@@ -15,7 +14,7 @@
       <form class="{{ component }}__search-wrapper">
         <input class="{{ component }}__search-input type="text" placeholder="Search here" />
         <div class="{{ component }}__search-button-wrapper">
-          {{ atom_link.button(classes =  component + '__search-button', href = '?', title = search_button_title, icon_after = 'custom/arrow-right-icon') }}
+          {{ atom_link.button(classes =  component + '__search-button', href = '?', title = search_button_title, icon_after = search_button_icon) }}
         </div>
       </form>
       <div class="{{ component }}__filter-wrapper">

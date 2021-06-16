@@ -59,6 +59,11 @@ $story-spacing: 15px;
   --heading-4-font-size: 18px;
   --heading-4-line-height: 22px;
 
+  @include landscape {
+    --heading-4-line-height: 28px;
+    --heading-4-font-size: 24px;
+  }
+
   @include typography(heading-4, $montserrat-font-stack);
 
   color: $color-white;

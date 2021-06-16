@@ -1,0 +1,25 @@
+{% import 'components/atoms/figure/figure.html' as atom_figure %}
+
+{% macro regular(classes = '', title = '', figure = {}, theme_color = '', href = '', subtitle = '') %}
+  {% set component = 'object' %}
+  <article class="{{ component }} {{ classes }} {{ theme_color }}">
+    <a
+      title="{{ title }}"
+      role="link"
+      alt="{{ title }}"
+      href="{{ href }}"
+      class="{{ component }}__inner"
+    >
+      <span class="{{ component }}__figure-wrapper">
+        {{ atom_figure.regular(picture = figure.picture, classes = component + '__figure') }}
+      </span>
+      <span class="{{ component }}__content-wrapper">
+        <span class="{{ component }}__content-wrapper__inner">
+          <span class="{{ component }}__label">Object</span>
+          <span class="{{ component }}__title">{{ title }}</span>
+          <span class="{{ component }}__subtitle">{{ subtitle }}</span>
+        </span>
+      </span>
+    </a>
+  </article>
+{% endmacro %}

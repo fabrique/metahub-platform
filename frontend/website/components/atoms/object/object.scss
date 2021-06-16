@@ -1,0 +1,62 @@
+$object-spacing: 24px;
+
+.object {
+  //
+}
+
+.object__inner {
+  //
+}
+
+.object__label {
+  color: $color-black;
+  display: block;
+  font-family: $montserrat-font-stack;
+  font-size: 18px;
+  font-weight: #{get-montserrat-weight(bold)};
+  line-height: 22px;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.object__figure-wrapper {
+  display: block;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, transparent 100%);
+}
+
+.object__figure {
+  margin-left: $object-spacing;
+}
+
+.object__content-wrapper {
+  display: block;
+  margin-top: -50px;
+  position: relative;
+  z-index: 2;
+}
+
+.object__content-wrapper__inner {
+  display: block;
+}
+
+.object__title {
+  --heading-4-font-size: 18px;
+  --heading-4-line-height: 22px;
+
+  @include typography(heading-4, $montserrat-font-stack);
+
+  color: var(--theme-color);
+  display: block;
+  padding-bottom: 5px;
+
+  @include landscape {
+    --heading-4-line-height: 28px;
+    --heading-4-font-size: 24px;
+  }
+}
+
+.object__subtitle {
+  color: $color-black;
+  font-size: 16px;
+  line-height: 18px;
+}

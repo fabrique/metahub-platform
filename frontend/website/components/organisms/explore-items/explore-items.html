@@ -1,0 +1,40 @@
+{% import 'components/atoms/story/story.html' as atom_story %}
+{% import 'components/atoms/object/object.html' as atom_object %}
+
+{% macro regular(
+  id = '',
+  classes = '',
+  items = ''
+) %}
+  {% set component = 'explore-items' %}
+  <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+    <div class="{{ component }}__grid">
+
+      {% for item in items %}
+
+        {% if loop.index % 7 == 0 %}
+          </div><div class="{{ component }}__grid">
+        {% endif %}
+        {% if item.type == 'story' %}
+          <div class="{{ component }}__item">
+            {{ atom_story.regular(classes = item.classes, href = item.href, title = item.title,  theme_color = item.theme_color, figure = item.figure) }}
+          </div>
+        {% endif %}
+
+        {% if item.type == 'object' %}
+          <div class="{{ component }}__item">
+            {{ atom_object.regular(
+              classes = item.classes,
+              href = item.href,
+              title = item.title,
+              subtitle = item.subtitle,
+              figure = item.figure
+            ) }}
+          </div>
+        {% endif %}
+
+      {% endfor %}
+    </div>
+
+  </section>
+{% endmacro %}
