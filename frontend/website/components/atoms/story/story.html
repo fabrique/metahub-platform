@@ -12,8 +12,10 @@
     >
       {{ atom_figure.regular(picture = figure.picture, classes = 'story__figure') }}
       <span class="{{ component }}__content-wrapper">
-        <span class="{{ component }}__label">STORY</span>
-        <span class="{{ component }}__title">{{ title }}</span>
+        <span class="{{ component }}__content-wrapper__inner">
+          <span class="{{ component }}__label">STORY</span>
+          <span class="{{ component }}__title">{{ title }}</span>
+        </span>
       </span>
     </a>
   </article>

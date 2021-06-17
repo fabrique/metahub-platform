@@ -12,17 +12,17 @@
 
       {% for item in items %}
 
-        {% if loop.index % 7 == 0 %}
+        {% if loop.index0 % 6 == 0 %}
           </div><div class="{{ component }}__grid">
         {% endif %}
         {% if item.type == 'story' %}
-          <div class="{{ component }}__item">
+          <div class="{{ component }}__item {{ component }}__item--story">
             {{ atom_story.regular(classes = item.classes, href = item.href, title = item.title,  theme_color = item.theme_color, figure = item.figure) }}
           </div>
         {% endif %}
 
         {% if item.type == 'object' %}
-          <div class="{{ component }}__item">
+          <div class="{{ component }}__item {{ component }}__item--object">
             {{ atom_object.regular(
               classes = item.classes,
               href = item.href,
