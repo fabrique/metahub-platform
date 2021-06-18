@@ -6,7 +6,7 @@ from django.core.management import BaseCommand
 from wagtail.core.models import Page
 
 from metahub.collection.models import *
-from metahub.core.models import MetaHubObjectPage, MetahubImage, MetaHubObjectSeriesPage
+# from metahub.core.models import MetaHubObjectPage, MetahubImage, MetaHubObjectSeriesPage
 from metahub.sync.mapping import BeeCollectMapping
 from metahub.sync.utils import add_fabrique_image
 
@@ -17,19 +17,19 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
 
         #cleanup double images
-        DOUBLE_IMG_CLEAN = False
-        if DOUBLE_IMG_CLEAN:
-            imgs = MetahubImage.objects.all()
-            for i in imgs:
-                try:
-                    mytest = MetahubImage.objects.get(title=i.title)
-                except MultipleObjectsReturned:
-                    print('multiple for', i.title)
-                    print('{} found'.format(len(MetahubImage.objects.filter(title=i.title))))
-                    double = MetahubImage.objects.filter(title=i.title)[1]
-                    double.delete()
-
-            return 'done'
+        # DOUBLE_IMG_CLEAN = False
+        # if DOUBLE_IMG_CLEAN:
+        #     imgs = MetahubImage.objects.all()
+        #     for i in imgs:
+        #         try:
+        #             mytest = MetahubImage.objects.get(title=i.title)
+        #         except MultipleObjectsReturned:
+        #             print('multiple for', i.title)
+        #             print('{} found'.format(len(MetahubImage.objects.filter(title=i.title))))
+        #             double = MetahubImage.objects.filter(title=i.title)[1]
+        #             double.delete()
+        #
+        #     return 'done'
 
 
         # BaseCollectionObject.objects.all().delete()
@@ -75,6 +75,7 @@ class Command(BaseCommand):
 
         # Build the pages
         for object_instance in BaseCollectionObject.objects.all():
+            break  # TODO re-enable after all FE models are created
             # if object_instance.pk != 1379:
             #     continue
             page = bcm.get_or_create_object_page(object_instance,

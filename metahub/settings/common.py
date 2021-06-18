@@ -90,7 +90,7 @@ LOCAL_APPS = (
     'metahub.tagging',
     'metahub.menu',
     # 'metahub.frontend',
-    # 'metahub.sync',
+    'metahub.sync',
     'metahub.collection',
     # 'metahub.api',
     'metahub.stories',

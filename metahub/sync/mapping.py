@@ -3,8 +3,14 @@ from datetime import datetime
 from django.utils.text import slugify
 from wagtail.core.models import Page
 
-from metahub.collection.models import BaseCollectionArtist, BaseCollectionObject, ObjectImageLink, CollectionCategory, BaseTag
-from metahub.core.models import MetaHubObjectPage, MetaHubObjectSeriesPage, MetaHubCategoryOverviewPage
+from metahub.collection.models import (
+    BaseCollectionArtist,
+    BaseCollectionObject,
+    ObjectImageLink,
+    # CollectionCategory,
+    BaseTag,
+)
+# from metahub.core.models import MetaHubObjectPage, MetaHubObjectSeriesPage, MetaHubCategoryOverviewPage
 from metahub.sync.models import BeeCollectSyncOccurrence
 from metahub.sync.utils import add_fabrique_image, add_stream_child
 
@@ -225,16 +231,16 @@ class BeeCollectMapping:
                 )
             return tag_to_add
 
-    def get_or_create_category(self, category_name):
-        """
-        Category defined by us, such as Geschichten, Objekt, etc. This is not
-        from BeeCollect.
-        """
-        try:
-            return CollectionCategory.objects.get(name=category_name)
-        except CollectionCategory.DoesNotExist:
-            c = CollectionCategory(name=category_name, description='').save()
-            return c
+    # def get_or_create_category(self, category_name):
+    #     """
+    #     Category defined by us, such as Geschichten, Objekt, etc. This is not
+    #     from BeeCollect.
+    #     """
+    #     try:
+    #         return CollectionCategory.objects.get(name=category_name)
+    #     except CollectionCategory.DoesNotExist:
+    #         c = CollectionCategory(name=category_name, description='').save()
+    #         return c
 
     def get_object_category(self, object_data):
         """
@@ -415,66 +421,66 @@ class BeeCollectMapping:
                     return None
         return None
 
-    def get_or_create_object_page(self, object_instance,
-                                  update_title=False,
-                                  update_intro=False,
-                                  update_highlight_status=False):
-        try:
-            page = MetaHubObjectPage.objects.get(object=object_instance)
-
-            if update_title and object_instance.title:
-                oldslug = page.slug
-                # print('old: {} {}'.format(page.title, page.slug))
-                page.title = object_instance.title
-                page.slug = slugify(object_instance.title)
-                # print('updating title and slug for page')
-                try:
-                    page.save()
-                except:
-                    page.slug = oldslug
-                    page.save()
-                    # print('duplicate slug for {}'.format(page.title))
-
-            # Update intro text
-            if update_intro:
-                page.intro = object_instance.bc_notes
-                page.save()
-
-            # Get highlight status, was not there before
-            if update_highlight_status:
-                page.is_highlight = object_instance.is_highlight
-                page.save()
-
-            return page
-
-        except MetaHubObjectPage.DoesNotExist:
-            parent_page = MetaHubCategoryOverviewPage.objects.get(overview_category='object')
-            new_page = MetaHubObjectPage(title=object_instance.title,
-                                     collection_category=self.get_or_create_category('Objekt'),
-                                     object=object_instance,
-                                     )
-            parent_page.add_child(instance=new_page)
-            return new_page
-
-    def get_or_create_series_page(self, object_instance):
-        series_id = object_instance.series_id
-
-        try:
-            return MetaHubObjectSeriesPage.objects.get(series_id=series_id)
-        except MetaHubObjectSeriesPage.DoesNotExist:
-            parent_page = MetaHubCategoryOverviewPage.objects.get(overview_category='object_series')
-            new_series_page = MetaHubObjectSeriesPage(
-                title='Series {}'.format(series_id),
-                collection_category=self.get_or_create_category('Objektserie'),
-                series_id=series_id
-            )
-            parent_page.add_child(instance=new_series_page)
-            return new_series_page
-
-    def add_object_to_series_page(self, object_instance):
-        page = self.get_or_create_series_page(object_instance)
-        object_instance.series_page = page
-        object_instance.save()
-        page.save() # adding tags?
+    # def get_or_create_object_page(self, object_instance,
+    #                               update_title=False,
+    #                               update_intro=False,
+    #                               update_highlight_status=False):
+    #     try:
+    #         page = MetaHubObjectPage.objects.get(object=object_instance)
+    #
+    #         if update_title and object_instance.title:
+    #             oldslug = page.slug
+    #             # print('old: {} {}'.format(page.title, page.slug))
+    #             page.title = object_instance.title
+    #             page.slug = slugify(object_instance.title)
+    #             # print('updating title and slug for page')
+    #             try:
+    #                 page.save()
+    #             except:
+    #                 page.slug = oldslug
+    #                 page.save()
+    #                 # print('duplicate slug for {}'.format(page.title))
+    #
+    #         # Update intro text
+    #         if update_intro:
+    #             page.intro = object_instance.bc_notes
+    #             page.save()
+    #
+    #         # Get highlight status, was not there before
+    #         if update_highlight_status:
+    #             page.is_highlight = object_instance.is_highlight
+    #             page.save()
+    #
+    #         return page
+    #
+    #     except MetaHubObjectPage.DoesNotExist:
+    #         parent_page = MetaHubCategoryOverviewPage.objects.get(overview_category='object')
+    #         new_page = MetaHubObjectPage(title=object_instance.title,
+    #                                  collection_category=self.get_or_create_category('Objekt'),
+    #                                  object=object_instance,
+    #                                  )
+    #         parent_page.add_child(instance=new_page)
+    #         return new_page
+    #
+    # def get_or_create_series_page(self, object_instance):
+    #     series_id = object_instance.series_id
+    #
+    #     try:
+    #         return MetaHubObjectSeriesPage.objects.get(series_id=series_id)
+    #     except MetaHubObjectSeriesPage.DoesNotExist:
+    #         parent_page = MetaHubCategoryOverviewPage.objects.get(overview_category='object_series')
+    #         new_series_page = MetaHubObjectSeriesPage(
+    #             title='Series {}'.format(series_id),
+    #             collection_category=self.get_or_create_category('Objektserie'),
+    #             series_id=series_id
+    #         )
+    #         parent_page.add_child(instance=new_series_page)
+    #         return new_series_page
+    #
+    # def add_object_to_series_page(self, object_instance):
+    #     page = self.get_or_create_series_page(object_instance)
+    #     object_instance.series_page = page
+    #     object_instance.save()
+    #     page.save() # adding tags?
 
 
