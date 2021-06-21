@@ -13,18 +13,29 @@ from ..molecules.blocks import MoleculeObjectCardRegularBlock, MoleculeContextCa
 from ..utils import count_words_html
 
 
-class OrganismHeroHeaderSingleImageContentPageRegularBlock(AdapterStructBlock):
+class OrganismHeroImageHeaderRegularBlock(AdapterStructBlock):
     """
     Content Page Header Component
-    Simple header with 1 picture and a title
+    Simple header with an image
     """
-    title = blocks.CharBlock()
-    subtitle = blocks.CharBlock()
-    picture = AtomPictureRegularBlock(resolution=Resolution(mobile='750', landscape='2048', crop=True))
+    figure = AtomFigureRegularBlock()
 
     class Meta:
-        component = 'organisms.simple-image-header.regular'
-        interface_class = OrganismHeroHeaderSingleImageContentPageRegular
+        component = 'organisms.hero-image.regular'
+        interface_class = OrganismHeroImageHeaderRegular
+
+
+class OrganismHeroTextHeaderRegularBlock(AdapterStructBlock):
+    """
+    Content Page Header Component
+    Header with text
+    """
+    title = blocks.CharBlock(max_length=200)
+    text = blocks.TextBlock(max_length=2000)
+
+    class Meta:
+        component = 'organisms.hero-text.regular'
+        interface_class = OrganismHeroTextHeaderRegular
 
 
 class OrganismContentSingleRichTextRegularBlock(AdapterStructBlock):

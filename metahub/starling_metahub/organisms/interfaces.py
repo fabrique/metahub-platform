@@ -45,13 +45,24 @@ class OrganismRelatedItemsRegular(NamedTuple):
     related_objects: Iterable[MoleculeObjectCardRegular] = ()
 
 
-class OrganismHeroHeaderSingleImageContentPageRegular(NamedTuple):
+class OrganismHeroImageHeaderRegular(NamedTuple):
     """
-    Content page component - just the image
+    Content page component - just the image as header
     """
     id: str = ''
-    picture: AtomPictureRegular = AtomPictureRegular()
-    height: str = ''
+    alight: str = 'fullbleed'
+    figure: AtomFigureRegular = AtomFigureRegular()
+
+
+class OrganismHeroTextHeaderRegular(NamedTuple):
+    """
+    Content page component - the text
+    """
+    id: str = ''
+    title: str = ''
+    text: str = ''
+    author: str = ''
+    date: str = ''
 
 
 class OrganismArticleCookieRegular(NamedTuple):

@@ -2,11 +2,16 @@
 
 {% load core_tags wagtailcore_tags wagtailimages_tags starling_tags %}
 
-{% block header %}
-  {% for block in page.header %}
-    {% include_block block %}
-  {% endfor %}
-{% endblock %}
+{%  block page_header %}
+    {% for block in page.hero_header %}
+        {% include_block block %}
+    {% endfor %}
+
+    {% for block in page.text_header %}
+        {% include_block block %}
+    {% endfor %}
+{%  endblock %}
+
 
 {% block content %}
   <div class="container--content__wrapper">
@@ -22,3 +27,7 @@
 {#  {% endfor %}#}
 
 {% endblock %}
+
+{#{% block footer %}#}
+{#      {% include_component 'structures.footer-bar.simple' settings.core.GlobalSettings.get_content_page_footer %}#}
+{#{% endblock %}#}
