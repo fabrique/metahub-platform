@@ -30,11 +30,11 @@
 
   &:nth-child(2) {
     grid-column: column 6 / span 7;
-    transform: translateY(-25%);
+    margin-top: -100px;
 
     @include landscape {
       grid-column: var(--grid-column-landscape);
-      transform: initial;
+      margin-top: 0;
     }
   }
 
@@ -43,10 +43,11 @@
   }
 
   &:nth-child(n+3) {
-    display: none;
+    grid-column: column 1 / span 7;
+    margin-top: 20px;
 
     @include landscape {
-      display: flex;
+      grid-column: var(--grid-column-landscape);
     }
   }
 
