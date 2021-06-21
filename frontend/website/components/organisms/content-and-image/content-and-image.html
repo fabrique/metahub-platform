@@ -6,8 +6,8 @@
   <section class="text-and-image">
     <div class="text-and-image_grid">
       <div class="text-and-image__text">
+        {% set child_context = caller() %}
         {% call atom_richtext.regular() %}
-          {% set child_context = caller() %}
           {{ child_context }}
         {% endcall %}
       </div>

@@ -107,7 +107,7 @@ class OrganismContentDoubleImageRichTextRegularBlock(AdapterStructBlock):
         defaults = {
             'id': '',
         }
-        component = 'organisms.article-photos-and-text.regular'
+        component = 'organisms.content-and-image.regular'
         interface_class = OrganismContentDoubleImageRichTextRegular
 
 
