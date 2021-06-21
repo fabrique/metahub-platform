@@ -1,0 +1,24 @@
+{% extends 'core/base_page.html' %}
+
+{% load core_tags wagtailcore_tags wagtailimages_tags starling_tags %}
+
+{% block header %}
+  {% for block in page.header %}
+    {% include_block block %}
+  {% endfor %}
+{% endblock %}
+
+{% block content %}
+  <div class="container--content__wrapper">
+
+    {% for block in page.blocks %}
+      {% include_block block %}
+    {% endfor %}
+
+  </div>
+
+{#  {% for block in page.related_items %}#}
+{#    {% include_block block %}#}
+{#  {% endfor %}#}
+
+{% endblock %}
