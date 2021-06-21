@@ -5,7 +5,9 @@
     <div {% if id %}id="{{ id }}"{% endif %} class="article-photo article-photo--align-{{ align }}">
       <div class="hero-image__wrapper">
         <!-- Image ratio: Original. Preferred: around 16:9 or 9:16 -->
-        {{ atom_figure.regular(picture = figure.picture, caption = figure.caption, subtitle = figure.caption_subtitle) }}
+{#        {{ atom_figure.regular(picture = figure.picture, caption = figure.caption, subtitle = figure.caption_subtitle) }}#}
+        {{ atom_figure.regular(picture = figure.picture, caption = figure.caption) }}
+
       </div>
     </div>
   </section>

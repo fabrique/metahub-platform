@@ -1,10 +1,11 @@
-from wagtail.admin.edit_handlers import StreamFieldPanel
+from wagtail.admin.edit_handlers import StreamFieldPanel, MultiFieldPanel
 from wagtail.core.fields import StreamField
 
 from metahub.core.models import MetaHubBasePage
-from metahub.starling_metahub.organisms.blocks import OrganismHeroHeaderSingleImageContentPageRegularBlock, \
+from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderRegularBlock, \
     OrganismContentSingleRichTextRegularBlock, OrganismContentSingleImageRegularBlock, \
-    OrganismContentDoubleImageRichTextRegularBlock, OrganismArticleCookieBlockRegular
+    OrganismContentDoubleImageRichTextRegularBlock, OrganismArticleCookieBlockRegular, \
+    OrganismHeroTextHeaderRegularBlock
 
 
 class MetaHubContentPage(MetaHubBasePage):
@@ -12,7 +13,10 @@ class MetaHubContentPage(MetaHubBasePage):
     parent_page_types = ['home.MetahubHomePage']
 
     hero_header = StreamField([
-        ('header_image', OrganismHeroHeaderSingleImageContentPageRegularBlock()),
+        ('header_image', OrganismHeroImageHeaderRegularBlock()),
+    ], blank=True)
+    text_header = StreamField([
+        ('header_text', OrganismHeroTextHeaderRegularBlock()),
     ])
 
     # CMS panels
@@ -24,6 +28,9 @@ class MetaHubContentPage(MetaHubBasePage):
     ])
 
     content_panels = MetaHubBasePage.content_panels + [
-        StreamFieldPanel('hero_header'),
+        MultiFieldPanel([
+            StreamFieldPanel('hero_header'),
+            StreamFieldPanel('text_header'),
+        ], heading="Header"),
         StreamFieldPanel('content')
     ]
