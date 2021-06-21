@@ -47,6 +47,7 @@ class BaseCollectionObject(ClusterableModel):
     container_name = models.CharField(max_length=1024, default='', blank=True)
     container_id = models.CharField(max_length=256, default='', blank=True)
     current_location = models.CharField(max_length=256, default='', blank=True)
+    geographic_reference = models.CharField(max_length=1024, default='', blank=True)
     geographic_location = models.CharField(max_length=1024, default='', blank=True)
 
     # Object itself
