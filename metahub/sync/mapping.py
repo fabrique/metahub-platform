@@ -127,6 +127,7 @@ class BeeCollectMapping:
                 current_location=object_data.get('CurrentLocation'),
                 container_name=object_data.get('ContainerName'),
                 container_id=object_data.get('ContainerId'),
+                geographic_reference=object_data.get('GeographicReference'),
                 geographic_location=self.get_geographic_location(object_data.get('Keywords')),
 
                 convolute=object_data.get('Convolute', ''),
