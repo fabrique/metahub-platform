@@ -18,7 +18,7 @@ class OrganismHeroImageHeaderRegularBlock(AdapterStructBlock):
     Content Page Header Component
     Simple header with an image
     """
-    figure = AtomFigureRegularBlock()
+    picture = AtomPictureRegularBlock(resolution=Resolution(mobile="1920x1080"))
 
     class Meta:
         component = 'organisms.hero-image.regular'

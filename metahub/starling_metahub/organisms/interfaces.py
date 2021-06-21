@@ -50,8 +50,8 @@ class OrganismHeroImageHeaderRegular(NamedTuple):
     Content page component - just the image as header
     """
     id: str = ''
-    alight: str = 'fullbleed'
-    figure: AtomFigureRegular = AtomFigureRegular()
+    alignment: str = 'fullbleed'
+    picture: AtomPictureRegular = AtomPictureRegular()
 
 
 class OrganismHeroTextHeaderRegular(NamedTuple):
