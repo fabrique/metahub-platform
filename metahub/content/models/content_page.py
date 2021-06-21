@@ -5,7 +5,7 @@ from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderRegularBlock, \
     OrganismContentSingleRichTextRegularBlock, OrganismContentSingleImageRegularBlock, \
     OrganismContentDoubleImageRichTextRegularBlock, OrganismArticleCookieBlockRegular, \
-    OrganismHeroTextHeaderRegularBlock
+    OrganismHeroTextHeaderRegularBlock, OrganismContentSingleVideoRegularBlock
 
 
 class MetaHubContentPage(MetaHubBasePage):
@@ -22,8 +22,9 @@ class MetaHubContentPage(MetaHubBasePage):
     # CMS panels
     content = StreamField([
         ('single_richtext', OrganismContentSingleRichTextRegularBlock()),
-        ('single_image', OrganismContentSingleImageRegularBlock()),
+        # ('single_image', OrganismContentSingleImageRegularBlock()),
         ('double_picture_richtext', OrganismContentDoubleImageRichTextRegularBlock()),
+        ('video', OrganismContentSingleVideoRegularBlock()),
         # ('cookies', OrganismArticleCookieBlockRegular())
     ])
 

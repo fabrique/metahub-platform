@@ -30,7 +30,7 @@ class AtomVideoEmbedRegular(NamedTuple):
     video_type: str = 'youtube'
     href: str = '#'
     autoplay: bool = False
-    video_preview: Picture = AtomPictureRegular()
+    video_preview: AtomPictureRegular = AtomPictureRegular()
 
 
 class AtomFigureAccessibleRegular(NamedTuple):

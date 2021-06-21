@@ -26,6 +26,7 @@ class OrganismContentSingleVideoRegular(NamedTuple):
     caption: str = ''
 
 
+
 class OrganismContentDoubleImageRichTextRegular(NamedTuple):
     id : str = ''
     figure: AtomFigureRegular = AtomFigureRegular()
