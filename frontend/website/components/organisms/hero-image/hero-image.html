@@ -1,11 +1,12 @@
 {% import 'components/atoms/figure/figure.html' as atom_figure %}
+{% import 'components/atoms/picture/picture.html' as atom_picture %}
 
-{% macro regular(id = '', align = 'default', figure = {}) %}
+{% macro regular(id = '', align = 'default', picture = {}) %}
   <section class="hero-image">
     <div {% if id %}id="{{ id }}"{% endif %} class="article-photo article-photo--align-{{ align }}">
       <div class="hero-image__wrapper">
         <!-- Image ratio: Original. Preferred: around 16:9 or 9:16 -->
-        {{ atom_figure.regular(picture = figure.picture, caption = figure.caption, subtitle = figure.caption_subtitle) }}
+        {{ atom_picture.regular(images = picture.images, fits = picture.fits, positions = picture.positions, width = picture.width, height = picture.height, loading = picture.loading, alt = picture.alt) }}
       </div>
     </div>
   </section>
