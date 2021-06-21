@@ -11,7 +11,6 @@ from wagtail.core.models import Page
 
 from metahub.core.models import MetaHubBasePage
 from metahub.search.search import do_search, get_search_results, get_result_as_cards, get_result_filters
-from metahub.starling_metahub.organisms.blocks import OrganismSearchHeaderRegularBlock
 
 
 class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):

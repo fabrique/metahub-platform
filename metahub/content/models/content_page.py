@@ -19,8 +19,8 @@ class MetaHubContentPage(MetaHubBasePage):
     content = StreamField([
         ('single_richtext', OrganismContentSingleRichTextRegularBlock()),
         ('single_image', OrganismContentSingleImageRegularBlock()),
-        ('double_pictures_richtext', OrganismContentDoubleImageRichTextRegularBlock()),
-        ('cookies', OrganismArticleCookieBlockRegular())
+        ('double_picture_richtext', OrganismContentDoubleImageRichTextRegularBlock()),
+        # ('cookies', OrganismArticleCookieBlockRegular())
     ])
 
     content_panels = MetaHubBasePage.content_panels + [

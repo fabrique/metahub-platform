@@ -2,7 +2,7 @@ from starling.blocks.atoms.figure import AtomFigureRegularBlock
 from starling.blocks.atoms.link import AtomLinkRegularBlock
 from starling.blocks.atoms.picture import AtomPictureRegularBlock
 from starling.interfaces.generic import Resolution
-from starling.mixins import AdapterStructBlock
+from starling.mixins import AdapterStructBlock, OptionalBlock
 from wagtail.core import blocks
 
 from .interfaces import *
@@ -13,130 +13,24 @@ from ..molecules.blocks import MoleculeObjectCardRegularBlock, MoleculeContextCa
 from ..utils import count_words_html
 
 
-
-
-class OrganismSearchHeaderRegularBlock(AdapterStructBlock):
+class OrganismHeroHeaderSingleImageContentPageRegularBlock(AdapterStructBlock):
     """
-    Homepage Component, SearchPage Component
-    Header containing a background of alternating images. It also has a search
-    bar that features livesearch.
+    Content Page Header Component
+    Simple header with 1 picture and a title
     """
-    title = blocks.CharBlock(required=True)
-    subtitle = blocks.CharBlock(required=True)
-    pictures = blocks.ListBlock(AtomPictureRegularBlock(resolution=Resolution(mobile='750', landscape='2048', crop=True)))
-
-    def build_extra(self, value, build_args, parent_context=None):
-        build_args['live_search_url'] = parent_context.get('live_search_url','')
-        build_args['search_url'] = parent_context.get('search_url', '')
-        build_args['picture_index'] = parent_context.get('picture_index', 0)
-        build_args['variant'] = parent_context.get('variant','default')
-        build_args['is_homepage'] = parent_context.get('is_homepage', False)
+    title = blocks.CharBlock()
+    subtitle = blocks.CharBlock()
+    picture = AtomPictureRegularBlock(resolution=Resolution(mobile='750', landscape='2048', crop=True))
 
     class Meta:
-        defaults = {'live_search_url':'sumtin'}
-        component = 'organisms.search-header.regular'
-        interface_class = OrganismSearchHeaderRegular
-
-
-class OrganismThemeHighlightsRegularBlock(AdapterStructBlock):
-    """
-    Homepage Component
-    Renders a block containing alternating "slides" with highlighted stories,
-    representing the themes of the collection. The specific content is inherited
-    from the story pages and not entered here.
-    """
-    title = blocks.CharBlock(required=True)
-    subtitle = blocks.CharBlock(required=True)
-    theme_categories = blocks.ListBlock(blocks.CharBlock(required=True))
-    themes = blocks.ListBlock(MoleculeThemeHighlightRegularBlock())
-
-
-class OrganismObjectHighlightsRegularBlock(AdapterStructBlock):
-    """
-    Homepage Component
-    Renders a somewhat mosaic style of objects that are currently the highlights
-    of the collection.  Note that content amount isn't limited here, but the page
-    model will not return anything but the first 3.
-    """
-    title = blocks.CharBlock(required=True)
-    introduction = blocks.RichTextBlock(required=True)
-    highlights = blocks.ListBlock(MoleculeObjectHighlightRegularBlock())
-
-
-class OrganismCollectionCategoriesRegularBlock(AdapterStructBlock):
-    """
-    Homepage Component
-    Mimics the design of the original block on the Typo3 website that
-    outlines the museums primary collection domains. Essentially just
-    a list of cards.
-    """
-    title = blocks.CharBlock(required=True)
-    cards = blocks.ListBlock(MoleculeCollectionCategoryCardRegularBlock())
-
-    class Meta:
-        defaults = {}
-        component = 'organisms.card-grid.regular'
-        interface_class = OrganismCollectionCategoriesRegular
-
-
-class OrganismHeroHeaderVideoRegularBlock(AdapterStructBlock):
-    """
-    Header Component
-    Not currently used, because MetaHub does not have video content yet.
-    """
-    title = blocks.CharBlock(required=True)
-    video = AtomVideoEmbedRegularBlock(required=True)
-
-    class Meta:
-        defaults = {
-            'id' : '',
-        }
-        component = 'organisms.logo-marquee.regular'
-        interface_class = OrganismHeroHeaderVideoRegular
-
-
-class OrganismHeroHeaderMultiImageRegularBlock(AdapterStructBlock):
-    """
-    Header Component
-    Hero header that allows for multiple images to be picked. These will
-    become part of a slideshow that can be opened through the header. They are also
-    inherited by the intro component on MetaHub pages, which will in addition mimic
-    slide behaviour.
-    """
-    # show_fullscreen_button = blocks.BooleanBlock(default=True, required=False)
-    pictures = blocks.ListBlock(AtomPictureRegularBlock(resolution=Resolution(mobile='750', landscape='2048', crop=True)))
-
-    class Meta:
-        defaults = {
-            'id' : '',
-            'theme' : 'blue',
-        }
-        component = 'organisms.image-header.regular'
-        interface_class = OrganismHeroHeaderMultiImageRegular
-
-
-class OrganismContextDiscoveryChoiceRegularBlock(AdapterStructBlock):
-    """
-    Header Component
-    Allows the user to choose elements for the context ribbon. Note that
-    content amount isn't limited here, but the page model will not
-    return anything but the first 3.
-    """
-    cards = blocks.ListBlock(MoleculeContextCardRegularBlock())
-
-    class Meta:
-        defaults = {
-            'title' : 'Entdecken Sie das Werk im Kontext',
-            'id': '',
-        }
-        component = 'organisms.context-cards.regular'
-        interface_class = OrganismObjectMosaicChoiceRegular
+        component = 'organisms.simple-image-header.regular'
+        interface_class = OrganismHeroHeaderSingleImageContentPageRegular
 
 
 class OrganismContentSingleRichTextRegularBlock(AdapterStructBlock):
     """
     Content Component
-    Renders a single richtext component in the right column.
+    Renders a single richtext component
     """
     text = blocks.RichTextBlock()
 
@@ -154,7 +48,7 @@ class OrganismContentSingleRichTextRegularBlock(AdapterStructBlock):
 class OrganismContentSingleImageRegularBlock(AdapterStructBlock):
     """
     Content Component
-    Renders a single image in the right column.
+    Renders a single image with a caption
     """
     figure = AtomFigureRegularBlock([
         ('picture', AtomPictureRegularBlock(resolution=Resolution(mobile='1920', crop=True))),
@@ -185,51 +79,15 @@ class OrganismContentSingleVideoRegularBlock(AdapterStructBlock):
         interface_class = OrganismContentSingleVideoRegular
 
 
-class OrganismContentSingleAudioRegularBlock(AdapterStructBlock):
-    """
-    Content Component
-    Regular audio player component for the content body, rendered
-    in the right column. Accessibility guidelines mandate this includes
-    an audio transcript.
-    """
-    audio_fragment = MoleculeAudioPlayerBlock()
-
-    class Meta:
-        defaults = {}
-        component = 'organisms.article-audio.regular'
-        interface_class = OrganismContentSingleAudioRegular
-
-
-class OrganismContentDoubleQuoteRichTextRegularBlock(AdapterStructBlock):
-    """
-    Content Component
-    Renders a quote in the left column, accompanied by a text block on
-    the right.
-    """
-    quote = blocks.CharBlock(required=True)
-    attribution = blocks.CharBlock(required=False)
-    text = blocks.RichTextBlock(required=True)
-
-    def get_word_count(self, value):
-        return count_words_html(value['text'])
-
-    class Meta:
-        defaults = {
-            'id': '',
-        }
-        component = 'organisms.article-quote-and-text.regular'
-        interface_class = OrganismContentDoubleQuoteRichTextRegular
-
-
 class OrganismContentDoubleImageRichTextRegularBlock(AdapterStructBlock):
     """
     Content Component
-    Renders a large and small picture in the left column, accompanied by
-    a text block on the right.
+    Renders a richtext on the left and a picture with caption on the right.
+    Optionally includes a link as well.
     """
-    picture_large = AtomPictureRegularBlock(resolution=Resolution(mobile='1024', crop=False))
-    picture_small = AtomPictureRegularBlock(resolution=Resolution(mobile='1024', crop=False))
+    figure = AtomFigureRegularBlock()
     text = blocks.RichTextBlock(required=True)
+    link = OptionalBlock(AtomLinkRegularBlock())
 
     def get_word_count(self, value):
         return count_words_html(value['text'])
@@ -240,47 +98,6 @@ class OrganismContentDoubleImageRichTextRegularBlock(AdapterStructBlock):
         }
         component = 'organisms.article-photos-and-text.regular'
         interface_class = OrganismContentDoubleImageRichTextRegular
-
-
-class OrganismObjectMosaicChoiceRegularBlock(AdapterStructBlock):
-    """
-    Content Component
-    This is the variant for the story page where they can be picked,
-    on the object page it is generated. It is not currently used as
-    the series pages is intended to fulfill this role for now.
-    """
-    title = blocks.CharBlock(required=False)
-    cards = blocks.ListBlock(MoleculeObjectCardRegularBlock())
-
-
-class OrganismLinkListRegularBlock(AdapterStructBlock):
-    """
-    Content Component
-    Renders a link block for relevant links on the topic of a story or object.
-    """
-    title = blocks.CharBlock(required=False)
-    links = blocks.ListBlock(AtomLinkRegularBlock())
-
-    class Meta:
-        defaults = {
-            'id': '',
-        }
-        component = 'organisms.article-links.regular'
-        interface_class = OrganismLinkListRegular
-
-
-class OrganismHeroHeaderSingleImageContentPageRegularBlock(AdapterStructBlock):
-    """
-    Content Page Header Component
-    Simple header with 1 picture and a title
-    """
-    title = blocks.CharBlock()
-    subtitle = blocks.CharBlock()
-    picture = AtomPictureRegularBlock(resolution=Resolution(mobile='750', landscape='2048', crop=True))
-
-    class Meta:
-        component = 'organisms.simple-image-header.regular'
-        interface_class = OrganismHeroHeaderSingleImageContentPageRegular
 
 
 class OrganismArticleCookieBlockRegular(AdapterStructBlock):

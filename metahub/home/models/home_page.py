@@ -7,11 +7,7 @@ from wagtail.core.fields import StreamField
 from metahub.collection.models.object_page import MetaHubObjectPage
 from metahub.collection.models.object_series_page import MetaHubObjectSeriesPage
 from metahub.core.models import MetaHubBasePage
-# from metahub.search.models import MetaHubSearchPage
-from metahub.starling_metahub.organisms.blocks import OrganismSearchHeaderRegularBlock, \
-    OrganismThemeHighlightsRegularBlock, OrganismObjectHighlightsRegularBlock, OrganismCollectionCategoriesRegularBlock
-from metahub.starling_metahub.organisms.interfaces import OrganismThemeHighlightsRegular, \
-    OrganismObjectHighlightsRegular
+
 
 
 class MetaHubHomePage(RoutablePageMixin, MetaHubBasePage):

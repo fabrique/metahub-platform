@@ -16,11 +16,7 @@ from wagtail.search import index
 
 from .mixins import PagePromoMixin
 
-from ..starling_metahub.molecules.blocks import MoleculeAudioPlayerBlock
-from ..starling_metahub.organisms.blocks import OrganismContextDiscoveryChoiceRegularBlock
-from ..starling_metahub.organisms.interfaces import OrganismImageIntroRegular
 from ..starling_metahub.structures.blocks import StructureFooterBarSimpleBlock
-# from ..tagging.models.categorization import CollectionCategory
 
 
 class MetaHubBasePage(PagePromoMixin, Page):
