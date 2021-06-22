@@ -38,6 +38,40 @@ class MetaHubContentPage(MetaHubBasePage):
         StreamFieldPanel('related_items')
     ]
 
+    def get_content_with_numbered_captioned_entities(self):
+        children = []
+        caption_count = 1
+
+        for child in self.content:
+            if child.block.name == 'double_picture_richtext':
+                if child.value:
+                    caption = child.value['figure']['caption']
+
+                    if len(caption):
+                        child.value['figure']['caption'] = f'({caption_count}) {caption}'
+                        caption_count += 1
+
+            elif child.block.name == 'video':
+                if child.value:
+                    caption = child.value['caption']
+                    if len(caption):
+                        child.value['caption'] = f'({caption_count}) {caption}'
+                        caption_count += 1
+
+            elif child.block.name == 'image_mosaic':
+                if child.value:
+                    figures = child.value['figures']
+                    for figure in figures:
+                        caption = figure['caption']
+                        if len(caption):
+                            figure['caption'] = f'({caption_count}) {caption}'
+                            caption_count += 1
+
+            # This might be superfluous to have it be another list
+            children.append(child)
+
+        return children
+
     def get_page_label(self):
         return 'Sample label'
 

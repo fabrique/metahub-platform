@@ -16,7 +16,7 @@
 {% block content %}
   <div class="container--content__wrapper">
 
-    {% for block in page.content %}
+    {% for block in page.get_content_with_numbered_captioned_entities %}
       {% include_block block %}
     {% endfor %}
 
