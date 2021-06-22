@@ -80,18 +80,19 @@
       <header class="header" role="banner">
         {% block header %}
         {% endblock %}
-        
-        {% block page_header %}
-        {% endblock page_header %}
       </header>
         
       {% block main %}
         <main id="main" class="main content" role="main">
-          {% block content %}
-          {% endblock %}
-          
-          {% block page_content %}
-          {% endblock page_content %}
+
+            {% block page_header %}
+            {% endblock page_header %}
+
+            {% block content %}
+            {% endblock %}
+
+            {% block page_content %}
+            {% endblock page_content %}
 
         </main>
       {% endblock %}
