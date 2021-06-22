@@ -71,3 +71,12 @@ class OrganismArticleCookieRegular(NamedTuple):
     id: str = ''
     title: str = 'Cookie-Einstellungen'
     text: str = 'Ändern Sie hier Ihre Cookie-Einstellungen. Sie können auswählen, welche Kategorien von Cookies Sie (nicht) zulassen möchten.'
+
+
+class OrganismContentHeroImageTitle(NamedTuple):
+    id: str = ''
+    classes: str = ''
+    align: str = ''
+    title: str = ''
+    picture: AtomPictureRegular = AtomPictureRegular()
+    link: AtomLinkRegular = AtomLinkRegular()

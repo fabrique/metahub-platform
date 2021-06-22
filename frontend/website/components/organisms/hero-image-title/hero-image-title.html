@@ -1,5 +1,6 @@
 {% import 'components/atoms/figure/figure.html' as atom_figure %}
 {% import 'components/atoms/link/link.html' as atom_link %}
+{% import 'components/atoms/picture/picture.html' as atom_picture %}
 
 {% macro regular(id = '', align = 'default', figure = {}, link = {}) %}
   <section class="hero-image-title">
@@ -10,6 +11,25 @@
       </div>
       <div class="hero-image-title__title-link-wrapper">
         <h2>Der Thoraschrein der Synagoge am Börneplatz</h2>
+        <div class="hero-image-title__link-wrapper">
+          {{ atom_link.regular(classes = link.classes, href = link.href, title = link.title, target = link.target, icon_before = link.icon_before, icon_after = link.icon_after) }}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endmacro %}
+
+
+
+{% macro picture(id = '', align = 'default', title = '', picture = {}, link = {}) %}
+  <section class="hero-image-title">
+    <div class="hero-image-title__grid">
+      <div class="hero-image-title__image">
+        <!-- Image ratio: Original. Preferred: around 16:9 or 9:16 -->
+        {{ atom_picture.regular(images = picture.images, fits = picture.fits, positions = picture.positions, width = picture.width, height = picture.height, loading = picture.loading, alt = picture.alt) }}
+      </div>
+      <div class="hero-image-title__title-link-wrapper">
+        <h2>{{ title }}</h2>
         <div class="hero-image-title__link-wrapper">
           {{ atom_link.regular(classes = link.classes, href = link.href, title = link.title, target = link.target, icon_before = link.icon_before, icon_after = link.icon_after) }}
         </div>

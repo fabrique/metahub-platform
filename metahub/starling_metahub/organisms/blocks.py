@@ -104,11 +104,24 @@ class OrganismContentDoubleImageRichTextRegularBlock(AdapterStructBlock):
         return count_words_html(value['text'])
 
     class Meta:
-        defaults = {
-            'id': '',
-        }
+        defaults = {}
         component = 'organisms.content-and-image.regular'
         interface_class = OrganismContentDoubleImageRichTextRegular
+
+
+class OrganismContentHeroImageTitleBlock(AdapterStructBlock):
+    """
+    Content Component
+    Image with title and link, call to action/highlight
+    """
+    title = blocks.CharBlock(max_length=200)
+    link = AtomLinkRegularBlock()
+    picture = AtomPictureRegularBlock()
+
+    class Meta:
+        defaults = {}
+        component = 'organisms.hero-image-title.picture'
+        interface_class = OrganismContentHeroImageTitle
 
 
 class OrganismArticleCookieBlockRegular(AdapterStructBlock):
