@@ -14,3 +14,19 @@
     </div>
   </section>
 {% endmacro %}
+
+
+{% macro be_cards(cards = [], title = '') %}
+  <section class="relevant-stories">
+    <div class="relevant-stories__grid">
+      <h2 class="relevant-stories__title">{{ title }}</h2>
+    </div>
+    <div class="relevant-stories__grid">
+      {% for card in cards %}
+        <div class="relevant-stories__item">
+          {{ atom_story.picture(classes = card.classes, href = card.href, title = card.title,  theme_color = card.theme_color, picture = card.picture) }}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endmacro %}

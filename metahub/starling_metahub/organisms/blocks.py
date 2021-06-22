@@ -8,6 +8,7 @@ from wagtail.core.blocks import ListBlock
 
 from .interfaces import *
 from ..atoms.blocks import AtomVideoEmbedRegularBlock
+from ..helpers import HelperRelatedPagesBlock
 from ..molecules.blocks import MoleculeObjectCardRegularBlock, MoleculeContextCardRegularBlock, \
     MoleculeLinkRegularBlock, MoleculeAudioPlayerBlock, \
     MoleculeCollectionCategoryCardRegularBlock, MoleculeThemeHighlightRegularBlock, MoleculeObjectHighlightRegularBlock
@@ -146,3 +147,20 @@ class OrganismArticleCookieBlockRegular(AdapterStructBlock):
     class Meta:
         component = 'organisms.article-cookies.regular'
         interface_class = OrganismArticleCookieRegular
+
+
+class OrganismArticleCuratedItemsRegularBlock(AdapterStructBlock):
+    """
+    Basic/Content Page component
+    Allows linking to another page through clickable cards.
+    """
+
+    title = blocks.CharBlock(max_length=100)
+    items = HelperRelatedPagesBlock()
+
+    class Meta:
+        label = "Gerelelateerde items (handgekozen)"
+        icon = 'arrows-up-down'
+        defaults = {}
+        component = 'organisms.relevant-stories.be_cards'
+        interface_class = OrganismArticleRelatedItemsRegular

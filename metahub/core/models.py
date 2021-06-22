@@ -5,6 +5,7 @@ from django.conf import settings
 
 from django.utils.translation import ugettext_lazy as _
 from django.forms.widgets import Textarea
+from starling.interfaces.atoms import AtomLinkRegular
 
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
@@ -15,6 +16,7 @@ from wagtail.images.models import Image
 from wagtail.search import index
 
 from .mixins import PagePromoMixin
+from ..starling_metahub.molecules.interfaces import MoleculeCardRegular
 
 from ..starling_metahub.structures.blocks import StructureFooterBarSimpleBlock
 
@@ -63,6 +65,13 @@ class MetaHubBasePage(PagePromoMixin, Page):
     #         cards.append(highlight.get_search_representation())
     #
     #     return cards
+
+    def get_card_representation(self):
+        return MoleculeCardRegular(
+            title=self.title,
+            label='test',
+            href=self.url
+        )
 
     class Meta:
         abstract = True

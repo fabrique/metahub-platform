@@ -6,7 +6,7 @@ from fabrique.youtube.blocks import YouTubeBlock
 from starling.interfaces.generic import Resolution
 from starling.mixins import HelperMixin
 from wagtail.core import blocks
-from wagtail.core.blocks import PageChooserBlock, StructBlock
+from wagtail.core.blocks import PageChooserBlock, StructBlock, ListBlock
 from wagtail.documents.blocks import DocumentChooserBlock
 from wagtail.images.blocks import ImageChooserBlock
 
@@ -94,8 +94,6 @@ class HelperEmbedBlock(HelperMixin, StructBlock):
         return value['src'][0].value['src']
 
 
-
-
 class HelperHrefBlockDocument(HelperMixin, blocks.StructBlock):
     """ Helper to make all kinds of urls. """
 
@@ -179,3 +177,21 @@ class HelperDocumentBlock(HelperMixin, blocks.StructBlock):
             return {field_name: child.value.url}
 
         raise ValueError(f'Unknown source type {name}')
+
+
+class HelperRelatedPagesBlock(HelperMixin, StructBlock):
+    """
+    Helper block to convert a list of chosen pages directly to a list
+    of page card molecules.
+    """
+    pages = ListBlock(blocks.PageChooserBlock(required=False))
+
+    def to_params(self, value, field_name: str = 'pages', parent_context=None) -> dict:
+        # maybe_parent = parent_context.get('page') if parent_context else None
+        field_value = value.get('pages', ())
+        pages = []
+        for page in field_value:
+            if page:
+                page = page.specific
+                pages.append(page)
+        return {'cards': [page.get_card_representation() for page in pages]}

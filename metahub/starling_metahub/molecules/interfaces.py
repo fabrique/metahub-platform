@@ -1,6 +1,7 @@
 from typing import NamedTuple, Iterable
 
 from starling.interfaces.atoms import AtomLinkRegular, AtomPictureRegular
+from starling.typing import Picture
 from wagtail.core.models import Page
 
 
@@ -49,3 +50,13 @@ class MoleculeCollectionCategoryCardRegular(NamedTuple):
     image: AtomPictureRegular = AtomPictureRegular()
     href: str = ''
     target: str = ''
+
+
+class MoleculeCardRegular(NamedTuple):
+    title: str = ''
+    label: str = ''
+    text: str = ''
+    picture: Picture = None
+    href: str = ''
+    target: str = ''
+    classes: str = ''

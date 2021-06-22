@@ -1,6 +1,7 @@
 from typing import NamedTuple, Iterable, Sequence
 
 from starling.interfaces.atoms import AtomPictureRegular as AtomPictureRegular, AtomFigureRegular, AtomLinkRegular
+from starling.interfaces.molecules import MoleculeCardRegular
 
 from ..atoms.interfaces import AtomVideoEmbedRegular
 from ..molecules.interfaces import MoleculeObjectCardRegular, MoleculeAudioPlayer, MoleculeCollectionCategoryCardRegular
@@ -85,3 +86,15 @@ class OrganismContentHeroImageTitle(NamedTuple):
 class OrganismContentPhotoMosaic(NamedTuple):
     id: str = ''
     figures: Sequence[AtomFigureRegular] = ()
+
+
+class OrganismArticleRelatedItemsRegular(NamedTuple):
+    """
+    Basic/Content Page component
+    Related item cards, based on chosen pages
+    """
+    title: str = ''
+    cards: Iterable[MoleculeCardRegular] = ()
+    tags: Iterable = ()
+    variant: str = ''
+    card_background: str = ''
