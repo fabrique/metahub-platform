@@ -5,7 +5,8 @@ from django.conf import settings
 
 from django.utils.translation import ugettext_lazy as _
 from django.forms.widgets import Textarea
-from starling.interfaces.atoms import AtomLinkRegular
+from starling.interfaces.atoms import AtomLinkRegular, AtomPictureRegular
+from starling.interfaces.generic import Resolution
 
 from wagtail.contrib.settings.models import BaseSetting, register_setting
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
@@ -25,50 +26,50 @@ class MetaHubBasePage(PagePromoMixin, Page):
     """
     Base page for all MetaHub online collection pages
     """
-    # def get_my_collection_url(self):
-    #     from metahub.my_collection.models import MetaHubMyCollectionPage
-    #     my_collection = MetaHubMyCollectionPage.objects.live().first()
-    #     if my_collection:
-    #         return my_collection.url
-    #     return '/'
-    #
-    # def get_search_base_url(self):
-    #     """
-    #     Used by the tags that redirect to search with a predefined param
-    #     as well as the object series "see all objects in this series"
-    #     """
-    #     from metahub.search.models import MetaHubSearchPage
-    #     search =  MetaHubSearchPage.objects.live().first()
-    #     if search:
-    #         return search.search_url()
-    #     return '/'
-    #
-    # def get_highlights(self):
-    #     """
-    #     Checks for each page type what pages have been marked as
-    #     highlights and creates a card representation to show.
-    #     """
-    #     cards = []
-    #
-    #     # To avoid circular imports
-    #     from metahub.collection.models.object_page import MetaHubObjectPage
-    #     from metahub.collection.models.object_series_page import MetaHubObjectSeriesPage
-    #     from metahub.stories.models import MetaHubStoryPage
-    #
-    #     obj_highlights = MetaHubObjectPage.objects.all().specific().live().filter(is_highlight=True)
-    #     obj_series_highlights = MetaHubObjectSeriesPage.objects.all().specific().live().filter(is_highlight=True)
-    #     story_highlights = MetaHubStoryPage.objects.all().specific().live().filter(is_highlight=True)
-    #
-    #     all_highlights = list(chain(obj_highlights, obj_series_highlights, story_highlights))
-    #
-    #     for highlight in all_highlights:
-    #         cards.append(highlight.get_search_representation())
-    #
-    #     return cards
 
+    def get_content_with_numbered_captioned_entities(self):
+        children = []
+        caption_count = 1
+
+        for child in self.content:
+            if child.block.name == 'double_picture_richtext':
+                if child.value:
+                    caption = child.value['figure']['caption']
+
+                    if len(caption):
+                        child.value['figure']['caption'] = f'({caption_count}) {caption}'
+                        caption_count += 1
+
+            elif child.block.name == 'video':
+                if child.value:
+                    caption = child.value['caption']
+                    if len(caption):
+                        child.value['caption'] = f'({caption_count}) {caption}'
+                        caption_count += 1
+
+            elif child.block.name == 'image_mosaic':
+                if child.value:
+                    figures = child.value['figures']
+                    for figure in figures:
+                        caption = figure['caption']
+                        if len(caption):
+                            figure['caption'] = f'({caption_count}) {caption}'
+                            caption_count += 1
+
+            # This might be superfluous to have it be another list
+            children.append(child)
+        return children
 
     def get_page_header_image(self):
-        raise NotImplementedError("You need to implement this method on the subclass.")
+        """ Used in the card representation.
+        TODO: Optional override through promo img? """
+        try:
+            header_child = self.hero_header[0]
+        except IndexError:
+            return
+        else:
+            picture_structvalue = header_child.value['picture']
+            return AtomPictureRegular(**Resolution(mobile='1920', crop=True).resolve(picture_structvalue['source']))
 
     def get_page_label(self):
         return ''
@@ -79,7 +80,6 @@ class MetaHubBasePage(PagePromoMixin, Page):
             label=self.get_page_label(),
             href=self.url,
             picture=self.specific.get_page_header_image(),
-
         )
 
     class Meta:

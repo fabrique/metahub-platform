@@ -1,4 +1,4 @@
-from wagtail.admin.edit_handlers import StreamFieldPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import MultiFieldPanel, StreamFieldPanel
 from wagtail.core.fields import StreamField
 
 from metahub.content.blocks import content_blocks
@@ -7,8 +7,7 @@ from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderReg
     OrganismHeroTextHeaderRegularBlock, OrganismArticleCuratedItemsRegularBlock
 
 
-class MetaHubContentPage(MetaHubBasePage):
-
+class MetaHubNewsPage(MetaHubBasePage):
     parent_page_types = ['home.MetahubHomePage']
 
     hero_header = StreamField([
@@ -20,13 +19,18 @@ class MetaHubContentPage(MetaHubBasePage):
 
     content = StreamField(content_blocks(), blank=True)
 
+    related_items = StreamField([
+        ('related_curated', OrganismArticleCuratedItemsRegularBlock())
+    ], blank=True)
+
     content_panels = MetaHubBasePage.content_panels + [
         MultiFieldPanel([
             StreamFieldPanel('hero_header'),
             StreamFieldPanel('text_header'),
         ], heading="Header"),
         StreamFieldPanel('content'),
+        StreamFieldPanel('related_items')
     ]
 
     def get_page_label(self):
-        return ''
+        return 'News'
