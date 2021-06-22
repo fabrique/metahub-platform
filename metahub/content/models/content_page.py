@@ -1,6 +1,7 @@
 from wagtail.admin.edit_handlers import StreamFieldPanel, MultiFieldPanel
 from wagtail.core.fields import StreamField
 
+from metahub.content.blocks import content_blocks
 from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderRegularBlock, \
     OrganismContentSingleRichTextRegularBlock, OrganismContentSingleImageRegularBlock, \
@@ -20,22 +21,17 @@ class MetaHubContentPage(MetaHubBasePage):
         ('header_text', OrganismHeroTextHeaderRegularBlock()),
     ])
 
-    # CMS panels
-    content = StreamField([
-        ('single_richtext', OrganismContentSingleRichTextRegularBlock()),
-        # ('single_image', OrganismContentSingleImageRegularBlock()),
-        ('double_picture_richtext', OrganismContentDoubleImageRichTextRegularBlock()),
-        ('video', OrganismContentSingleVideoRegularBlock()),
-        ('highlight', OrganismContentHeroImageTitleBlock()),
-        ('image_mosaic', OrganismContentPhotoMosaicBlock()),
-        ('related_curated', OrganismArticleCuratedItemsRegularBlock())
-        # ('cookies', OrganismArticleCookieBlockRegular())
-    ])
+    content = StreamField(content_blocks(), blank=True)
+
+    # related_items = StreamField([
+    #     ('related_curated', OrganismArticleCuratedItemsRegularBlock())
+    # ])
 
     content_panels = MetaHubBasePage.content_panels + [
         MultiFieldPanel([
             StreamFieldPanel('hero_header'),
             StreamFieldPanel('text_header'),
         ], heading="Header"),
-        StreamFieldPanel('content')
+        StreamFieldPanel('content'),
+        # StreamFieldPanel('related_items')
     ]
