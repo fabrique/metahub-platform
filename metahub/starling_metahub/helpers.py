@@ -12,7 +12,7 @@ from wagtail.images.blocks import ImageChooserBlock
 
 
 class HelperPageURLBlock(HelperMixin, PageChooserBlock):
-    def to_params(self, value, field_name) -> dict:
+    def to_params(self, value, field_name, parent_context = None) -> dict:
         return {self.meta.field: value.url}
     class Meta:
         field = 'href'
@@ -20,7 +20,7 @@ class HelperPageURLBlock(HelperMixin, PageChooserBlock):
 
 class HelperImageURLBlock(HelperMixin, ImageChooserBlock):
     """ Helper to select a video for a QuarkVideoSourceBlock """
-    def to_params(self, value, field_name) -> dict:
+    def to_params(self, value, field_name, parent_context = None) -> dict:
         return {
             self.meta.field: value.get_rendition(
                 f'fill-{self.meta.resolution.mobile}').url}
@@ -40,7 +40,7 @@ class HelperOptionalHrefBlock(HelperMixin, blocks.StructBlock):
         blank=True
     )
 
-    def to_params(self, value, field_name: str = 'href') -> dict:
+    def to_params(self, value, field_name: str = 'href', parent_context = None) -> dict:
         child = value['source'][0]
         name = child.block.name
 
@@ -78,7 +78,7 @@ class HelperEmbedBlock(HelperMixin, StructBlock):
                 params=[ErrorList[e]])
         return value
 
-    def to_params(self, value, field_name) -> dict:
+    def to_params(self, value, field_name, parent_context = None) -> dict:
         url = self._get_url(value)
         backend = detect_backend(url)
         return {
@@ -111,7 +111,7 @@ class HelperHrefBlockDocument(HelperMixin, blocks.StructBlock):
         max_num=1,
     )
 
-    def to_params(self, value, field_name: str = 'href') -> dict:
+    def to_params(self, value, field_name: str = 'href', parent_context = None) -> dict:
         child = value['source'][0]
         name = child.block.name
 
@@ -146,7 +146,7 @@ class HelperHrefBlockSimple(HelperMixin, blocks.StructBlock):
         max_num=1,
     )
 
-    def to_params(self, value, field_name: str = 'href') -> dict:
+    def to_params(self, value, field_name: str = 'href', parent_context = None) -> dict:
         child = value['source'][0]
         name = child.block.name
 
@@ -171,7 +171,7 @@ class HelperDocumentBlock(HelperMixin, blocks.StructBlock):
         max_num=1,
     )
 
-    def to_params(self, value, field_name: str = 'source') -> dict:
+    def to_params(self, value, field_name: str = 'source', parent_context = None) -> dict:
         child = value['source'][0]
         name = child.block.name
 

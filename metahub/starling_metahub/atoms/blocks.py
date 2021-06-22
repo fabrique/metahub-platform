@@ -10,7 +10,7 @@ from ..helpers import HelperEmbedBlock, HelperPageURLBlock, HelperOptionalHrefBl
 
 class AtomVideoEmbedRegularBlock(AdapterStructBlock):
     video = HelperEmbedBlock()
-    video_preview = AtomPictureRegularBlock()
+    picture = AtomPictureRegularBlock()
 
     class Meta:
         defaults = {
