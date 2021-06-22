@@ -9,53 +9,94 @@
   @include grid-container;
 }
 
-.explore-items__item {
-  display: block;
-  grid-column: auto / span 4;
-  margin-bottom: 50px;
+@media (max-width: $landscape) {
+  .explore-items__item {
+    display: block;
+    margin-bottom: var(--explore-space);
 
-  &:nth-child(-n+3) {
-    grid-row: 1;
-  }
+    &:nth-child(odd) {
+      grid-column: auto / span 7;
+    }
 
-  &:nth-child(n+4) {
-    grid-row: 2;
-  }
+    &:nth-child(even) {
+      grid-column: column 6 / span 7;
+    }
 
-  &:nth-child(1) {
-    grid-column: column 1 / span 4;
-    // If the first item is a story, than the next item should not have the overlap grid style
-    &.explore-items__item--story {
-      + .explore-items__item--object {
-        grid-column: auto / span 4;
+    &:nth-child(1) {
+
+      // If the first item is a story, than the next item should not have the overlap grid style
+      &.explore-items__item--story {
+        + .explore-items__item--object {
+          margin-top: 0;
+        }
+      }
+
+      .object__content-wrapper {
+        --grid-columns: 7;
+
+        @include subgrid-container;
+      }
+
+      .object__content-wrapper__inner {
+        grid-column: auto / span 5;
       }
     }
 
-    .object__content-wrapper {
-      --grid-columns: 4;
-
-      @include subgrid-container;
-    }
-
-    .object__content-wrapper__inner {
-      grid-column: auto / span 3;
+    &:nth-child(2) {
+      margin-top: -165px;
     }
   }
+}
 
-  &:nth-child(2) {
-    grid-column: column 4 / span 4;
-    margin-top: calc(var(--explore-space) * 2);
-  }
+@include landscape {
+  .explore-items__item {
+    display: block;
+    grid-column: auto / span 4;
+    margin-bottom: 50px;
 
-  &:nth-child(3) {
-    grid-column: column 9 / span 4;
-  }
+    &:nth-child(-n+3) {
+      grid-row: 1;
+    }
 
-  &:nth-child(4) {
-    margin-top: var(--explore-space);
-  }
+    &:nth-child(n+4) {
+      grid-row: 2;
+    }
 
-  &:nth-child(6) {
-    margin-top: calc(var(--explore-space) * 2);
+    &:nth-child(1) {
+      grid-column: column 1 / span 4;
+      // If the first item is a story, than the next item should not have the overlap grid style
+      &.explore-items__item--story {
+        + .explore-items__item--object {
+          grid-column: auto / span 4;
+        }
+      }
+
+      .object__content-wrapper {
+        --grid-columns: 4;
+
+        @include subgrid-container;
+      }
+
+      .object__content-wrapper__inner {
+        grid-column: auto / span 3;
+      }
+    }
+
+    &:nth-child(2) {
+      grid-column: column 4 / span 4;
+      margin-top: calc(var(--explore-space) * 2);
+    }
+
+    &:nth-child(3) {
+      grid-column: column 9 / span 4;
+    }
+
+    &:nth-child(4) {
+      margin-top: var(--explore-space);
+    }
+
+    &:nth-child(6) {
+      margin-top: calc(var(--explore-space) * 2);
+    }
   }
 }
