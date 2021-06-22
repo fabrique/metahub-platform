@@ -1,4 +1,4 @@
-from typing import NamedTuple, Iterable
+from typing import NamedTuple, Iterable, Sequence
 
 from starling.interfaces.atoms import AtomPictureRegular as AtomPictureRegular, AtomFigureRegular, AtomLinkRegular
 
@@ -80,3 +80,8 @@ class OrganismContentHeroImageTitle(NamedTuple):
     title: str = ''
     picture: AtomPictureRegular = AtomPictureRegular()
     link: AtomLinkRegular = AtomLinkRegular()
+
+
+class OrganismContentPhotoMosaic(NamedTuple):
+    id: str = ''
+    figures: Sequence[AtomFigureRegular] = ()

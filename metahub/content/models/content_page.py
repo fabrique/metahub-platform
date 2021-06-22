@@ -5,7 +5,8 @@ from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderRegularBlock, \
     OrganismContentSingleRichTextRegularBlock, OrganismContentSingleImageRegularBlock, \
     OrganismContentDoubleImageRichTextRegularBlock, OrganismArticleCookieBlockRegular, \
-    OrganismHeroTextHeaderRegularBlock, OrganismContentSingleVideoRegularBlock, OrganismContentHeroImageTitleBlock
+    OrganismHeroTextHeaderRegularBlock, OrganismContentSingleVideoRegularBlock, OrganismContentHeroImageTitleBlock, \
+    OrganismContentPhotoMosaicBlock
 
 
 class MetaHubContentPage(MetaHubBasePage):
@@ -26,6 +27,7 @@ class MetaHubContentPage(MetaHubBasePage):
         ('double_picture_richtext', OrganismContentDoubleImageRichTextRegularBlock()),
         ('video', OrganismContentSingleVideoRegularBlock()),
         ('highlight', OrganismContentHeroImageTitleBlock()),
+        ('image_mosaic', OrganismContentPhotoMosaicBlock())
         # ('cookies', OrganismArticleCookieBlockRegular())
     ])
 

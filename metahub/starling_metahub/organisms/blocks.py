@@ -4,6 +4,7 @@ from starling.blocks.atoms.picture import AtomPictureRegularBlock
 from starling.interfaces.generic import Resolution
 from starling.mixins import AdapterStructBlock, OptionalBlock
 from wagtail.core import blocks
+from wagtail.core.blocks import ListBlock
 
 from .interfaces import *
 from ..atoms.blocks import AtomVideoEmbedRegularBlock
@@ -122,6 +123,19 @@ class OrganismContentHeroImageTitleBlock(AdapterStructBlock):
         defaults = {}
         component = 'organisms.hero-image-title.picture'
         interface_class = OrganismContentHeroImageTitle
+
+
+class OrganismContentPhotoMosaicBlock(AdapterStructBlock):
+    """
+    Content Component
+    A list of pictures placed playfully
+    """
+    figures = ListBlock(AtomFigureRegularBlock())
+
+    class Meta:
+        defaults = {}
+        component = 'organisms.images.regular'
+        interface_class = OrganismContentPhotoMosaic
 
 
 class OrganismArticleCookieBlockRegular(AdapterStructBlock):
