@@ -56,6 +56,7 @@ class MoleculeCardRegular(NamedTuple):
     title: str = ''
     label: str = ''
     text: str = ''
+    theme_color: str = ''
     picture: Picture = None
     href: str = ''
     target: str = ''

@@ -66,11 +66,20 @@ class MetaHubBasePage(PagePromoMixin, Page):
     #
     #     return cards
 
+
+    def get_page_header_image(self):
+        raise NotImplementedError("You need to implement this method on the subclass.")
+
+    def get_page_label(self):
+        return ''
+
     def get_card_representation(self):
         return MoleculeCardRegular(
             title=self.title,
-            label='test',
-            href=self.url
+            label=self.get_page_label(),
+            href=self.url,
+            picture=self.specific.get_page_header_image(),
+
         )
 
     class Meta:
