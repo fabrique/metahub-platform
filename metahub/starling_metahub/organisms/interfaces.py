@@ -22,8 +22,10 @@ class  OrganismContentSingleImageRegular(NamedTuple):
 
 class OrganismContentSingleVideoRegular(NamedTuple):
     id: str = ''
+    classes: str = ''
     video: AtomVideoEmbedRegular = AtomVideoEmbedRegular()
     caption: str = ''
+    caption_number: str = ''
 
 
 class OrganismContentDoubleImageRichTextRegular(NamedTuple):
