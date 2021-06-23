@@ -1,0 +1,13 @@
+{% extends 'core/base_page.html' %}
+
+{% load starling_tags %}
+
+{% block content %}
+
+    <ol>
+        {% for card in cards %}
+            <li><{{ card }}</li>
+        {% endfor %}
+    </ol>
+{#  {% include_component 'organisms.card-grid.regular' title=page.title cards=paginated_cards paginator=paginator  %}#}
+{% endblock %}

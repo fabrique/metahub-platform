@@ -8,7 +8,7 @@ from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderReg
 
 
 class MetaHubNewsPage(MetaHubBasePage):
-    parent_page_types = ['home.MetahubHomePage']
+    parent_page_types = ['overviews.MetaHubOverviewPage']
 
     hero_header = StreamField([
         ('header_image', OrganismHeroImageHeaderRegularBlock()),

@@ -98,6 +98,8 @@ LOCAL_APPS = (
     'metahub.home',
     'metahub.search',
     'metahub.my_collection',
+    'metahub.news',
+    'metahub.overviews',
 
     # custom apps go here
 )
