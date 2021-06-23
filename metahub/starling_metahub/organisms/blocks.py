@@ -13,6 +13,7 @@ from ..molecules.blocks import MoleculeObjectCardRegularBlock, MoleculeContextCa
     MoleculeLinkRegularBlock, MoleculeAudioPlayerBlock, \
     MoleculeCollectionCategoryCardRegularBlock, MoleculeThemeHighlightRegularBlock, MoleculeObjectHighlightRegularBlock
 from ..utils import count_words_html
+from ...core.utils import format_date
 
 
 class OrganismHeroImageHeaderRegularBlock(AdapterStructBlock):
@@ -38,6 +39,19 @@ class OrganismHeroTextHeaderRegularBlock(AdapterStructBlock):
     class Meta:
         component = 'organisms.hero-text.regular'
         interface_class = OrganismHeroTextHeaderRegular
+
+
+class OrganismHeroTextHeaderExtraInfoBlock(OrganismHeroTextHeaderRegularBlock):
+    def build_extra(self, value, build_args, parent_context=None):
+        page = (parent_context or {}).get('page')
+
+        if not page:
+            return
+
+        build_args.update({
+            'date': format_date(page.date),
+            'author': ', '.join(page.get_page_authors()),
+        })
 
 
 class OrganismContentSingleRichTextRegularBlock(AdapterStructBlock):
