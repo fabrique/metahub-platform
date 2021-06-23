@@ -2,6 +2,12 @@
 
 {% import 'components/structures/header/header.html' as header %}
 
+{% import 'components/organisms/object-detail-aside-image/object-detail-aside-image.html' as organisms_object_detail_aside_image %}
+{% import 'components/organisms/object-metadata/object-metadata.html' as organisms_object_metadata %}
+
+{% import 'components/atoms/picture/picture.html' as atom_picture %}
+{% import 'components/atoms/richtext/richtext.html' as atom_richtext %}
+
 {% block page_title %}Explore{% endblock %}
 
 {% block header %}
@@ -10,10 +16,79 @@
 
 {% block content %}
 
-  <section class="object-detail__grid">
-    <div class="">
+  <section class="object-detail">
+    <article class="object-detail__main">
+      <div class="object-detail__intro">
+        <div class="object-detail__intro__titles">
+          <h1 class="object-detail__intro__title">ETROG-LIKÖR</h1>
+          <h3 class="object-detail__intro__subtitle">Kurt de Jong, Flasche, 2007</h3>
+        </div>
+      </div>
+      {% call atom_richtext.regular(classes = 'richtext__section-space--bottom') %}
+        <p>
+          Every year after Sukkot - the Feast of Tabernacles - Kurt de Jong makes a liqueur from Etrog fruits based on a recipe from his father. Every year at Simchat Tora - the Torah joyful festival - Kurt de Jong brings two bottles of his liqueur to the service in the small Baumweg synagogue in Frankfurt. The glass bottles each have an affixed label.
+        </p>
+      {% endcall %}
 
+      {{ organisms_object_metadata.regular(
+        items = [
+          {
+            title: 'Title',
+            data: 'Etrog liqueur',
+            number: '01'
+          },
+          {
+            title: 'Kunstler in Hersteller in',
+            data: 'Kurt de Jong',
+            number: '02'
+          },
+          {
+            title: 'Datierung',
+            data: '2007',
+            number: '03'
+          },
+          {
+            title: 'Objektbezeichnung',
+            data: 'bottle',
+            number: '04'
+          },
+          {
+            title: 'Ort',
+            data: 'Frankfurt am Main',
+            number: '05'
+          },
+          {
+            title: 'MaBe',
+            data: 'Bottle 1:30cm',
+            number: '06'
+          },
+          {
+            title: 'Material Technik',
+            data: 'Glass',
+            number: '07'
+          },
+          {
+            title: 'Signatur',
+            data: 'JMF contemporary cultures',
+            number: '08'
+          }
+        ]
+      ) }}
+
+    </article>
+
+    <div class="object-detail__aside">
+      {{ organisms_object_detail_aside_image.regular(
+        picture = {
+          images: { mobile: '/static/media/unsplash/cropped/highlight-1.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          classes: 'object-detail__aside__picture',
+          width: 430
+        }
+      ) }}
     </div>
+
   </section>
 
 {% endblock %}

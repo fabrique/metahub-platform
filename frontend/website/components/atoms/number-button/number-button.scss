@@ -1,4 +1,3 @@
-
 .number-button {
   font-family: $montserrat-font-stack;
   font-size: 16px;
@@ -9,10 +8,10 @@
     font-size: 18px;
     line-height: 22px;
   }
-}
 
-.number-button--default {
-  //
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 .number-button__title {
@@ -50,12 +49,6 @@
 
   &.number-button--previous {
     margin-right: var(--number-button-spacing);
-  }
-}
-
-.number-button {
-  &:hover {
-    text-decoration: underline;
   }
 }
 
