@@ -1,41 +1,13 @@
 
 .number-button {
-  @include typography(button);
+  font-family: $montserrat-font-stack;
+  font-size: 16px;
+  font-weight: #{get-montserrat-weight(bold)};
+  line-height: 18px;
 
-  background-color: $color-grey-light;
-  border: 0;
-  border-radius: 20px;
-  color: $color-grey-extradark;
-  contain: content;
-  cursor: pointer;
-  display: inline-block;
-  height: 40px;
-  overflow: hidden;
-  padding: 10px;
-  position: relative;
-  transition: color $easing-change, background-color $easing-change;
-  user-select: none;
-  vertical-align: bottom;
-  white-space: nowrap;
-  width: 40px;
-
-  &:hover,
-  &:focus {
-    background-color: $color-grey-extradark;
-    color: $color-grey-extralight;
-  }
-
-  .number-button__icon {
-    display: block;
-    height: var(--button-line-height);
-    width: var(--button-line-height);
-
-    > svg {
-      display: block;
-      fill: currentColor;
-      height: 100%;
-      width: 100%;
-    }
+  @include landscape {
+    font-size: 18px;
+    line-height: 22px;
   }
 }
 
@@ -43,13 +15,36 @@
   //
 }
 
-.number-button--clean {
-  background-color: transparent;
-  color: currentColor;
+.number-button__title {
+  color: var(--theme-color);
 
-  &:hover,
-  &:focus {
-    background-color: transparent;
-    color: $color-blue;
+  @include landscape {
+    padding: 0 8px;
+  }
+}
+
+.number-button__icon {
+  color: var(--theme-color);
+  display: block;
+
+  svg {
+    vertical-align: sub;
+    width: 24px;
+  }
+}
+
+.number-button--clean {
+  --number-button-spacing: 20px;
+
+  @include landscape {
+    --number-button-spacing: 100px;
+  }
+
+  &.number-button--next {
+    margin-left: var(--number-button-spacing);
+  }
+
+  &.number-button--previous {
+    margin-right: var(--number-button-spacing);
   }
 }

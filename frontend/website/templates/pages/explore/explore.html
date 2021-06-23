@@ -3,6 +3,7 @@
 {% import 'components/structures/header/header.html' as header %}
 {% import 'components/organisms/explore-intro/explore-intro.html' as organisms_explore_intro %}
 {% import 'components/organisms/explore-items/explore-items.html' as organisms_explore_items %}
+{% import 'components/molecules/pagination/pagination.html' as molecules_pagination %}
 
 {% block page_title %}Explore{% endblock %}
 
@@ -190,6 +191,10 @@
       }
     ]
   ) }}
+
+  {{ molecules_pagination.regular() }}
+
+
 
 {% endblock %}
 
