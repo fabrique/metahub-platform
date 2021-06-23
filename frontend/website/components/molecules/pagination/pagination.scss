@@ -1,6 +1,8 @@
 
 .pagination-wrapper {
   @include grid-container;
+
+  margin-bottom: var(--section-space);
 }
 
 .pagination {
