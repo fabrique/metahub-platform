@@ -136,7 +136,7 @@ class OrganismContentHeroImageTitleBlock(AdapterStructBlock):
 
     class Meta:
         defaults = {}
-        component = 'organisms.hero-image-title.picture'
+        component = 'organisms.hero-image-title.regular'
         interface_class = OrganismContentHeroImageTitle
 
 
@@ -174,6 +174,31 @@ class OrganismArticleCuratedItemsRegularBlock(AdapterStructBlock):
 
     class Meta:
         label = "Gerelelateerde items (handgekozen)"
+        icon = 'arrows-up-down'
+        defaults = {}
+        component = 'organisms.relevant-stories.be_cards'
+        interface_class = OrganismArticleRelatedItemsRegular
+
+
+class OrganismArticleRelatedItemsRegularBlock(AdapterStructBlock):
+    """
+    Basic/Content Page component
+    Creates a set of related items based on type
+    """
+    title = blocks.CharBlock(max_length=100)
+
+    def build_extra(self, value, build_args, parent_context=None):
+        page = (parent_context or {}).get('page')
+
+        if not page:
+            return
+
+        build_args.update({
+            'cards' : [page.get_card_representation() for page in page.get_page_related_items()]
+        })
+
+    class Meta:
+        label = "Gerelelateerde items (automatisch)"
         icon = 'arrows-up-down'
         defaults = {}
         component = 'organisms.relevant-stories.be_cards'

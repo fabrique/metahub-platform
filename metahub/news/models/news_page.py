@@ -6,7 +6,8 @@ from wagtailmodelchooser.blocks import ModelChooserBlock
 from metahub.content.blocks import content_blocks
 from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderRegularBlock, \
-    OrganismHeroTextHeaderRegularBlock, OrganismArticleCuratedItemsRegularBlock, OrganismHeroTextHeaderExtraInfoBlock
+    OrganismHeroTextHeaderRegularBlock, OrganismArticleCuratedItemsRegularBlock, OrganismHeroTextHeaderExtraInfoBlock, \
+    OrganismArticleRelatedItemsRegularBlock
 
 
 class MetaHubNewsPage(MetaHubBasePage):
@@ -28,7 +29,9 @@ class MetaHubNewsPage(MetaHubBasePage):
     content = StreamField(content_blocks(), blank=True)
 
     related_items = StreamField([
-        ('related_curated', OrganismArticleCuratedItemsRegularBlock())
+        ('related_curated', OrganismArticleCuratedItemsRegularBlock()),
+        ('related_automatic', OrganismArticleRelatedItemsRegularBlock()),
+
     ], blank=True)
 
     content_panels = MetaHubBasePage.content_panels + [
@@ -50,6 +53,9 @@ class MetaHubNewsPage(MetaHubBasePage):
     def get_page_authors(self):
         if len(self.authors):
             return [str(author) for author in self.authors]
+
+    def get_page_related_items(self):
+        return MetaHubNewsPage.objects.live().exclude(pk=self.pk)[:3]
 
     def get_page_label(self):
         return 'News'

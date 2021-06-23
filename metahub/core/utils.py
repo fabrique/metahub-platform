@@ -1,6 +1,9 @@
+from django.db import models
 from django.utils.formats import date_format
 from django.utils.html import format_html
 from wagtail.admin.edit_handlers import EditHandler
+from django.utils.translation import ugettext_lazy as _
+
 
 class ReadOnlyPanel(EditHandler):
     def __init__(self, attr, *args, **kwargs):
@@ -42,3 +45,10 @@ def format_date(date):
     if date:
         return date_format(date, 'd F Y')
     return ''
+
+
+class MetaHubThemeColor(models.TextChoices):
+    MAGENTA = 'magenta', _('Magenta pink')
+    STRAWBERRY = 'strawberry', _('Strawberry red')
+    SAPPHIRE = 'sapphire', _('Sapphire blue')
+    PHLOX = 'phlox', _('Phlox purple')
