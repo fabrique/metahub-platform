@@ -21,16 +21,21 @@ $object-spacing: 24px;
 
 .object__picture-wrapper {
   display: block;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 10%, transparent 100%);
+  position: relative;
 
-  @include landscape {
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 50%, transparent 100%);
+  &::after {
+    background-image: linear-gradient(transparent, $color-white);
+    bottom: 0;
+    content: '';
+    height: 100px;
+    left: 0;
+    position: absolute;
+    right: 0;
   }
 }
 
 .object__picture {
   margin-left: $object-spacing;
-  width: 100%;
 }
 
 .object__content-wrapper {
