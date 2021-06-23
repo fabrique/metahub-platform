@@ -36,6 +36,10 @@
 .number-button--clean {
   --number-button-spacing: 20px;
 
+  &:hover {
+    text-decoration: underline;
+  }
+
   @include landscape {
     --number-button-spacing: 100px;
   }
@@ -47,4 +51,14 @@
   &.number-button--previous {
     margin-right: var(--number-button-spacing);
   }
+}
+
+.number-button {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.number-button--selected {
+  text-decoration: underline;
 }
