@@ -35,6 +35,7 @@ class MetaHubNewsPage(MetaHubBasePage):
     ], blank=True)
 
     content_panels = MetaHubBasePage.content_panels + [
+        FieldPanel('theme_color'),
         MultiFieldPanel([
             FieldPanel('date'),
             StreamFieldPanel('authors'),
