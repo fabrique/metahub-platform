@@ -1,6 +1,6 @@
 {% import 'components/atoms/picture/picture.html' as atom_picture %}
 
-{% macro regular(classes = '', title = '', picture = {}, theme_color = '', href = '') %}
+{% macro regular(classes = '', title = '', picture = {}, theme_color = '', href = '', label = '') %}
   {% set component = 'story' %}
   <article class="{{ component }} {{ classes }} {{ theme_color }}">
     <a
@@ -14,7 +14,7 @@
 
       <span class="{{ component }}__content-wrapper">
         <span class="{{ component }}__content-wrapper__inner">
-          <span class="{{ component }}__label">STORY</span>
+          <span class="{{ component }}__label">{{ label }}</span>
           <span class="{{ component }}__title">{{ title }}</span>
         </span>
       </span>

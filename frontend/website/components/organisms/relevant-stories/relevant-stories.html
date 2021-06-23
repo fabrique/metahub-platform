@@ -24,7 +24,7 @@
     <div class="relevant-stories__grid">
       {% for card in cards %}
         <div class="relevant-stories__item">
-          {{ atom_story.picture(classes = card.classes, href = card.href, title = card.title,  theme_color = card.theme_color, picture = card.picture, label=card.label) }}
+          {{ atom_story.regular(classes = card.classes, href = card.href, title = card.title,  theme_color = card.theme_color, picture = card.picture, label=card.label) }}
         </div>
       {% endfor %}
     </div>
