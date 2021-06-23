@@ -68,6 +68,7 @@ THIRD_PARTY_APPS = (
     'taggit',
     'wagtailfontawesome',
     'pure_pagination',
+    'wagtailmodelchooser',
 
     'webpack_loader',
     'axes',
@@ -100,6 +101,7 @@ LOCAL_APPS = (
     'metahub.my_collection',
     'metahub.news',
     'metahub.overviews',
+    'metahub.authors',
 
     # custom apps go here
 )
