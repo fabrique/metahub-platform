@@ -1,10 +1,7 @@
 from django.db import models
-from modelcluster.fields import ParentalManyToManyField
 from wagtail.admin.edit_handlers import MultiFieldPanel, StreamFieldPanel, FieldPanel
-from wagtail.core.blocks import ListBlock
 from wagtail.core.fields import StreamField
 from wagtailmodelchooser.blocks import ModelChooserBlock
-from wagtailmodelchooser.edit_handlers import ModelChooserPanel
 
 from metahub.content.blocks import content_blocks
 from metahub.core.models import MetaHubBasePage
@@ -46,6 +43,13 @@ class MetaHubNewsPage(MetaHubBasePage):
         StreamFieldPanel('content'),
         StreamFieldPanel('related_items')
     ]
+
+    def get_page_date(self):
+        return self.date
+
+    def get_page_authors(self):
+        if len(self.authors):
+            return [str(author) for author in self.authors]
 
     def get_page_label(self):
         return 'News'
