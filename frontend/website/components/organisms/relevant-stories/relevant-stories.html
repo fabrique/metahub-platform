@@ -8,7 +8,7 @@
     <div class="relevant-stories__grid">
       {% for story in stories %}
         <div class="relevant-stories__item">
-          {{ atom_story.regular(classes = story.classes, href = story.href, title = story.title,  theme_color = story.theme_color, figure = story.figure) }}
+          {{ atom_story.regular(classes = story.classes, href = story.href, title = story.title,  theme_color = story.theme_color, picture = story.picture) }}
         </div>
       {% endfor %}
     </div>

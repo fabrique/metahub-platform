@@ -29,7 +29,7 @@
   border-bottom: 1px solid var(--theme-color);
   box-sizing: border-box;
   grid-column: auto / span 8;
-  padding: 15px 0;
+  padding: 5px 0;
   width: 100%;
 
   @include search-input-text-styling;
