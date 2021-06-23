@@ -13,6 +13,7 @@ from ..molecules.blocks import MoleculeObjectCardRegularBlock, MoleculeContextCa
     MoleculeLinkRegularBlock, MoleculeAudioPlayerBlock, \
     MoleculeCollectionCategoryCardRegularBlock, MoleculeThemeHighlightRegularBlock, MoleculeObjectHighlightRegularBlock
 from ..utils import count_words_html
+from ...core.utils import format_date
 
 
 class OrganismHeroImageHeaderRegularBlock(AdapterStructBlock):
@@ -48,7 +49,7 @@ class OrganismHeroTextHeaderExtraInfoBlock(OrganismHeroTextHeaderRegularBlock):
             return
 
         build_args.update({
-            'date': page.date,
+            'date': format_date(page.date),
             'author': ', '.join(page.get_page_authors()),
         })
 

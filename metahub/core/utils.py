@@ -1,3 +1,4 @@
+from django.utils.formats import date_format
 from django.utils.html import format_html
 from wagtail.admin.edit_handlers import EditHandler
 
@@ -37,4 +38,7 @@ class ReadOnlyPanel(EditHandler):
 
 
 
-
+def format_date(date):
+    if date:
+        return date_format(date, 'd F Y')
+    return ''

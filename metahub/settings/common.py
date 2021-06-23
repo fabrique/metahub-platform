@@ -170,7 +170,7 @@ DATABASES['default']['CONN_MAX_AGE'] = None
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
 TIME_ZONE = 'Europe/Amsterdam'
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'de'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = False
