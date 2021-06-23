@@ -19,7 +19,7 @@ $object-spacing: 24px;
   text-transform: uppercase;
 }
 
-.object__figure-wrapper {
+.object__picture-wrapper {
   display: block;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 10%, transparent 100%);
 
@@ -28,8 +28,9 @@ $object-spacing: 24px;
   }
 }
 
-.object__figure {
+.object__picture {
   margin-left: $object-spacing;
+  width: 100%;
 }
 
 .object__content-wrapper {

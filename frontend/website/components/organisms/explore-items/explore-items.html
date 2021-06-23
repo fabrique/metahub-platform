@@ -17,7 +17,7 @@
         {% endif %}
         {% if item.type == 'story' %}
           <div class="{{ component }}__item {{ component }}__item--story">
-            {{ atom_story.regular(classes = item.classes, href = item.href, title = item.title,  theme_color = item.theme_color, figure = item.figure) }}
+            {{ atom_story.regular(classes = item.classes, href = item.href, title = item.title,  theme_color = item.theme_color, picture = item.picture) }}
           </div>
         {% endif %}
 
@@ -28,7 +28,7 @@
               href = item.href,
               title = item.title,
               subtitle = item.subtitle,
-              figure = item.figure
+              picture = item.picture
             ) }}
           </div>
         {% endif %}
