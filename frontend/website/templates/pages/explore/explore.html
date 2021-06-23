@@ -8,16 +8,16 @@
 {% block page_title %}Explore{% endblock %}
 
 {% block header %}
-  {{ header.regular() }}
-{% endblock %}
-
-{% block content %}
 
   {{ organisms_explore_intro.regular(
     title = 'Explore',
     search_button_title = 'Search',
     search_button_icon = 'custom/arrow-right-icon'
   ) }}
+
+{% endblock %}
+
+{% block content %}
 
   {{ organisms_explore_items.regular(
     items = [
