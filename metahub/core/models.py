@@ -17,6 +17,7 @@ from wagtail.images.models import Image
 from wagtail.search import index
 
 from .mixins import PagePromoMixin
+from .utils import MetaHubThemeColor
 from ..starling_metahub.molecules.interfaces import MoleculeCardRegular
 
 from ..starling_metahub.structures.blocks import StructureFooterBarSimpleBlock
@@ -26,6 +27,10 @@ class MetaHubBasePage(PagePromoMixin, Page):
     """
     Base page for all MetaHub online collection pages
     """
+
+    theme_color = models.CharField(choices=MetaHubThemeColor.choices,
+                                   default=MetaHubThemeColor.MAGENTA,
+                                   max_length=100)
 
     def get_content_with_numbered_captioned_entities(self):
         children = []

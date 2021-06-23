@@ -55,7 +55,7 @@ class MetaHubNewsPage(MetaHubBasePage):
             return [str(author) for author in self.authors]
 
     def get_page_related_items(self):
-        return MetaHubNewsPage.objects.all().live().exclude(pk=self.pk)[:3]
+        return MetaHubNewsPage.objects.live().exclude(pk=self.pk)[:3]
 
     def get_page_label(self):
         return 'News'
