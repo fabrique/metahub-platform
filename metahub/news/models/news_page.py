@@ -6,7 +6,7 @@ from wagtailmodelchooser.blocks import ModelChooserBlock
 from metahub.content.blocks import content_blocks
 from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderRegularBlock, \
-    OrganismHeroTextHeaderRegularBlock, OrganismArticleCuratedItemsRegularBlock
+    OrganismHeroTextHeaderRegularBlock, OrganismArticleCuratedItemsRegularBlock, OrganismHeroTextHeaderExtraInfoBlock
 
 
 class MetaHubNewsPage(MetaHubBasePage):
@@ -22,7 +22,7 @@ class MetaHubNewsPage(MetaHubBasePage):
         ('header_image', OrganismHeroImageHeaderRegularBlock()),
     ], blank=True)
     text_header = StreamField([
-        ('header_text', OrganismHeroTextHeaderRegularBlock()),
+        ('header_text', OrganismHeroTextHeaderExtraInfoBlock()),
     ])
 
     content = StreamField(content_blocks(), blank=True)
