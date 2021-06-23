@@ -20,8 +20,8 @@ const server = {
 const staging = {
   user: 'fabrique',
   ip: '83.96.200.4',
-  path: '/var/www/metahub-platform/build/',
-  url: 'metahub-platform.fabriquehq.nl'
+  path: '/var/www/static.metahub/build/',
+  url: 'static.metahub.fabriquehq.nl'
 }
 
 const settings = { options, project, server, staging }
@@ -37,3 +37,4 @@ try {
 } finally {
   module.exports = settings
 }
+
