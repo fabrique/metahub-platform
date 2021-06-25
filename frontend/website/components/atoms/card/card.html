@@ -10,7 +10,16 @@
       href="{{ href }}"
       class="{{ component }}__inner"
     >
-      {{ atom_picture.regular(images = picture.images, fits = picture.fits, classes = component + '__picture', positions = picture.positions, width = picture.width, height = picture.height, loading = picture.loading, alt = picture.alt) }}
+      {{ atom_picture.regular(
+        images = picture.images,
+        fits = picture.fits,
+        classes = component + '__picture',
+        positions = picture.positions,
+        width = picture.width,
+        height = picture.height,
+        loading = picture.loading,
+        alt = picture.alt
+      ) }}
 
       <span class="{{ component }}__content-wrapper">
         <span class="{{ component }}__content-wrapper__inner">
@@ -33,7 +42,16 @@
       class="{{ component }}__inner"
     >
       <span class="{{ component }}__picture-wrapper">
-        {{ atom_picture.regular(images = picture.images, fits = picture.fits, classes = component + '__picture', positions = picture.positions, width = picture.width, height = picture.height, loading = picture.loading, alt = picture.alt) }}
+        {{ atom_picture.regular(
+          images = picture.images,
+          fits = picture.fits,
+          classes = component + '__picture',
+          positions = picture.positions,
+          width = picture.width,
+          height = picture.height,
+          loading = picture.loading,
+          alt = picture.alt
+        ) }}
       </span>
       <span class="{{ component }}__content-wrapper">
         <span class="{{ component }}__content-wrapper__inner">
@@ -41,6 +59,48 @@
           <span class="{{ component }}__title">{{ title }}</span>
           <span class="{{ component }}__subtitle">{{ subtitle }}</span>
         </span>
+      </span>
+    </a>
+  </article>
+{% endmacro %}
+
+
+{% macro news(
+  classes = '',
+  href = '',
+  title = '',
+  picture = {},
+  label = '',
+  excerpt = '',
+  type = '',
+  date = ''
+) %}
+  {% set component = 'news' %}
+  <article class="{{ component }} {{ classes }} {{ theme_color }}">
+    <a
+      title="{{ title }}"
+      role="link"
+      alt="{{ title }}"
+      href="{{ href }}"
+      class="{{ component }}__inner"
+    >
+      <span class="{{ component }}__picture-wrapper">
+        {{ atom_picture.regular(
+          images = picture.images,
+          fits = picture.fits,
+          classes = component + '__picture',
+          positions = picture.positions,
+          width = picture.width,
+          height = picture.height,
+          loading = picture.loading,
+          alt = picture.alt
+        ) }}
+      </span>
+      <span class="{{ component }}__content-wrapper">
+        <span class="{{ component }}__label">{{ label }}</span>
+        <span class="{{ component }}__title">{{ title }}</span>
+        <span class="{{ component }}__excerpt">{{ excerpt }}</span>
+        <span class="{{ component }}__date">{{ date }}</span>
       </span>
     </a>
   </article>
