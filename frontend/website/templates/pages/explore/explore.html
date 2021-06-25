@@ -2,7 +2,7 @@
 
 {% import 'components/structures/header/header.html' as header %}
 {% import 'components/organisms/explore-intro/explore-intro.html' as organisms_explore_intro %}
-{% import 'components/organisms/explore-items/explore-items.html' as organisms_explore_items %}
+{% import 'components/organisms/explore-cards/explore-cards.html' as organisms_explore_cards %}
 {% import 'components/molecules/pagination/pagination.html' as molecules_pagination %}
 
 {% block page_title %}Explore{% endblock %}
@@ -19,8 +19,8 @@
 
 {% block content %}
 
-  {{ organisms_explore_items.regular(
-    items = [
+  {{ organisms_explore_cards.regular(
+    cards = [
       {
         picture: {
           images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
