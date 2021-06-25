@@ -1,5 +1,7 @@
 .object-detail {
   @include grid-container;
+
+  margin-bottom: var(--section-space);
 }
 
 .object-detail__main {
