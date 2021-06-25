@@ -1,0 +1,113 @@
+
+.news-list-intro {
+  background-color: var(--theme-color);
+  color: $color-white;
+  margin-bottom: var(--section-space);
+  padding-bottom: 40px;
+  padding-top: var(--section-space);
+
+  @include landscape {
+    padding-bottom: 20px;
+  }
+}
+
+.news-list-intro__grid {
+  @include grid-container;
+}
+
+.news-list-intro__title {
+  @include typography(heading-1, $montserrat-font-stack, false, true, false);
+
+  color: inherit;
+  grid-column: auto / span 12;
+}
+
+.news-list-intro__post {
+  grid-column: auto / span 12;
+
+  @include subgrid-container;
+
+  @include landscape {
+    grid-column: auto / span 9;
+
+    --grid-columns: 9;
+
+    @include subgrid-container;
+  }
+}
+
+.news-list-intro__post__title {
+  @include typography(heading-3, $montserrat-font-stack, false, false, false);
+
+  color: inherit;
+  grid-column: auto / span 9;
+  margin-bottom: -15px;
+  position: relative;
+  z-index: 3;
+
+  @include landscape {
+    grid-column: auto / span 3;
+    grid-row: 1;
+    margin-bottom: -21px;
+  }
+}
+
+.news-list-intro__post__picture {
+  grid-column: auto / span 12;
+  position: relative;
+
+  &::before {
+    background-image: linear-gradient(transparentize($color-black, .5), transparent);
+    content: '';
+    height: 50px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+  }
+
+  @include landscape {
+    grid-column: auto / span 6;
+    grid-row: 2;
+  }
+}
+
+.news-list-intro__post__link {
+  align-items: center;
+  display: flex;
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+  @include portrait {
+    margin-top: 0;
+  }
+}
+
+.news-list-intro__post__excerpt {
+  @include typography(body-text, $lora-font-stack, false);
+
+  color: inherit;
+
+  @include portrait {
+    --body-text-font-size: 16px;
+    --body-text-line-height: 22px;
+  }
+}
+
+.news-list-intro__post__content {
+  grid-column: auto / span 12;
+
+  @include landscape {
+    align-self: flex-end;
+    grid-column: auto / span 3;
+    grid-row: 2;
+    padding-bottom: 40px;
+  }
+}
+
+.news-list-intro__post__date {
+  @include typography(date, $montserrat-font-stack, true, false, false);
+
+  display: block;
+}
