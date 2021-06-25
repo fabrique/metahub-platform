@@ -16,7 +16,14 @@
         {% endif %}
         {% if card.type == 'story' %}
           <div class="{{ component }}__card {{ component }}__card--story">
-            {{ atom_card.story(classes = card.classes, href = card.href, title = card.title,  theme_color = card.theme_color, picture = card.picture) }}
+            {{ atom_card.story(
+              classes = card.classes,
+              href = card.href,
+              title = card.title,
+              theme_color = card.theme_color,
+              picture = card.picture,
+              label = card.label
+            ) }}
           </div>
         {% endif %}
 
@@ -27,7 +34,8 @@
               href = card.href,
               title = card.title,
               subtitle = card.subtitle,
-              picture = card.picture
+              picture = card.picture,
+              label = card.label
             ) }}
           </div>
         {% endif %}
