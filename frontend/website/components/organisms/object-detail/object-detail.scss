@@ -25,29 +25,3 @@
     order: 2;
   }
 }
-
-.object-detail__intro {
-  align-items: flex-end;
-  display: flex;
-  margin-top: -30px;
-  position: relative;
-  z-index: 2;
-
-  @include landscape {
-    margin-bottom: var(--section-space);
-    margin-top: 0;
-    min-height: calc(100vh - var(--header-height));
-  }
-}
-
-.object-detail__intro__title {
-  @include typography(heading-1, $montserrat-font-stack, false, false, false);
-
-  color: var(--theme-color);
-}
-
-.object-detail__intro__subtitle {
-  @include typography(heading-3, $montserrat-font-stack, true, true, false);
-
-  color: var(--theme-color);
-}

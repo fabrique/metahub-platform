@@ -25,7 +25,7 @@
 {% macro object(cards = [], title = '') %}
   <section class="relevant-objects">
     <div class="relevant-objects__grid">
-      <h2 class="relevant-objects__title">{{ title }}</h2>
+      <h2 class="relevant-objects__title"><span class="relevant-objects__title--gradient">{{ title }}</span></h2>
     </div>
     <div class="relevant-objects__grid">
       {% for card in cards %}
