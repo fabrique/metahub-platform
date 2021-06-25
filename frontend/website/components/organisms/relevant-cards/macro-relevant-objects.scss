@@ -11,8 +11,9 @@
 
   @include landscape {
     background-image: linear-gradient($color-white 40%, transparent);
-    line-height: calc(var(--heading-3-line-height) / 2);
+    line-height: calc(var(--heading-3-line-height) / 2 + 12px);
     margin-bottom: 0;
+    padding: 6px 0;
     transform: translateY(50%);
     z-index: 2;
   }
