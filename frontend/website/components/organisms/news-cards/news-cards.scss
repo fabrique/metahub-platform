@@ -3,10 +3,22 @@
   margin-bottom: var(--section-space);
 }
 
+.news-cards__title {
+  @include typography(heading-3, $montserrat-font-stack, false, true, false);
+
+  color: var(--theme-color);
+  grid-column: auto / span 12;
+  margin-bottom: var(--section-space);
+}
+
 .news-cards__grid {
   @include grid-container;
 }
 
 .news-cards__card {
-  grid-column: auto / span 4;
+  grid-column: auto / span 12;
+
+  @include portrait {
+    grid-column: auto / span 4;
+  }
 }

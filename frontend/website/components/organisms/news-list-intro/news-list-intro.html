@@ -13,7 +13,6 @@
       <h1 class="{{ component }}__title">{{ title }}</h1>
       <article class="{{ component }}__post">
         <h3 class="{{ component }}__post__title">{{ post.title }}</h3>
-
         {{ atom_picture.regular(
           images = post.picture.images,
           fits = post.picture.fits,
@@ -24,8 +23,11 @@
           loading = post.picture.loading,
           alt = post.picture.alt
         ) }}
-
         <div class="{{ component }}__post__content">
+          <p class="{{ component }}__post__excerpt">
+            {{ post.excerpt }}
+          </p>
+          <span class="{{ component }}__post__date">{{ post.date }}</span>
           {{ atom_link.regular(
             classes = component + '__post__link',
             href = post.link.href,
@@ -34,10 +36,6 @@
             icon_before = post.link.icon_before,
             icon_after = post.link.icon_after
           ) }}
-          <p class="{{ component }}__post__excerpt">
-            {{ post.excerpt }}
-          </p>
-          <span class="{{ component }}__post__date">{{ post.date }}</span>
         </div>
       </article>
     </div>
