@@ -10,7 +10,7 @@ from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 
 from metahub.core.models import MetaHubBasePage
-from metahub.search.search import do_search, get_search_results, get_result_as_cards, get_result_filters
+# from metahub.search.search import do_search, get_search_results, get_result_as_cards, get_result_filters
 
 
 class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
