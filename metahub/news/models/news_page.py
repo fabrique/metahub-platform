@@ -35,6 +35,7 @@ class MetaHubNewsPage(MetaHubBasePage):
     ], blank=True)
 
     content_panels = MetaHubBasePage.content_panels + [
+        FieldPanel('theme_color'),
         MultiFieldPanel([
             FieldPanel('date'),
             StreamFieldPanel('authors'),
@@ -46,13 +47,6 @@ class MetaHubNewsPage(MetaHubBasePage):
         StreamFieldPanel('content'),
         StreamFieldPanel('related_items')
     ]
-
-    def get_page_date(self):
-        return self.date
-
-    def get_page_authors(self):
-        if len(self.authors):
-            return [str(author) for author in self.authors]
 
     def get_page_related_items(self):
         return MetaHubNewsPage.objects.live().exclude(pk=self.pk)[:3]

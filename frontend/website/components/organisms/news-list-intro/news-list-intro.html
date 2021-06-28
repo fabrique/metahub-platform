@@ -41,3 +41,46 @@
     </div>
   </section>
 {% endmacro %}
+
+
+{% macro temporarybackend(
+  id = '',
+  classes = '',
+  title = '',
+  featured_item = {},
+  excerpt = '',
+  link_label = ''
+) %}
+  {% set component = 'news-list-intro' %}
+  <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+    <div class="{{ component }}__grid">
+      <h1 class="{{ component }}__title">{{ title }}</h1>
+      <article class="{{ component }}__post">
+        <h3 class="{{ component }}__post__title">{{ featured_item.title }}</h3>
+        {{ atom_picture.regular(
+          images = featured_item.picture.images,
+          fits = featured_item.picture.fits,
+          classes = component + '__post__picture',
+          positions = featured_item.picture.positions,
+          width = featured_item.picture.width,
+          height = featured_item.picture.height,
+          loading = featured_item.picture.loading,
+          alt = featured_item.picture.alt
+        ) }}
+        <div class="{{ component }}__post__content">
+          <p class="{{ component }}__post__excerpt">
+{#            i made this separate, because you have more control that way, otherwise the linked page dictates content#}
+            {{ excerpt }}
+          </p>
+          <span class="{{ component }}__post__date">{{ featured_item.date }}</span>
+          {{ atom_link.regular(
+            classes = component + '__post__link',
+            href = featured_item.href,
+            title = link_label,
+            icon_after = 'custom/arrow-right-icon'
+          ) }}
+        </div>
+      </article>
+    </div>
+  </section>
+{% endmacro %}

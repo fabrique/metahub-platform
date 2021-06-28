@@ -1,22 +1,19 @@
 from django.db import models
 from modelcluster.contrib.taggit import ClusterTaggableManager
-from starling.interfaces.atoms import AtomPictureRegular
-from starling.interfaces.generic import Resolution
 from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel
 from wagtail.core.fields import StreamField
 
 from metahub.collection.models import CollectionObjectSeriesTag
-from metahub.collection.models.object_page import MetaHubObjectPage
-from metahub.core.models import AbstractMetaHubRichBasePage
+from metahub.core.models import MetaHubBasePage
 
 
-class MetaHubObjectSeriesPage(AbstractMetaHubRichBasePage):
+class MetaHubObjectSeriesPage(MetaHubBasePage):
     """
     Page that represents a series of objects. Objects can be defined to belong to one
     series at a time. For some objects this is done automatically upon import from
     BeeCollect. Just like with the MetaHubObjectPage users can add rich content.
 
-    This class overrides a lot of the methods from AbstractMetaHubRichBasePage. See the
+    This class overrides a lot of the methods from MetaHubBasePage. See the
     superclass for an overview of possible overrides.
     """
 
@@ -38,14 +35,14 @@ class MetaHubObjectSeriesPage(AbstractMetaHubRichBasePage):
     ], blank=True)
     tags = ClusterTaggableManager(through=CollectionObjectSeriesTag, blank=True)
 
-    content_panels = AbstractMetaHubRichBasePage.content_panels + [
+    content_panels = MetaHubBasePage.content_panels + [
         StreamFieldPanel('content'),
         FieldPanel('tags')
     ]
 
     # def build_hero_header(self):
     #     """
-    #     Overrides method from AbstractMetaHubRichBasePage
+    #     Overrides method from MetaHubBasePage
     #     Creates an image based hero header automatically (cannot be set in CMS) based
     #     on the first image of every object in the series.
     #     """
@@ -81,7 +78,7 @@ class MetaHubObjectSeriesPage(AbstractMetaHubRichBasePage):
     #
     # def get_hero_images(self):
     #     """
-    #     Overrides method from AbstractMetaHubRichBasePage
+    #     Overrides method from MetaHubBasePage
     #     For this kind of page, images are not chosen in the CMS but are automatically
     #     retrieved from the corresponding object.
     #     """
@@ -89,7 +86,7 @@ class MetaHubObjectSeriesPage(AbstractMetaHubRichBasePage):
     #
     # def get_hero_info(self):
     #     """
-    #     Overrides method from AbstractMetaHubRichBasePage
+    #     Overrides method from MetaHubBasePage
     #     Determines information that is displayed in this page type's hero header.
     #     """
     #     return {
@@ -120,7 +117,7 @@ class MetaHubObjectSeriesPage(AbstractMetaHubRichBasePage):
     #
     # def get_tags_as_list(self):
     #     """
-    #     Overrides method from AbstractMetaHubRichBasePage
+    #     Overrides method from MetaHubBasePage
     #     Used for ES indexing. At the moment stories do not have tags, but
     #     this might be added in the future.
     #     """
@@ -134,7 +131,7 @@ class MetaHubObjectSeriesPage(AbstractMetaHubRichBasePage):
     #
     # def get_card_representation(self):
     #     """
-    #     Overrides method from AbstractMetaHubRichBasePage
+    #     Overrides method from MetaHubBasePage
     #     Decides what info to present on the "Discover collection in context" card.
     #     This card format also exist for stories, in a different color.
     #     """
@@ -163,7 +160,7 @@ class MetaHubObjectSeriesPage(AbstractMetaHubRichBasePage):
     #
     # def get_primary_image(self):
     #     """
-    #     Overrides method from AbstractMetaHubRichBasePage
+    #     Overrides method from MetaHubBasePage
     #     Image that is used if representing the object in a card or other component.
     #     TODO: return a default image if not found (objects without image can exist)
     #     """
@@ -175,7 +172,7 @@ class MetaHubObjectSeriesPage(AbstractMetaHubRichBasePage):
     #
     # def get_raw_images(self):
     #     """
-    #     Overrides method from AbstractMetaHubRichBasePage
+    #     Overrides method from MetaHubBasePage
     #     Used when we need the raw images and not the atomized variant.
     #     """
     #     images = []

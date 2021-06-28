@@ -7,7 +7,7 @@ from wagtail.core.fields import StreamField
 from metahub.collection.models.object_page import MetaHubObjectPage
 from metahub.collection.models.object_series_page import MetaHubObjectSeriesPage
 from metahub.core.models import MetaHubBasePage
-
+from metahub.core.utils import MetaHubThemeColor, get_random_color
 
 
 class MetaHubHomePage(RoutablePageMixin, MetaHubBasePage):
@@ -16,6 +16,10 @@ class MetaHubHomePage(RoutablePageMixin, MetaHubBasePage):
     directs user to search result when executing actual query. Other content includes a
     set of highlighted stories, objects and an overview of the collection categories.
     """
+
+    def get_random_theme_color(self):
+        return get_random_color()
+
     pass
     # search_header = StreamField([
     #     ('search_header', OrganismSearchHeaderRegularBlock())

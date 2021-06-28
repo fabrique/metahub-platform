@@ -1,5 +1,3 @@
-from itertools import chain
-
 from django.db import models
 from django.conf import settings
 
@@ -76,6 +74,16 @@ class MetaHubBasePage(PagePromoMixin, Page):
             picture_structvalue = header_child.value['picture']
             return AtomPictureRegular(**Resolution(mobile='1920', crop=True).resolve(picture_structvalue['source']))
 
+
+    def get_page_date(self):
+        if date := getattr(self, 'date'):
+            return date
+
+    def get_page_authors(self):
+        if authors := getattr(self, 'authors'):
+            return [str(author) for author in authors]
+        return []
+
     def get_page_label(self):
         return ''
 
@@ -93,235 +101,6 @@ class MetaHubBasePage(PagePromoMixin, Page):
     class Meta:
         abstract = True
 
-
-class AbstractMetaHubRichBasePage(MetaHubBasePage):
-
-    parent_page_types = ['collection.MetaHubCategoryOverviewPage']
-
-    class Meta:
-        abstract = True
-
-    # Defines the broader category of this page, for example "artwork" or "family legacy"
-    # collection_category = models.ForeignKey(
-    #     CollectionCategory,
-    #     null=True,
-    #     on_delete=models.SET_NULL,
-    #     related_name='+',
-    #     blank=True
-    # )
-    #
-    # is_highlight = models.BooleanField(blank=True, default=False)
-    #
-    # # Intro that is used on the homepage
-    # highlight_intro = models.TextField(max_length=4096, blank=True, default='')
-    #
-    # # Text of the introduction component
-    # intro = models.TextField(max_length=4096, blank=True)
-    # reading_time = models.PositiveIntegerField(default=0, null=True, blank=True)
-    # show_reading_time = models.BooleanField(default=False)
-    # audio = StreamField([('audio', MoleculeAudioPlayerBlock())], blank=True)
-    #
-    # # Main content block, differs per subclass
-    # content = StreamField([])
-    #
-    # # Cards at the bottom of the page, can be a link to a story or object
-    # discover_in_context = StreamField([
-    #     ('card_list', OrganismContextDiscoveryChoiceRegularBlock())
-    # ], blank=True)
-    #
-    # content_panels = MetahubBasePage.content_panels + [
-    #     StreamFieldPanel('discover_in_context'),
-    #     MultiFieldPanel([
-    #         FieldPanel('is_highlight'),
-    #         FieldPanel('highlight_intro')
-    #     ]),
-    #     MultiFieldPanel([
-    #         FieldPanel('intro'),
-    #         FieldPanel('show_reading_time'),
-    #         StreamFieldPanel('audio')
-    #     ], "Sub header")
-    # ]
-    #
-    # def get_category(self):
-    #     """
-    #     Stringified version of the page's category (Objekt, Geschichten, Series etc.)
-    #     """
-    #     try:
-    #         return str(self.collection_category)
-    #     except AttributeError:
-    #         return ''
-    #
-    # def estimate_reading_time(self):
-    #     if self.show_reading_time:
-    #         word_count = 0
-    #
-    #         for stream_child in self.content:
-    #             try:
-    #                 word_count += stream_child.block.get_word_count(stream_child.value)
-    #             except AttributeError:
-    #                 pass
-    #
-    #         return str(1 + word_count // 200)
-    #
-    # def has_context(self):
-    #     """
-    #     Checks whether the context ribbon should be shown, based on if there is
-    #     any context defined in the CMS. Passed on to the template to trigger
-    #     correct layout.
-    #     """
-    #     try:
-    #         self.discover_in_context[0]
-    #     except IndexError:
-    #         return False
-    #     return True
-    #
-    # def build_context_cards(self):
-    #     """
-    #     If context cards were chosen, build the right ones. Each page defines its
-    #     own method to render the correct card which we can use.
-    #     """
-    #     cards = []
-    #     if self.has_context():
-    #         organism_cards = self.discover_in_context[0]
-    #         for card in organism_cards.value['cards']:
-    #             if card['page']:
-    #                 page = card['page'].specific
-    #                 cards.append(page.get_card_representation())
-    #         return cards[:3]
-    #     else:
-    #         return cards
-    #
-    # def build_intro(self):
-    #     """
-    #     Builds the correct intro component based on the type of hero component.
-    #     Originally intended to support both video and image. At the moment the
-    #     museum has no video content so this always returns the picture variant.
-    #     """
-    #     return self.build_picture_intro()
-    #
-    # def build_picture_intro(self):
-    #     """
-    #     Build the intro component based on the images that were uploaded into the
-    #     hero image header.
-    #     """
-    #     pictures = self.get_hero_images()
-    #     description = {'text': self.intro }
-    #     component = OrganismImageIntroRegular(reading_time=self.reading_time,
-    #                                           pictures=pictures,
-    #                                           description=description,
-    #                                           type='',
-    #                                           audio=self.get_audio(),
-    #                                           information=self.get_hero_info(),
-    #                                           minimal=self.has_no_rich_content(),
-    #                                           favinfo=self.get_favourite_info()
-    #                                           )
-    #     return component
-    #
-    # def has_no_rich_content(self):
-    #     """
-    #     Checks whether any non-automatically generated content is present. Determines
-    #     whether the minimal layout variant should be triggered in template.
-    #     """
-    #
-    #     try:
-    #         self.content[0]
-    #     except IndexError:
-    #         no_body_content = True
-    #     else:
-    #         no_body_content = False
-    #
-    #     if not self.intro:
-    #         no_intro_content = True
-    #     else:
-    #         no_intro_content = False
-    #
-    #     return no_body_content and no_intro_content
-    #
-    # def get_audio(self):
-    #     """
-    #     The intro component supports an audio fragment. Takes the audio fragment
-    #     from the CMS if any was chosen and returns this so the intro can use it.
-    #     """
-    #     try:
-    #         audio_child = self.audio[0]
-    #     except IndexError:
-    #         return None
-    #     else:
-    #         return audio_child.block.build_component(audio_child.value)
-    #
-    # def get_lightbox_items(self):
-    #     """
-    #     Needs to be overridden and implemented by subclass.
-    #     """
-    #     raise NotImplementedError('You need to implement get_lightbox_items on the subclass')
-    #
-    # def get_search_representation(self):
-    #     """
-    #     Needs to be overridden and implemented by subclass.
-    #     """
-    #     raise NotImplementedError('You need to implement get_search_representation on the subclass')
-    #
-    #
-    # def get_card_representation(self):
-    #     """
-    #     Needs to be overridden and implemented by subclass.
-    #     """
-    #     raise NotImplementedError('You need to implement get_card_representation on the subclass')
-    #
-    # def build_hero_header(self):
-    #     """
-    #     Needs to be overridden and implemented by subclass.
-    #     """
-    #     raise NotImplementedError('You need to implement build_hero_header on the subclass')
-    #
-    # def get_hero_images(self):
-    #     """
-    #     Needs to be overridden and implemented by subclass.
-    #     """
-    #     raise NotImplementedError('You need to implement get_hero_images on the subclass')
-    #
-    # def get_hero_info(self):
-    #     """
-    #     Needs to be overridden and implemented by subclass.
-    #     """
-    #     raise NotImplementedError('You need to implement get_hero_info on the subclass')
-    #
-    # def get_primary_image(self):
-    #     """
-    #     Needs to be overridden and implemented by subclass.
-    #     """
-    #     raise NotImplementedError('You need to implement get_primary_image on the subclass')
-    #
-    # def get_raw_images(self):
-    #     """
-    #     Needs to be overridden and implemented by subclass.
-    #     """
-    #     raise NotImplementedError('You need to implement get_raw_image on the subclass')
-    #
-    # def get_tags_as_list(self):
-    #     """
-    #     Needs to be overridden and implemented by subclass.
-    #     """
-    #     raise NotImplementedError('You need to implement get_tags_as_list on the subclass')
-    #
-    # def get_favourite_info(self):
-    #     """
-    #     Needs to be overridden and implemented by subclass.
-    #     """
-    #     raise NotImplementedError('You need to implement get_favourite_info on the subclass')
-    #
-    # def is_favourite(self, request):
-    #     """
-    #     Needs to be overridden and implemented by subclass.
-    #     """
-    #     raise NotImplementedError('You need to implement is_favourite on the subclass')
-    #
-    # def get_promo_image(self):
-    #     return self.get_primary_image()
-    #
-    # def save(self, *args, **kwargs):
-    #     self.reading_time = self.estimate_reading_time()
-    #     super().save(**kwargs)
 
 
 class MetahubImage(Image):

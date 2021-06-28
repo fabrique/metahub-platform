@@ -195,3 +195,17 @@ class HelperRelatedPagesBlock(HelperMixin, StructBlock):
                 page = page.specific
                 pages.append(page)
         return {'cards': [page.get_card_representation() for page in pages]}
+
+
+class HelperRelatedPageBlock(HelperMixin, StructBlock):
+    """
+    Helper block to convert a single chosen page directly to a list
+    of page card molecules.
+    """
+    page = blocks.PageChooserBlock(required=False)
+
+    def to_params(self, value, field_name: str = 'page', parent_context=None) -> dict:
+        if page := value.get('page'):
+            page = page.specific
+            return {'featured_item': page.get_card_representation()}
+        return {'featured_item': {}}

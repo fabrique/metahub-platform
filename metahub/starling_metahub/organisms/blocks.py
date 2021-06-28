@@ -8,10 +8,7 @@ from wagtail.core.blocks import ListBlock
 
 from .interfaces import *
 from ..atoms.blocks import AtomVideoEmbedRegularBlock
-from ..helpers import HelperRelatedPagesBlock
-from ..molecules.blocks import MoleculeObjectCardRegularBlock, MoleculeContextCardRegularBlock, \
-    MoleculeLinkRegularBlock, MoleculeAudioPlayerBlock, \
-    MoleculeCollectionCategoryCardRegularBlock, MoleculeThemeHighlightRegularBlock, MoleculeObjectHighlightRegularBlock
+from ..helpers import HelperRelatedPagesBlock, HelperRelatedPageBlock
 from ..utils import count_words_html
 from ...core.utils import format_date
 
@@ -176,7 +173,7 @@ class OrganismArticleCuratedItemsRegularBlock(AdapterStructBlock):
         label = "Gerelelateerde items (handgekozen)"
         icon = 'arrows-up-down'
         defaults = {}
-        component = 'organisms.relevant-stories.be_cards'
+        component = 'organisms.relevant-cards.story'
         interface_class = OrganismArticleRelatedItemsRegular
 
 
@@ -201,5 +198,29 @@ class OrganismArticleRelatedItemsRegularBlock(AdapterStructBlock):
         label = "Gerelelateerde items (automatisch)"
         icon = 'arrows-up-down'
         defaults = {}
-        component = 'organisms.relevant-stories.be_cards'
+        component = 'organisms.relevant-cards.story'
         interface_class = OrganismArticleRelatedItemsRegular
+
+
+class OrganismActualitiesLandingHeaderRegularBlock(AdapterStructBlock):
+    """
+    Actualities Landing Page component
+    A simple header with text and a featured item (either news or event)
+    """
+    featured_item = HelperRelatedPageBlock()
+    excerpt = blocks.TextBlock()
+    link_label = blocks.CharBlock(default='Read more')
+
+    def build_extra(self, value, build_args, parent_context=None):
+        page = (parent_context or {}).get('page')
+
+        if not page:
+            return
+
+        build_args.update({
+            'title': page.title
+        })
+
+    class Meta:
+        component = 'organisms.news-list-intro.temporarybackend'
+        interface_class = OrganismActualitiesLandingHeaderRegular
