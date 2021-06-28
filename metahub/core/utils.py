@@ -1,3 +1,5 @@
+import random
+
 from django.db import models
 from django.utils.formats import date_format
 from django.utils.html import format_html
@@ -40,7 +42,6 @@ class ReadOnlyPanel(EditHandler):
             self.heading, (':'), self.render())
 
 
-
 def format_date(date):
     if date:
         return date_format(date, 'd F Y')
@@ -52,3 +53,16 @@ class MetaHubThemeColor(models.TextChoices):
     STRAWBERRY = 'theme--pink', _('Strawberry red')
     SAPPHIRE = 'theme--blue', _('Sapphire blue')
     PHLOX = 'theme--purple', _('Phlox purple')
+
+
+def get_random_color():
+    return random.choice([e for e in MetaHubThemeColor])
+
+
+
+
+
+
+
+
+
