@@ -59,3 +59,7 @@ $margin-top: 50px;
     @include style-list-ordered;
   }
 }
+
+.richtext__section-space--bottom {
+  margin-bottom: var(--section-space);
+}

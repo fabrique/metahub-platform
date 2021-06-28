@@ -1,0 +1,23 @@
+{% import 'components/atoms/card/card.html' as atom_card %}
+
+{% macro regular( id = '', classes = '', cards = '' ) %}
+  {% set component = 'news-cards' %}
+  <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+    <div class="{{ component }}__grid">
+      {% for card in cards %}
+        <div class="{{ component }}__card">
+          {{ atom_card.news(
+            classes = card.classes,
+            href = card.href,
+            title = card.title,
+            picture = card.picture,
+            label = card.label,
+            excerpt = card.excerpt,
+            type = card.type,
+            date = card.date
+          ) }}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endmacro %}

@@ -1,0 +1,7 @@
+{% import 'components/atoms/picture/picture.html' as atom_picture %}
+
+{% macro regular(picture = {}) %}
+  <div class="object-detail__aside__picture-wrapper">
+    {{ atom_picture.regular(images = picture.images, fits = picture.fits, classes = picture.classes, positions = picture.positions, width = picture.width, height = picture.height, loading = picture.loading, alt = picture.alt) }}
+  </div>
+{% endmacro %}

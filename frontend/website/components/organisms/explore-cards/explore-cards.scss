@@ -1,16 +1,16 @@
 
-.explore-items {
+.explore-cards {
   margin-bottom: var(--section-space);
 
   --explore-space: 30px;
 }
 
-.explore-items__grid {
+.explore-cards__grid {
   @include grid-container;
 }
 
 @media (max-width: $landscape) {
-  .explore-items__item {
+  .explore-cards__card {
     display: block;
     margin-bottom: var(--explore-space);
 
@@ -24,9 +24,9 @@
 
     &:nth-child(1) {
 
-      // If the first item is a story, than the next item should not have the overlap grid style
-      &.explore-items__item--story {
-        + .explore-items__item--object {
+      // If the first card is a story, than the next card should not have the overlap grid style
+      &.explore-cards__card--story {
+        + .explore-cards__card--object {
           margin-top: 0;
         }
       }
@@ -51,7 +51,7 @@
 }
 
 @include landscape {
-  .explore-items__item {
+  .explore-cards__card {
     display: block;
     grid-column: auto / span 4;
     margin-bottom: 50px;
@@ -66,9 +66,9 @@
 
     &:nth-child(1) {
       grid-column: column 1 / span 4;
-      // If the first item is a story, than the next item should not have the overlap grid style
-      &.explore-items__item--story {
-        + .explore-items__item--object {
+      // If the first card is a story, than the next card should not have the overlap grid style
+      &.explore-cards__card--story {
+        + .explore-cards__card--object {
           grid-column: auto / span 4;
         }
       }

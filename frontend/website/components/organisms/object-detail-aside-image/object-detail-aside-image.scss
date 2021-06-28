@@ -1,0 +1,23 @@
+.object-detail__aside__picture-wrapper {
+  position: relative;
+
+  &::after {
+    background-image: linear-gradient(transparent, $color-white);
+    bottom: 0;
+    content: '';
+    height: 70px;
+    left: 0;
+    position: absolute;
+    right: 0;
+
+    @include landscape {
+      display: none;
+    }
+  }
+
+  @include landscape {
+    padding-top: 0;
+    position: sticky;
+    top: 30px;
+  }
+}

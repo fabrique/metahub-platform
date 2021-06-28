@@ -2,19 +2,140 @@
 
 {% import 'components/structures/header/header.html' as header %}
 
-{% block page_title %}Explore{% endblock %}
+{% import 'components/organisms/object-detail-aside-image/object-detail-aside-image.html' as organisms_object_detail_aside_image %}
+{% import 'components/organisms/object-metadata/object-metadata.html' as organisms_object_metadata %}
+{% import 'components/organisms/object-detail-intro/object-detail-intro.html' as organisms_object_intro %}
+{% import 'components/organisms/relevant-cards/relevant-cards.html' as organisms_relevant_cards %}
 
-{% block header %}
-  {{ header.regular() }}
-{% endblock %}
+{% import 'components/atoms/picture/picture.html' as atom_picture %}
+{% import 'components/atoms/richtext/richtext.html' as atom_richtext %}
+
+{% block page_title %}Explore{% endblock %}
 
 {% block content %}
 
-  <section class="object-detail__grid">
-    <div class="">
+  <section class="object-detail">
+    <article class="object-detail__main">
 
+      {{ organisms_object_intro.regular(
+        title = 'ETROG-LIKÖR',
+        subtitle = 'Kurt de Jong, Flasche, 2007'
+      ) }}
+
+      {% call atom_richtext.regular(classes = 'richtext__section-space--bottom') %}
+        <p>
+          Every year after Sukkot - the Feast of Tabernacles - Kurt de Jong makes a liqueur from Etrog fruits based on a recipe from his father. Every year at Simchat Tora - the Torah joyful festival - Kurt de Jong brings two bottles of his liqueur to the service in the small Baumweg synagogue in Frankfurt. The glass bottles each have an affixed label.
+        </p>
+      {% endcall %}
+
+      {{ organisms_object_metadata.regular(
+        items = [
+          {
+            title: 'Title',
+            data: 'Etrog liqueur',
+            number: '01'
+          },
+          {
+            title: 'Kunstler in Hersteller in',
+            data: 'Kurt de Jong',
+            number: '02'
+          },
+          {
+            title: 'Datierung',
+            data: '2007',
+            number: '03'
+          },
+          {
+            title: 'Objektbezeichnung',
+            data: 'bottle',
+            number: '04'
+          },
+          {
+            title: 'Ort',
+            data: 'Frankfurt am Main',
+            number: '05'
+          },
+          {
+            title: 'MaBe',
+            data: 'Bottle 1:30cm',
+            number: '06'
+          },
+          {
+            title: 'Material Technik',
+            data: 'Glass',
+            number: '07'
+          },
+          {
+            title: 'Signatur',
+            data: 'JMF contemporary cultures',
+            number: '08'
+          }
+        ]
+      ) }}
+
+    </article>
+
+    <div class="object-detail__aside">
+      {{ organisms_object_detail_aside_image.regular(
+        picture = {
+          images: { mobile: '/static/media/unsplash/cropped/highlight-1.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          classes: 'object-detail__aside__picture',
+          width: 430
+        }
+      ) }}
     </div>
+
   </section>
+
+
+  {{ organisms_relevant_cards.object(
+    title = 'Relevant objects',
+    cards = [
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 430
+        },
+        title: 'THE LUDWIG MEIDNER ARCHIVE',
+        subtitle: 'Kurt de Jong, Flasche, 2007',
+        type: 'object',
+        label: 'Object'
+      },
+      {
+
+        picture: {
+          images: { mobile: '/static/media/unsplash/cropped/highlight-1.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 430
+        },
+
+        title: 'Prince Jussuf von Thebes',
+        subtitle: 'Silberwarenfabrik Adolf G. Meyer Becher, 1926',
+        type: 'object',
+        label: 'Object'
+      },
+      {
+
+        picture: {
+          images: { mobile: '/static/media/unsplash/landscape/averie-woodard.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 430
+        },
+
+        title: 'Collection of Everyday Object',
+        subtitle: 'Ida ritter, painting, Berlin 1920-1935',
+        type: 'object',
+        label: 'Object'
+      }
+    ]
+  ) }}
+
 
 {% endblock %}
 

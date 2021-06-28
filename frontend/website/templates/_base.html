@@ -54,29 +54,53 @@
     <script>{{ include_raw('build/static/scripts/base.js')|replace('\n;\n', '\n')|replace('\n//# sourceMappingURL=base.js.map', '') }}</script>
     {#<script src="{{ static }}/scripts/base.js{{ cachebuster }}" type="module" crossorigin></script>#}
 
-      {% block header %}
-        {{ header.regular() }}
+    <div class="container container--wrapper">
+      {% block skip_to_main %}
+        {{ skip_to_main.regular() }}
       {% endblock %}
-      <!-- {{ skip_to_main.regular() }} -->
-      <main class="content" role="main">
+
+      <header class="container container--header">
+        {% block notifications %}
+        {% endblock %}
+
+        {% block header_bar %}
+          {{ header.regular() }}
+        {% endblock %}
+      </header>
+
+      <main id="main" class="container container--content">
+        {% block header %}
+        {% endblock %}
+
         {% block content %}
+        {% endblock %}
+
+        {% block footer %}
         {% endblock %}
       </main>
 
-      {{ footer.regular(
-        footer_links = [
-          { href: '?', title: 'Privacy' },
-          { href: '?', title: 'Term of use' }
-        ]
-      ) }}
+      <footer class="container container--footer">
+        {% block footer_bar %}
+          {{ footer.regular(
+            footer_links = [
+              { href: '?', title: 'Privacy' },
+              { href: '?', title: 'Term of use' }
+            ]
+          ) }}
+        {% endblock %}
+      </footer>
+    </div>
 
-    <div class="overlays" role="dialog">
+    <div class="container container--overlays">
+      {# Contents must have role="dialog" ! #}
       {% block overlays %}
       {% endblock %}
-      {{ cookie_bar.regular() }}
+
+      {% block cookiebar %}
+        {# TODO {{ cookie_bar.regular() }}#}
+      {% endblock %}
     </div>
-    {# Browser support for type=module is Chrome 61+, Firefox 60+, Edge 16+, Safari 10.1+, Opera 48+ #}
-    {# Assume the fallback is executed for all other browsers and plan polyfills accordingly #}
+
     <script src="{{ static }}/scripts/main.js{{ cachebuster }}" type="module" crossorigin></script>
   </body>
 </html>

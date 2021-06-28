@@ -1,0 +1,45 @@
+{% import 'components/atoms/card/card.html' as atom_card %}
+
+{% macro story(cards = [], title = '') %}
+  <section class="relevant-stories">
+    <div class="relevant-stories__grid">
+      <h2 class="relevant-stories__title">{{ title }}</h2>
+    </div>
+    <div class="relevant-stories__grid">
+      {% for card in cards %}
+        <div class="relevant-stories__item">
+          {{ atom_card.story(
+            classes = card.classes,
+            href = card.href,
+            title = card.title,
+            theme_color = card.theme_color,
+            picture = card.picture,
+            label = card.label
+          ) }}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endmacro %}
+
+{% macro object(cards = [], title = '') %}
+  <section class="relevant-objects">
+    <div class="relevant-objects__grid">
+      <h2 class="relevant-objects__title"><span class="relevant-objects__title--gradient">{{ title }}</span></h2>
+    </div>
+    <div class="relevant-objects__grid">
+      {% for card in cards %}
+        <div class="relevant-objects__item">
+          {{ atom_card.object(
+            classes = card.classes,
+            href = card.href,
+            title = card.title,
+            picture = card.picture,
+            label = card.label,
+            subtitle = card.subtitle
+          ) }}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endmacro %}

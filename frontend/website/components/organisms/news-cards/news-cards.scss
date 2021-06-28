@@ -1,0 +1,12 @@
+
+.news-cards {
+  margin-bottom: var(--section-space);
+}
+
+.news-cards__grid {
+  @include grid-container;
+}
+
+.news-cards__card {
+  grid-column: auto / span 4;
+}

@@ -1,0 +1,113 @@
+{% extends 'templates/_base.html' %}
+
+{% import 'components/organisms/news-list-intro/news-list-intro.html' as organisms_news_list_intro %}
+{% import 'components/organisms/news-cards/news-cards.html' as organisms_news_cards %}
+{% import 'components/molecules/pagination/pagination.html' as molecules_pagination %}
+
+{% block page_title %}Explore{% endblock %}
+
+
+
+{% block content %}
+
+  {{ organisms_news_list_intro.regular(
+    title = 'News & events',
+    post = {
+      title: 'Guided Tours in FrankfurT',
+      date: '11 April, 2021',
+      excerpt: 'Story description. Donec id elit non mi porta gravida at eget metus. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cras justo odio, dapibus ac facilisis in, egestas eget quam',
+      link: {
+        href: '?',
+        title: 'Read more',
+        target: '_blank',
+        icon_after: 'custom/arrow-right-icon'
+      },
+      picture: {
+        images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
+        positions: { mobile: '50% 50%' },
+        fits: { mobile: 'cover' },
+        width: 700
+      }
+    }
+  ) }}
+
+
+  {{ organisms_news_cards.regular(
+    cards = [
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 220
+        },
+        href: '?',
+        title: 'What Could They Know?',
+        excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
+        type: 'news',
+        label: 'News',
+        date: '11 April, 2021'
+      },
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 220
+        },
+        href: '?',
+        title: 'Tour of the Jewish Ostend District - Late 19th Century to 1945',
+        excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
+        type: 'event',
+        label: 'Event',
+        date: '11 April, 2021'
+      },
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 220
+        },
+        href: '?',
+        title: 'Tour of the Jewish Ostend District - Late 19th Century to 1945',
+        excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
+        type: 'news',
+        label: 'News',
+        date: '11 April, 2021'
+      },
+      {
+        href: '?',
+        title: 'Censorship and Information about the November Pogrom 1938',
+        excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
+        type: 'news',
+        label: 'News',
+        date: '11 April, 2021'
+      },
+      {
+        picture: {
+          images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
+          positions: { mobile: '50% 50%' },
+          fits: { mobile: 'cover' },
+          width: 220
+        },
+        href: '?',
+        title: 'Guided Tours in Frankfurt ',
+        excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
+        type: 'news',
+        label: 'News',
+        date: '11 April, 2021'
+      }
+    ]
+  ) }}
+
+  {{ molecules_pagination.regular() }}
+
+
+
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}

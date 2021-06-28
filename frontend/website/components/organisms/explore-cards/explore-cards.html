@@ -1,0 +1,47 @@
+{% import 'components/atoms/card/card.html' as atom_card %}
+
+{% macro regular(
+  id = '',
+  classes = '',
+  cards = ''
+) %}
+  {% set component = 'explore-cards' %}
+  <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+    <div class="{{ component }}__grid">
+
+      {% for card in cards %}
+
+        {% if loop.index0 % 6 == 0 %}
+          </div><div class="{{ component }}__grid">
+        {% endif %}
+        {% if card.type == 'story' %}
+          <div class="{{ component }}__card {{ component }}__card--story">
+            {{ atom_card.story(
+              classes = card.classes,
+              href = card.href,
+              title = card.title,
+              theme_color = card.theme_color,
+              picture = card.picture,
+              label = card.label
+            ) }}
+          </div>
+        {% endif %}
+
+        {% if card.type == 'object' %}
+          <div class="{{ component }}__card {{ component }}__card--object">
+            {{ atom_card.object(
+              classes = card.classes,
+              href = card.href,
+              title = card.title,
+              subtitle = card.subtitle,
+              picture = card.picture,
+              label = card.label
+            ) }}
+          </div>
+        {% endif %}
+
+      {% endfor %}
+    </div>
+
+  </section>
+{% endmacro %}

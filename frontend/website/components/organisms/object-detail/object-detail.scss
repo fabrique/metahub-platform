@@ -1,0 +1,27 @@
+.object-detail {
+  @include grid-container;
+
+  margin-bottom: var(--section-space);
+}
+
+.object-detail__main {
+  grid-column: column 1 / span 12;
+  order: 2;
+
+  @include landscape {
+    grid-column: column 1 / span 8;
+    order: 1;
+  }
+}
+
+.object-detail__aside {
+  grid-column: column 2 / span 12;
+  order: 1;
+  padding-top: var(--section-space);
+  position: relative;
+
+  @include landscape {
+    grid-column: column 9 / span 4;
+    order: 2;
+  }
+}

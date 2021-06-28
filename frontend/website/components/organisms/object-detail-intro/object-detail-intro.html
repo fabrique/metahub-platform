@@ -1,0 +1,10 @@
+{% import 'components/atoms/picture/picture.html' as atom_picture %}
+
+{% macro regular(title = '', subtitle = '') %}
+  <div class="object-detail__intro">
+    <div class="object-detail__intro__titles">
+      <h1 class="object-detail__intro__title">{{ title }}</h1>
+      <h3 class="object-detail__intro__subtitle">{{ subtitle }}</h3>
+    </div>
+  </div>
+{% endmacro %}

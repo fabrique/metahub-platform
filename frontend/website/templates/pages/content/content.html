@@ -4,7 +4,7 @@
 {% import 'components/organisms/hero-text/hero-text.html' as organisms_hero_text %}
 {% import 'components/organisms/hero-image/hero-image.html' as organisms_hero_image %}
 {% import 'components/organisms/hero-image-title/hero-image-title.html' as organisms_hero_image_title %}
-{% import 'components/organisms/relevant-stories/relevant-stories.html' as organisms_relevant_stories %}
+{% import 'components/organisms/relevant-cards/relevant-cards.html' as organisms_relevant_cards %}
 {% import 'components/organisms/content-and-image/content-and-image.html' as organisms_content_and_image %}
 {% import 'components/organisms/article-content/article-content.html' as organisms_article_content %}
 {% import 'components/organisms/images/images.html' as organisms_images %}
@@ -14,11 +14,6 @@
 {% block page_title %}Content{% endblock %}
 
 {% block header %}
-  {{ header.regular() }}
-{% endblock %}
-
-{% block content %}
-
   {{ organisms_hero_image.regular(
     align = 'fullbleed',
     picture =  {
@@ -28,6 +23,10 @@
       width: 1920
     }
   ) }}
+
+{% endblock %}
+
+{% block content %}
 
   {{ organisms_hero_text.regular(
     title = 'LUDWIG MEIDNER ARCHIVE - Exiled Jewish Artists',
@@ -194,9 +193,9 @@
   ) }}
 
 
-  {{ organisms_relevant_stories.regular(
+  {{ organisms_relevant_cards.story(
     title = 'Relevant stories',
-    stories = [
+    cards = [
       {
         picture: {
           images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
@@ -205,7 +204,8 @@
           width: 430
         },
         title: 'THE LUDWIG MEIDNER ARCHIVE',
-        theme_color: 'theme--blue'
+        theme_color: 'theme--blue',
+        label: 'Story'
       },
       {
         picture: {
@@ -215,7 +215,8 @@
           width: 430
         },
         title: 'Prince Jussuf von Thebes',
-        theme_color: 'theme--pink'
+        theme_color: 'theme--pink',
+        label: 'Story'
       },
       {
         picture: {
@@ -225,7 +226,8 @@
           width: 430
         },
         title: 'Collection of Everyday Object',
-        theme_color: 'theme--magenta'
+        theme_color: 'theme--magenta',
+        label: 'Story'
       }
     ]
   ) }}
