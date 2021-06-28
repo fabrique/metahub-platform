@@ -1,0 +1,27 @@
+
+.home-content {
+  height: 100vh;
+  padding: var(--section-space) 0;
+}
+
+.home-content__grid {
+  @include grid-container;
+}
+
+.home-content__wrapper {
+  grid-column: column 1 / span 12;
+}
+
+.home-content__richtext {
+  p {
+    color: var(--theme-color);
+
+    --body-text-font-size: 22px;
+    --body-text-line-height: 30px;
+
+    @include portrait {
+      --body-text-font-size: 46px;
+      --body-text-line-height: 55px;
+    }
+  }
+}
