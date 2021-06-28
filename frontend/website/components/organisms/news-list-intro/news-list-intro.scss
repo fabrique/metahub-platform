@@ -54,6 +54,7 @@
 
 .news-list-intro__post__picture {
   grid-column: auto / span 12;
+  margin-bottom: 30px;
   position: relative;
 
   &::before {
@@ -70,18 +71,17 @@
   @include landscape {
     grid-column: auto / span 6;
     grid-row: 2;
+    margin-bottom: 0;
   }
 }
 
 .news-list-intro__post__link {
   align-items: center;
   display: flex;
+  line-height: initial;
   margin-bottom: 20px;
+  margin-bottom: 0;
   margin-top: 20px;
-
-  @include portrait {
-    margin-top: 0;
-  }
 }
 
 .news-list-intro__post__excerpt {
@@ -102,7 +102,6 @@
     align-self: flex-end;
     grid-column: auto / span 3;
     grid-row: 2;
-    padding-bottom: 40px;
   }
 }
 
