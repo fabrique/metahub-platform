@@ -8,7 +8,7 @@ from wagtail.core.blocks import ListBlock
 
 from .interfaces import *
 from ..atoms.blocks import AtomVideoEmbedRegularBlock
-from ..helpers import HelperRelatedPagesBlock
+from ..helpers import HelperRelatedPagesBlock, HelperRelatedPageBlock
 from ..utils import count_words_html
 from ...core.utils import format_date
 
@@ -200,3 +200,16 @@ class OrganismArticleRelatedItemsRegularBlock(AdapterStructBlock):
         defaults = {}
         component = 'organisms.relevant-cards.story'
         interface_class = OrganismArticleRelatedItemsRegular
+
+
+class OrganismActualitiesLandingHeaderRegularBlock(AdapterStructBlock):
+    """
+    Actualities Landing Page component
+    A simple header with text and a featured item (either news or event)
+    """
+    title = blocks.CharBlock(max_length=200)
+    featured_item = HelperRelatedPageBlock()
+
+    class Meta:
+        component = 'organisms.news-list-intro.temporarybackend'
+        interface_class = OrganismActualitiesLandingHeaderRegular

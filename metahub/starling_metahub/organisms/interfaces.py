@@ -98,3 +98,12 @@ class OrganismArticleRelatedItemsRegular(NamedTuple):
     tags: Iterable = ()
     variant: str = ''
     card_background: str = ''
+
+
+class OrganismActualitiesLandingHeaderRegular(NamedTuple):
+    """
+    Actualities Landing Page component
+    A simple header with text and a featured item (either news or event)
+    """
+    title: str = ''
+    featured_item: MoleculeCardRegular = MoleculeCardRegular()
