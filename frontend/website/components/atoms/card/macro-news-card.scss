@@ -1,3 +1,99 @@
 .news {
-  //
+  margin-bottom: var(--section-space);
+}
+
+.news__inner {
+  color: $color-black;
+
+  @include subgrid-container;
+
+  @include portrait {
+    --grid-columns: 4;
+  }
+}
+
+.news__picture-wrapper {
+  grid-column: column 7  / span 6;
+  position: relative;
+
+  @include portrait {
+    grid-column: column 3  / span 2;
+  }
+
+  &::after {
+    --gradient-height: 42px;
+
+    background-image: linear-gradient(transparent, $color-white);
+    bottom: 0;
+    content: '';
+    height: var(--gradient-height);
+    left: 0;
+    position: absolute;
+    right: 0;
+
+    @include portrait {
+      --gradient-height: 56px;
+    }
+  }
+}
+
+.news__content-wrapper {
+  grid-column: auto  / span 10;
+  margin-top: -37px;
+  position: relative;
+  z-index: 2;
+
+  @include portrait {
+    grid-column: auto  / span 3;
+    margin-top: -58px;
+  }
+}
+
+.news__label {
+  display: block;
+  font-family: $montserrat-font-stack;
+  font-size: 16px;
+  font-weight: #{get-montserrat-weight(bold)};
+  line-height: 18px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+
+  @include portrait {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 10px;
+  }
+}
+
+.news__title {
+  @include typography(heading-4, $montserrat-font-stack, false, false, false);
+
+  display: block;
+  margin-bottom: 4px;
+
+  @include portrait {
+    margin-bottom: 20px;
+  }
+}
+
+.news__excerpt {
+  @include typography(body-text, $lora-font-stack, false);
+
+  display: block;
+
+  @include portrait {
+    --body-text-font-size: 16px;
+    --body-text-line-height: 22px;
+  }
+}
+
+.news__date {
+  @include typography(date, $montserrat-font-stack, false, false, false);
+
+  display: block;
+  margin-top: 4px;
+
+  @include portrait {
+    margin-top: 20px;
+  }
 }

@@ -8,5 +8,9 @@
 }
 
 .news-cards__card {
-  grid-column: auto / span 4;
+  grid-column: auto / span 12;
+
+  @include portrait {
+    grid-column: auto / span 4;
+  }
 }
