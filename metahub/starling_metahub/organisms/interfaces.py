@@ -106,4 +106,6 @@ class OrganismActualitiesLandingHeaderRegular(NamedTuple):
     A simple header with text and a featured item (either news or event)
     """
     title: str = ''
+    link_label: str = ''
     featured_item: MoleculeCardRegular = MoleculeCardRegular()
+    excerpt: str = ''

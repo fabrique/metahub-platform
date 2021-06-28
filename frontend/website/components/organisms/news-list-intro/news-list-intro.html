@@ -47,7 +47,9 @@
   id = '',
   classes = '',
   title = '',
-  featured_item = {}
+  featured_item = {},
+  excerpt = '',
+  link_label = ''
 ) %}
   {% set component = 'news-list-intro' %}
   <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
@@ -67,13 +69,14 @@
         ) }}
         <div class="{{ component }}__post__content">
           <p class="{{ component }}__post__excerpt">
-            {{ featured_item.excerpt }}
+{#            i made this separate, because you have more control that way, otherwise the linked page dictates content#}
+            {{ excerpt }}
           </p>
           <span class="{{ component }}__post__date">{{ featured_item.date }}</span>
           {{ atom_link.regular(
             classes = component + '__post__link',
             href = featured_item.href,
-            title = 'Read more',
+            title = link_label,
             icon_after = 'custom/arrow-right-icon'
           ) }}
         </div>

@@ -207,8 +207,19 @@ class OrganismActualitiesLandingHeaderRegularBlock(AdapterStructBlock):
     Actualities Landing Page component
     A simple header with text and a featured item (either news or event)
     """
-    title = blocks.CharBlock(max_length=200)
     featured_item = HelperRelatedPageBlock()
+    excerpt = blocks.TextBlock()
+    link_label = blocks.CharBlock(default='Read more')
+
+    def build_extra(self, value, build_args, parent_context=None):
+        page = (parent_context or {}).get('page')
+
+        if not page:
+            return
+
+        build_args.update({
+            'title': page.title
+        })
 
     class Meta:
         component = 'organisms.news-list-intro.temporarybackend'
