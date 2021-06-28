@@ -68,6 +68,7 @@
 .news__title {
   @include typography(heading-4, $montserrat-font-stack, false, false, false);
 
+  color: var(--theme-color);
   display: block;
   margin-bottom: 4px;
 

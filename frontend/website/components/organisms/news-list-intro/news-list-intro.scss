@@ -2,7 +2,7 @@
 .news-list-intro {
   background-color: var(--theme-color);
   color: $color-white;
-  margin-bottom: var(--section-space);
+  margin-bottom: calc(var(--section-space)  / 2);
   padding-bottom: 40px;
   padding-top: var(--section-space);
 
