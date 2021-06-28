@@ -4,7 +4,7 @@ from wagtail.core.fields import StreamField
 from wagtailmodelchooser.blocks import ModelChooserBlock
 
 from metahub.content.blocks import content_blocks
-from metahub.core.models import AbstractMetaHubRichBasePage, MetaHubBasePage
+from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderRegularBlock, \
     OrganismHeroTextHeaderExtraInfoBlock, OrganismArticleCuratedItemsRegularBlock, \
     OrganismArticleRelatedItemsRegularBlock
@@ -51,13 +51,6 @@ class MetaHubStoryPage(MetaHubBasePage):
         StreamFieldPanel('content'),
         StreamFieldPanel('related_items')
     ]
-
-    def get_page_date(self):
-        return self.date
-
-    def get_page_authors(self):
-        if len(self.authors):
-            return [str(author) for author in self.authors]
 
     def get_page_related_items(self):
         return MetaHubStoryPage.objects.live().exclude(pk=self.pk)[:3]

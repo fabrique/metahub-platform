@@ -1,5 +1,3 @@
-from itertools import chain
-
 from django.db import models
 from django.conf import settings
 
@@ -76,6 +74,16 @@ class MetaHubBasePage(PagePromoMixin, Page):
             picture_structvalue = header_child.value['picture']
             return AtomPictureRegular(**Resolution(mobile='1920', crop=True).resolve(picture_structvalue['source']))
 
+
+    def get_page_date(self):
+        if date := getattr(self, 'date'):
+            return date
+
+    def get_page_authors(self):
+        if authors := getattr(self, 'authors'):
+            return [str(author) for author in authors]
+        return []
+
     def get_page_label(self):
         return ''
 
@@ -92,15 +100,6 @@ class MetaHubBasePage(PagePromoMixin, Page):
 
     class Meta:
         abstract = True
-
-
-class AbstractMetaHubRichBasePage(MetaHubBasePage):
-
-
-
-    class Meta:
-        abstract = True
-
 
 
 

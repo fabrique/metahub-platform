@@ -48,13 +48,6 @@ class MetaHubNewsPage(MetaHubBasePage):
         StreamFieldPanel('related_items')
     ]
 
-    def get_page_date(self):
-        return self.date
-
-    def get_page_authors(self):
-        if len(self.authors):
-            return [str(author) for author in self.authors]
-
     def get_page_related_items(self):
         return MetaHubNewsPage.objects.live().exclude(pk=self.pk)[:3]
 
