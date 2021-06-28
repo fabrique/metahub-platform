@@ -2,6 +2,8 @@
 
 {% load core_tags wagtailcore_tags wagtailimages_tags starling_tags %}
 
+{% block bodyclass %}{{ page.theme_color }}{% endblock %}
+
 {%  block page_header %}
     {% for block in page.hero_header %}
         {% include_block block %}
@@ -15,11 +17,9 @@
 
 {% block content %}
   <div class="container--content__wrapper">
-
     {% for block in page.get_content_with_numbered_captioned_entities %}
       {% include_block block %}
     {% endfor %}
-
   </div>
 
   {% for block in page.related_items %}

@@ -9,9 +9,6 @@ from wagtail.core.blocks import ListBlock
 from .interfaces import *
 from ..atoms.blocks import AtomVideoEmbedRegularBlock
 from ..helpers import HelperRelatedPagesBlock
-from ..molecules.blocks import MoleculeObjectCardRegularBlock, MoleculeContextCardRegularBlock, \
-    MoleculeLinkRegularBlock, MoleculeAudioPlayerBlock, \
-    MoleculeCollectionCategoryCardRegularBlock, MoleculeThemeHighlightRegularBlock, MoleculeObjectHighlightRegularBlock
 from ..utils import count_words_html
 from ...core.utils import format_date
 

@@ -48,7 +48,7 @@ def format_date(date):
 
 
 class MetaHubThemeColor(models.TextChoices):
-    MAGENTA = 'magenta', _('Magenta pink')
-    STRAWBERRY = 'strawberry', _('Strawberry red')
-    SAPPHIRE = 'sapphire', _('Sapphire blue')
-    PHLOX = 'phlox', _('Phlox purple')
+    MAGENTA = 'theme--magenta', _('Magenta pink')
+    STRAWBERRY = 'theme--pink', _('Strawberry red')
+    SAPPHIRE = 'theme--blue', _('Sapphire blue')
+    PHLOX = 'theme--purple', _('Phlox purple')
