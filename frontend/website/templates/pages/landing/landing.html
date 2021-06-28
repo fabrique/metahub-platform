@@ -1,7 +1,6 @@
 {% extends 'templates/_base.html' %}
 
-{% import 'components/organisms/search-header/search-header.html' as organisms_search_header %}
-{% import 'components/structures/header/header.html' as header %}
+{% import 'components/organisms/full-screen-logo/full-screen-logo.html' as organisms_full_screen_logo %}
 
 {% block page_title %}Home{% endblock %}
 
@@ -9,10 +8,31 @@
   {{ header.regular(hasLogo = false) }}
 {% endblock %}
 
-{% block header %}
-{% endblock %}
-
 {% block content %}
+
+  {{ organisms_full_screen_logo.regular(
+    theme_color = ['theme--purple', 'theme--blue', 'theme--pink', 'theme--magenta'] | random
+  ) }}
+
+  <section>
+    hero text
+  </section>
+
+  <section>
+    relevant objects
+  </section>
+
+  <section>
+    highted story
+  </section>
+
+  <section>
+    highted story
+  </section>
+
+  <section>
+    latest news & events
+  </section>
 {% endblock %}
 
 {% block footer %}
