@@ -176,7 +176,7 @@ class OrganismArticleCuratedItemsRegularBlock(AdapterStructBlock):
         label = "Gerelelateerde items (handgekozen)"
         icon = 'arrows-up-down'
         defaults = {}
-        component = 'organisms.relevant-stories.be_cards'
+        component = 'organisms.relevant-cards.story'
         interface_class = OrganismArticleRelatedItemsRegular
 
 
@@ -201,5 +201,5 @@ class OrganismArticleRelatedItemsRegularBlock(AdapterStructBlock):
         label = "Gerelelateerde items (automatisch)"
         icon = 'arrows-up-down'
         defaults = {}
-        component = 'organisms.relevant-stories.be_cards'
+        component = 'organisms.relevant-cards.story'
         interface_class = OrganismArticleRelatedItemsRegular
