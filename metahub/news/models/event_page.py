@@ -21,7 +21,7 @@ class MetaHubEventPage(MetaHubBasePage):
 
     hero_header = StreamField([
         ('header_image', OrganismHeroImageHeaderRegularBlock()),
-    ], blank=True)
+    ])
     text_header = StreamField([
         ('header_text', OrganismHeroTextHeaderExtraInfoBlock()),
     ])
