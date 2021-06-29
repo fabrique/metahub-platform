@@ -102,13 +102,65 @@
       icon_after: 'custom/arrow-right-icon'
     }
   ) }}
-  <section>
-    highted story
-  </section>
 
-  <section>
-    latest news & events
-  </section>
+  {{ organisms_relevant_cards.news(
+    title = 'News & events',
+    classes = 'relevant-news--home',
+    link = {
+      href: '?',
+      title: 'See all Stories',
+      target: '_blank',
+      icon_after: 'custom/arrow-right-icon'
+    },
+    cards = [
+    {
+      picture: {
+        images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
+        positions: { mobile: '50% 50%' },
+        fits: { mobile: 'cover' },
+        width: 220,
+        height: 150
+      },
+      href: '?',
+      title: 'What Could They Know?',
+      excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
+      type: 'news',
+      label: 'News',
+      date: '11 April, 2021'
+    },
+    {
+      picture: {
+        images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
+        positions: { mobile: '50% 50%' },
+        fits: { mobile: 'cover' },
+        width: 220,
+        height: 150
+      },
+      href: '?',
+      title: 'Tour of the Jewish Ostend District - Late 19th Century to 1945',
+      excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
+      type: 'event',
+      label: 'Event',
+      date: '11 April, 2021'
+    },
+    {
+      picture: {
+        images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
+        positions: { mobile: '50% 50%' },
+        fits: { mobile: 'cover' },
+        width: 220,
+        height: 150
+      },
+      href: '?',
+      title: 'Tour of the Jewish Ostend District - Late 19th Century to 1945',
+      excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
+      type: 'news',
+      label: 'News',
+      date: '11 April, 2021'
+    }
+    ]
+  ) }}
+
 {% endblock %}
 
 {% block footer %}

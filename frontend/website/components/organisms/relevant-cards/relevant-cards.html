@@ -1,4 +1,5 @@
 {% import 'components/atoms/card/card.html' as atom_card %}
+{% import 'components/atoms/link/link.html' as atom_link %}
 
 {% macro story(cards = [], title = '', classes = '') %}
   <section class="relevant-stories {{ classes }}">
@@ -40,6 +41,47 @@
           ) }}
         </div>
       {% endfor %}
+    </div>
+  </section>
+{% endmacro %}
+
+
+{% macro news(cards = [], title = '', classes = '', link = {}) %}
+  <section class="relevant-news {{ classes }}">
+    <div>
+      <div class="relevant-news__grid">
+        <h2 class="relevant-news__title"><span class="relevant-objects__title--gradient">{{ title }}</span></h2>
+      </div>
+    </div>
+    <div class="relevant-news__grid">
+      {% for card in cards %}
+        <div class="relevant-news__item">
+          {{ atom_card.news(
+            classes = card.classes,
+            href = card.href,
+            title = card.title,
+            picture = card.picture,
+            label = card.label,
+            excerpt = card.excerpt,
+            type = card.type,
+            date = card.date,
+            width = card.width,
+            height = card.height
+          ) }}
+        </div>
+      {% endfor %}
+    </div>
+    <div>
+      <div class="relevant-news__grid">
+        {{ atom_link.regular(
+          classes = 'relevant-news__link',
+          href = link.href,
+          title = link.title,
+          target = link.target,
+          icon_before = link.icon_before,
+          icon_after = link.icon_after
+        ) }}
+      </div>
     </div>
   </section>
 {% endmacro %}
