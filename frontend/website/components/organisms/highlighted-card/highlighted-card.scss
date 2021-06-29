@@ -64,7 +64,7 @@
 .highlighted-card__card-content {
   grid-column: auto / span 12;
 
-  @include portrait {
+  @include landscape {
     grid-column: auto / span 3;
     grid-row: 2;
   }
@@ -75,7 +75,7 @@
 
   color: inherit;
 
-  @include portrait {
+  @include landscape {
     --body-text-font-size: 16px;
     --body-text-line-height: 22px;
   }

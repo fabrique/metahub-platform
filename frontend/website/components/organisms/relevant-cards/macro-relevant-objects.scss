@@ -87,21 +87,15 @@
 .relevant-objects--home {
   margin-bottom: 0;
   min-height: 100vh;
+  padding-bottom: var(--section-space);
 
   .relevant-objects__title {
     margin-top: 10vh;
   }
 
   .object__picture {
-    height: 60vh;
-  }
-}
-
-.container--content {
-  overflow-y: scroll;
-  scroll-snap-type: y proximity;
-
-  > section {
-    scroll-snap-align: start;
+    @include landscape {
+      height: 60vh;
+    }
   }
 }
