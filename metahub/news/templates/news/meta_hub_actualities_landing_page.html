@@ -1,9 +1,12 @@
 {% extends 'core/base_page.html' %}
-{% load wagtailcore_tags %}
+{% load wagtailcore_tags starling_tags %}
 
 {%  block page_header %}
     {% for block in page.header %}
         {% include_block block %}
     {% endfor %}
-
 {%  endblock %}
+
+{% block content %}
+      {% include_component 'organisms.news-cards.regular' page.get_actualities_landing_grid_component  %}
+{% endblock %}

@@ -98,6 +98,9 @@ class MetaHubBasePage(PagePromoMixin, Page):
             picture=self.specific.get_page_header_image(),
         )
 
+    def time_relevance(self):
+        pass
+
     class Meta:
         abstract = True
 
