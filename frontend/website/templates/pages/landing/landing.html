@@ -12,18 +12,24 @@
 {% endblock %}
 
 {% block content %}
+  <div class="snap-container">
 
+  <div class="snap-item">
   {{ organisms_full_screen_logo.regular(
     theme_color = ['theme--purple', 'theme--blue', 'theme--pink', 'theme--magenta'] | random
   ) }}
+  </div>
 
+  <div class="snap-item">
   {% call organisms_home_content.regular() %}
     <h2>Experience historical places </h2>
     <p>
       METAhub Frankfurt verortet Kulturgüter im digitalen Raum und macht sie im Objects erfahrbar. Das Story basiert auf einer neuartigen Form der Zusammenarbeit zwischen Museumskurator*innen, -dokumentar*innen und Dramaturg*innen mit Medienkünstler*innen.
     </p>
   {% endcall %}
+  </div>
 
+  <div class="snap-item">
   {{ organisms_relevant_cards.object(
     title = 'Relevant objects',
     classes = 'relevant-objects--home',
@@ -73,7 +79,8 @@
       }
     ]
   ) }}
-
+  </div>
+  <div class="snap-item">
   {{ organisms_highlighted_card.regular(
     title = 'Stories',
     card = {
@@ -102,7 +109,9 @@
       icon_after: 'custom/arrow-right-icon'
     }
   ) }}
+  </div>
 
+  <div class="snap-item">
   {{ organisms_relevant_cards.news(
     title = 'News & events',
     classes = 'relevant-news--home',
@@ -160,7 +169,8 @@
     }
     ]
   ) }}
-
+  </div>
+  </div>
 {% endblock %}
 
 {% block footer %}
