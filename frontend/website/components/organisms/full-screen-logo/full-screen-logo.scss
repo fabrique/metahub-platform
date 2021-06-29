@@ -1,0 +1,40 @@
+
+.full-screen-logo {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - var(--header-height));
+  justify-content: space-between;
+
+  @include landscape {
+    align-items: initial;
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: 75vw 25vw;
+    justify-content: initial;
+  }
+
+  @include setThemeColorsByClass;
+}
+
+.full-screen-logo__meta {
+  color: var(--theme-color);
+  margin-top: var(--section-space);
+  max-height: 50vh;
+
+  @include landscape {
+    margin-top: 0;
+    max-height: initial;
+  }
+}
+
+.full-screen-logo__hub {
+  color: var(--theme-color);
+  height: auto;
+  max-width: 50vw;
+
+  @include landscape {
+    margin-top: 50vh;
+    max-width: auto;
+  }
+}

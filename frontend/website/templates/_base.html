@@ -44,13 +44,7 @@
     <link rel="stylesheet" href="{{ static }}/stylesheets/main.css{{ cachebuster }}">
   </head>
 
-  <body class="{%- if theme-color %}
-      {{ theme-color }}
-    {% else %}
-      {% block page_theme %}
-        {{ ['theme--purple', 'theme--blue', 'theme--pink', 'theme--magenta'] | random }}
-      {% endblock %}
-    {% endif -%}">
+  <body class="{{ theme-color }}">
     <script>{{ include_raw('build/static/scripts/base.js')|replace('\n;\n', '\n')|replace('\n//# sourceMappingURL=base.js.map', '') }}</script>
     {#<script src="{{ static }}/scripts/base.js{{ cachebuster }}" type="module" crossorigin></script>#}
 
@@ -69,9 +63,6 @@
       </header>
 
       <main id="main" class="container container--content">
-        {% block header %}
-        {% endblock %}
-
         {% block content %}
         {% endblock %}
 

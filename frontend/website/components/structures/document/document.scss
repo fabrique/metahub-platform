@@ -32,6 +32,12 @@ html {
 }
 
 body {
+  @include setThemeColorsByClass;
+
+  &.menu-bar--sticky {
+    padding-top: 126px;
+  }
+
   background-color: $color-white;
   color: $color-black;
   font: inherit;
@@ -41,24 +47,4 @@ body {
   min-width: var(--document-min-width);
   position: relative;
   width: 100%;
-
-  &.menu-bar--sticky {
-    padding-top: 126px;
-  }
-
-  &.theme--blue {
-    --theme-color: var(--color-blue);
-  }
-
-  &.theme--purple {
-    --theme-color: var(--color-purple);
-  }
-
-  &.theme--pink {
-    --theme-color: var(--color-pink);
-  }
-
-  &.theme--magenta {
-    --theme-color: var(--color-magenta);
-  }
 }

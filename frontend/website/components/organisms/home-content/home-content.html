@@ -1,0 +1,16 @@
+{% import 'components/atoms/richtext/richtext.html' as atom_richtext %}
+
+{% macro regular(id = '') %}
+  {% set component = 'home-content' %}
+  <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }}">
+    <div class="{{ component }}__grid">
+      <div class="{{ component }}__wrapper">
+        {# Allowed tags: <h2>, <p>, <a> #}
+        {% set child_context = caller() %}
+        {% call atom_richtext.regular( classes = component + '__richtext') %}
+          {{ child_context }}
+        {% endcall %}
+      </div>
+    </div>
+  </section>
+{% endmacro %}

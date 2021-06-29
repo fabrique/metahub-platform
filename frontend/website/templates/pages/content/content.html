@@ -13,7 +13,8 @@
 
 {% block page_title %}Content{% endblock %}
 
-{% block header %}
+{% block content %}
+
   {{ organisms_hero_image.regular(
     align = 'fullbleed',
     picture =  {
@@ -23,10 +24,6 @@
       width: 1920
     }
   ) }}
-
-{% endblock %}
-
-{% block content %}
 
   {{ organisms_hero_text.regular(
     title = 'LUDWIG MEIDNER ARCHIVE - Exiled Jewish Artists',

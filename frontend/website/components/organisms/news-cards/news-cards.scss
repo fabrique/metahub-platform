@@ -1,6 +1,6 @@
 
 .news-cards {
-  margin-bottom: var(--section-space);
+  //
 }
 
 .news-cards__title {
@@ -18,7 +18,7 @@
 .news-cards__card {
   grid-column: auto / span 12;
 
-  @include portrait {
+  @include landscape {
     grid-column: auto / span 4;
   }
 }
