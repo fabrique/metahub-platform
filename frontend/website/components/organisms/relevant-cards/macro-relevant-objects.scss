@@ -94,6 +94,8 @@
   }
 
   .object__picture {
-    height: 60vh;
+    @include landscape {
+      height: 60vh;
+    }
   }
 }
