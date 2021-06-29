@@ -61,3 +61,4 @@ class MoleculeCardRegular(NamedTuple):
     href: str = ''
     target: str = ''
     classes: str = ''
+    date: str = ''

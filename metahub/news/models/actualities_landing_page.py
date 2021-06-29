@@ -29,15 +29,10 @@ class MetaHubActualitiesLandingPage(MetaHubBasePage):
     ]
 
     def get_all_news_and_events(self):
-        # news = MetaHubNewsPage.objects.live()
-
         model_types = [*map(resolve_model_string, ['news.MetaHubNewsPage', 'news.MetaHubEventPage'])]
         valid_types = reduce(Q.__or__, map(Page.objects.type_q, model_types))
         news_and_events = Page.objects.filter(valid_types).specific()
-
-        news_and_events_list = list(news_and_events)
-        sorted_news_and_events = sorted(news_and_events_list, key=lambda e: e.time_relevance())
-        return sorted_news_and_events
+        return sorted(list(news_and_events), key=lambda e: e.time_relevance())
 
     def get_actualities_landing_grid_component(self):
         return OrganismCardGridRegular(

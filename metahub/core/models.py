@@ -15,7 +15,7 @@ from wagtail.images.models import Image
 from wagtail.search import index
 
 from .mixins import PagePromoMixin
-from .utils import MetaHubThemeColor
+from .utils import MetaHubThemeColor, format_date
 from ..starling_metahub.molecules.interfaces import MoleculeCardRegular
 
 from ..starling_metahub.structures.blocks import StructureFooterBarSimpleBlock
@@ -96,6 +96,7 @@ class MetaHubBasePage(PagePromoMixin, Page):
             label=self.get_page_label(),
             href=self.url,
             picture=self.specific.get_page_header_image(),
+            date=format_date(self.specific.get_page_date())
         )
 
     def time_relevance(self):
