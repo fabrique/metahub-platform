@@ -20,6 +20,7 @@
 .relevant-objects__title--gradient {
   background-image: linear-gradient($color-white 40%, transparent);
   display: inline-block;
+  min-width: 50vw;
   padding: 6px 0;
 }
 
@@ -80,5 +81,27 @@
         grid-column: auto / span 3;
       }
     }
+  }
+}
+
+.relevant-objects--home {
+  margin-bottom: 0;
+  min-height: 100vh;
+
+  .relevant-objects__title {
+    margin-top: 10vh;
+  }
+
+  .object__picture {
+    height: 60vh;
+  }
+}
+
+.container--content {
+  overflow-y: scroll;
+  scroll-snap-type: y proximity;
+
+  > section {
+    scroll-snap-align: start;
   }
 }
