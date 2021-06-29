@@ -14,6 +14,8 @@
                 {% include_block block %}
             {% endfor %}
 
+            {% include_component 'organisms.object-metadata.regular' page.get_object_metadata_component %}
+
             {% for block in page.related_items %}
                 {% include_block block %}
             {% endfor %}

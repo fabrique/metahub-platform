@@ -128,9 +128,13 @@ class OrganismObjectHeaderRegular(NamedTuple):
     subtitle: str = ''
 
 
-class OrganismObjectIntro(NamedTuple):
+class OrganismObjectIntroRegular(NamedTuple):
     text: str = ''
     classes: str = ''
 
     def get_context_container(self):
         return 'text'
+
+
+class OrganismObjectMetadataRegular(NamedTuple):
+    items: Sequence[dict] = ()
