@@ -3,6 +3,7 @@
 {% import 'components/organisms/full-screen-logo/full-screen-logo.html' as organisms_full_screen_logo %}
 {% import 'components/organisms/home-content/home-content.html' as organisms_home_content %}
 {% import 'components/organisms/relevant-cards/relevant-cards.html' as organisms_relevant_cards %}
+{% import 'components/organisms/highlighted-card/highlighted-card.html' as organisms_highlighted_card %}
 
 {% block page_title %}Home{% endblock %}
 
@@ -32,7 +33,10 @@
           images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
           positions: { mobile: '50% 50%' },
           fits: { mobile: 'cover' },
-          width: 430
+          width: 690,
+          height: '',
+          loading: '',
+          alt: ''
         },
         title: 'THE LUDWIG MEIDNER ARCHIVE',
         subtitle: 'Kurt de Jong, Flasche, 2007',
@@ -70,10 +74,34 @@
     ]
   ) }}
 
-  <section>
-    highted story
-  </section>
-
+  {{ organisms_highlighted_card.regular(
+    title = 'Stories',
+    card = {
+      classes: '',
+      href: '?',
+      title: 'LUDWIG MEIDNER ARCHIVE - Exiled Jewish Artists',
+      excerpt: 'The Jewish Museum has been in charge of the artistic estate of Ludwig Meidner since 1994 and administers it through its Ludwig Meidner Archive. Other estates of artists forced into exile during the Nazi era because of their Jewish origins have been added in the meantime.',
+      theme_color: 'theme--blue',
+      picture: {
+        images: { mobile: '/static/media/unsplash/landscape/averie-woodard.jpg' },
+        positions: { mobile: '50% 50%' },
+        fits: { mobile: 'cover' },
+        width: 430
+      },
+      link: {
+        href: '?',
+        title: 'Read more',
+        target: '_blank',
+        icon_after: 'custom/arrow-right-icon'
+      }
+    },
+    link = {
+      href: '?',
+      title: 'See all Stories',
+      target: '_blank',
+      icon_after: 'custom/arrow-right-icon'
+    }
+  ) }}
   <section>
     highted story
   </section>
