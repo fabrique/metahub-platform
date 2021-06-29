@@ -11,6 +11,7 @@ from wagtail.core.models import Page
 
 from metahub.core.models import MetaHubBasePage
 # from metahub.search.search import do_search, get_search_results, get_result_as_cards, get_result_filters
+from metahub.starling_metahub.organisms.interfaces import OrganismExploreSearchHeader
 
 
 class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
@@ -21,37 +22,24 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
 
     parent_page_types = ['home.MetahubHomePage']
 
-    # search_header = StreamField([
-    #     ('search_header', OrganismSearchHeaderRegularBlock())
-    # ])
-    #
-    # content_panels = MetahubBasePage.content_panels + [
-    #     StreamFieldPanel('search_header'),
-    # ]
-    #
-    # def get_random_header_picture(self):
-    #     """
-    #     Picks one of the chosen header images.
-    #     """
-    #     try:
-    #         header_child = self.search_header[0]
-    #     except IndexError:
-    #         return None
-    #     else:
-    #         picture_structvalues = header_child.value['pictures']
-    #         picture_index = randint(0, len(picture_structvalues) - 1)
-    #         return picture_index
-    #
-    # def search_view(self, request, *args, **kwargs):
-    #     """
-    #     Used by the AJAX request done on the search landing so that not all
-    #     the page refreshes but only the results/cards at the bottom.
-    #     """
-    #     context = self.get_context(request, *args, **kwargs)
-    #     content = render_to_string('core/components/search_filter_results.html', context=context)
-    #     output = {}
-    #     output['content'] = content
-    #     return JsonResponse(data=output, safe=False)
+
+    def get_search_header_component(self):
+        return OrganismExploreSearchHeader(
+            title="Explore",
+            search_button_title="Search"
+        )
+
+
+    def search_view(self, request, *args, **kwargs):
+        """
+        Used by the AJAX request done on the search landing so that not all
+        the page refreshes but only the results/cards at the bottom.
+        """
+        context = self.get_context(request, *args, **kwargs)
+        content = render_to_string('core/components/search_filter_results.html', context=context)
+        output = {}
+        output['content'] = content
+        return JsonResponse(data=output, safe=False)
     #
     # def live_search_url(self):
     #     return self.url + self.reverse_subpage('livesearch_landing')
