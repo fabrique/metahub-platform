@@ -8,10 +8,12 @@ from wagtail.core.fields import StreamField
 from metahub.collection.models import CollectionObjectTag
 from metahub.content.blocks import content_blocks
 from metahub.core.models import MetaHubBasePage
-from metahub.starling_metahub.molecules.interfaces import MoleculeObjectCardRegular, MoleculeContextCardRegular
+from metahub.starling_metahub.molecules.interfaces import MoleculeObjectCardRegular, MoleculeContextCardRegular, \
+    MoleculeCardRegular, MoleculeExploreCardRegular
 from metahub.starling_metahub.organisms.blocks import OrganismArticleCuratedItemsRegularBlock, \
     OrganismArticleRelatedItemsRegularBlock
-from metahub.starling_metahub.organisms.interfaces import OrganismObjectHeaderRegular, OrganismObjectIntro
+from metahub.starling_metahub.organisms.interfaces import OrganismObjectHeaderRegular, OrganismObjectIntroRegular, \
+    OrganismObjectMetadataRegular
 
 
 class MetaHubObjectPage(MetaHubBasePage):
@@ -79,7 +81,7 @@ class MetaHubObjectPage(MetaHubBasePage):
         return self.subtitle
 
     def get_object_intro_component(self):
-        return OrganismObjectIntro(
+        return OrganismObjectIntroRegular(
             text=f"<p>{self.introduction}</p>",
             classes="richtext__section-space--bottom"
         )
@@ -92,6 +94,68 @@ class MetaHubObjectPage(MetaHubBasePage):
         if self.object and self.object.artist:
             return str(self.object.artist)
         return None
+
+    def get_object_metadata(self):
+        # todo when we have the acutal object
+        items = [
+            {
+                'title': 'Title',
+                'data': 'Etrog liqueur',
+            },
+            {
+                'title': 'Kunstler in Hersteller in',
+                'data': 'Kurt de Jong',
+            },
+            {
+                'title': 'Datierung',
+                'data': '2007',
+            },
+            {
+                'title': 'Objektbezeichnung',
+                'data': 'bottle',
+            },
+            {
+                'title': 'Ort',
+                'data': 'Frankfurt am Main',
+            },
+            {
+                'title': 'MaBe',
+                'data': 'Bottle 1:30cm',
+            },
+            {
+                'title': 'Material Technik',
+                'data': 'Glass',
+            },
+            {
+                'title': 'Signatur',
+                'data': 'JMF contemporary cultures',
+            }
+        ]
+
+        for index, item in enumerate(items):
+            item['number'] = str(index+1).zfill(2)
+
+        return items
+
+    def get_object_metadata_component(self):
+        return OrganismObjectMetadataRegular(
+            items=self.get_object_metadata()
+        )
+
+
+    def get_page_label(self):
+        return 'Object'
+
+    def get_card_representation(self):
+        return MoleculeExploreCardRegular(
+            title=self.title,
+            label=self.get_page_label(),
+            subtitle=self.get_object_subtitle(),
+            theme_color=self.theme_color,
+            href=self.url,
+            picture=None, # todo
+            type='object'
+        )
     #
     # def get_type_dating(self):
     #     date = self.object.datings

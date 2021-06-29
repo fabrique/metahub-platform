@@ -7,19 +7,21 @@
 
             {% include_component 'organisms.object-detail-intro.regular' page.get_object_header_component  %}
 
-
             {% include_component 'atoms.richtext.regular' page.get_object_intro_component %}
 
             {% for block in page.get_content_with_numbered_captioned_entities %}
                 {% include_block block %}
             {% endfor %}
 
-            {% for block in page.related_items %}
-                {% include_block block %}
-            {% endfor %}
+            {% include_component 'organisms.object-metadata.regular' page.get_object_metadata_component %}
 
         </article>
     </section>
+
+    {% for block in page.related_items %}
+        {% include_block block %}
+    {% endfor %}
+
 
 {% endblock %}
 

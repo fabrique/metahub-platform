@@ -1,6 +1,8 @@
+from functools import reduce
 from random import randint
 
 from django.core.paginator import PageNotAnInteger
+from django.db.models import Q
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from pure_pagination import Paginator
@@ -8,10 +10,11 @@ from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
 from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
+from wagtail.core.utils import resolve_model_string
 
 from metahub.core.models import MetaHubBasePage
 # from metahub.search.search import do_search, get_search_results, get_result_as_cards, get_result_filters
-from metahub.starling_metahub.organisms.interfaces import OrganismExploreSearchHeader
+from metahub.starling_metahub.organisms.interfaces import OrganismExploreSearchHeader, OrganismSearchCardGridRegular
 
 
 class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
@@ -29,17 +32,27 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
             search_button_title="Search"
         )
 
+    def get_all_objects_and_stories_queryset(self):
+        model_types = [*map(resolve_model_string, ['stories.MetaHubStoryPage', 'collection.MetaHubObjectPage'])]
+        valid_types = reduce(Q.__or__, map(Page.objects.type_q, model_types))
+        objects_and_stories = Page.objects.filter(valid_types).specific().live()
+        return objects_and_stories
 
-    def search_view(self, request, *args, **kwargs):
-        """
-        Used by the AJAX request done on the search landing so that not all
-        the page refreshes but only the results/cards at the bottom.
-        """
-        context = self.get_context(request, *args, **kwargs)
-        content = render_to_string('core/components/search_filter_results.html', context=context)
-        output = {}
-        output['content'] = content
-        return JsonResponse(data=output, safe=False)
+    def get_search_card_grid_component(self):
+        return OrganismSearchCardGridRegular(
+            cards=[p.get_card_representation() for p in self.get_all_objects_and_stories_queryset()]
+        )
+
+    # def search_view(self, request, *args, **kwargs):
+    #     """
+    #     Used by the AJAX request done on the search landing so that not all
+    #     the page refreshes but only the results/cards at the bottom.
+    #     """
+    #     context = self.get_context(request, *args, **kwargs)
+    #     content = render_to_string('core/components/search_filter_results.html', context=context)
+    #     output = {}
+    #     output['content'] = content
+    #     return JsonResponse(data=output, safe=False)
     #
     # def live_search_url(self):
     #     return self.url + self.reverse_subpage('livesearch_landing')

@@ -31,7 +31,7 @@
   </article>
 {% endmacro %}
 
-{% macro object(classes = '', title = '', picture = {}, theme_color = '', href = '', subtitle = '') %}
+{% macro object(classes = '', title = '', picture = {}, theme_color = '', href = '', subtitle = '', label = '') %}
   {% set component = 'object' %}
   <article class="{{ component }} {{ classes }} {{ theme_color }}">
     <a
@@ -55,7 +55,7 @@
       </span>
       <span class="{{ component }}__content-wrapper">
         <span class="{{ component }}__content-wrapper__inner">
-          <span class="{{ component }}__label">Object</span>
+          <span class="{{ component }}__label">{{ label }}</span>
           <span class="{{ component }}__title">{{ title }}</span>
           <span class="{{ component }}__subtitle">{{ subtitle }}</span>
         </span>
