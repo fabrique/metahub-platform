@@ -9,6 +9,8 @@ from metahub.collection.models import CollectionObjectTag
 from metahub.content.blocks import content_blocks
 from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.molecules.interfaces import MoleculeObjectCardRegular, MoleculeContextCardRegular
+from metahub.starling_metahub.organisms.blocks import OrganismArticleCuratedItemsRegularBlock, \
+    OrganismArticleRelatedItemsRegularBlock
 from metahub.starling_metahub.organisms.interfaces import OrganismObjectHeaderRegular, OrganismObjectIntro
 
 
@@ -36,12 +38,17 @@ class MetaHubObjectPage(MetaHubBasePage):
     content = StreamField(content_blocks(), blank=True)
     tags = ClusterTaggableManager(through=CollectionObjectTag, blank=True)
 
+    related_items = StreamField([
+        ('related_curated', OrganismArticleCuratedItemsRegularBlock()),
+        ('related_automatic', OrganismArticleRelatedItemsRegularBlock()),
+    ], blank=True)
+
     content_panels = MetaHubBasePage.content_panels + [
         FieldPanel('object'),
         FieldPanel('introduction'),
         StreamFieldPanel('content'),
         FieldPanel('tags'),
-        # InlinePanel('obj_img_link')
+        StreamFieldPanel('related_items')
     ]
 
     metadata_panels = [
@@ -55,7 +62,6 @@ class MetaHubObjectPage(MetaHubBasePage):
     #     ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
     # ])
 
-
     def get_object_header_component(self):
         return OrganismObjectHeaderRegular(
             title="Sample title until objects are linked",
@@ -68,35 +74,18 @@ class MetaHubObjectPage(MetaHubBasePage):
             classes="richtext__section-space--bottom"
         )
 
-    # def build_hero_header(self):
-    #     """
-    #     Overrides method from MetaHubBasePage
-    #     Creates an image based hero header automatically (cannot be set in CMS) based
-    #     on data from BeeCollect.
-    #     """
-    #     pass
-    #     return OrganismHeroHeaderMultiImageRegular(
-    #         information=self.get_hero_info(),
-    #         expandable=True,
-    #         pictures=self.get_object_images(),
-    #         theme='white'
-    #     )
-    #
-    # def get_hero_images(self):
-    #     """
-    #     Overrides method from MetaHubBasePage
-    #     For this kind of page, images are not chosen in the CMS but are automatically
-    #     retrieved from the corresponding object.
-    #     """
-    #     return self.get_object_images()
-    #
-    # def get_object_artist(self):
-    #     if self.object:
-    #         if self.object.artist:
-    #             return str(self.object.artist)
-    #         else:
-    #             return 'Unbekannt'
-    #     return None
+    def get_page_related_items(self):
+        # TODO this is itself for now since we dont have real objects yet
+        return [self, self, self]
+
+
+    def get_object_artist(self):
+        if self.object:
+            if self.object.artist:
+                return str(self.object.artist)
+            else:
+                return 'Unbekannt'
+        return None
     #
     # def get_type_dating(self):
     #     date = self.object.datings
