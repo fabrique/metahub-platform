@@ -64,7 +64,7 @@ class MetaHubObjectPage(MetaHubBasePage):
 
     def get_object_intro_component(self):
         return OrganismObjectIntro(
-            text=self.introduction,
+            text=f"<p>{self.introduction}</p>",
             classes="richtext__section-space--bottom"
         )
 
