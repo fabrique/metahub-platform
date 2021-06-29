@@ -138,3 +138,7 @@ class OrganismObjectIntroRegular(NamedTuple):
 
 class OrganismObjectMetadataRegular(NamedTuple):
     items: Sequence[dict] = ()
+
+
+class OrganismSearchCardGridRegular(NamedTuple):
+    cards: Sequence[MoleculeCardRegular] = ()

@@ -62,3 +62,15 @@ class MoleculeCardRegular(NamedTuple):
     target: str = ''
     classes: str = ''
     date: str = ''
+
+
+class MoleculeExploreCardRegular(NamedTuple):
+    title: str = ''
+    label: str = ''
+    text: str = ''
+    theme_color: str = ''
+    picture: Picture = None
+    href: str = ''
+    classes: str = ''
+    type: str = ''
+    subtitle: str = ''

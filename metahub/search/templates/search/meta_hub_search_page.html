@@ -2,9 +2,10 @@
 {% load wagtailcore_tags starling_tags %}
 
 {%  block page_header %}
-    {% include_component 'organisms.explore-intro.regular' page.get_search_header_component  %}
+    {% include_component 'organisms.explore-intro.regular' page.get_search_header_component %}
 {%  endblock %}
 
 {% block content %}
+    {% include_component 'organisms.explore-cards.regular' page.get_search_card_grid_component %}
 {% endblock %}
 

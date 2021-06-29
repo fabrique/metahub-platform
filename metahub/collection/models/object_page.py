@@ -8,7 +8,8 @@ from wagtail.core.fields import StreamField
 from metahub.collection.models import CollectionObjectTag
 from metahub.content.blocks import content_blocks
 from metahub.core.models import MetaHubBasePage
-from metahub.starling_metahub.molecules.interfaces import MoleculeObjectCardRegular, MoleculeContextCardRegular
+from metahub.starling_metahub.molecules.interfaces import MoleculeObjectCardRegular, MoleculeContextCardRegular, \
+    MoleculeCardRegular, MoleculeExploreCardRegular
 from metahub.starling_metahub.organisms.blocks import OrganismArticleCuratedItemsRegularBlock, \
     OrganismArticleRelatedItemsRegularBlock
 from metahub.starling_metahub.organisms.interfaces import OrganismObjectHeaderRegular, OrganismObjectIntroRegular, \
@@ -139,6 +140,21 @@ class MetaHubObjectPage(MetaHubBasePage):
     def get_object_metadata_component(self):
         return OrganismObjectMetadataRegular(
             items=self.get_object_metadata()
+        )
+
+
+    def get_page_label(self):
+        return 'Object'
+
+    def get_card_representation(self):
+        return MoleculeExploreCardRegular(
+            title=self.title,
+            label=self.get_page_label(),
+            subtitle=self.get_object_subtitle(),
+            theme_color=self.theme_color,
+            href=self.url,
+            picture=None, # todo
+            type='object'
         )
     #
     # def get_type_dating(self):

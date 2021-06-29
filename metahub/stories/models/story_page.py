@@ -5,6 +5,7 @@ from wagtailmodelchooser.blocks import ModelChooserBlock
 
 from metahub.content.blocks import content_blocks
 from metahub.core.models import MetaHubBasePage
+from metahub.starling_metahub.molecules.interfaces import MoleculeCardRegular, MoleculeExploreCardRegular
 from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderRegularBlock, \
     OrganismHeroTextHeaderExtraInfoBlock, OrganismArticleCuratedItemsRegularBlock, \
     OrganismArticleRelatedItemsRegularBlock
@@ -57,3 +58,14 @@ class MetaHubStoryPage(MetaHubBasePage):
 
     def get_page_label(self):
         return 'Story'
+
+    def get_card_representation(self):
+        return MoleculeExploreCardRegular(
+            title=self.title,
+            label=self.get_page_label(),
+            subtitle="TODO wat komt hier?",
+            href=self.url,
+            picture=self.get_page_header_image(),
+            type='story'
+        )
+    #
