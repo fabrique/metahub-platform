@@ -88,7 +88,6 @@ class MetaHubObjectPage(MetaHubBasePage):
         # TODO this is itself for now since we dont have real objects yet
         return [self, self, self]
 
-
     def get_object_artist(self):
         if self.object and self.object.artist:
             return str(self.object.artist)
@@ -113,15 +112,7 @@ class MetaHubObjectPage(MetaHubBasePage):
     #         return tags
     #     return None
     #
-    # def get_api_tags(self):
-    #     """
-    #     Generates the API-compatible list of tags. These are the tags from the
-    #     django-taggit model, and can be managed in the CMS.
-    #     """
-    #     if self.tags and len(self.tags.all()) > 0:
-    #         tags = [{'title': str(tag), 'href': '/search?id_tags={}'.format(str(tag)) } for tag in self.tags.all()]
-    #         return tags
-    #     return []
+
     #
     # def get_tags_as_list(self):
     #     """
@@ -194,27 +185,7 @@ class MetaHubObjectPage(MetaHubBasePage):
     #         classes=classes,
     #     )
     #
-    # def get_lightbox_items(self):
-    #     """
-    #     Get lightbox items and information. Since we need access to the properties
-    #     of the MetaHubImage object we can't reuse get_object_images for this.
-    #     """
-    #     data = []
-    #     if self.object:
-    #        image_links = self.object.obj_img_link.all()
-    #        for image_link in image_links:
-    #            image = image_link.object_image
-    #            image_data = {
-    #                'picture' : AtomPictureRegular(**Resolution(mobile='2048', landscape='4096', crop=True).resolve(image)),
-    #                'information': {
-    #                    'title' : self.title,
-    #                    'name' : self.get_object_artist(),
-    #                    'description': '', #image.alt_text, #MKR this is wrong, but what else to show here?
-    #                    'credits': image.attribution,
-    #                }
-    #            }
-    #            data.append(image_data)
-    #     return data
+
     #
     # def get_object_images(self):
     #     """
@@ -311,16 +282,7 @@ class MetaHubObjectPage(MetaHubBasePage):
     #         related_objects=cards
     #         )
     #
-    #
-    # def get_favourite_info(self):
-    #     """
-    #     Specifies category and unique idenfifier for this page.
-    #     """
-    #     return {
-    #         'category' : 'object',
-    #         'id': self.pk,
-    #     }
-    #
+
     # def save(self, *args, **kwargs):
     #     super().save(**kwargs)
     #
