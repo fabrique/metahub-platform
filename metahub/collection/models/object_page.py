@@ -6,6 +6,7 @@ from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
 from wagtail.core.fields import StreamField
 
 from metahub.collection.models import CollectionObjectTag
+from metahub.content.blocks import content_blocks
 from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.molecules.interfaces import MoleculeObjectCardRegular, MoleculeContextCardRegular
 from metahub.starling_metahub.organisms.interfaces import OrganismObjectHeaderRegular, OrganismObjectIntro
@@ -26,25 +27,20 @@ class MetaHubObjectPage(MetaHubBasePage):
 
     # Page object
     object = models.ForeignKey('collection.BaseCollectionObject', null=True, on_delete=models.SET_NULL, blank=True, related_name='associated_page')
+    introduction = models.TextField(max_length=2000, blank=True)
 
     # Maximum of related objects shown
     MAX_RELATED_OBJECTS = 3
 
     # CMS panels
-    content = StreamField([
-        # ('single_richtext', OrganismContentSingleRichTextRegularBlock()),
-        # ('single_video', OrganismContentSingleVideoRegularBlock()),
-        # ('single_image', OrganismContentSingleImageRegularBlock()),
-        # ('single_audio', OrganismContentSingleAudioRegularBlock()),
-        # ('double_quote_richtext', OrganismContentDoubleQuoteRichTextRegularBlock()),
-        # ('double_pictures_richtext', OrganismContentDoubleImageRichTextRegularBlock()),
-    ], blank=True)
+    content = StreamField(content_blocks(), blank=True)
     tags = ClusterTaggableManager(through=CollectionObjectTag, blank=True)
 
     content_panels = MetaHubBasePage.content_panels + [
+        FieldPanel('object'),
+        FieldPanel('introduction'),
         StreamFieldPanel('content'),
         FieldPanel('tags'),
-        FieldPanel('object'),
         # InlinePanel('obj_img_link')
     ]
 
@@ -68,7 +64,7 @@ class MetaHubObjectPage(MetaHubBasePage):
 
     def get_object_intro_component(self):
         return OrganismObjectIntro(
-            text="Test even om te kijken of dit kan werken",
+            text=self.introduction,
             classes="richtext__section-space--bottom"
         )
 
