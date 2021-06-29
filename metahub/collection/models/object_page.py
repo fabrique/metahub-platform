@@ -8,7 +8,7 @@ from wagtail.core.fields import StreamField
 from metahub.collection.models import CollectionObjectTag
 from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.molecules.interfaces import MoleculeObjectCardRegular, MoleculeContextCardRegular
-
+from metahub.starling_metahub.organisms.interfaces import OrganismObjectHeaderRegular, OrganismObjectIntro
 
 
 class MetaHubObjectPage(MetaHubBasePage):
@@ -28,7 +28,7 @@ class MetaHubObjectPage(MetaHubBasePage):
     object = models.ForeignKey('collection.BaseCollectionObject', null=True, on_delete=models.SET_NULL, blank=True, related_name='associated_page')
 
     # Maximum of related objects shown
-    MAX_RELATED_OBJECTS = 4
+    MAX_RELATED_OBJECTS = 3
 
     # CMS panels
     content = StreamField([
@@ -58,6 +58,19 @@ class MetaHubObjectPage(MetaHubBasePage):
     #     ObjectList(Page.promote_panels, heading='Promote'),
     #     ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
     # ])
+
+
+    def get_object_header_component(self):
+        return OrganismObjectHeaderRegular(
+            title="Sample title until objects are linked",
+            subtitle="Sample"
+        )
+
+    def get_object_intro_component(self):
+        return OrganismObjectIntro(
+            text="Test even om te kijken of dit kan werken",
+            classes="richtext__section-space--bottom"
+        )
 
     # def build_hero_header(self):
     #     """

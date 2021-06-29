@@ -121,3 +121,16 @@ class OrganismExploreSearchHeader(NamedTuple):
     title: str = ''
     search_button_title: str = ''
     search_button_icon: str = 'custom/arrow-right-icon'
+
+
+class OrganismObjectHeaderRegular(NamedTuple):
+    title: str = ''
+    subtitle: str = ''
+
+
+class OrganismObjectIntro(NamedTuple):
+    text: str = ''
+    classes: str = ''
+
+    def get_context_container(self):
+        return 'text'
