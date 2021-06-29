@@ -2,7 +2,7 @@ from django.db import models
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from starling.interfaces.atoms import AtomPictureRegular
 from starling.interfaces.generic import Resolution
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
 from wagtail.core.fields import StreamField
 
 from metahub.collection.models import CollectionObjectTag
@@ -29,6 +29,7 @@ class MetaHubObjectPage(MetaHubBasePage):
 
     # Page object
     object = models.ForeignKey('collection.BaseCollectionObject', null=True, on_delete=models.SET_NULL, blank=True, related_name='associated_page')
+    subtitle = models.CharField(max_length=500, blank=True, default='')
     introduction = models.TextField(max_length=2000, blank=True)
 
     # Maximum of related objects shown
@@ -44,8 +45,11 @@ class MetaHubObjectPage(MetaHubBasePage):
     ], blank=True)
 
     content_panels = MetaHubBasePage.content_panels + [
-        FieldPanel('object'),
-        FieldPanel('introduction'),
+        MultiFieldPanel([
+            FieldPanel('object'),
+            FieldPanel('subtitle', help_text="Leave blank to use artist (if present)"),
+            FieldPanel('introduction'),
+        ], heading="Basic information"),
         StreamFieldPanel('content'),
         FieldPanel('tags'),
         StreamFieldPanel('related_items')
@@ -65,8 +69,14 @@ class MetaHubObjectPage(MetaHubBasePage):
     def get_object_header_component(self):
         return OrganismObjectHeaderRegular(
             title="Sample title until objects are linked",
-            subtitle="Sample"
+            subtitle=self.get_object_subtitle()
         )
+
+    def get_object_subtitle(self):
+        """ If subtitle was not given and we do have an artist, use that. """
+        if (artist := self.get_object_artist()) and self.subtitle == '':
+            return artist
+        return self.subtitle
 
     def get_object_intro_component(self):
         return OrganismObjectIntro(
@@ -80,11 +90,8 @@ class MetaHubObjectPage(MetaHubBasePage):
 
 
     def get_object_artist(self):
-        if self.object:
-            if self.object.artist:
-                return str(self.object.artist)
-            else:
-                return 'Unbekannt'
+        if self.object and self.object.artist:
+            return str(self.object.artist)
         return None
     #
     # def get_type_dating(self):
@@ -94,23 +101,7 @@ class MetaHubObjectPage(MetaHubBasePage):
     #     type = self.object.object_type
     #     return "{}{}".format(type, dating)
     #
-    # def get_hero_info(self):
-    #     """
-    #     Overrides method from MetaHubBasePage
-    #     Determines information that is displayed in this page type's hero header.
-    #     """
-    #     if self.get_object_artist():
-    #         name = self.get_object_artist()
-    #     else:
-    #         name = self.get_category()
-    #
-    #
-    #     return {
-    #         'name': name,
-    #         'title': self.title,
-    #         'date': self.get_type_dating()
-    #     }
-    #
+
     # def get_tags(self):
     #     """
     #     Generates the frontend-compatible list of tags. These are the tags from the
