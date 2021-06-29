@@ -2,13 +2,16 @@ from django.db import models
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from starling.interfaces.atoms import AtomPictureRegular
 from starling.interfaces.generic import Resolution
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
 from wagtail.core.fields import StreamField
 
 from metahub.collection.models import CollectionObjectTag
+from metahub.content.blocks import content_blocks
 from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.molecules.interfaces import MoleculeObjectCardRegular, MoleculeContextCardRegular
-
+from metahub.starling_metahub.organisms.blocks import OrganismArticleCuratedItemsRegularBlock, \
+    OrganismArticleRelatedItemsRegularBlock
+from metahub.starling_metahub.organisms.interfaces import OrganismObjectHeaderRegular, OrganismObjectIntro
 
 
 class MetaHubObjectPage(MetaHubBasePage):
@@ -26,26 +29,30 @@ class MetaHubObjectPage(MetaHubBasePage):
 
     # Page object
     object = models.ForeignKey('collection.BaseCollectionObject', null=True, on_delete=models.SET_NULL, blank=True, related_name='associated_page')
+    subtitle = models.CharField(max_length=500, blank=True, default='')
+    introduction = models.TextField(max_length=2000, blank=True)
 
     # Maximum of related objects shown
-    MAX_RELATED_OBJECTS = 4
+    MAX_RELATED_OBJECTS = 3
 
     # CMS panels
-    content = StreamField([
-        # ('single_richtext', OrganismContentSingleRichTextRegularBlock()),
-        # ('single_video', OrganismContentSingleVideoRegularBlock()),
-        # ('single_image', OrganismContentSingleImageRegularBlock()),
-        # ('single_audio', OrganismContentSingleAudioRegularBlock()),
-        # ('double_quote_richtext', OrganismContentDoubleQuoteRichTextRegularBlock()),
-        # ('double_pictures_richtext', OrganismContentDoubleImageRichTextRegularBlock()),
-    ], blank=True)
+    content = StreamField(content_blocks(), blank=True)
     tags = ClusterTaggableManager(through=CollectionObjectTag, blank=True)
 
+    related_items = StreamField([
+        ('related_curated', OrganismArticleCuratedItemsRegularBlock()),
+        ('related_automatic', OrganismArticleRelatedItemsRegularBlock()),
+    ], blank=True)
+
     content_panels = MetaHubBasePage.content_panels + [
+        MultiFieldPanel([
+            FieldPanel('object'),
+            FieldPanel('subtitle', help_text="Leave blank to use artist (if present)"),
+            FieldPanel('introduction'),
+        ], heading="Basic information"),
         StreamFieldPanel('content'),
         FieldPanel('tags'),
-        FieldPanel('object'),
-        # InlinePanel('obj_img_link')
+        StreamFieldPanel('related_items')
     ]
 
     metadata_panels = [
@@ -59,35 +66,32 @@ class MetaHubObjectPage(MetaHubBasePage):
     #     ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
     # ])
 
-    # def build_hero_header(self):
-    #     """
-    #     Overrides method from MetaHubBasePage
-    #     Creates an image based hero header automatically (cannot be set in CMS) based
-    #     on data from BeeCollect.
-    #     """
-    #     pass
-    #     return OrganismHeroHeaderMultiImageRegular(
-    #         information=self.get_hero_info(),
-    #         expandable=True,
-    #         pictures=self.get_object_images(),
-    #         theme='white'
-    #     )
-    #
-    # def get_hero_images(self):
-    #     """
-    #     Overrides method from MetaHubBasePage
-    #     For this kind of page, images are not chosen in the CMS but are automatically
-    #     retrieved from the corresponding object.
-    #     """
-    #     return self.get_object_images()
-    #
-    # def get_object_artist(self):
-    #     if self.object:
-    #         if self.object.artist:
-    #             return str(self.object.artist)
-    #         else:
-    #             return 'Unbekannt'
-    #     return None
+    def get_object_header_component(self):
+        return OrganismObjectHeaderRegular(
+            title="Sample title until objects are linked",
+            subtitle=self.get_object_subtitle()
+        )
+
+    def get_object_subtitle(self):
+        """ If subtitle was not given and we do have an artist, use that. """
+        if (artist := self.get_object_artist()) and self.subtitle == '':
+            return artist
+        return self.subtitle
+
+    def get_object_intro_component(self):
+        return OrganismObjectIntro(
+            text=f"<p>{self.introduction}</p>",
+            classes="richtext__section-space--bottom"
+        )
+
+    def get_page_related_items(self):
+        # TODO this is itself for now since we dont have real objects yet
+        return [self, self, self]
+
+    def get_object_artist(self):
+        if self.object and self.object.artist:
+            return str(self.object.artist)
+        return None
     #
     # def get_type_dating(self):
     #     date = self.object.datings
@@ -96,23 +100,7 @@ class MetaHubObjectPage(MetaHubBasePage):
     #     type = self.object.object_type
     #     return "{}{}".format(type, dating)
     #
-    # def get_hero_info(self):
-    #     """
-    #     Overrides method from MetaHubBasePage
-    #     Determines information that is displayed in this page type's hero header.
-    #     """
-    #     if self.get_object_artist():
-    #         name = self.get_object_artist()
-    #     else:
-    #         name = self.get_category()
-    #
-    #
-    #     return {
-    #         'name': name,
-    #         'title': self.title,
-    #         'date': self.get_type_dating()
-    #     }
-    #
+
     # def get_tags(self):
     #     """
     #     Generates the frontend-compatible list of tags. These are the tags from the
@@ -124,15 +112,7 @@ class MetaHubObjectPage(MetaHubBasePage):
     #         return tags
     #     return None
     #
-    # def get_api_tags(self):
-    #     """
-    #     Generates the API-compatible list of tags. These are the tags from the
-    #     django-taggit model, and can be managed in the CMS.
-    #     """
-    #     if self.tags and len(self.tags.all()) > 0:
-    #         tags = [{'title': str(tag), 'href': '/search?id_tags={}'.format(str(tag)) } for tag in self.tags.all()]
-    #         return tags
-    #     return []
+
     #
     # def get_tags_as_list(self):
     #     """
@@ -205,27 +185,7 @@ class MetaHubObjectPage(MetaHubBasePage):
     #         classes=classes,
     #     )
     #
-    # def get_lightbox_items(self):
-    #     """
-    #     Get lightbox items and information. Since we need access to the properties
-    #     of the MetaHubImage object we can't reuse get_object_images for this.
-    #     """
-    #     data = []
-    #     if self.object:
-    #        image_links = self.object.obj_img_link.all()
-    #        for image_link in image_links:
-    #            image = image_link.object_image
-    #            image_data = {
-    #                'picture' : AtomPictureRegular(**Resolution(mobile='2048', landscape='4096', crop=True).resolve(image)),
-    #                'information': {
-    #                    'title' : self.title,
-    #                    'name' : self.get_object_artist(),
-    #                    'description': '', #image.alt_text, #MKR this is wrong, but what else to show here?
-    #                    'credits': image.attribution,
-    #                }
-    #            }
-    #            data.append(image_data)
-    #     return data
+
     #
     # def get_object_images(self):
     #     """
@@ -322,16 +282,7 @@ class MetaHubObjectPage(MetaHubBasePage):
     #         related_objects=cards
     #         )
     #
-    #
-    # def get_favourite_info(self):
-    #     """
-    #     Specifies category and unique idenfifier for this page.
-    #     """
-    #     return {
-    #         'category' : 'object',
-    #         'id': self.pk,
-    #     }
-    #
+
     # def save(self, *args, **kwargs):
     #     super().save(**kwargs)
     #

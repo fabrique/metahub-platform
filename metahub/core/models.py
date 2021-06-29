@@ -66,14 +66,9 @@ class MetaHubBasePage(PagePromoMixin, Page):
     def get_page_header_image(self):
         """ Used in the card representation.
         TODO: Optional override through promo img? """
-        try:
-            header_child = self.hero_header[0]
-        except IndexError:
-            return
-        else:
-            picture_structvalue = header_child.value['picture']
+        if hasattr(self, 'hero_header') and len(self.hero_header):
+            picture_structvalue = self.hero_header[0].value['picture']
             return AtomPictureRegular(**Resolution(mobile='1920', crop=True).resolve(picture_structvalue['source']))
-
 
     def get_page_date(self):
         if hasattr(self, 'date') and (date := getattr(self, 'date')):

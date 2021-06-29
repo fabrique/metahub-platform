@@ -1,0 +1,25 @@
+{% extends 'core/base_page.html' %}
+{% load wagtailcore_tags starling_tags %}
+
+{% block content %}
+    <section class="object-detail">
+        <article class="object-detail__main">
+
+            {% include_component 'organisms.object-detail-intro.regular' page.get_object_header_component  %}
+
+
+            {% include_component 'atoms.richtext.regular' page.get_object_intro_component %}
+
+            {% for block in page.get_content_with_numbered_captioned_entities %}
+                {% include_block block %}
+            {% endfor %}
+
+            {% for block in page.related_items %}
+                {% include_block block %}
+            {% endfor %}
+
+        </article>
+    </section>
+
+{% endblock %}
+
