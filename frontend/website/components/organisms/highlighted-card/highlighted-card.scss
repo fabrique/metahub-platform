@@ -1,0 +1,129 @@
+.highlighted-card {
+  @include setThemeColorsByClass;
+
+  background-color: var(--theme-color);
+  color: $color-white;
+}
+
+.highlighted-card__grid {
+  @include grid-container;
+
+  min-height: 100vh;
+  padding-bottom: 20px;
+  padding-top: 20px;
+}
+
+.highlighted-card__inner {
+  display: flex;
+  flex-direction: column;
+  grid-column: auto / span 12;
+  justify-content: space-between;
+}
+
+.highlighted-card__title {
+  @include typography(heading-2, $montserrat-font-stack);
+
+  color: $color-white;
+}
+
+.highlighted-card__card-wrapper {
+  @include subgrid-container;
+
+  grid-column: auto / span 12;
+}
+
+.highlighted-card__card-title {
+  @include typography(heading-3, $montserrat-font-stack, false, false, false);
+
+  color: inherit;
+  grid-column: auto / span 9;
+  margin-bottom: -15px;
+  position: relative;
+  z-index: 3;
+
+  @include landscape {
+    grid-column: auto / span 6;
+    grid-row: 1;
+    margin-bottom: -21px;
+  }
+}
+
+.highlighted-card__card-link {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  line-height: initial;
+  margin-top: 20px;
+  text-transform: uppercase;
+
+  @include landscape {
+    justify-content: initial;
+  }
+}
+
+.highlighted-card__card-content {
+  grid-column: auto / span 12;
+
+  @include portrait {
+    grid-column: auto / span 3;
+    grid-row: 2;
+  }
+}
+
+.highlighted-card__card-excerpt {
+  @include typography(body-text, $lora-font-stack, false);
+
+  color: inherit;
+
+  @include portrait {
+    --body-text-font-size: 16px;
+    --body-text-line-height: 22px;
+  }
+}
+
+.highlighted-card__card__picture {
+  grid-column: auto / span 12;
+  margin-bottom: 20px;
+
+  @include landscape {
+    grid-column: auto / span 6;
+    grid-row: 2;
+    margin-bottom: 0;
+    max-height: 50vh;
+  }
+
+  &::before {
+    background-image: linear-gradient(transparentize($color-black, .5), transparent);
+    content: '';
+    height: 50px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 2;
+  }
+}
+
+.highlighted-card__link-wrapper {
+  display: flex;
+  grid-column: auto / span 12;
+  justify-content: flex-end;
+
+  @include landscape {
+    align-items: flex-end;
+    grid-column: auto / span 3;
+    grid-row: 2;
+  }
+}
+
+.highlighted-card__link {
+  display: none;
+
+  @include landscape {
+    align-items: center;
+    display: flex;
+    line-height: initial;
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
+}
