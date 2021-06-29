@@ -15,7 +15,7 @@ from wagtail.images.models import Image
 from wagtail.search import index
 
 from .mixins import PagePromoMixin
-from .utils import MetaHubThemeColor
+from .utils import MetaHubThemeColor, format_date
 from ..starling_metahub.molecules.interfaces import MoleculeCardRegular
 
 from ..starling_metahub.structures.blocks import StructureFooterBarSimpleBlock
@@ -76,11 +76,11 @@ class MetaHubBasePage(PagePromoMixin, Page):
 
 
     def get_page_date(self):
-        if date := getattr(self, 'date'):
+        if hasattr(self, 'date') and (date := getattr(self, 'date')):
             return date
 
     def get_page_authors(self):
-        if authors := getattr(self, 'authors'):
+        if hasattr(self, 'authors') and (authors := getattr(self, 'authors')):
             return [str(author) for author in authors]
         return []
 
@@ -96,11 +96,14 @@ class MetaHubBasePage(PagePromoMixin, Page):
             label=self.get_page_label(),
             href=self.url,
             picture=self.specific.get_page_header_image(),
+            date=format_date(self.specific.get_page_date())
         )
+
+    def time_relevance(self):
+        pass
 
     class Meta:
         abstract = True
-
 
 
 class MetahubImage(Image):

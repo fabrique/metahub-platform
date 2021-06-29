@@ -1,3 +1,5 @@
+from datetime import timedelta
+
 from django.db import models
 from django.utils.timezone import now
 from wagtail.admin.edit_handlers import MultiFieldPanel, StreamFieldPanel, FieldPanel
@@ -11,14 +13,11 @@ from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderReg
     OrganismArticleRelatedItemsRegularBlock
 
 
-class MetaHubNewsPage(MetaHubBasePage):
+class MetaHubEventPage(MetaHubBasePage):
     parent_page_types = ['overviews.MetaHubOverviewPage']
 
-    authors = StreamField([
-        ('author', ModelChooserBlock(target_model='authors.Author'))
-    ], blank=True)
-
     date = models.DateField(blank=True, null=True)
+    event_location = models.CharField(blank=True, null=True, default='', max_length=200)
 
     hero_header = StreamField([
         ('header_image', OrganismHeroImageHeaderRegularBlock()),
@@ -39,8 +38,8 @@ class MetaHubNewsPage(MetaHubBasePage):
         FieldPanel('theme_color'),
         MultiFieldPanel([
             FieldPanel('date'),
-            StreamFieldPanel('authors'),
-        ], heading="Publishing information"),
+            FieldPanel('event_location')
+        ], heading="Event information"),
         MultiFieldPanel([
             StreamFieldPanel('hero_header'),
             StreamFieldPanel('text_header'),
@@ -50,10 +49,14 @@ class MetaHubNewsPage(MetaHubBasePage):
     ]
 
     def get_page_related_items(self):
-        return MetaHubNewsPage.objects.live().exclude(pk=self.pk)[:3]
+        return MetaHubEventPage.objects.live().exclude(pk=self.pk)[:3]
 
     def get_page_label(self):
-        return 'News'
+        return 'Event'
+
+    def get_page_authors(self):
+        # a bit dirty
+        return [self.event_location]
 
     def time_relevance(self):
         return abs(int(now().timestamp() - int(self.date.strftime('%s'))))

@@ -109,3 +109,9 @@ class OrganismActualitiesLandingHeaderRegular(NamedTuple):
     link_label: str = ''
     featured_item: MoleculeCardRegular = MoleculeCardRegular()
     excerpt: str = ''
+
+
+class OrganismCardGridRegular(NamedTuple):
+    id: str = ''
+    title: str = ''
+    cards: Sequence[MoleculeCardRegular] = ()
