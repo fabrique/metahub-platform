@@ -1,7 +1,7 @@
 {% import 'components/atoms/card/card.html' as atom_card %}
 
-{% macro story(cards = [], title = '') %}
-  <section class="relevant-stories">
+{% macro story(cards = [], title = '', classes = '') %}
+  <section class="relevant-stories {{ classes }}">
     <div class="relevant-stories__grid">
       <h2 class="relevant-stories__title">{{ title }}</h2>
     </div>
@@ -22,8 +22,8 @@
   </section>
 {% endmacro %}
 
-{% macro object(cards = [], title = '') %}
-  <section class="relevant-objects">
+{% macro object(cards = [], title = '', classes = '') %}
+  <section class="relevant-objects {{ classes }}">
     <div class="relevant-objects__grid">
       <h2 class="relevant-objects__title"><span class="relevant-objects__title--gradient">{{ title }}</span></h2>
     </div>
