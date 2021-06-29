@@ -76,11 +76,11 @@ class MetaHubBasePage(PagePromoMixin, Page):
 
 
     def get_page_date(self):
-        if date := getattr(self, 'date'):
+        if hasattr(self, 'date') and (date := getattr(self, 'date')):
             return date
 
     def get_page_authors(self):
-        if authors := getattr(self, 'authors'):
+        if hasattr(self, 'authors') and (authors := getattr(self, 'authors')):
             return [str(author) for author in authors]
         return []
 
@@ -103,7 +103,6 @@ class MetaHubBasePage(PagePromoMixin, Page):
 
     class Meta:
         abstract = True
-
 
 
 class MetahubImage(Image):

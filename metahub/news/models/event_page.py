@@ -54,5 +54,9 @@ class MetaHubEventPage(MetaHubBasePage):
     def get_page_label(self):
         return 'Event'
 
+    def get_page_authors(self):
+        # a bit dirty
+        return [self.event_location]
+
     def time_relevance(self):
         return abs(int(now().timestamp() - int(self.date.strftime('%s'))))
