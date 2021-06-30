@@ -71,7 +71,7 @@
 }
 
 .highlighted-card__card-excerpt {
-  @include typography(body-text, $lora-font-stack, false);
+  @include typography(body-text, false);
 
   color: inherit;
 
