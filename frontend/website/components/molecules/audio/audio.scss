@@ -44,7 +44,7 @@
     }
 
     .audio__current-time {
-      @include typography(sub-heading, $montserrat-font-stack);
+      @include typography(sub-heading);
 
       color: $color-blue;
       margin-left: 40px;
@@ -53,14 +53,14 @@
   }
 
   .audio__title {
-    @include typography(sub-heading, $montserrat-font-stack);
+    @include typography(sub-heading);
 
     font-weight: bold;
     margin-bottom: 10px;
   }
 
   .audio__name {
-    @include typography(sub-heading, $montserrat-font-stack);
+    @include typography(sub-heading);
 
     color: $color-blue;
     display: block;
@@ -71,7 +71,7 @@
   }
 
   .audio__author {
-    @include typography(sub-heading, $montserrat-font-stack);
+    @include typography(sub-heading);
 
     color: $color-blue;
     display: none;

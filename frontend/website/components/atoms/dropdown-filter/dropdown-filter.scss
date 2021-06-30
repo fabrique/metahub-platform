@@ -66,7 +66,7 @@
 
   .dropdown-filter__select,
   .select-dropdown__button {
-    @include typography(sub-heading, $montserrat-font-stack);
+    @include typography(sub-heading);
 
     background-color: #fff;
     color: $color-blue;
@@ -190,7 +190,7 @@
   }
 
   .select-dropdown__list-item {
-    @include typography(sub-heading, $montserrat-font-stack);
+    @include typography(sub-heading);
 
     &:hover {
       background-color: $color-blue;
@@ -235,7 +235,7 @@
 
   .dropdown-filter__date-label,
   .dropdown-filter__date-input {
-    @include typography(sub-heading, $montserrat-font-stack);
+    @include typography(sub-heading);
 
     color: $color-blue;
   }

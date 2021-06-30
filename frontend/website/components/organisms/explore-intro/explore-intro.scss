@@ -13,7 +13,7 @@
 }
 
 .explore-intro__title {
-  @include typography(heading-1, $montserrat-font-stack, true, true, false);
+  @include typography(heading-1, true, true, false);
 
   color: var(--theme-color);
   grid-column: auto / span 12;

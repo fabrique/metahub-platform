@@ -8,7 +8,7 @@
 }
 
 .relevant-news__title {
-  @include typography(heading-3, $montserrat-font-stack);
+  @include typography(heading-3);
 
   color: var(--theme-color);
   grid-column: auto / span 12;

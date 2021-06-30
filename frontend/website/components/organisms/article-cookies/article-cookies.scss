@@ -13,10 +13,10 @@
 
   .article-cookies__title,
   .option-field__input-label {
-    @include typography(heading-2, $montserrat-font-stack, true, true);
+    @include typography(heading-2, true, true);
   }
 
   .article-cookies__text {
-    @include typography(introduction, $montserrat-font-stack, true, true);
+    @include typography(introduction, true, true);
   }
 }

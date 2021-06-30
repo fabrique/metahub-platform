@@ -39,7 +39,7 @@ $lora-font-weights: (
 
 // Font mixin whereby you can use the real font weights as displayed in Sketch, such as 'book' or 'black'.
 // MKR: this seems to be unused in general?
-@mixin font-plaax($font-weight: null) {
+@mixin font-lora($font-weight: null) {
   // Set the basics
   font-family: $lora-font-stack;
   font-feature-settings: $lora-font-feature-settings;

@@ -50,7 +50,7 @@ $story-spacing: 15px;
     --heading-4-font-size: 24px;
   }
 
-  @include typography(heading-4, $montserrat-font-stack);
+  @include typography(heading-4);
 
   color: $color-white;
   display: block;

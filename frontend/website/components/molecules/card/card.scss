@@ -55,16 +55,16 @@
     margin-bottom: auto;
     text-transform: uppercase;
 
-    @include typography(sub-heading, $montserrat-font-stack);
+    @include typography(sub-heading);
   }
 
   .card__title {
-    @include typography(caption, $montserrat-font-stack);
+    @include typography(caption);
 
     font-weight: bold;
 
     @include landscape {
-      @include typography(heading-2, $montserrat-font-stack);
+      @include typography(heading-2);
     }
   }
 }

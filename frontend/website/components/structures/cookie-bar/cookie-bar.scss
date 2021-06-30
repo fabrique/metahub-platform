@@ -132,7 +132,7 @@
   }
 
   .cookie-bar__title {
-    @include typography(caption, $montserrat-font-stack, false, true);
+    @include typography(caption, false, true);
 
     font-weight: bold;
   }
@@ -140,7 +140,7 @@
   .cookie-bar__text,
   .cookie-bar__category-text,
   .cookie-bar__text .link {
-    @include typography(caption, $montserrat-font-stack);
+    @include typography(caption);
   }
 
   .cookie-bar__category-text {
