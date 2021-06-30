@@ -2,7 +2,7 @@
 {% import 'components/structures/menu/menu.html' as menu %}
 
 {% macro regular(hasLogo = true) %}
-  <header class="header" role="banner">
+  <div class="header" role="banner">
     <div class="header__inner">
       <div class="header__logo-wrapper">
         {% if hasLogo %}
@@ -21,5 +21,5 @@
         ) }}
       </div>
     </div>
-  </header>
+  </div>
 {% endmacro %}
