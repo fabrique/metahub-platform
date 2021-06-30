@@ -96,6 +96,11 @@
   .object__picture {
     @include landscape {
       height: 60vh;
+      max-height: 450px;
+    }
+
+    @include desktop {
+      max-height: 550px;
     }
   }
 }
