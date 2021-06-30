@@ -42,7 +42,7 @@
     <link rel="stylesheet" href="{{ static }}/stylesheets/main.css{{ cachebuster }}">
   </head>
 
-  <body class="{{ theme-color }}">
+  <body class="{{ theme_color }}">
     <script>{{ include_raw('build/static/scripts/base.js')|replace('\n;\n', '\n')|replace('\n//# sourceMappingURL=base.js.map', '') }}</script>
     {#<script src="{{ static }}/scripts/base.js{{ cachebuster }}" type="module" crossorigin></script>#}
 
@@ -56,7 +56,16 @@
         {% endblock %}
 
         {% block header_bar %}
-          {{ header.regular() }}
+          {{ header.regular(
+            logo_href = '/',
+            menu_items = [
+            { href: '?', title: 'Explore' },
+            { href: '?', title: 'News & Events' },
+            { href: '?', title: 'About' },
+            { href: '?', title: 'Contact' }
+          ],
+          languages = ['Deutsche', 'English']
+          ) }}
         {% endblock %}
       </header>
 

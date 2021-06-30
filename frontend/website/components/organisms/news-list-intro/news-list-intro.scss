@@ -43,7 +43,7 @@
   grid-column: auto / span 9;
   margin-bottom: -15px;
   position: relative;
-  z-index: $z-index-over-image;
+  z-index: $z-index-over-gradient;
 
   @include landscape {
     grid-column: auto / span 3;
