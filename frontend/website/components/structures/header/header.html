@@ -1,5 +1,5 @@
 {% import 'components/atoms/logo/logo.html' as atom_logo %}
-{% import 'components/structures/menu-bar/menu-bar.html' as menu_bar %}
+{% import 'components/structures/menu/menu.html' as structures_menu %}
 
 {% macro regular(hasLogo = true) %}
   <header class="header" role="banner">
@@ -10,7 +10,7 @@
         {% endif %}
       </div>
       <div class="header__menu-bar">
-        {{ menu_bar.regular(
+        {{ structures_menu.regular(
           menu_items = [
             { href: '?', title: 'Explore' },
             { href: '?', title: 'News & Events' },

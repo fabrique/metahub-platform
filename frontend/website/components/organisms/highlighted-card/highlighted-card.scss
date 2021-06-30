@@ -39,7 +39,7 @@
   grid-column: auto / span 9;
   margin-bottom: -15px;
   position: relative;
-  z-index: 3;
+  z-index: $z-index-over-image;
 
   @include landscape {
     grid-column: auto / span 6;
@@ -100,7 +100,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 2;
+    z-index: $z-index-over-image;
   }
 }
 

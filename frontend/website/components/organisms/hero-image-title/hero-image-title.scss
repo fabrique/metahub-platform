@@ -20,7 +20,7 @@
 .hero-image-title__title-link-wrapper {
   grid-column: column 2 / span 11;
   margin-top: -24px;
-  z-index: 2;
+  z-index: $z-index-over-image;
 
   h2 {
     @include typography(heading-2, $montserrat-font-stack, $margin-top: true, $margin-bottom: true);

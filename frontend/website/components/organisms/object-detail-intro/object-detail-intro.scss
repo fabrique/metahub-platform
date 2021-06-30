@@ -3,7 +3,7 @@
   display: flex;
   margin-top: -30px;
   position: relative;
-  z-index: 2;
+  z-index: $z-index-over-image;
 
   @include landscape {
     margin-bottom: var(--section-space);

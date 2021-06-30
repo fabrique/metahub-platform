@@ -13,7 +13,7 @@
     line-height: calc(var(--heading-3-line-height) / 2 + 12px);
     margin-bottom: 0;
     transform: translateY(50%);
-    z-index: 2;
+    z-index: $z-index-over-image;
   }
 }
 
