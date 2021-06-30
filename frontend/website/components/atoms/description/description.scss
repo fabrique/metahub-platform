@@ -13,7 +13,7 @@
     vertical-align: bottom;
 
     .description__location-text {
-      @include typography(location, $montserrat-font-stack);
+      @include typography(location);
 
       color: $color-pink;
       display: inline-block;
@@ -57,7 +57,7 @@
     // Margin because vertical-align not having effect:
     margin-top: 40px;
 
-    @include typography(introduction, $montserrat-font-stack);
+    @include typography(introduction);
 
     @include landscape {
       color: $color-blue;

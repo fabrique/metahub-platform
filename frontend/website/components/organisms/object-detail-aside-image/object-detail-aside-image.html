@@ -2,6 +2,11 @@
 
 {% macro regular(picture = {}) %}
   <div class="object-detail__aside__picture-wrapper">
+    {% if picture.images and picture.images == 'placeholders' %}
+      {# Image ratio: free (portrait 9:16 preferred) #}
+      {{ object_replace_value(picture, 'images', 'placeholders', generate_placeholders({ mobile: '530x943', portrait: '800x1423', landscape: '394x701', notebook: '494x879', desktop: '640x1138' })) }}
+    {% endif %}
+
     {{ atom_picture.regular(images = picture.images, fits = picture.fits, classes = picture.classes, positions = picture.positions, width = picture.width, height = picture.height, loading = picture.loading, alt = picture.alt) }}
   </div>
 {% endmacro %}

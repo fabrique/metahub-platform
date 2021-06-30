@@ -53,7 +53,7 @@ $object-spacing: 24px;
   --heading-4-font-size: 18px;
   --heading-4-line-height: 22px;
 
-  @include typography(heading-4, $montserrat-font-stack);
+  @include typography(heading-4);
 
   color: var(--theme-color);
   display: block;

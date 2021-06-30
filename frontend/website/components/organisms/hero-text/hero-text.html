@@ -1,6 +1,6 @@
 {% macro regular(title = '', text = '', date = '', author = '') %}
   <section class="hero-text">
-    <article class="hero-text__grid">
+    <div class="hero-text__grid">
       <div class="hero-text__inner">
         {% if title %}
           <h1>{{ title }}</h1>
@@ -24,6 +24,6 @@
           </span>
         {% endif %}
       </div>
-    </article>
+    </div>
   </section>
 {% endmacro %}

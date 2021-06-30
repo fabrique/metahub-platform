@@ -1,6 +1,6 @@
 
 .button {
-  @include typography(sub-heading, $montserrat-font-stack);
+  @include typography(sub-heading);
 
   align-items: center;
   cursor: pointer;

@@ -28,14 +28,14 @@
 }
 
 .object-metadata__item__number {
-  @include typography(heading-5, $montserrat-font-stack, false);
+  @include typography(heading-5, false);
 
   color: var(--theme-color);
   flex-basis: 50px;
 }
 
 .object-metadata__item__title {
-  @include typography(heading-5, $montserrat-font-stack, false);
+  @include typography(heading-5, false);
 
   color: var(--theme-color);
   display: block;

@@ -9,7 +9,7 @@
   label = ''
 ) %}
   {% set component = 'story' %}
-  <article class="{{ component }} {{ classes }} {{ theme_color }}">
+  <div class="{{ component }} {{ classes }} {{ theme_color }}">
     <a
       title="{{ title }}"
       role="link"
@@ -36,7 +36,7 @@
         </span>
       </p>
     </a>
-  </article>
+  </div>
 {% endmacro %}
 
 {% macro object(
@@ -50,7 +50,7 @@
   label = ''
 ) %}
   {% set component = 'object' %}
-  <article class="{{ component }} {{ classes }} {{ theme_color }}">
+  <div class="{{ component }} {{ classes }} {{ theme_color }}">
     <a
       title="{{ title }}"
       role="link"
@@ -79,7 +79,7 @@
         </span>
       </p>
     </a>
-  </article>
+  </div>
 {% endmacro %}
 
 
@@ -96,7 +96,7 @@
   height = ''
 ) %}
   {% set component = 'news' %}
-  <article class="{{ component }} {{ classes }} {{ theme_color }}">
+  <div class="{{ component }} {{ classes }} {{ theme_color }}">
     <a
       title="{{ title }}"
       role="link"
@@ -124,5 +124,5 @@
         <span class="{{ component }}__date">{{ date }}</span>
       </p>
     </a>
-  </article>
+  </div>
 {% endmacro %}

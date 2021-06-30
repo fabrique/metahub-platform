@@ -21,7 +21,7 @@
 }
 
 .highlighted-card__title {
-  @include typography(heading-2, $montserrat-font-stack);
+  @include typography(heading-2);
 
   color: $color-white;
 }
@@ -33,7 +33,7 @@
 }
 
 .highlighted-card__card-title {
-  @include typography(heading-3, $montserrat-font-stack, false, false, false);
+  @include typography(heading-3, false, false, false);
 
   color: inherit;
   grid-column: auto / span 9;

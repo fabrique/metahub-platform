@@ -1,6 +1,6 @@
 
 .link {
-  @include typography(link, $montserrat-font-stack);
+  @include typography(link);
 
   &:hover {
     .link__icon svg {

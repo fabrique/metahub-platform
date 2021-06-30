@@ -23,7 +23,7 @@
   z-index: $z-index-over-image;
 
   h2 {
-    @include typography(heading-2, $montserrat-font-stack, $margin-top: true, $margin-bottom: true);
+    @include typography(heading-2, $margin-top: true, $margin-bottom: true);
 
     color: var(--theme-color);
   }
