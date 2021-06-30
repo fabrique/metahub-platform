@@ -8,28 +8,32 @@
 {% block page_title %}Home{% endblock %}
 
 {% block header_bar %}
-  {{ header.regular(hasLogo = false) }}
+  {{ header.regular(
+    hasLogo = false,
+    logo_href = '/',
+    menu_items = [
+      { href: '?', title: 'Explore' },
+      { href: '?', title: 'News & Events' },
+      { href: '?', title: 'About' },
+      { href: '?', title: 'Contact' }
+    ],
+    languages = ['Deutsche', 'English']
+  ) }}
 {% endblock %}
 
 {% block content %}
-  <div class="snap-container">
 
-  <div class="snap-item">
   {{ organisms_full_screen_logo.regular(
     theme_color = ['theme--purple', 'theme--blue', 'theme--pink', 'theme--magenta'] | random
   ) }}
-  </div>
 
-  <div class="snap-item">
   {% call organisms_home_content.regular() %}
     <h2>Experience historical places </h2>
     <p>
       METAhub Frankfurt verortet Kulturgüter im digitalen Raum und macht sie im Objects erfahrbar. Das Story basiert auf einer neuartigen Form der Zusammenarbeit zwischen Museumskurator*innen, -dokumentar*innen und Dramaturg*innen mit Medienkünstler*innen.
     </p>
   {% endcall %}
-  </div>
 
-  <div class="snap-item">
   {{ organisms_relevant_cards.object(
     title = 'Relevant objects',
     classes = 'relevant-objects--home',
@@ -79,8 +83,7 @@
       }
     ]
   ) }}
-  </div>
-  <div class="snap-item">
+
   {{ organisms_highlighted_card.regular(
     title = 'Stories',
     card = {
@@ -109,9 +112,7 @@
       icon_after: 'custom/arrow-right-icon'
     }
   ) }}
-  </div>
 
-  <div class="snap-item">
   {{ organisms_relevant_cards.news(
     title = 'News & events',
     classes = 'relevant-news--home',
@@ -135,6 +136,7 @@
       excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
       type: 'news',
       label: 'News',
+      aria_label: '',
       date: '11 April, 2021'
     },
     {
@@ -150,6 +152,7 @@
       excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
       type: 'event',
       label: 'Event',
+      aria_label: '',
       date: '11 April, 2021'
     },
     {
@@ -165,12 +168,12 @@
       excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
       type: 'news',
       label: 'News',
+      aria_label: '',
       date: '11 April, 2021'
     }
     ]
   ) }}
-  </div>
-  </div>
+
 {% endblock %}
 
 {% block footer %}
