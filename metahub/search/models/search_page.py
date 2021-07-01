@@ -27,12 +27,12 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
 
     parent_page_types = ['home.MetahubHomePage']
 
-
     def get_search_header_component(self, applied_filters):
-        # Determine if they should get active class (a bit ugly but this is temporary)
+        # Determine if they should get active class
+        # (a bit ugly but this is temporary since search will be expanded later with ES)
         all_active = not applied_filters.get('type') and not applied_filters.get('story')
-        story_active = applied_filters.get('story')
-        objects_active = applied_filters.get('objects')
+        story_active = applied_filters.get('type') == 'story'
+        objects_active = applied_filters.get('type') == 'object'
         active_class = 'explore-intro__filter--active'
 
         return OrganismExploreSearchHeader(
@@ -62,11 +62,6 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
         objects_and_stories = Page.objects.filter(valid_types).specific().live()
         return objects_and_stories
 
-    def get_search_card_grid_component(self):
-        return OrganismSearchCardGridRegular(
-            cards=[p.get_card_representation() for p in self.get_all_objects_and_stories_queryset()]
-        )
-
     def get_active_filters(self, request):
         """
         Reconstructs filters according to the current situation. Since this also affects
@@ -85,9 +80,9 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
 
     def get_search_results(self, filters):
         if filters.get('type') == 'object':
-            return [p.get_card_representation for p in MetaHubObjectPage.objects.live()]
+            return [p.get_card_representation() for p in MetaHubObjectPage.objects.live()]
         if filters.get('type') == 'story':
-            return [p.get_card_representation for p in MetaHubStoryPage.objects.live()]
+            return [p.get_card_representation() for p in MetaHubStoryPage.objects.live()]
         return [p.get_card_representation() for p in self.get_all_objects_and_stories_queryset()]
 
     def get_context(self, request, *args, **kwargs):
@@ -95,7 +90,6 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
         search_string = request.GET.get('search')
         applied_filters = self.get_active_filters(request)
         search_results = self.get_search_results(applied_filters)
-
 
         # Pagination for found objects
         try:
