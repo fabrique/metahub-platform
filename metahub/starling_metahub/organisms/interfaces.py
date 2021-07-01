@@ -107,7 +107,7 @@ class OrganismActualitiesLandingHeaderRegular(NamedTuple):
     """
     title: str = ''
     link_label: str = ''
-    featured_item: MoleculeCardRegular = MoleculeCardRegular()
+    card: MoleculeCardRegular = MoleculeCardRegular()
     excerpt: str = ''
 
 
