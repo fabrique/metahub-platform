@@ -2,7 +2,7 @@
 
 {% load core_tags wagtailcore_tags wagtailimages_tags starling_tags %}
 
-{% block bodyclass %}{{ page.get_random_theme_color }}{% endblock %}
+{% block bodyclass %}{% endblock %}
 
 {%  block page_header %}
 
@@ -10,6 +10,6 @@
 
 
 {% block content %}
-
+    {% include_component 'organisms.full-screen-logo.regular' theme_color=page.get_random_theme_color  %}
 
 {% endblock %}
