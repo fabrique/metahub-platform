@@ -14,3 +14,21 @@
     </div>
   </section>
 {% endmacro %}
+
+
+{% macro temporarybackend(id = '', title = '') %}
+  {% set component = 'home-content' %}
+  <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }}">
+    <div class="{{ component }}__grid">
+      <div class="{{ component }}__wrapper">
+        {# Allowed tags: <a> #}
+        {% set child_context = caller() %}
+        {% call atom_richtext.regular( classes = component + '__richtext') %}
+          <h2>{{ title }}</h2>
+          {{ child_context }}
+        {% endcall %}
+      </div>
+    </div>
+  </section>
+{% endmacro %}
+

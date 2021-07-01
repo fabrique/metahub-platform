@@ -12,4 +12,7 @@
 {% block content %}
     {% include_component 'organisms.full-screen-logo.regular' theme_color=page.get_random_theme_color  %}
 
+    {% for block in page.home_intro %}
+        {% include_block block %}
+    {% endfor %}
 {% endblock %}

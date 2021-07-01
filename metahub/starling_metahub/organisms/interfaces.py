@@ -143,3 +143,11 @@ class OrganismObjectMetadataRegular(NamedTuple):
 
 class OrganismSearchCardGridRegular(NamedTuple):
     cards: Sequence[MoleculeCardRegular] = ()
+
+
+class OrganismHomeIntroRegular(NamedTuple):
+    title: str = ''
+    text: str = ''
+
+    def get_context_container(self):
+        return 'text'
