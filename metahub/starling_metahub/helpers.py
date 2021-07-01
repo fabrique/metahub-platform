@@ -197,6 +197,14 @@ class HelperRelatedPagesBlock(HelperMixin, StructBlock):
         return {'cards': [page.get_card_representation() for page in pages]}
 
 
+class HelperRelatedObjectsBlock(HelperRelatedPagesBlock):
+    pages = ListBlock(blocks.PageChooserBlock(required=False, target_model='collection.MetaHubObjectPage'))
+
+class HelperRelatedStoriesBlock(HelperRelatedPagesBlock):
+    pages = ListBlock(blocks.PageChooserBlock(required=False, target_model='stories.MetaHubStoryPage'))
+
+
+
 class HelperRelatedPageBlock(HelperMixin, StructBlock):
     """
     Helper block to convert a single chosen page directly to a list

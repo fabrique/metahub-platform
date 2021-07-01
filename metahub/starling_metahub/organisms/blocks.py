@@ -8,7 +8,8 @@ from wagtail.core.blocks import ListBlock
 
 from .interfaces import *
 from ..atoms.blocks import AtomVideoEmbedRegularBlock
-from ..helpers import HelperRelatedPagesBlock, HelperRelatedPageBlock
+from ..helpers import HelperRelatedPagesBlock, HelperRelatedPageBlock, HelperRelatedObjectsBlock, \
+    HelperRelatedStoriesBlock
 from ..utils import count_words_html
 from ...core.utils import format_date
 
@@ -175,6 +176,22 @@ class OrganismArticleCuratedItemsRegularBlock(AdapterStructBlock):
         defaults = {}
         component = 'organisms.relevant-cards.story'
         interface_class = OrganismArticleRelatedItemsRegular
+
+
+class OrganismArticleCuratedObjectsRegularBlock(OrganismArticleCuratedItemsRegularBlock):
+    items = HelperRelatedObjectsBlock()
+
+    class Meta:
+        label= "Related/highlighted objects"
+        component = 'organisms.relevant-cards.object'
+
+
+class OrganismArticleCuratedStoriesRegularBlock(OrganismArticleCuratedItemsRegularBlock):
+    items = HelperRelatedStoriesBlock()
+
+    class Meta:
+        label = "Related/highlighted objects"
+        component = 'organisms.relevant-cards.story'
 
 
 class OrganismArticleRelatedItemsRegularBlock(AdapterStructBlock):

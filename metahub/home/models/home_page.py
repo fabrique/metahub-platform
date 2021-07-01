@@ -1,15 +1,13 @@
-from random import randint
 
 from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin
 from wagtail.core.blocks import StreamBlock
 from wagtail.core.fields import StreamField
 
-from metahub.collection.models.object_page import MetaHubObjectPage
-from metahub.collection.models.object_series_page import MetaHubObjectSeriesPage
 from metahub.core.models import MetaHubBasePage
 from metahub.core.utils import MetaHubThemeColor, get_random_color
-from metahub.starling_metahub.organisms.blocks import OrganismHomeIntroRegularBlock
+from metahub.starling_metahub.organisms.blocks import OrganismHomeIntroRegularBlock, \
+    OrganismArticleRelatedItemsRegularBlock, OrganismArticleCuratedObjectsRegularBlock
 
 
 class MetaHubHomePage(RoutablePageMixin, MetaHubBasePage):
@@ -26,9 +24,20 @@ class MetaHubHomePage(RoutablePageMixin, MetaHubBasePage):
         ('home_intro', OrganismHomeIntroRegularBlock()),
     ], max_num=1))
 
+    object_highlights = StreamField(StreamBlock([
+        ('object_highlights', OrganismArticleCuratedObjectsRegularBlock()),
+    ], max_num=1))
+
+    # story_highlight = StreamField(StreamBlock([
+    #     ('object_highlights', OrganismArticleRelatedItemsRegularBlock()),
+    # ], max_num=1))
+
     content_panels = MetaHubBasePage.content_panels + [
-        StreamFieldPanel('home_intro')
+        StreamFieldPanel('home_intro'),
+        StreamFieldPanel('object_highlights'),
     ]
+
+
 
     def get_random_theme_color(self):
         return get_random_color()
