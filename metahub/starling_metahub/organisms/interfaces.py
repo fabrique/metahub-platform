@@ -121,6 +121,7 @@ class OrganismExploreSearchHeader(NamedTuple):
     title: str = ''
     search_button_title: str = ''
     search_button_icon: str = 'custom/arrow-right-icon'
+    main_filters: dict = {}
 
 
 class OrganismObjectHeaderRegular(NamedTuple):

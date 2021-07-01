@@ -28,10 +28,32 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
     parent_page_types = ['home.MetahubHomePage']
 
 
-    def get_search_header_component(self):
+    def get_search_header_component(self, applied_filters):
+        # Determine if they should get active class (a bit ugly but this is temporary)
+        all_active = not applied_filters.get('type') and not applied_filters.get('story')
+        story_active = applied_filters.get('story')
+        objects_active = applied_filters.get('objects')
+        active_class = 'explore-intro__filter--active'
+
         return OrganismExploreSearchHeader(
             title="Explore",
-            search_button_title="Search"
+            search_button_title="Search",
+            main_filters={
+                'all' : {
+                    'title' : 'All',
+                    'active' : active_class if all_active else ''
+                },
+                'objects' : {
+                    'title' : 'Objects',
+                    'querystring' : '?id_type=object',
+                    'active' : active_class if objects_active else ''
+                },
+                'stories' : {
+                    'title' : 'Stories',
+                    'querystring' : '?id_type=story',
+                    'active' : active_class if story_active else ''
+                }
+            }
         )
 
     def get_all_objects_and_stories_queryset(self):
@@ -45,55 +67,6 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
             cards=[p.get_card_representation() for p in self.get_all_objects_and_stories_queryset()]
         )
 
-    # def search_view(self, request, *args, **kwargs):
-    #     """
-    #     Used by the AJAX request done on the search landing so that not all
-    #     the page refreshes but only the results/cards at the bottom.
-    #     """
-    #     context = self.get_context(request, *args, **kwargs)
-    #     content = render_to_string('core/components/search_filter_results.html', context=context)
-    #     output = {}
-    #     output['content'] = content
-    #     return JsonResponse(data=output, safe=False)
-    #
-    # def live_search_url(self):
-    #     return self.url + self.reverse_subpage('livesearch_landing')
-    #
-    # def search_url(self):
-    #     return self.url + self.reverse_subpage('regular_landing')
-    #
-    # @route(r'^live/')
-    # def livesearch_landing(self, request, *args, **kwargs):
-    #     """
-    #     Used to determine and render the livesearch results. Stringifies the template
-    #     so frontend can render it as is immediately.
-    #     """
-    #
-    #     # Required to avoid circular imports
-    #
-    #
-    #     query = request.GET.get('search')
-    #     context = super(MetaHubSearchPage, self).get_context(request, *args, **kwargs)
-    #
-    #     # Get first 5 results and output the template for the livesearch bar
-    #     context['results'] = do_search(query)[:5]
-    #     content = render_to_string('core/components/search_bar_result.html', context=context)
-    #     output = {}
-    #     output['content'] = content
-    #     return JsonResponse(data=output, safe=False)
-    #
-    # @route(r'^$')
-    # def regular_landing(self, request, *args, **kwargs):
-    #     """
-    #     Landing with header on top and search results at the bottom. Initially
-    #     loads all results if no params are given, subsequent search operations
-    #     are handled by AJAX.
-    #     """
-    #     if request.is_ajax():
-    #         return self.search_view(request, *args, **kwargs)
-    #
-    #     return Page.serve(self, request, *args, **kwargs)
-    #
     def get_active_filters(self, request):
         """
         Reconstructs filters according to the current situation. Since this also affects
@@ -108,19 +81,16 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
             value = get_vars.get('id_{}'.format(f))
             if value:
                 af[f] = value
-
         return af
 
-
     def get_search_results(self, filters):
-        if filters['id_type'] == 'object':
+        if filters.get('type') == 'object':
             return [p.get_card_representation for p in MetaHubObjectPage.objects.live()]
-        if filters['id_type'] == 'story':
+        if filters.get('type') == 'story':
             return [p.get_card_representation for p in MetaHubStoryPage.objects.live()]
         return [p.get_card_representation() for p in self.get_all_objects_and_stories_queryset()]
 
     def get_context(self, request, *args, **kwargs):
-
         context = super(MetaHubSearchPage, self).get_context(request, *args, **kwargs)
         search_string = request.GET.get('search')
         applied_filters = self.get_active_filters(request)
@@ -140,7 +110,8 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
             'results': paginator_page.object_list,
             'paginator': paginator_page,
             'search_filters' : applied_filters,
-            'search_query' : search_string
+            'search_query' : search_string,
+            'search_header_component' : self.get_search_header_component(applied_filters)
         })
 
         context['result_count'] = '{} Resultate'.format(len(search_results))
