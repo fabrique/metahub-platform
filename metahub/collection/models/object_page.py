@@ -11,7 +11,7 @@ from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.molecules.interfaces import MoleculeObjectCardRegular, MoleculeContextCardRegular, \
     MoleculeCardRegular, MoleculeExploreCardRegular
 from metahub.starling_metahub.organisms.blocks import OrganismArticleCuratedItemsRegularBlock, \
-    OrganismArticleRelatedItemsRegularBlock
+    OrganismArticleRelatedItemsRegularBlock, OrganismArticleCuratedObjectsRegularBlock
 from metahub.starling_metahub.organisms.interfaces import OrganismObjectHeaderRegular, OrganismObjectIntroRegular, \
     OrganismObjectMetadataRegular
 
@@ -42,7 +42,7 @@ class MetaHubObjectPage(MetaHubBasePage):
     tags = ClusterTaggableManager(through=CollectionObjectTag, blank=True)
 
     related_items = StreamField([
-        ('related_curated', OrganismArticleCuratedItemsRegularBlock()),
+        ('related_curated', OrganismArticleCuratedObjectsRegularBlock()),
         ('related_automatic', OrganismArticleRelatedItemsRegularBlock()),
     ], blank=True)
 

@@ -8,7 +8,7 @@ from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.molecules.interfaces import MoleculeCardRegular, MoleculeExploreCardRegular
 from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderRegularBlock, \
     OrganismHeroTextHeaderExtraInfoBlock, OrganismArticleCuratedItemsRegularBlock, \
-    OrganismArticleRelatedItemsRegularBlock
+    OrganismArticleRelatedItemsRegularBlock, OrganismArticleCuratedStoriesRegularBlock
 
 
 class MetaHubStoryPage(MetaHubBasePage):
@@ -35,7 +35,7 @@ class MetaHubStoryPage(MetaHubBasePage):
 
     related_items = StreamField([
         ('related_curated', OrganismArticleCuratedItemsRegularBlock()),
-        ('related_automatic', OrganismArticleRelatedItemsRegularBlock()),
+        ('related_automatic', OrganismArticleCuratedStoriesRegularBlock()),
 
     ], blank=True)
 
