@@ -219,6 +219,12 @@ class OrganismArticleRelatedItemsRegularBlock(AdapterStructBlock):
         interface_class = OrganismArticleRelatedItemsRegular
 
 
+class OrganismArticleRelatedObjectsRegularBlock(OrganismArticleRelatedItemsRegularBlock):
+    class Meta:
+        component = 'organisms.relevant-cards.object'
+        interface_class = OrganismArticleRelatedItemsRegular
+
+
 class OrganismActualitiesLandingHeaderRegularBlock(AdapterStructBlock):
     """
     Actualities Landing Page component

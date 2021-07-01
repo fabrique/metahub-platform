@@ -11,7 +11,8 @@ from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.molecules.interfaces import MoleculeObjectCardRegular, MoleculeContextCardRegular, \
     MoleculeCardRegular, MoleculeExploreCardRegular
 from metahub.starling_metahub.organisms.blocks import OrganismArticleCuratedItemsRegularBlock, \
-    OrganismArticleRelatedItemsRegularBlock, OrganismArticleCuratedObjectsRegularBlock
+    OrganismArticleRelatedItemsRegularBlock, OrganismArticleCuratedObjectsRegularBlock, \
+    OrganismArticleRelatedObjectsRegularBlock
 from metahub.starling_metahub.organisms.interfaces import OrganismObjectHeaderRegular, OrganismObjectIntroRegular, \
     OrganismObjectMetadataRegular
 
@@ -43,7 +44,7 @@ class MetaHubObjectPage(MetaHubBasePage):
 
     related_items = StreamField([
         ('related_curated', OrganismArticleCuratedObjectsRegularBlock()),
-        ('related_automatic', OrganismArticleRelatedItemsRegularBlock()),
+        ('related_automatic', OrganismArticleRelatedObjectsRegularBlock()),
     ], blank=True)
 
     content_panels = MetaHubBasePage.content_panels + [
