@@ -252,7 +252,7 @@ class OrganismActualitiesLandingHeaderRegularBlock(AdapterStructBlock):
 
     class Meta:
         component = 'organisms.news-list-intro.temporarybackend'
-        interface_class = OrganismActualitiesLandingHeaderRegular
+        interface_class = OrganismFeaturedCardRegular
 
 
 class OrganismHomeIntroRegularBlock(AdapterStructBlock):
@@ -289,4 +289,4 @@ class OrganismHomeFeaturedStoryBlock(AdapterStructBlock):
 
     class Meta:
         component = 'organisms.news-list-intro.temporarybackend'
-        interface_class = OrganismActualitiesLandingHeaderRegular
+        interface_class = OrganismFeaturedCardRegular
