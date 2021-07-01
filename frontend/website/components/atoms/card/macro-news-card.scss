@@ -66,7 +66,7 @@
 }
 
 .news__title {
-  @include typography(heading-4, $montserrat-font-stack, false, false, false);
+  @include typography(heading-4, false, false, false);
 
   color: var(--theme-color);
   display: block;
@@ -89,7 +89,7 @@
 }
 
 .news__date {
-  @include typography(date, $montserrat-font-stack, false, false, false);
+  @include typography(date, false, false, false);
 
   display: block;
   margin-top: 4px;

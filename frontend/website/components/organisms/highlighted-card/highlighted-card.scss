@@ -21,7 +21,7 @@
 }
 
 .highlighted-card__title {
-  @include typography(heading-2, $montserrat-font-stack);
+  @include typography(heading-2);
 
   color: $color-white;
 }
@@ -33,13 +33,13 @@
 }
 
 .highlighted-card__card-title {
-  @include typography(heading-3, $montserrat-font-stack, false, false, false);
+  @include typography(heading-3, false, false, false);
 
   color: inherit;
   grid-column: auto / span 9;
   margin-bottom: -15px;
   position: relative;
-  z-index: 3;
+  z-index: $z-index-over-gradient;
 
   @include landscape {
     grid-column: auto / span 6;
@@ -71,7 +71,7 @@
 }
 
 .highlighted-card__card-excerpt {
-  @include typography(body-text, $lora-font-stack, false);
+  @include typography(body-text, false);
 
   color: inherit;
 
@@ -100,7 +100,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 2;
+    z-index: $z-index-over-image;
   }
 }
 

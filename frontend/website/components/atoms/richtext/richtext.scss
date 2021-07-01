@@ -3,7 +3,7 @@ $margin-top: 50px;
 
 .richtext--regular {
   h2 {
-    @include typography(heading-2, $montserrat-font-stack, true, true);
+    @include typography(heading-2, true, true);
 
     color: var(--theme-color);
 
@@ -13,7 +13,7 @@ $margin-top: 50px;
   }
 
   h3 {
-    @include typography(heading-3, $montserrat-font-stack, true, true);
+    @include typography(heading-3, true, true);
 
     color: var(--theme-color);
 
@@ -23,7 +23,7 @@ $margin-top: 50px;
   }
 
   h4 {
-    @include typography(heading-4, $montserrat-font-stack, true);
+    @include typography(heading-4, true);
 
     color: var(--theme-color);
 
@@ -33,7 +33,7 @@ $margin-top: 50px;
   }
 
   h5 {
-    @include typography(heading-5, $montserrat-font-stack, true);
+    @include typography(heading-5, true);
 
     color: var(--theme-color);
 

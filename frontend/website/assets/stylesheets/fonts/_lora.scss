@@ -19,6 +19,7 @@ $lora-font-feature-settings: 'kern' 1, 'calt' 1, 'liga' 1, 'frac' 1, 'dlig' 0;
 // list in order for the @font-face to work
 $lora-font-weights: (
   regular: (weight: normal, style: normal),
+  medium: (weight: normal, style: normal)
 );
 
 // Automatically map weights
@@ -39,7 +40,7 @@ $lora-font-weights: (
 
 // Font mixin whereby you can use the real font weights as displayed in Sketch, such as 'book' or 'black'.
 // MKR: this seems to be unused in general?
-@mixin font-plaax($font-weight: null) {
+@mixin font-lora($font-weight: null) {
   // Set the basics
   font-family: $lora-font-stack;
   font-feature-settings: $lora-font-feature-settings;

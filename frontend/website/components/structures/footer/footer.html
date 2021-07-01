@@ -1,12 +1,12 @@
 {% macro regular(footer_links = []) %}
-  <footer class="footer" role="contentinfo">
+  <div class="footer" role="contentinfo">
     <div class="footer__links">
       {% for link in footer_links %}
-        <a href="{{ link.href }}" role="tag">{{ link.title }}</a>
+        <a href="{{ link.href }}">{{ link.title }}</a>
       {% endfor %}
     </div>
     <div class="footer__copyright">
       &copy; 2021 METAhub
     </div>
-  </footer>
+  </div>
 {% endmacro %}

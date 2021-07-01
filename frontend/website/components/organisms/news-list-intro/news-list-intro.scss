@@ -16,7 +16,7 @@
 }
 
 .news-list-intro__title {
-  @include typography(heading-1, $montserrat-font-stack, false, true, false);
+  @include typography(heading-1, false, true, false);
 
   color: inherit;
   grid-column: auto / span 12;
@@ -37,13 +37,13 @@
 }
 
 .news-list-intro__post__title {
-  @include typography(heading-3, $montserrat-font-stack, false, false, false);
+  @include typography(heading-3, false, false, false);
 
   color: inherit;
   grid-column: auto / span 9;
   margin-bottom: -15px;
   position: relative;
-  z-index: 3;
+  z-index: $z-index-over-gradient;
 
   @include landscape {
     grid-column: auto / span 3;
@@ -65,7 +65,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 2;
+    z-index: $z-index-over-image;
   }
 
   @include landscape {
@@ -106,7 +106,7 @@
 }
 
 .news-list-intro__post__date {
-  @include typography(date, $montserrat-font-stack, true, false, false);
+  @include typography(date, true, false, false);
 
   display: block;
 }

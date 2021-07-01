@@ -4,7 +4,7 @@
 }
 
 .news-cards__title {
-  @include typography(heading-3, $montserrat-font-stack, false, true, false);
+  @include typography(heading-3, false, true, false);
 
   color: var(--theme-color);
   grid-column: auto / span 12;

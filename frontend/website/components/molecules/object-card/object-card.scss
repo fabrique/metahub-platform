@@ -13,7 +13,7 @@
   .object-card__title,
   .object-card__name,
   .object-card__date {
-    @include typography(caption, $montserrat-font-stack);
+    @include typography(caption);
   }
 
   .object-card__title {
@@ -31,7 +31,7 @@
   }
 
   .object-card__restricted {
-    @include typography(caption, $montserrat-font-stack);
+    @include typography(caption);
 
     background: $color-white;
     bottom: 0;

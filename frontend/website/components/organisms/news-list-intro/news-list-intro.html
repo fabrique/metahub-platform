@@ -11,7 +11,7 @@
   <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
     <div class="{{ component }}__grid">
       <h1 class="{{ component }}__title">{{ title }}</h1>
-      <article class="{{ component }}__post">
+      <div class="{{ component }}__post">
         <h3 class="{{ component }}__post__title">{{ post.title }}</h3>
         {{ atom_picture.regular(
           images = post.picture.images,
@@ -37,7 +37,7 @@
             icon_after = post.link.icon_after
           ) }}
         </div>
-      </article>
+      </div>
     </div>
   </section>
 {% endmacro %}
@@ -55,7 +55,7 @@
   <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
     <div class="{{ component }}__grid">
       <h1 class="{{ component }}__title">{{ title }}</h1>
-      <article class="{{ component }}__post">
+      <div class="{{ component }}__post">
         <h3 class="{{ component }}__post__title">{{ featured_item.title }}</h3>
         {{ atom_picture.regular(
           images = featured_item.picture.images,
@@ -80,7 +80,7 @@
             icon_after = 'custom/arrow-right-icon'
           ) }}
         </div>
-      </article>
+      </div>
     </div>
   </section>
 {% endmacro %}

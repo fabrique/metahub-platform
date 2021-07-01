@@ -25,7 +25,7 @@
     top: 50%;
     transform: translate(-50%, -50%);
 
-    @include typography(sub-heading, $montserrat-font-stack);
+    @include typography(sub-heading);
   }
 }
 

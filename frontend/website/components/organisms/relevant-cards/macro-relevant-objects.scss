@@ -3,7 +3,7 @@
 }
 
 .relevant-objects__title {
-  @include typography(heading-3, $montserrat-font-stack);
+  @include typography(heading-3);
 
   color: var(--theme-color);
   grid-column: auto / span 12;
@@ -13,7 +13,7 @@
     line-height: calc(var(--heading-3-line-height) / 2 + 12px);
     margin-bottom: 0;
     transform: translateY(50%);
-    z-index: 2;
+    z-index: $z-index-over-image;
   }
 }
 
@@ -96,6 +96,11 @@
   .object__picture {
     @include landscape {
       height: 60vh;
+      max-height: 450px;
+    }
+
+    @include desktop {
+      max-height: 550px;
     }
   }
 }

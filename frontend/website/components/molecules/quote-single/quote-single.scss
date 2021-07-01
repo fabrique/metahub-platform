@@ -10,7 +10,7 @@
   position: relative;
 
   .quote-single__attribution {
-    @include typography(quote-name, $montserrat-font-stack);
+    @include typography(quote-name);
   }
 
   .quote-single__attribution-name {
@@ -29,7 +29,7 @@
   }
 
   .quote-single__text {
-    @include typography(quote, $montserrat-font-stack);
+    @include typography(quote);
 
     color: $color-blue;
   }

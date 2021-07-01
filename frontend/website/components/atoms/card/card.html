@@ -1,13 +1,21 @@
 {% import 'components/atoms/picture/picture.html' as atom_picture %}
 
-{% macro story(classes = '', title = '', picture = {}, theme_color = '', href = '', label = '') %}
+{% macro story(
+  classes = '',
+  title = '',
+  picture = {},
+  theme_color = '',
+  href = '',
+  label = ''
+) %}
   {% set component = 'story' %}
-  <article class="{{ component }} {{ classes }} {{ theme_color }}">
+  <div class="{{ component }} {{ classes }} {{ theme_color }}">
     <a
       title="{{ title }}"
       role="link"
       alt="{{ title }}"
       href="{{ href }}"
+      aria-label="{{ aria_label }}"
       class="{{ component }}__inner"
     >
       {{ atom_picture.regular(
@@ -21,22 +29,32 @@
         alt = picture.alt
       ) }}
 
-      <span class="{{ component }}__content-wrapper">
+      <p class="{{ component }}__content-wrapper">
         <span class="{{ component }}__content-wrapper__inner">
           <span class="{{ component }}__label">{{ label }}</span>
           <span class="{{ component }}__title">{{ title }}</span>
         </span>
-      </span>
+      </p>
     </a>
-  </article>
+  </div>
 {% endmacro %}
 
-{% macro object(classes = '', title = '', picture = {}, theme_color = '', href = '', subtitle = '', label = '') %}
+{% macro object(
+  classes = '',
+  title = '',
+  picture = {},
+  aria_label = '',
+  theme_color = '',
+  href = '',
+  subtitle = '',
+  label = ''
+) %}
   {% set component = 'object' %}
-  <article class="{{ component }} {{ classes }} {{ theme_color }}">
+  <div class="{{ component }} {{ classes }} {{ theme_color }}">
     <a
       title="{{ title }}"
       role="link"
+      aria-label="{{ aria_label }}"
       alt="{{ title }}"
       href="{{ href }}"
       class="{{ component }}__inner"
@@ -53,15 +71,15 @@
           alt = picture.alt
         ) }}
       </span>
-      <span class="{{ component }}__content-wrapper">
+      <p class="{{ component }}__content-wrapper">
         <span class="{{ component }}__content-wrapper__inner">
           <span class="{{ component }}__label">{{ label }}</span>
           <span class="{{ component }}__title">{{ title }}</span>
           <span class="{{ component }}__subtitle">{{ subtitle }}</span>
         </span>
-      </span>
+      </p>
     </a>
-  </article>
+  </div>
 {% endmacro %}
 
 
@@ -78,12 +96,13 @@
   height = ''
 ) %}
   {% set component = 'news' %}
-  <article class="{{ component }} {{ classes }} {{ theme_color }}">
+  <div class="{{ component }} {{ classes }} {{ theme_color }}">
     <a
       title="{{ title }}"
       role="link"
       alt="{{ title }}"
       href="{{ href }}"
+      aria-label="{{ aria_label }}"
       class="{{ component }}__inner"
     >
       <span class="{{ component }}__picture-wrapper">
@@ -98,12 +117,12 @@
           alt = picture.alt
         ) }}
       </span>
-      <span class="{{ component }}__content-wrapper">
+      <p class="{{ component }}__content-wrapper">
         <span class="{{ component }}__label">{{ label }}</span>
         <span class="{{ component }}__title">{{ title }}</span>
         <span class="{{ component }}__excerpt">{{ excerpt }}</span>
         <span class="{{ component }}__date">{{ date }}</span>
-      </span>
+      </p>
     </a>
-  </article>
+  </div>
 {% endmacro %}
