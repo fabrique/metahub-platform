@@ -14,7 +14,7 @@ from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderReg
 
 
 class MetaHubEventPage(MetaHubBasePage):
-    parent_page_types = ['overviews.MetaHubOverviewPage']
+    parent_page_types = ['news.MetaHubActualitiesLandingPage']
 
     date = models.DateField(blank=True, null=True)
     event_location = models.CharField(blank=True, null=True, default='', max_length=200)
@@ -53,6 +53,9 @@ class MetaHubEventPage(MetaHubBasePage):
 
     def get_page_label(self):
         return 'Event'
+
+    def get_page_type(self):
+        return 'event'
 
     def get_page_authors(self):
         # a bit dirty
