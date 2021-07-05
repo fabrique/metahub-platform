@@ -16,7 +16,7 @@ def count_words(text):
     return len(re.findall(r'\b\w+\b', text))
 
 
-def create_paginator_component(paginator, paginator_page):
+def create_paginator_component(paginator, paginator_page, querystring_extra=''):
     # Don't show paginator for single page
     if paginator.num_pages == 1:
         return
@@ -27,7 +27,7 @@ def create_paginator_component(paginator, paginator_page):
         if page:
             buttons.append(AtomPaginationButtonRegular(
                 title=page,
-                href=f'?page={page}',
+                href=f'?page={page}{querystring_extra}',
                 current=int(page) is int(paginator_page.number)
             ))
         else:
@@ -36,12 +36,12 @@ def create_paginator_component(paginator, paginator_page):
     # Separate buttons for previous and next
     button_previous = AtomLinkRegular(
         title=_('Vorige'),
-        href=f'?page={paginator_page.number - 1}'
+        href=f'?page={paginator_page.number - 1}{querystring_extra}'
     ) if paginator_page.number > 1 else None
 
     button_next = AtomLinkRegular(
         title=_('Volgende'),
-        href=f'?page={paginator_page.number + 1}'
+        href=f'?page={paginator_page.number + 1}{querystring_extra}'
     ) if paginator_page.number < paginator.num_pages else None
 
     return MoleculePaginationRegular(

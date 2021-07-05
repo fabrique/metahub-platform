@@ -74,6 +74,13 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
                 af[f] = value
         return af
 
+    def get_querystring_extras(self, applied_filters):
+        """ Extra params to add to pagination so active filters are maintained. """
+        extra_params = []
+        for key, value in applied_filters.items():
+            extra_params.append(f"&id_{key}={value}")
+        return ''.join(extra_params)
+
     def get_search_results(self, filters):
         if filters.get('type') == 'object':
             return [p.get_card_representation() for p in MetaHubObjectPage.objects.live()]
@@ -81,14 +88,15 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
             return [p.get_card_representation() for p in MetaHubStoryPage.objects.live()]
         return [p.get_card_representation() for p in self.get_all_objects_and_stories_queryset()]
 
-    def create_paginator_component(self, paginator, paginator_page):
-        return create_paginator_component(paginator, paginator_page)
+    def create_paginator_component(self, paginator, paginator_page, querystring_extra):
+        return create_paginator_component(paginator, paginator_page, querystring_extra=querystring_extra)
 
     def get_context(self, request, *args, **kwargs):
         context = super(MetaHubSearchPage, self).get_context(request, *args, **kwargs)
         search_string = request.GET.get('search')
         applied_filters = self.get_active_filters(request)
         search_results = self.get_search_results(applied_filters)
+        querystring_extra = self.get_querystring_extras(applied_filters)
 
         # Pagination for found objects
         MAX_ITEMS_PER_PAGE = 1
@@ -102,10 +110,9 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
 
         paginator_page = paginator.page(page)
 
-
         context.update({
             'results': paginator_page.object_list,
-            'paginator': self.create_paginator_component(paginator, paginator_page),
+            'paginator': self.create_paginator_component(paginator, paginator_page, querystring_extra),
             'search_filters' : applied_filters,
             'search_query' : search_string,
             'search_header_component' : self.get_search_header_component(applied_filters)
