@@ -1,7 +1,11 @@
 $object-spacing: 24px;
 
 .card__object {
-  //
+  &:hover {
+    .card__object__picture {
+      opacity: 1;
+    }
+  }
 }
 
 .card__object__inner {
@@ -15,7 +19,7 @@ $object-spacing: 24px;
   font-size: 18px;
   font-weight: #{get-montserrat-weight(bold)};
   line-height: 22px;
-  padding-bottom: 5px;
+  padding-bottom: 10px;
   text-transform: uppercase;
 }
 
@@ -36,6 +40,8 @@ $object-spacing: 24px;
 
 .card__object__picture {
   margin-left: $object-spacing;
+  opacity: .9;
+  transition: .2s;
 }
 
 .card__object__content-wrapper {

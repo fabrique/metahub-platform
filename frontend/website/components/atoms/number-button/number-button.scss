@@ -1,4 +1,5 @@
 .number-button {
+  color: var(--theme-color);
   font-family: $montserrat-font-stack;
   font-size: 16px;
   font-weight: #{get-montserrat-weight(bold)};
@@ -15,7 +16,7 @@
 }
 
 .number-button__title {
-  color: var(--theme-color);
+  color: inherit;
 
   @include landscape {
     padding: 0 8px;
@@ -23,7 +24,7 @@
 }
 
 .number-button__icon {
-  color: var(--theme-color);
+  color: inherit;
   display: block;
 
   svg {
