@@ -27,8 +27,9 @@
     theme_color = ['theme--purple', 'theme--blue', 'theme--pink', 'theme--magenta'] | random
   ) }}
 
-  {% call organisms_home_content.regular() %}
-    <h2>Experience historical places </h2>
+  {% call organisms_home_content.regular(
+    title = 'Experience historical places'
+  ) %}
     <p>
       METAhub Frankfurt verortet Kulturgüter im digitalen Raum und macht sie im Objects erfahrbar. Das Story basiert auf einer neuartigen Form der Zusammenarbeit zwischen Museumskurator*innen, -dokumentar*innen und Dramaturg*innen mit Medienkünstler*innen.
     </p>
