@@ -1,10 +1,10 @@
 from typing import NamedTuple, Iterable, Sequence
 
 from starling.interfaces.atoms import AtomPictureRegular as AtomPictureRegular, AtomFigureRegular, AtomLinkRegular
-from starling.interfaces.molecules import MoleculeCardRegular
 
 from ..atoms.interfaces import AtomVideoEmbedRegular
-from ..molecules.interfaces import MoleculeObjectCardRegular, MoleculeAudioPlayer, MoleculeCollectionCategoryCardRegular
+from ..molecules.interfaces import MoleculeObjectCardRegular, MoleculeAudioPlayer, \
+    MoleculeCollectionCategoryCardRegular, MoleculeCardRegular
 
 
 class OrganismContentSingleRichTextRegular(NamedTuple):

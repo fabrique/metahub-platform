@@ -55,5 +55,8 @@ class MetaHubNewsPage(MetaHubBasePage):
     def get_page_label(self):
         return 'News'
 
+    def get_page_type(self):
+        return 'news'
+
     def time_relevance(self):
         return abs(int(now().timestamp() - int(self.date.strftime('%s'))))

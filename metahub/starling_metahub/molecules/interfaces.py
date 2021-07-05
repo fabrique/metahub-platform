@@ -62,6 +62,7 @@ class MoleculeCardRegular(NamedTuple):
     target: str = ''
     classes: str = ''
     date: str = ''
+    type: str = ''
 
 
 class MoleculeExploreCardRegular(NamedTuple):

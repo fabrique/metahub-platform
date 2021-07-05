@@ -6,8 +6,10 @@ from wagtail.core.fields import StreamField
 
 from metahub.core.models import MetaHubBasePage
 from metahub.core.utils import MetaHubThemeColor, get_random_color
+from metahub.news.models import MetaHubNewsPage
 from metahub.starling_metahub.organisms.blocks import OrganismHomeIntroRegularBlock, \
-    OrganismArticleRelatedItemsRegularBlock, OrganismArticleCuratedObjectsRegularBlock, OrganismHomeFeaturedStoryBlock
+    OrganismArticleRelatedItemsRegularBlock, OrganismArticleCuratedObjectsRegularBlock, OrganismHomeFeaturedStoryBlock, \
+    OrganismArticleCuratedItemsRegularBlock
 
 
 class MetaHubHomePage(RoutablePageMixin, MetaHubBasePage):
@@ -32,14 +34,21 @@ class MetaHubHomePage(RoutablePageMixin, MetaHubBasePage):
         ('story_highlight', OrganismHomeFeaturedStoryBlock()),
     ], max_num=1))
 
+    news_highlights = StreamField([
+        ('related_curated', OrganismArticleCuratedItemsRegularBlock()),
+        ('related_automatic', OrganismArticleRelatedItemsRegularBlock()),
+    ], blank=True)
+
     content_panels = MetaHubBasePage.content_panels + [
         StreamFieldPanel('home_intro'),
         StreamFieldPanel('object_highlights'),
-        StreamFieldPanel('story_highlight')
+        StreamFieldPanel('story_highlight'),
+        StreamFieldPanel('news_highlights')
     ]
-
-
 
     def get_random_theme_color(self):
         return get_random_color()
+
+    def get_page_related_items(self):
+        return MetaHubNewsPage.objects.live()[:3]
 
