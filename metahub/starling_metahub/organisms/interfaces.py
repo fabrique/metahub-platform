@@ -112,6 +112,18 @@ class OrganismFeaturedCardRegular(NamedTuple):
     excerpt: str = ''
 
 
+class OrganismFeaturedCardLinkToAllRegular(NamedTuple):
+    """
+    Home Page component
+    A simple header with text and a featured item (either news or event)
+    """
+    title: str = ''
+    link_label: str = ''
+    card: MoleculeCardRegular = MoleculeCardRegular()
+    excerpt: str = ''
+    link: AtomLinkRegular = AtomLinkRegular()
+
+
 class OrganismCardGridRegular(NamedTuple):
     id: str = ''
     title: str = ''

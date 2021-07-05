@@ -276,6 +276,7 @@ class OrganismHomeFeaturedStoryBlock(AdapterStructBlock):
     featured_item = HelperRelatedStoryBlock()
     excerpt = blocks.TextBlock()
     link_label = blocks.CharBlock(default='Read more', max_length=200)
+    link = AtomLinkRegularBlock()
 
     def build_extra(self, value, build_args, parent_context=None):
         page = (parent_context or {}).get('page')
@@ -288,5 +289,5 @@ class OrganismHomeFeaturedStoryBlock(AdapterStructBlock):
         })
 
     class Meta:
-        component = 'organisms.news-list-intro.temporarybackend'
-        interface_class = OrganismFeaturedCardRegular
+        component = 'organisms.highlighted-card.temporarybackend'
+        interface_class = OrganismFeaturedCardLinkToAllRegular
