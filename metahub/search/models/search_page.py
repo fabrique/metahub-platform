@@ -16,6 +16,7 @@ from metahub.collection.models import MetaHubObjectPage
 from metahub.core.models import MetaHubBasePage
 # from metahub.search.search import do_search, get_search_results, get_result_as_cards, get_result_filters
 from metahub.starling_metahub.organisms.interfaces import OrganismExploreSearchHeader, OrganismSearchCardGridRegular
+from metahub.starling_metahub.utils import create_paginator_component
 from metahub.stories.models import MetaHubStoryPage
 
 
@@ -84,6 +85,9 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
         if filters.get('type') == 'story':
             return [p.get_card_representation() for p in MetaHubStoryPage.objects.live()]
         return [p.get_card_representation() for p in self.get_all_objects_and_stories_queryset()]
+
+    def create_paginator_component(self, paginator, paginator_page):
+        return create_paginator_component(paginator, paginator_page)
 
     def get_context(self, request, *args, **kwargs):
         context = super(MetaHubSearchPage, self).get_context(request, *args, **kwargs)

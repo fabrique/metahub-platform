@@ -12,6 +12,7 @@ from metahub.starling_metahub.atoms.interfaces import AtomPaginationButtonRegula
 from metahub.starling_metahub.molecules.interfaces import MoleculePaginationRegular
 from metahub.starling_metahub.organisms.blocks import OrganismActualitiesLandingHeaderRegularBlock
 from metahub.starling_metahub.organisms.interfaces import OrganismCardGridRegular
+from metahub.starling_metahub.utils import create_paginator_component
 
 
 class MetaHubActualitiesLandingPage(MetaHubBasePage):
@@ -40,6 +41,10 @@ class MetaHubActualitiesLandingPage(MetaHubBasePage):
             cards=[p.get_card_representation() for p in paginated_list]
         )
 
+
+    def create_paginator_component(self, paginator, paginator_page):
+        return create_paginator_component(paginator, paginator_page)
+
     def get_context(self, request, *args, **kwargs):
         context = super(MetaHubActualitiesLandingPage, self).get_context(request, *args, **kwargs)
 
@@ -61,39 +66,5 @@ class MetaHubActualitiesLandingPage(MetaHubBasePage):
         })
 
         return context
-
-    def create_paginator_component(self, paginator, paginator_page):
-        # Don't show paginator for single page
-        if paginator.num_pages == 1:
-            return
-
-        # Create pagination object
-        buttons = []
-        for page in paginator_page.pages():
-            if page:
-                buttons.append(AtomPaginationButtonRegular(
-                    title=page,
-                    href=f'?page={page}',
-                    current=int(page) is int(paginator_page.number)
-                ))
-            else:
-                buttons.append('...')
-
-        # Separate buttons for previous and next
-        button_previous = AtomLinkRegular(
-            title=_('Vorige'),
-            href=f'?page={paginator_page.number - 1}'
-        ) if paginator_page.number > 1 else None
-
-        button_next = AtomLinkRegular(
-            title=_('Volgende'),
-            href=f'?page={paginator_page.number + 1}'
-        ) if paginator_page.number < paginator.num_pages else None
-
-        return MoleculePaginationRegular(
-            button_previous=button_previous,
-            button_next=button_next,
-            buttons=buttons
-        )
 
 
