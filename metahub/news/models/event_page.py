@@ -54,6 +54,9 @@ class MetaHubEventPage(MetaHubBasePage):
     def get_page_label(self):
         return 'Event'
 
+    def get_page_type(self):
+        return 'event'
+
     def get_page_authors(self):
         # a bit dirty
         return [self.event_location]

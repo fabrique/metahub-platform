@@ -251,7 +251,7 @@ class OrganismActualitiesLandingHeaderRegularBlock(AdapterStructBlock):
         })
 
     class Meta:
-        component = 'organisms.news-list-intro.temporarybackend'
+        component = 'organisms.news-list-intro.regular'
         interface_class = OrganismFeaturedCardRegular
 
 
