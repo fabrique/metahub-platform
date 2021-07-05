@@ -38,3 +38,9 @@ class AtomFigureAccessibleRegular(NamedTuple):
     picture: PictureAccessible = AtomPictureRegular()
     caption: str = ''
     classes: str = ''
+
+
+class AtomPaginationButtonRegular(NamedTuple):
+    title: str = ''
+    href: str = ''
+    current: bool = False

@@ -75,3 +75,9 @@ class MoleculeExploreCardRegular(NamedTuple):
     classes: str = ''
     type: str = ''
     subtitle: str = ''
+
+
+class MoleculePaginationRegular(NamedTuple):
+    button_next: AtomLinkRegular = AtomLinkRegular()
+    button_previous: AtomLinkRegular = AtomLinkRegular()
+    buttons: Iterable = ()
