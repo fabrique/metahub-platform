@@ -12,7 +12,7 @@ from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderReg
 
 
 class MetaHubNewsPage(MetaHubBasePage):
-    parent_page_types = ['overviews.MetaHubOverviewPage']
+    parent_page_types = ['news.MetaHubActualitiesLandingPage']
 
     authors = StreamField([
         ('author', ModelChooserBlock(target_model='authors.Author'))
