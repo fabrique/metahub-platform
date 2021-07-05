@@ -4,21 +4,26 @@
 {% macro regular(
   id = '',
   classes = '',
-  video = {},
   caption = '',
-  caption_number = ''
+  caption_number = '',
+  href = '',
+  video_id = '',
+  video_type = '',
+  picture = {},
+  autoplay = '',
+  button_play_title = ''
 ) %}
   {% set component = 'article-video' %}
   <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
     <div class="{{ component }}__grid">
       {{ atoms_video_embed.regular(
         classes =  component + '__figure',
-        href = video.href,
-        video_id = video.video_id,
-        video_type = video.video_type,
-        picture = video.picture,
-        autoplay = video.autoplay,
-        button_play_title = video.button_play_title
+        href = href,
+        video_id = video_id,
+        video_type = video_type,
+        picture = picture,
+        autoplay = autoplay,
+        button_play_title = button_play_title
       ) }}
       <div class="{{ component }}__caption-wrapper">
         {{ atom_caption.regular(caption = caption, caption_number = caption_number) }}

@@ -6,6 +6,7 @@
 {% import 'components/organisms/hero-image-title/hero-image-title.html' as organisms_hero_image_title %}
 {% import 'components/organisms/relevant-cards/relevant-cards.html' as organisms_relevant_cards %}
 {% import 'components/organisms/content-and-image/content-and-image.html' as organisms_content_and_image %}
+{% import 'components/organisms/content-and-link/content-and-link.html' as organisms_content_and_link %}
 {% import 'components/organisms/article-content/article-content.html' as organisms_article_content %}
 {% import 'components/organisms/images/images.html' as organisms_images %}
 {% import 'components/organisms/article-video/article-video.html' as organisms_article_video %}
@@ -59,6 +60,17 @@
     <p>
       The Ludwig Meidner Archive handles a series of estates of such artists. Ludwig Meidner (1884-1966) is the most prominent among them and the Archive takes its name from him. The estate of this painter, draughtsman and writer, who became famous as an Expressionist and later devoted himself intensely to religious themes, contains about 2,000 works.
     </p>
+  {% endcall %}
+
+  {% call organisms_content_and_link.regular(
+    link = {
+      classes: 'hero-link',
+      href: '?',
+      title: 'Buy Ticket here',
+      target: '_blank',
+      icon_after: 'custom/arrow-right-icon'
+    }
+  ) %}
     <h3>h3 here</h3>
     <p>
       Im Sommer 1990 wurden am Börneplatz die letzten erhaltenen Überreste der ehemaligen Synagoge freigelegt und dokumentiert. Im mit Abbruchschutt verfüllten Untergeschoß des Gebäudes entdeckten die Archäologinnen und Archäologen zahlreiche Fragmente des zerstörten Thoraschreins der Synagoge. Bislang ließen sich dessen Aussehen und Dimensionen lediglich anhand historischer Texte und Fotografien rekonstruieren.
@@ -174,7 +186,7 @@
 
   {{ organisms_article_video.regular(
     classes = '',
-    href = 'https://www.youtube.com/watch?v=PkZNo7MFNFg&t=2s',
+    href = 'https://www.youtube.com/watch?v=PkZNo7MFNFg',
     video_id = 'PkZNo7MFNFg',
     video_type = 'youtube',
     picture = {
@@ -191,7 +203,7 @@
 
 
   {{ organisms_relevant_cards.story(
-    title = 'Relevant stories',
+    title = 'View more',
     cards = [
       {
         picture: {

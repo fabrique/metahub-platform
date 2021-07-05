@@ -40,7 +40,11 @@
 }
 
 .hero-text__meta {
-  grid-column: column 2 / span 11;
+  grid-column: auto / span 12;
+
+  @include landscape {
+    grid-column: column 2 / span 11;
+  }
 }
 
 .hero-text__meta__date,

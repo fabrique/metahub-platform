@@ -1,16 +1,13 @@
-.text-and-image {
+.text-and-link {
   margin-bottom: var(--section-space);
-
-  @include landscape {
-    margin-bottom: 0;
-  }
 }
 
-.text-and-image_grid {
+.text-and-link_grid {
   @include grid-container;
 }
 
-.text-and-image__image-and-link {
+.text-and-link__link {
+  align-self: flex-end;
   display: flex;
   flex-direction: column;
   grid-column: column 2 / span 12;
@@ -20,20 +17,14 @@
   }
 }
 
-.text-and-image__text {
+.text-and-link__text {
   grid-column: auto / span 12;
-  margin-bottom: var(--section-space);
 
   @include landscape {
     grid-column: column 2 / span 6;
   }
 }
 
-.text-and-image__image__image-wrapper {
-  flex-grow: 1;
-}
-
-.text-and-image__image-and-link .hero-link {
-  justify-self: flex-end;
+.text-and-link__link .hero-link {
   margin-top: var(--section-space);
 }

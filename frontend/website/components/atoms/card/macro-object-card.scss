@@ -3,7 +3,7 @@ $object-spacing: 24px;
 .card__object {
   &:hover {
     .card__object__picture {
-      opacity: 1;
+      filter: brightness(100%);
     }
   }
 }
@@ -39,8 +39,8 @@ $object-spacing: 24px;
 }
 
 .card__object__picture {
+  filter: brightness(105%);
   margin-left: $object-spacing;
-  opacity: .9;
   transition: .2s;
 }
 
