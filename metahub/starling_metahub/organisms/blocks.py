@@ -263,7 +263,7 @@ class OrganismHomeIntroRegularBlock(AdapterStructBlock):
     text = blocks.RichTextBlock(features=['link'])
 
     class Meta:
-        component = 'organisms.home-content.temporarybackend'
+        component = 'organisms.home-content.regular'
         interface_class = OrganismHomeIntroRegular
 
 
