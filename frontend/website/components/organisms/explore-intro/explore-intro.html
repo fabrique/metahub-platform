@@ -15,13 +15,33 @@
       <form class="{{ component }}__search-wrapper">
         <input class="{{ component }}__search-input" type="text" placeholder="Search here" />
         <div class="{{ component }}__search-button-wrapper">
-          {{ atom_link.button(classes =  component + '__search-button', title = search_button_title, icon_after = search_button_icon) }}
+          {{ atom_link.button(
+            classes =  component + '__search-button',
+            title = search_button_title,
+            icon_after = search_button_icon
+          ) }}
         </div>
       </form>
       <div class="{{ component }}__filter-wrapper">
-        {{ atom_link.regular(classes =  component + '__filter ' + main_filters.all.active, href = '?', title = main_filters.all.title) }}
-        {{ atom_link.regular(classes =  component + '__filter ' + main_filters.objects.active, href = main_filters.objects.querystring, title = main_filters.objects.title) }}
-        {{ atom_link.regular(classes =  component + '__filter ' + main_filters.stories.active, href = main_filters.stories.querystring, title = main_filters.stories.title) }}
+        {{ atom_link.regular(
+          classes =  component + '__filter ' + component + '__filter--' + main_filters.all.active,
+          href = '?',
+          title = main_filters.all.title
+        ) }}
+
+
+
+        {{ atom_link.regular(
+          classes =  component + '__filter ' + component + '__filter--' + main_filters.objects.active,
+          href = main_filters.objects.querystring,
+          title = main_filters.objects.title
+        ) }}
+
+        {{ atom_link.regular(
+          classes =  component + '__filter ' + component + '__filter--' + main_filters.stories.active,
+          href = main_filters.stories.querystring,
+          title = main_filters.stories.title
+        ) }}
       </div>
     </div>
   </section>
