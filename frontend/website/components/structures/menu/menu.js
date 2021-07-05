@@ -1,6 +1,5 @@
 
 import Component from '../../../assets/scripts/modules/component'
-import onScrollChange from '../../../assets/scripts/utilities/on-scroll-change'
 
 export default class MenuBarComponent extends Component {
   init () {
@@ -10,7 +9,6 @@ export default class MenuBarComponent extends Component {
 
     this.menuIsOpen = false
     this.menuButton.addEventListener('click', () => this.toggleMobileMenu())
-    onScrollChange(() => { this.makeStickyMenu() })
 
     // Menu breaks on larger resolutions, so force close it.
     window.addEventListener('resize', () => {

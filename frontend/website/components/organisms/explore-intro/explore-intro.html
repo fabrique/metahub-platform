@@ -5,7 +5,8 @@
   classes = '',
   title = '',
   search_button_title = '',
-  search_button_icon = ''
+  search_button_icon = '',
+  main_filters = {}
 ) %}
   {% set component = 'explore-intro' %}
   <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
@@ -18,9 +19,9 @@
         </div>
       </form>
       <div class="{{ component }}__filter-wrapper">
-        {{ atom_link.regular(classes =  component + '__filter ' + component + '__filter--active', href = '?', title = 'All') }}
-        {{ atom_link.regular(classes =  component + '__filter', href = '?', title = 'Objects') }}
-        {{ atom_link.regular(classes =  component + '__filter', href = '?', title = 'Stories') }}
+        {{ atom_link.regular(classes =  component + '__filter ' + main_filters.all.active, href = '?', title = main_filters.all.title) }}
+        {{ atom_link.regular(classes =  component + '__filter ' + main_filters.objects.active, href = main_filters.objects.querystring, title = main_filters.objects.title) }}
+        {{ atom_link.regular(classes =  component + '__filter ' + main_filters.stories.active, href = main_filters.stories.querystring, title = main_filters.stories.title) }}
       </div>
     </div>
   </section>

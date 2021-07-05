@@ -12,6 +12,12 @@
   }
 }
 
+.object-detail__intro__titles {
+  position: relative;
+  transform: translate3d(0, 0, 0);
+  transform-origin: bottom left;
+}
+
 .object-detail__intro__title {
   @include typography(heading-1, false, false, false);
 
