@@ -1,21 +1,17 @@
 from functools import reduce
-from random import randint
+from django.utils.translation import ugettext_lazy as _
 
 from django.core.paginator import PageNotAnInteger
 from django.db.models import Q
-from django.http import JsonResponse
-from django.template.loader import render_to_string
 from pure_pagination import Paginator
-from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
-from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.core.utils import resolve_model_string
 
 from metahub.collection.models import MetaHubObjectPage
 from metahub.core.models import MetaHubBasePage
-# from metahub.search.search import do_search, get_search_results, get_result_as_cards, get_result_filters
 from metahub.starling_metahub.organisms.interfaces import OrganismExploreSearchHeader, OrganismSearchCardGridRegular
+from metahub.starling_metahub.utils import create_paginator_component
 from metahub.stories.models import MetaHubStoryPage
 
 
@@ -33,7 +29,7 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
         all_active = not applied_filters.get('type') and not applied_filters.get('story')
         story_active = applied_filters.get('type') == 'story'
         objects_active = applied_filters.get('type') == 'object'
-        active_class = 'explore-intro__filter--active'
+        active_class = 'active'
 
         return OrganismExploreSearchHeader(
             title="Explore",
@@ -78,6 +74,13 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
                 af[f] = value
         return af
 
+    def get_querystring_extras(self, applied_filters):
+        """ Extra params to add to pagination so active filters are maintained. """
+        extra_params = []
+        for key, value in applied_filters.items():
+            extra_params.append(f"&id_{key}={value}")
+        return ''.join(extra_params)
+
     def get_search_results(self, filters):
         if filters.get('type') == 'object':
             return [p.get_card_representation() for p in MetaHubObjectPage.objects.live()]
@@ -85,24 +88,31 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
             return [p.get_card_representation() for p in MetaHubStoryPage.objects.live()]
         return [p.get_card_representation() for p in self.get_all_objects_and_stories_queryset()]
 
+    def create_paginator_component(self, paginator, paginator_page, querystring_extra):
+        return create_paginator_component(paginator, paginator_page, querystring_extra=querystring_extra)
+
     def get_context(self, request, *args, **kwargs):
         context = super(MetaHubSearchPage, self).get_context(request, *args, **kwargs)
         search_string = request.GET.get('search')
         applied_filters = self.get_active_filters(request)
         search_results = self.get_search_results(applied_filters)
+        querystring_extra = self.get_querystring_extras(applied_filters)
 
         # Pagination for found objects
+        MAX_ITEMS_PER_PAGE = 1
+        page_number = request.GET.get('page', 1)
+        paginator = Paginator(search_results, request=request, per_page=MAX_ITEMS_PER_PAGE)
+
         try:
-            page = request.GET.get('page', 1)
+            page = paginator.validate_number(page_number)
         except PageNotAnInteger:
             page = 1
 
-        paginator = Paginator(search_results, request=request, per_page=12)
         paginator_page = paginator.page(page)
 
         context.update({
             'results': paginator_page.object_list,
-            'paginator': paginator_page,
+            'paginator': self.create_paginator_component(paginator, paginator_page, querystring_extra),
             'search_filters' : applied_filters,
             'search_query' : search_string,
             'search_header_component' : self.get_search_header_component(applied_filters)

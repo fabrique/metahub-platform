@@ -8,5 +8,6 @@
 {%  endblock %}
 
 {% block content %}
-      {% include_component 'organisms.news-cards.regular' page.get_actualities_landing_grid_component  %}
+      {% include_component 'organisms.news-cards.regular' actualities_landing_grid_component %}
+      {% include_component 'molecules.pagination.temporarybackend' pagination=paginator %}
 {% endblock %}
