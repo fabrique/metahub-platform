@@ -1,6 +1,6 @@
 $story-spacing: 15px;
 
-.story {
+.card__story {
   @include setThemeColorsByClass;
 
   background: linear-gradient(to top, var(--theme-color) 80%, transparent 80%);
@@ -11,7 +11,7 @@ $story-spacing: 15px;
   }
 }
 
-.story__inner {
+.card__story__inner {
   display: block;
   font-family: $montserrat-font-stack;
   font-size: 18px;
@@ -19,7 +19,7 @@ $story-spacing: 15px;
   padding-bottom: 10px;
 }
 
-.story__label {
+.card__story__label {
   color: $color-white;
   display: block;
   font-family: $montserrat-font-stack;
@@ -28,7 +28,7 @@ $story-spacing: 15px;
   padding-bottom: 10px;
 }
 
-.story__picture {
+.card__story__picture {
   margin: 0 $story-spacing;
 
   @include landscape {
@@ -36,12 +36,12 @@ $story-spacing: 15px;
   }
 }
 
-.story__content-wrapper {
+.card__story__content-wrapper {
   display: block;
   padding: 20px $story-spacing;
 }
 
-.story__title {
+.card__story__title {
   --heading-4-font-size: 18px;
   --heading-4-line-height: 22px;
 
