@@ -215,5 +215,9 @@ class HelperRelatedPageBlock(HelperMixin, StructBlock):
     def to_params(self, value, field_name: str = 'page', parent_context=None) -> dict:
         if page := value.get('page'):
             page = page.specific
-            return {'featured_item': page.get_card_representation()}
-        return {'featured_item': {}}
+            return {'card': page.get_card_representation()}
+        return {'card': {}}
+
+
+class HelperRelatedStoryBlock(HelperRelatedPageBlock):
+    page = blocks.PageChooserBlock(required=False, target_model='stories.MetaHubStoryPage')

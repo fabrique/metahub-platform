@@ -9,7 +9,7 @@ from wagtail.core.blocks import ListBlock
 from .interfaces import *
 from ..atoms.blocks import AtomVideoEmbedRegularBlock
 from ..helpers import HelperRelatedPagesBlock, HelperRelatedPageBlock, HelperRelatedObjectsBlock, \
-    HelperRelatedStoriesBlock
+    HelperRelatedStoriesBlock, HelperRelatedStoryBlock
 from ..utils import count_words_html
 from ...core.utils import format_date
 
@@ -225,6 +225,12 @@ class OrganismArticleRelatedObjectsRegularBlock(OrganismArticleRelatedItemsRegul
         interface_class = OrganismArticleRelatedItemsRegular
 
 
+class OrganismArticleRelatedStoriesRegularBlock(OrganismArticleRelatedItemsRegularBlock):
+    class Meta:
+        component = 'organisms.relevant-cards.stories'
+        interface_class = OrganismArticleRelatedItemsRegular
+
+
 class OrganismActualitiesLandingHeaderRegularBlock(AdapterStructBlock):
     """
     Actualities Landing Page component
@@ -246,7 +252,7 @@ class OrganismActualitiesLandingHeaderRegularBlock(AdapterStructBlock):
 
     class Meta:
         component = 'organisms.news-list-intro.temporarybackend'
-        interface_class = OrganismActualitiesLandingHeaderRegular
+        interface_class = OrganismFeaturedCardRegular
 
 
 class OrganismHomeIntroRegularBlock(AdapterStructBlock):
@@ -259,3 +265,28 @@ class OrganismHomeIntroRegularBlock(AdapterStructBlock):
     class Meta:
         component = 'organisms.home-content.temporarybackend'
         interface_class = OrganismHomeIntroRegular
+
+
+class OrganismHomeFeaturedStoryBlock(AdapterStructBlock):
+    """
+    A block that highlights a single story, looks similar to the featured
+    news/event on the actualities page
+    """
+    title = blocks.CharBlock(max_length=100)
+    featured_item = HelperRelatedStoryBlock()
+    excerpt = blocks.TextBlock()
+    link_label = blocks.CharBlock(default='Read more', max_length=200)
+
+    def build_extra(self, value, build_args, parent_context=None):
+        page = (parent_context or {}).get('page')
+
+        if not page:
+            return
+
+        build_args.update({
+            'title': page.title
+        })
+
+    class Meta:
+        component = 'organisms.news-list-intro.temporarybackend'
+        interface_class = OrganismFeaturedCardRegular
