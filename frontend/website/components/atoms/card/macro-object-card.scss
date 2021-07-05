@@ -1,14 +1,14 @@
 $object-spacing: 24px;
 
-.object {
+.card__object {
   //
 }
 
-.object__inner {
+.card__object__inner {
   //
 }
 
-.object__label {
+.card__object__label {
   color: $color-black;
   display: block;
   font-family: $montserrat-font-stack;
@@ -19,7 +19,7 @@ $object-spacing: 24px;
   text-transform: uppercase;
 }
 
-.object__picture-wrapper {
+.card__object__picture-wrapper {
   display: block;
   position: relative;
 
@@ -34,22 +34,22 @@ $object-spacing: 24px;
   }
 }
 
-.object__picture {
+.card__object__picture {
   margin-left: $object-spacing;
 }
 
-.object__content-wrapper {
+.card__object__content-wrapper {
   display: block;
   margin-top: -50px;
   position: relative;
   z-index: 2;
 }
 
-.object__content-wrapper__inner {
+.card__object__content-wrapper__inner {
   display: block;
 }
 
-.object__title {
+.card__object__title {
   --heading-4-font-size: 18px;
   --heading-4-line-height: 22px;
 
@@ -65,7 +65,7 @@ $object-spacing: 24px;
   }
 }
 
-.object__subtitle {
+.card__object__subtitle {
   color: $color-black;
   font-size: 16px;
   line-height: 18px;
