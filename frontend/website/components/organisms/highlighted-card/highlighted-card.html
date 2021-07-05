@@ -45,3 +45,46 @@
     </div>
   </section>
 {% endmacro %}
+
+
+{% macro temporarybackend(card = {}, title = '', classes = '', link = {}, link_label = '', excerpt = '') %}
+  {% set component = 'highlighted-card' %}
+  <section class="{{ component }} {{ classes }} {{ card.theme_color }}">
+    <div class="{{ component }}__grid">
+      <div class="{{ component }}__inner">
+        <h2 class="{{ component }}__title">{{ title }}</h2>
+        <div class="{{ component }}__card-wrapper">
+          <h2 class="{{ component }}__card-title">{{ card.title }}</h2>
+          {{ atom_picture.regular(
+            images = card.picture.images,
+            fits = card.picture.fits,
+            classes = component + '__card__picture',
+            positions = card.picture.positions,
+            width = card.picture.width,
+            height = card.picture.height,
+            loading = card.picture.loading,
+            alt = card.picture.alt
+          ) }}
+          <div class="{{ component }}__card-content">
+            <p class="{{ component }}__card-excerpt">{{ excerpt }}</p>
+            {{ atom_link.regular(
+              classes = component + '__card-link',
+              href = card.href,
+              title = link_label,
+              icon_after = 'custom/arrow-right-icon'
+            ) }}
+          </div>
+          <div class="{{ component }}__link-wrapper">
+            {{ atom_link.regular(
+              classes = component + '__link',
+              href = link.href,
+              title = link.title,
+              target = link.target,
+              icon_after = 'custom/arrow-right-icon'
+            ) }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endmacro %}
