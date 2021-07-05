@@ -33,7 +33,7 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
         all_active = not applied_filters.get('type') and not applied_filters.get('story')
         story_active = applied_filters.get('type') == 'story'
         objects_active = applied_filters.get('type') == 'object'
-        active_class = 'explore-intro__filter--active'
+        active_class = 'active'
 
         return OrganismExploreSearchHeader(
             title="Explore",
