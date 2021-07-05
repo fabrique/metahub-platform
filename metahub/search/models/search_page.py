@@ -1,20 +1,15 @@
 from functools import reduce
-from random import randint
+from django.utils.translation import ugettext_lazy as _
 
 from django.core.paginator import PageNotAnInteger
 from django.db.models import Q
-from django.http import JsonResponse
-from django.template.loader import render_to_string
 from pure_pagination import Paginator
-from wagtail.admin.edit_handlers import StreamFieldPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin, route
-from wagtail.core.fields import StreamField
 from wagtail.core.models import Page
 from wagtail.core.utils import resolve_model_string
 
 from metahub.collection.models import MetaHubObjectPage
 from metahub.core.models import MetaHubBasePage
-# from metahub.search.search import do_search, get_search_results, get_result_as_cards, get_result_filters
 from metahub.starling_metahub.organisms.interfaces import OrganismExploreSearchHeader, OrganismSearchCardGridRegular
 from metahub.starling_metahub.utils import create_paginator_component
 from metahub.stories.models import MetaHubStoryPage
@@ -96,17 +91,21 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
         search_results = self.get_search_results(applied_filters)
 
         # Pagination for found objects
+        MAX_ITEMS_PER_PAGE = 1
+        page_number = request.GET.get('page', 1)
+        paginator = Paginator(search_results, request=request, per_page=MAX_ITEMS_PER_PAGE)
+
         try:
-            page = request.GET.get('page', 1)
+            page = paginator.validate_number(page_number)
         except PageNotAnInteger:
             page = 1
 
-        paginator = Paginator(search_results, request=request, per_page=12)
         paginator_page = paginator.page(page)
+
 
         context.update({
             'results': paginator_page.object_list,
-            'paginator': paginator_page,
+            'paginator': self.create_paginator_component(paginator, paginator_page),
             'search_filters' : applied_filters,
             'search_query' : search_string,
             'search_header_component' : self.get_search_header_component(applied_filters)

@@ -1,5 +1,6 @@
 from django.utils.html import strip_tags
 import re
+from django.utils.translation import ugettext_lazy as _
 
 from starling.interfaces.atoms import AtomLinkRegular
 
