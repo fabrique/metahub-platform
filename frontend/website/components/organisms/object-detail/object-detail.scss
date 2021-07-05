@@ -14,8 +14,26 @@
   }
 }
 
+.object-detail__text {
+  --grid-columns: 12;
+
+  @include landscape {
+    --grid-columns: 8;
+  }
+
+  @include subgrid-container;
+
+  .richtext--regular {
+    grid-column: auto / span 12;
+
+    @include landscape {
+      grid-column: auto / span 6;
+    }
+  }
+}
+
 .object-detail__aside {
-  grid-column: column 2 / span 12;
+  grid-column: column 3 / span 10;
   order: 1;
   padding-top: var(--section-space);
   position: relative;

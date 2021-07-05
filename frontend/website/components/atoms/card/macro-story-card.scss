@@ -4,10 +4,10 @@ $story-spacing: 15px;
   @include setThemeColorsByClass;
 
   background: linear-gradient(to top, var(--theme-color) 80%, transparent 80%);
-  transition: opacity .2s;
+  transition: filter .2s;
 
   &:hover {
-    opacity: .9;
+    filter: brightness(105%);
   }
 }
 

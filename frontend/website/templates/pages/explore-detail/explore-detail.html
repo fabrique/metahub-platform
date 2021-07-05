@@ -22,11 +22,13 @@
         subtitle = 'Kurt de Jong, Flasche, 2007'
       ) }}
 
-      {% call atom_richtext.regular(classes = 'richtext__section-space--bottom') %}
-        <p>
-          Every year after Sukkot - the Feast of Tabernacles - Kurt de Jong makes a liqueur from Etrog fruits based on a recipe from his father. Every year at Simchat Tora - the Torah joyful festival - Kurt de Jong brings two bottles of his liqueur to the service in the small Baumweg synagogue in Frankfurt. The glass bottles each have an affixed label.
-        </p>
-      {% endcall %}
+      <div class="object-detail__text">
+        {% call atom_richtext.regular(classes = 'richtext__section-space--bottom') %}
+          <p>
+            Every year after Sukkot - the Feast of Tabernacles - Kurt de Jong makes a liqueur from Etrog fruits based on a recipe from his father. Every year at Simchat Tora - the Torah joyful festival - Kurt de Jong brings two bottles of his liqueur to the service in the small Baumweg synagogue in Frankfurt. The glass bottles each have an affixed label.
+          </p>
+        {% endcall %}
+      </div>
 
       {{ organisms_object_metadata.regular(
         items = [

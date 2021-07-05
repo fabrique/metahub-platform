@@ -19,6 +19,7 @@ $montserrat-font-feature-settings: 'kern' 1, 'calt' 1, 'liga' 1, 'frac' 1, 'dlig
 // list in order for the @font-face to work
 $montserrat-font-weights: (
   regular: (weight: normal, style: normal),
+  medium: (weight: normal, style: normal),
   bold: (weight: bold, style: normal),
 );
 
