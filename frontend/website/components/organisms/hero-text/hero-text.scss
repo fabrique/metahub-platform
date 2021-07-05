@@ -13,14 +13,7 @@
   }
 
   h1 {
-    font-size: 36px;
-    line-height: 100%;
-    margin: 0 0 20px;
-
-    @include landscape {
-      font-size: 120px;
-      margin: 0 0 30px;
-    }
+    @include typography(heading-1, false, true, false);
   }
 
   p {
