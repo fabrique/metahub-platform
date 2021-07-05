@@ -19,39 +19,31 @@
 
 
 {% macro temporarybackend(pagination={}) %}
-  <nav class="pagination">
+  <section class="pagination-wrapper">
+    <nav class="pagination">
 
-    {% if pagination.button_previous %}
-      {{ atom_link.regular(classes = 'pagination__previous', href = pagination.button_previous.href, title = pagination.button_previous.title, icon_before = 'custom/arrow-left-icon') }}
-    {% endif %}
+      {% if pagination.button_previous %}
+        {{ atom_link.regular(classes = 'pagination__previous', href = pagination.button_previous.href, title = pagination.button_previous.title, icon_before = 'custom/arrow-left-icon') }}
+      {% endif %}
 
-    <div class="pagination__numbers">
-      {% for button in pagination.buttons %}
-          {% if button.title and button.href %}
-            {% if button.current %}
-              {{ atom_number_button.span(classes = 'number-button--selected', variant = 'clean', title = button.title) }}
+      <div class="pagination__numbers">
+        {% for button in pagination.buttons %}
+            {% if button.title and button.href %}
+              {% if button.current %}
+                {{ atom_number_button.span(classes = 'number-button--selected', variant = 'clean', title = button.title) }}
+              {% else %}
+                {{ atom_number_button.regular(href = button.href, title = button.title) }}
+              {% endif %}
             {% else %}
-              {{ atom_number_button.regular(href = button.href, title = button.title) }}
+                {{ atom_number_button.span(classes = 'number-button--dots', variant = 'clean', title = '...') }}
             {% endif %}
-          {% else %}
-            {{ atom_number_button.span(variant = 'clean', title = '...') }}
-          {% endif %}
-      {% endfor %}
-    </div>
+        {% endfor %}
+      </div>
 
-    {% if pagination.button_next %}
-      {{ atom_link.regular(classes = 'pagination__next', href = pagination.button_next.href, title = pagination.button_next.title, icon_after = 'custom/arrow-right-icon') }}
-    {% endif %}
+      {% if pagination.button_next %}
+        {{ atom_link.regular(classes = 'pagination__next', href = pagination.button_next.href, title = pagination.button_next.title, icon_after = 'custom/arrow-right-icon') }}
+      {% endif %}
 
-
-{#    <div>#}
-      {# According to Maria there should only be max 4 number buttons #}
-      {# https://fabrique-cnv.slack.com/archives/C01H88X7WMS/p1608648520019200?thread_ts=1608645727.014800&cid=C01H88X7WMS #}
-{#      {{ atom_number_button.regular(href = '?', title = '1') }}#}
-{#      {{ atom_number_button.span(classes = 'number-button--selected', variant = 'clean', title = '2') }}#}
-{#      {{ atom_number_button.regular(href = '?', title = '3') }}#}
-{#      {{ atom_number_button.regular(href = '?', title = '4') }}#}
-{#    </div>#}
-{#    {{ atom_link.regular(classes = 'pagination__next', href = '?', title = _('Next'), icon_after = 'cnv/arrow-right-large') }}#}
-  </nav>
+    </nav>
+  </section>
 {% endmacro %}
