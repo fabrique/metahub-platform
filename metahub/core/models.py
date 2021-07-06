@@ -71,12 +71,16 @@ class MetaHubBasePage(PagePromoMixin, Page):
             return AtomPictureRegular(**Resolution(mobile='1920', crop=True).resolve(picture_structvalue['source']))
 
     def get_page_date(self):
-        if hasattr(self, 'date') and (date := getattr(self, 'date')):
-            return date
+        if hasattr(self, 'date'):
+            date = getattr(self, 'date')
+            if date:
+                return date
 
     def get_page_authors(self):
-        if hasattr(self, 'authors') and (authors := getattr(self, 'authors')):
-            return [str(author) for author in authors]
+        if hasattr(self, 'authors'):
+            authors = getattr(self, 'authors')
+            if authors:
+                return [str(author) for author in authors]
         return []
 
     def get_page_label(self):
