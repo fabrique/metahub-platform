@@ -1,5 +1,5 @@
 <!doctype html>
-{% load static i18n analytics_tags core_tags wagtailimages_tags starling_tags wagtailcore_tags wagtailuserbar %}
+{% load static i18n analytics_tags menu_tags core_tags wagtailimages_tags starling_tags wagtailcore_tags wagtailuserbar %}
 {% get_current_language as LANGUAGE_CODE %}
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
@@ -64,10 +64,8 @@
     <script src="{% static 'scripts/base.js' %}" type="module" crossorigin></script>
 
       {% block navigation_header %}
-{#          {% get_menu_items as menu %}#}
-{#          {% with page.get_my_collection_url as fav_url %}#}
-{#              {% include_component 'structures.menu-bar.regular' fav_url=fav_url menu_items=menu.menu_items address='Bertha-Pappenheim-Platz 1' address2='Battonnstrasse 47' languages="['Deutsch', 'English']" %}#}
-{#          {% endwith %}#}
+        {% get_menu_component as menu %}
+        {% include_component 'structures.menu.regular' menu %}
       {% endblock navigation_header %}
 
     <div class="content">
@@ -75,7 +73,6 @@
       
       {% block header_bar %}
       {% endblock %}
-
 
       <header class="header" role="banner">
         {% block header %}

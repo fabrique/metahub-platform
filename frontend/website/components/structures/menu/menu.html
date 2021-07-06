@@ -3,7 +3,7 @@
 {% import 'components/atoms/link/link.html' as atom_link %}
 {% import 'components/atoms/icon-button/icon-button.html' as atom_icon_button %}
 
-{% macro regular(menu_items = [], languages = [], navigation_aria_label = '', main_navigation_aria_label = '') %}
+{% macro regular(menu_items = [], languages = [], navigation_aria_label = '', main_navigation_aria_label = '', logo_href = '') %}
   <section class="menu-bar">
     <nav class="menu-bar__nav-bar">
       <div class="menu-bar__wrapper" aria-label="{{ main_navigation_aria_label }}">
@@ -26,9 +26,9 @@
               {{ atom_link.regular(classes = link.classes, href = link.href, title = link.title, target = link.target, icon_before = link.icon_before, icon_after = link.icon_after) }}
             </li>
           {% endfor %}
-          <li class="menu-bar__menu-item">
-            {{ atom_link.regular(classes = link.classes, href = "?", title = "EN", target = link.target) }}
-          </li>
+{#          <li class="menu-bar__menu-item">#}
+{#            {{ atom_link.regular(classes = link.classes, href = "?", title = "EN", target = link.target) }}#}
+{#          </li>#}
         </ul>
 
       </div>
