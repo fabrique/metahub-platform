@@ -77,7 +77,8 @@ class MetaHubObjectPage(MetaHubBasePage):
 
     def get_object_subtitle(self):
         """ If subtitle was not given and we do have an artist, use that. """
-        if (artist := self.get_object_artist()) and self.subtitle == '':
+        artist = self.get_object_artist()
+        if artist and self.subtitle == '':
             return artist
         return self.subtitle
 

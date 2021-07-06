@@ -213,7 +213,8 @@ class HelperRelatedPageBlock(HelperMixin, StructBlock):
     page = blocks.PageChooserBlock(required=False)
 
     def to_params(self, value, field_name: str = 'page', parent_context=None) -> dict:
-        if page := value.get('page'):
+        page = value.get('page')
+        if page:
             page = page.specific
             return {'card': page.get_card_representation()}
         return {'card': {}}
