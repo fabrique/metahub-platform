@@ -10,7 +10,7 @@
   link_label = ''
 ) %}
   {% set component = 'news-list-intro' %}
-  <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
     <div class="{{ component }}__grid">
       <h1 class="{{ component }}__title">{{ title }}</h1>
       <div class="{{ component }}__post">
@@ -39,5 +39,5 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 {% endmacro %}

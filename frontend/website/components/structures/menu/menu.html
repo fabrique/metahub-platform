@@ -4,7 +4,7 @@
 {% import 'components/atoms/icon-button/icon-button.html' as atom_icon_button %}
 
 {% macro regular(menu_items = [], languages = [], navigation_aria_label = '', main_navigation_aria_label = '') %}
-  <section class="menu-bar">
+  <div class="menu-bar">
     <nav class="menu-bar__nav-bar">
       <div class="menu-bar__wrapper" aria-label="{{ main_navigation_aria_label }}">
         <button class="menu-bar__menu-btn js-menu-bar__menu-btn" aria-expanded="false">
@@ -39,5 +39,5 @@
 
       </div>
     </nav>
-  </section>
+  </div>
 {% endmacro %}

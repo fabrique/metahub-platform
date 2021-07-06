@@ -1,6 +1,7 @@
 
 .home-content {
-  height: 100vh;
+  @include homeSection;
+
   padding: var(--section-space) 0;
 }
 

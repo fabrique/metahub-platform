@@ -6,7 +6,7 @@
   cards = ''
 ) %}
   {% set component = 'explore-cards' %}
-  <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
     <div class="{{ component }}__grid">
 
       {% for card in cards %}
@@ -43,5 +43,5 @@
       {% endfor %}
     </div>
 
-  </section>
+  </div>
 {% endmacro %}

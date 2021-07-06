@@ -2,7 +2,7 @@
 
 {% macro regular(id = '', title = '') %}
   {% set component = 'home-content' %}
-  <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }}">
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }}">
     <div class="{{ component }}__grid">
       <div class="{{ component }}__wrapper">
         {# Allowed tags: <a> #}
@@ -13,5 +13,5 @@
         {% endcall %}
       </div>
     </div>
-  </section>
+  </div>
 {% endmacro %}

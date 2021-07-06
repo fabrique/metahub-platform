@@ -3,7 +3,7 @@
 {% import 'components/atoms/picture/picture.html' as atom_picture %}
 
 {% macro regular(id = '', align = 'default', figure = {}, link = {}) %}
-  <section class="hero-image-title">
+  <div class="hero-image-title">
     <div class="hero-image-title__grid">
       <div class="hero-image-title__image">
         <!-- Image ratio: Original. Preferred: around 16:9 or 9:16 -->
@@ -27,12 +27,12 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 {% endmacro %}
 
 
 {% macro picture(id = '', align = 'default', title = '', picture = {}, link = {}) %}
-  <section class="hero-image-title">
+  <div class="hero-image-title">
     <div class="hero-image-title__grid">
       <div class="hero-image-title__image">
         <!-- Image ratio: Original. Preferred: around 16:9 or 9:16 -->
@@ -60,5 +60,5 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 {% endmacro %}

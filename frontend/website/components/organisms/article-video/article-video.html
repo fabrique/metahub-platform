@@ -14,7 +14,7 @@
   button_play_title = ''
 ) %}
   {% set component = 'article-video' %}
-  <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
     <div class="{{ component }}__grid">
       {{ atoms_video_embed.regular(
         classes =  component + '__figure',
@@ -29,5 +29,5 @@
         {{ atom_caption.regular(caption = caption, caption_number = caption_number) }}
       </div>
     </div>
-  </section>
+  </div>
 {% endmacro %}
