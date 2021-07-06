@@ -64,8 +64,8 @@
     <script src="{% static 'scripts/base.js' %}" type="module" crossorigin></script>
 
       {% block navigation_header %}
-        {% get_menu_component as menu %}
-        {% include_component 'structures.menu.regular' menu %}
+        {% get_menu_header_component as menu %}
+        {% include_component 'structures.header.regular' menu_items=menu.menu_items logo_href=menu.logo_href %}
       {% endblock navigation_header %}
 
     <div class="content">

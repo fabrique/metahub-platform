@@ -17,3 +17,11 @@ class StructureFooterBarSimple(NamedTuple):
     content_page: bool = False
     links: Iterable[AtomLinkRegular] = ()
 
+
+class StructureMenuHeaderRegular(NamedTuple):
+    menu_items: Iterable[AtomLinkRegular] = ()
+    logo_href: str = ''
+    languages: Sequence = []
+    has_logo: bool = True
+
+
