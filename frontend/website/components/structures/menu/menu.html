@@ -26,6 +26,12 @@
               {{ atom_link.regular(classes = link.classes, href = link.href, title = link.title, target = link.target, icon_before = link.icon_before, icon_after = link.icon_after) }}
             </li>
           {% endfor %}
+
+          {% for link in languages %}
+            <li class="menu-bar__menu-item">
+              {{ atom_link.regular(classes = link.classes, href = link.href, title = link.title, target = link.target, icon_before = link.icon_before, icon_after = link.icon_after) }}
+            </li>
+          {% endfor %}
 {#          <li class="menu-bar__menu-item">#}
 {#            {{ atom_link.regular(classes = link.classes, href = "?", title = "EN", target = link.target) }}#}
 {#          </li>#}
