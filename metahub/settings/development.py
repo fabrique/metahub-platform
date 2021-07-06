@@ -114,11 +114,11 @@ DEPLOY_CONFIGURATION = {
     },
     'staging': {
         'branch': 'develop',
-        'project_dir': '/data/www/metahub.fabriquehq.nl',
-        'src_dir': '/data/www/metahub.fabriquehq.nl/src',
-        'venv_dir': '/data/www/metahub.fabriquehq.nl/venv',
+        'project_dir': '/data/www/metahub/staging',
+        'src_dir': '/data/www/metahub/staging/src',
+        'venv_dir': '/data/www/metahub/staging/venv',
         'supervisor_name': 'metahub-staging',
         'remote_user': 'webdev',
-        'remote_host': 'metahubfm.fabriquehq.nl',
+        'remote_host': 'metahub.fabriquehq.nl',
     },
 }
