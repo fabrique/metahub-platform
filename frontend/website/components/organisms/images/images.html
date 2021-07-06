@@ -3,7 +3,7 @@
 {% import 'components/atoms/link/link.html' as atom_link %}
 
 {% macro regular(figures = []) %}
-  <section class="images">
+  <div class="images">
     <div class="images__grid">
       {% for figure in figures %}
         <div class="image">
@@ -11,5 +11,5 @@
         </div>
       {% endfor %}
     </div>
-  </section>
+  </div>
 {% endmacro %}

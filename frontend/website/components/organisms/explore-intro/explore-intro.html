@@ -9,7 +9,7 @@
   main_filters = {}
 ) %}
   {% set component = 'explore-intro' %}
-  <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
     <div class="{{ component }}__grid">
       <h1 class="{{ component }}__title">{{ title }}</h1>
       <form class="{{ component }}__search-wrapper">
@@ -44,5 +44,5 @@
         ) }}
       </div>
     </div>
-  </section>
+  </div>
 {% endmacro %}

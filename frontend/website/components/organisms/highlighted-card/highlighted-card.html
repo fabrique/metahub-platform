@@ -3,7 +3,7 @@
 
 {% macro regular(card = {}, title = '', classes = '', link = {}) %}
   {% set component = 'highlighted-card' %}
-  <section class="{{ component }} {{ classes }} {{ card.theme_color }}">
+  <div class="{{ component }} {{ classes }} {{ card.theme_color }}">
     <div class="{{ component }}__grid">
       <div class="{{ component }}__inner">
         <h2 class="{{ component }}__title">{{ title }}</h2>
@@ -43,13 +43,13 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 {% endmacro %}
 
 
 {% macro temporarybackend(card = {}, title = '', classes = '', link = {}, link_label = '', excerpt = '') %}
   {% set component = 'highlighted-card' %}
-  <section class="{{ component }} {{ classes }} {{ card.theme_color }}">
+  <div class="{{ component }} {{ classes }} {{ card.theme_color }}">
     <div class="{{ component }}__grid">
       <div class="{{ component }}__inner">
         <h2 class="{{ component }}__title">{{ title }}</h2>
@@ -86,5 +86,5 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
 {% endmacro %}

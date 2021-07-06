@@ -2,7 +2,7 @@
 
 {% macro regular( id = '', classes = '', cards = '', title = '' ) %}
   {% set component = 'news-cards' %}
-  <section {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
     <div class="{{ component }}__grid">
       <h3 class="{{ component }}__title">{{ title }}</h3>
       {% for card in cards %}
@@ -22,5 +22,5 @@
         </div>
       {% endfor %}
     </div>
-  </section>
+  </div>
 {% endmacro %}
