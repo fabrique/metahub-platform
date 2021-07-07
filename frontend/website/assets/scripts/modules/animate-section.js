@@ -9,20 +9,21 @@ export default function AnimateSection (element) {
     sections.forEach(section => {
       const inner = section.querySelector('.js-animate-section__inner')
       const outer = section.querySelector('.js-animate-section__outer')
-      window.GSAP.set(inner, { force3d: true })
-      window.GSAP.set(outer, { force3d: true })
+      window.GSAP.set(inner, { force3d: true, scaleY: 0, transformOrigin: '50% 100%' })
+      window.GSAP.set(outer, { force3d: true, scaleY: 0, transformOrigin: '50% 100%' })
 
-      const tl = window.GSAP.timeline({
+      const comming = window.GSAP.timeline({
         scrollTrigger: {
           trigger: section,
           scrub: 0,
           start: 'top bottom',
-          end: 'top top'
+          end: 'top top',
+          markers: true
         },
         ease: 'none'
       })
 
-      tl.fromTo(inner, {
+      comming.fromTo(inner, {
         scaleY: 0,
         transformOrigin: '50% 0%'
       }, {
@@ -31,7 +32,7 @@ export default function AnimateSection (element) {
         ease: 'none'
       })
 
-      const biem = window.GSAP.timeline({
+      const going = window.GSAP.timeline({
         scrollTrigger: {
           trigger: section,
           scrub: 0,
@@ -41,7 +42,7 @@ export default function AnimateSection (element) {
         ease: 'none'
       })
 
-      biem.fromTo(outer, {
+      going.fromTo(outer, {
         scaleY: 1,
         transformOrigin: '50% 100%'
       }, {
