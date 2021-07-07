@@ -17,8 +17,7 @@ export default function AnimateSection (element) {
           trigger: section,
           scrub: 0,
           start: 'top bottom',
-          end: 'top top',
-          markers: true
+          end: 'top top'
         },
         ease: 'none'
       })
