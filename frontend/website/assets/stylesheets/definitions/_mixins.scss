@@ -16,7 +16,7 @@
   }
 }
 
-@mixin homeSection($min-header-height: false) {
+@mixin viewHeight($min-header-height: false) {
   @if not ($min-header-height) {
     height: 100vh;
   }

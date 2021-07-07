@@ -8,7 +8,7 @@
 .highlighted-card__grid {
   @include grid-container;
 
-  @include homeSection;
+  @include viewHeight;
 
   padding-bottom: 20px;
   padding-top: 20px;

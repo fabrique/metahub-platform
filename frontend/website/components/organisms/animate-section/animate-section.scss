@@ -1,12 +1,11 @@
-.js-animate-section {
-  // @include homeSection;
+.animate-section {
+  overflow: hidden;
 
-  // &:first-child {
-  //   @include homeSection(true);
-  // }
+  @include viewHeight;
 }
 
-.js-animate-section__inner {
-  // height: 100%;
-  // width: 100%;
+.animate-section__inner,
+.animate-section__outer {
+  height: 100%;
+  width: 100%;
 }

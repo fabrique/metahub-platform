@@ -22,176 +22,186 @@
 {% endblock %}
 
 {% block content %}
-  <div class="js-animate-section">
-    <div class="js-animate-section__inner">
-      {{ organisms_full_screen_logo.regular(
-        theme_color = ['theme--purple', 'theme--blue', 'theme--pink', 'theme--magenta'] | random
-      ) }}
+  <div class="js-animate-section animate-section">
+    <div class="js-animate-section__outer animate-section__outer">
+      <div class="js-animate-section__inner animate-section__inner">
+        {{ organisms_full_screen_logo.regular(
+          theme_color = ['theme--purple', 'theme--blue', 'theme--pink', 'theme--magenta'] | random
+        ) }}
+      </div>
     </div>
   </div>
 
-  <div class="js-animate-section">
-    <div class="js-animate-section__inner">
-      {% call organisms_home_content.regular(
-        title = 'Experience historical places'
-      ) %}
-        <p>
-          METAhub Frankfurt verortet Kulturgüter im digitalen Raum und macht sie im Objects erfahrbar. Das Story basiert auf einer neuartigen Form der Zusammenarbeit zwischen Museumskurator*innen, -dokumentar*innen und Dramaturg*innen mit Medienkünstler*innen.
-        </p>
-      {% endcall %}
+  <div class="js-animate-section animate-section">
+    <div class="js-animate-section__outer animate-section__outer">
+      <div class="js-animate-section__inner animate-section__inner">
+        {% call organisms_home_content.regular(
+          title = 'Experience historical places'
+        ) %}
+          <p>
+            METAhub Frankfurt verortet Kulturgüter im digitalen Raum und macht sie im Objects erfahrbar. Das Story basiert auf einer neuartigen Form der Zusammenarbeit zwischen Museumskurator*innen, -dokumentar*innen und Dramaturg*innen mit Medienkünstler*innen.
+          </p>
+        {% endcall %}
+      </div>
     </div>
   </div>
 
-  <div class="js-animate-section">
-    <div class="js-animate-section__inner">
-      {{ organisms_relevant_cards.object(
-        title = 'Relevant objects',
-        classes = 'relevant-objects--home',
-        cards = [
-          {
-            picture: {
-              images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
-              positions: { mobile: '50% 50%' },
-              fits: { mobile: 'cover' },
-              width: 690,
-              height: '',
-              loading: '',
-              alt: ''
+  <div class="js-animate-section animate-section">
+    <div class="js-animate-section__outer animate-section__outer">
+      <div class="js-animate-section__inner animate-section__inner">
+        {{ organisms_relevant_cards.object(
+          title = 'Relevant objects',
+          classes = 'relevant-objects--home',
+          cards = [
+            {
+              picture: {
+                images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
+                positions: { mobile: '50% 50%' },
+                fits: { mobile: 'cover' },
+                width: 690,
+                height: '',
+                loading: '',
+                alt: ''
+              },
+              title: 'THE LUDWIG MEIDNER ARCHIVE',
+              subtitle: 'Kurt de Jong, Flasche, 2007',
+              type: 'object',
+              label: 'Object'
             },
-            title: 'THE LUDWIG MEIDNER ARCHIVE',
-            subtitle: 'Kurt de Jong, Flasche, 2007',
-            type: 'object',
-            label: 'Object'
-          },
-          {
+            {
 
-            picture: {
-              images: { mobile: '/static/media/unsplash/cropped/highlight-1.jpg' },
-              positions: { mobile: '50% 50%' },
-              fits: { mobile: 'cover' },
-              width: 430
+              picture: {
+                images: { mobile: '/static/media/unsplash/cropped/highlight-1.jpg' },
+                positions: { mobile: '50% 50%' },
+                fits: { mobile: 'cover' },
+                width: 430
+              },
+
+              title: 'Prince Jussuf von Thebes',
+              subtitle: 'Silberwarenfabrik Adolf G. Meyer Becher, 1926',
+              type: 'object',
+              label: 'Object'
             },
+            {
 
-            title: 'Prince Jussuf von Thebes',
-            subtitle: 'Silberwarenfabrik Adolf G. Meyer Becher, 1926',
-            type: 'object',
-            label: 'Object'
-          },
-          {
+              picture: {
+                images: { mobile: '/static/media/unsplash/landscape/averie-woodard.jpg' },
+                positions: { mobile: '50% 50%' },
+                fits: { mobile: 'cover' },
+                width: 430
+              },
 
+              title: 'Collection of Everyday Object',
+              subtitle: 'Ida ritter, painting, Berlin 1920-1935',
+              type: 'object',
+              label: 'Object'
+            }
+          ]
+        ) }}
+      </div>
+    </div>
+  </div>
+
+  <div class="js-animate-section animate-section">
+    <div class="js-animate-section__outer animate-section__outer">
+      <div class="js-animate-section__inner animate-section__inner">
+        {{ organisms_highlighted_card.regular(
+          title = 'Stories',
+          classes = 'js-animate-section',
+          card = {
+            classes: '',
+            href: '?',
+            title: 'LUDWIG MEIDNER ARCHIVE - Exiled Jewish Artists',
+            excerpt: 'The Jewish Museum has been in charge of the artistic estate of Ludwig Meidner since 1994 and administers it through its Ludwig Meidner Archive. Other estates of artists forced into exile during the Nazi era because of their Jewish origins have been added in the meantime.',
+            theme_color: 'theme--blue',
             picture: {
               images: { mobile: '/static/media/unsplash/landscape/averie-woodard.jpg' },
               positions: { mobile: '50% 50%' },
               fits: { mobile: 'cover' },
               width: 430
             },
-
-            title: 'Collection of Everyday Object',
-            subtitle: 'Ida ritter, painting, Berlin 1920-1935',
-            type: 'object',
-            label: 'Object'
-          }
-        ]
-      ) }}
-    </div>
-  </div>
-
-  <div class="js-animate-section">
-    <div class="js-animate-section__inner">
-      {{ organisms_highlighted_card.regular(
-        title = 'Stories',
-        classes = 'js-animate-section',
-        card = {
-          classes: '',
-          href: '?',
-          title: 'LUDWIG MEIDNER ARCHIVE - Exiled Jewish Artists',
-          excerpt: 'The Jewish Museum has been in charge of the artistic estate of Ludwig Meidner since 1994 and administers it through its Ludwig Meidner Archive. Other estates of artists forced into exile during the Nazi era because of their Jewish origins have been added in the meantime.',
-          theme_color: 'theme--blue',
-          picture: {
-            images: { mobile: '/static/media/unsplash/landscape/averie-woodard.jpg' },
-            positions: { mobile: '50% 50%' },
-            fits: { mobile: 'cover' },
-            width: 430
+            link: {
+              href: '?',
+              title: 'Read more',
+              target: '_blank',
+              icon_after: 'custom/arrow-right-icon'
+            }
           },
-          link: {
+          link = {
             href: '?',
-            title: 'Read more',
+            title: 'See all Stories',
             target: '_blank',
             icon_after: 'custom/arrow-right-icon'
           }
-        },
-        link = {
-          href: '?',
-          title: 'See all Stories',
-          target: '_blank',
-          icon_after: 'custom/arrow-right-icon'
-        }
-      ) }}
+        ) }}
+      </div>
     </div>
   </div>
 
-  <div class="js-animate-section">
-    <div class="js-animate-section__inner">
-      {{ organisms_relevant_cards.news(
-        title = 'News & events',
-        classes = 'relevant-news--home',
-        link = {
-          href: '?',
-          title: 'See all Stories',
-          target: '_blank',
-          icon_after: 'custom/arrow-right-icon'
-        },
-        cards = [
-        {
-          picture: {
-            images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
-            positions: { mobile: '50% 50%' },
-            fits: { mobile: 'cover' },
-            width: 220,
-            height: 150
+  <div class="js-animate-section animate-section">
+    <div class="js-animate-section__outer animate-section__outer">
+      <div class="js-animate-section__inner animate-section__inner">
+        {{ organisms_relevant_cards.news(
+          title = 'News & events',
+          classes = 'relevant-news--home',
+          link = {
+            href: '?',
+            title: 'See all Stories',
+            target: '_blank',
+            icon_after: 'custom/arrow-right-icon'
           },
-          href: '?',
-          title: 'What Could They Know?',
-          excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
-          type: 'news',
-          label: 'News',
-          aria_label: '',
-          date: '11 April, 2021'
-        },
-        {
-          picture: {
-            images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
-            positions: { mobile: '50% 50%' },
-            fits: { mobile: 'cover' },
-            width: 220,
-            height: 150
+          cards = [
+          {
+            picture: {
+              images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
+              positions: { mobile: '50% 50%' },
+              fits: { mobile: 'cover' },
+              width: 220,
+              height: 150
+            },
+            href: '?',
+            title: 'What Could They Know?',
+            excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
+            type: 'news',
+            label: 'News',
+            aria_label: '',
+            date: '11 April, 2021'
           },
-          href: '?',
-          title: 'Tour of the Jewish Ostend District - Late 19th Century to 1945',
-          excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
-          type: 'event',
-          label: 'Event',
-          aria_label: '',
-          date: '11 April, 2021'
-        },
-        {
-          picture: {
-            images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
-            positions: { mobile: '50% 50%' },
-            fits: { mobile: 'cover' },
-            width: 220,
-            height: 150
+          {
+            picture: {
+              images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
+              positions: { mobile: '50% 50%' },
+              fits: { mobile: 'cover' },
+              width: 220,
+              height: 150
+            },
+            href: '?',
+            title: 'Tour of the Jewish Ostend District - Late 19th Century to 1945',
+            excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
+            type: 'event',
+            label: 'Event',
+            aria_label: '',
+            date: '11 April, 2021'
           },
-          href: '?',
-          title: 'Tour of the Jewish Ostend District - Late 19th Century to 1945',
-          excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
-          type: 'news',
-          label: 'News',
-          aria_label: '',
-          date: '11 April, 2021'
-        }
-        ]
-      ) }}
+          {
+            picture: {
+              images: { mobile: '/static/media/unsplash/landscape/stephen-arnold.jpg' },
+              positions: { mobile: '50% 50%' },
+              fits: { mobile: 'cover' },
+              width: 220,
+              height: 150
+            },
+            href: '?',
+            title: 'Tour of the Jewish Ostend District - Late 19th Century to 1945',
+            excerpt: 'A hypnotic album of photographs, unseen for decades, inspires a poet.',
+            type: 'news',
+            label: 'News',
+            aria_label: '',
+            date: '11 April, 2021'
+          }
+          ]
+        ) }}
+      </div>
     </div>
   </div>
 

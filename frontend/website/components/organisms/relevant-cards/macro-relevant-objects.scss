@@ -88,7 +88,7 @@
   margin-bottom: 0;
   padding-bottom: var(--section-space);
 
-  @include homeSection;
+  @include viewHeight;
 
   .relevant-objects__title {
     margin-top: 10vh;
