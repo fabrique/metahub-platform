@@ -2,6 +2,10 @@
   overflow: hidden;
 
   @include viewHeight;
+
+  &:first-child {
+    @include viewHeight(true);
+  }
 }
 
 .animate-section__inner,
