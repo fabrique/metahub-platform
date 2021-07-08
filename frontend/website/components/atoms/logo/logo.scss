@@ -4,9 +4,14 @@
   contain: content;
   display: inline-block;
   line-height: 0;
-  min-width: 120px;
+  max-width: 167px;
   position: relative;
   transition: color $easing-change;
   user-select: none;
   vertical-align: top;
+  width: 100%;
+
+  @include landscape {
+    max-width: 182px;
+  }
 }
