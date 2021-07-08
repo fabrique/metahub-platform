@@ -2,7 +2,7 @@
 {% import 'components/structures/menu/menu.html' as menu %}
 
 {% macro regular(has_logo = true, menu_items = [], languages = [], logo_href = '') %}
-  <div class="header" role="banner">
+  <div class="header " role="banner">
     <div class="header__inner">
 
       {% if has_logo %}
@@ -11,7 +11,7 @@
         </div>
       {% endif %}
 
-      <div class="header__menu-bar">
+      <div class="header__menu-bar {% if not has_logo %}header__menu-bar--no-logo{% endif %}">
         {{ menu.regular(
           menu_items = menu_items,
           languages = languages
