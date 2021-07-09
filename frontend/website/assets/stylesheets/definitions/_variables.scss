@@ -56,9 +56,9 @@ $z-index-menu-overlay: 2048;
   --color-pink: #{$color-pink};
   --color-magenta: #{$color-magenta};
   --theme-color: #{var(--color-magenta)};
-  --header-height: 63px;
+  --header-height: 62px;
 
   @include landscape {
-    --header-height: 76px;
+    --header-height: 65px;
   }
 }

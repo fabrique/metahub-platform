@@ -24,6 +24,8 @@
   flex: 1;
 
   @include notebook {
-    margin-left: 8%;
+    &:not(&.header__menu-bar--no-logo) {
+      margin-left: 8%;
+    }
   }
 }

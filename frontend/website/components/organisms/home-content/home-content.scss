@@ -1,6 +1,6 @@
 
 .home-content {
-  @include homeSection;
+  @include viewHeight;
 
   padding: var(--section-space) 0;
 }

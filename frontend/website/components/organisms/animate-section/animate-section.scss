@@ -1,0 +1,15 @@
+.animate-section {
+  overflow: hidden;
+
+  @include viewHeight;
+
+  &:first-child {
+    @include viewHeight(true);
+  }
+}
+
+.animate-section__inner,
+.animate-section__outer {
+  height: 100%;
+  width: 100%;
+}

@@ -13,6 +13,12 @@
       </div>
       <div class="text-and-image__image-and-link">
         <div class="text-and-image__image__image-wrapper">
+
+          {% if figure.picture.images and figure.picture.images == 'placeholders' %}
+            {# Image ratio: free (portrait 9:16 preferred) #}
+            {{ object_replace_value(figure.picture, 'images', 'placeholders', generate_placeholders({ mobile: '530x943', portrait: '800x1423', landscape: '394x701', notebook: '494x879', desktop: '640x1138' })) }}
+          {% endif %}
+
           {{ atom_figure.regular(
             picture = figure.picture,
             caption = figure.caption,
