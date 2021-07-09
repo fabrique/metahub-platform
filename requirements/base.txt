@@ -25,5 +25,5 @@ git+ssh://git@bitbucket.org/fabrique/starling.git@alpha-1.34.0#egg=starling
 git+ssh://git@bitbucket.org/fabrique/wagtail-embed.git@1.4#egg=fabrique-wagtail-embed
 
 #for search!
-django-elasticsearch-dsl==6.4.2
+django-elasticsearch-dsl==7.2.0
 django-ipware==2.1.0
