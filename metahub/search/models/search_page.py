@@ -99,7 +99,7 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
         querystring_extra = self.get_querystring_extras(applied_filters)
 
         # Pagination for found objects
-        MAX_ITEMS_PER_PAGE = 1
+        MAX_ITEMS_PER_PAGE = 12
         page_number = request.GET.get('page', 1)
         paginator = Paginator(search_results, request=request, per_page=MAX_ITEMS_PER_PAGE)
 

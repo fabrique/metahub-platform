@@ -134,7 +134,7 @@ class OrganismContentHeroImageTitleBlock(AdapterStructBlock):
 
     class Meta:
         defaults = {}
-        component = 'organisms.hero-image-title.regular'
+        component = 'organisms.hero-image-title.picture'
         interface_class = OrganismContentHeroImageTitle
 
 
