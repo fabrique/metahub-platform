@@ -15,9 +15,11 @@ class MoleculeObjectCardRegular(NamedTuple):
     classes: str = ''
     picture: AtomPictureRegular = AtomPictureRegular()
 
+
 class MoleculeLinkRegular(NamedTuple):
     title: str = ''
     href: str = ''
+
 
 class MoleculeContextCardRegular(NamedTuple):
     href: str = ''

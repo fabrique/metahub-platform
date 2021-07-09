@@ -99,7 +99,8 @@ class MetaHubBasePage(PagePromoMixin, Page):
             href=self.url,
             picture=self.specific.get_page_header_image(),
             date=format_date(self.specific.get_page_date()),
-            type=self.specific.get_page_type()
+            type=self.specific.get_page_type(),
+            theme_color=self.theme_color
         )
 
     def time_relevance(self):

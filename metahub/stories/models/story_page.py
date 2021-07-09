@@ -67,6 +67,7 @@ class MetaHubStoryPage(MetaHubBasePage):
             subtitle="TODO wat komt hier?",
             href=self.url,
             picture=self.get_page_header_image(),
-            type='story'
+            type='story',
+            theme_color=self.theme_color
         )
     #
