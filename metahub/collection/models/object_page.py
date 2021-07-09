@@ -70,6 +70,10 @@ class MetaHubObjectPage(MetaHubBasePage):
     #     ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
     # ])
 
+    def get_object_image(self):
+        # todo, this is temp since there are no real objects
+        return AtomPictureRegular(**Resolution(mobile='1920', crop=True).resolve(MetahubImage.objects.first()))
+
     def get_object_header_component(self):
         return OrganismObjectHeaderRegular(
             title="Sample title until objects are linked",
@@ -156,7 +160,7 @@ class MetaHubObjectPage(MetaHubBasePage):
             subtitle=self.get_object_subtitle(),
             theme_color=self.theme_color,
             href=self.url,
-            picture=AtomPictureRegular(**Resolution(mobile='1920', crop=True).resolve(MetahubImage.objects.first())),
+            picture=self.get_object_image(),
             type='object'
         )
     #
