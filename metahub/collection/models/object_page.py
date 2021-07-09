@@ -31,6 +31,7 @@ class MetaHubObjectPage(MetaHubBasePage):
     """
 
     # Page object
+    parent_page_types = ['overviews.MetaHubOverviewPage']
     object = models.ForeignKey('collection.BaseCollectionObject', null=True, on_delete=models.SET_NULL, blank=True, related_name='associated_page')
     subtitle = models.CharField(max_length=500, blank=True, default='')
     introduction = models.TextField(max_length=2000, blank=True)

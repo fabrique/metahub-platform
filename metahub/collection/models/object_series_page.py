@@ -16,6 +16,7 @@ class MetaHubObjectSeriesPage(MetaHubBasePage):
     This class overrides a lot of the methods from MetaHubBasePage. See the
     superclass for an overview of possible overrides.
     """
+    parent_page_types = []
 
     # In case the series is defined through BeeCollect
     series_id = models.CharField(max_length=256, default=None, blank=True, null=True)
