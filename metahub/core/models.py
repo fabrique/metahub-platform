@@ -86,6 +86,9 @@ class MetaHubBasePage(PagePromoMixin, Page):
     def get_page_label(self):
         return ''
 
+    def get_page_type(self):
+        return ''
+
     def get_page_related_items(self):
         return []
 
