@@ -7,7 +7,7 @@ from wagtail.core.fields import StreamField
 
 from metahub.collection.models import CollectionObjectTag
 from metahub.content.blocks import content_blocks
-from metahub.core.models import MetaHubBasePage
+from metahub.core.models import MetaHubBasePage, MetahubImage
 from metahub.starling_metahub.molecules.interfaces import MoleculeObjectCardRegular, MoleculeContextCardRegular, \
     MoleculeCardRegular, MoleculeExploreCardRegular
 from metahub.starling_metahub.organisms.blocks import OrganismArticleCuratedItemsRegularBlock, \
@@ -156,7 +156,7 @@ class MetaHubObjectPage(MetaHubBasePage):
             subtitle=self.get_object_subtitle(),
             theme_color=self.theme_color,
             href=self.url,
-            picture=None, # todo
+            picture=AtomPictureRegular(**Resolution(mobile='1920', crop=True).resolve(MetahubImage.objects.first())),
             type='object'
         )
     #
