@@ -119,6 +119,8 @@ DEPLOY_CONFIGURATION = {
         'venv_dir': '/data/www/metahub/staging/venv',
         'supervisor_name': 'metahub-staging',
         'remote_user': 'webdev',
-        'remote_host': 'metahub.fabriquehq.nl',
+        'remote_host': 'jmffm.fabriquehq.nl', #todo change when domain exists
     },
 }
+
+
