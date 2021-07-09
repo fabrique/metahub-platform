@@ -227,7 +227,7 @@ class OrganismArticleRelatedObjectsRegularBlock(OrganismArticleRelatedItemsRegul
 
 class OrganismArticleRelatedStoriesRegularBlock(OrganismArticleRelatedItemsRegularBlock):
     class Meta:
-        component = 'organisms.relevant-cards.stories'
+        component = 'organisms.relevant-cards.story'
         interface_class = OrganismArticleRelatedItemsRegular
 
 
