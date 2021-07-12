@@ -81,7 +81,8 @@
   margin-right: 10px;
 }
 
-.explore-intro__filter--active {
+.explore-intro__filter--active,
+.explore-intro__filter:hover {
   .link__span {
     border-bottom: 2px solid var(--theme-color);
   }
