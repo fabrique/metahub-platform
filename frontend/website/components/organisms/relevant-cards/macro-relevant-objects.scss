@@ -65,7 +65,7 @@
     }
   }
 
-  .object__content-wrapper {
+  .card__object__content-wrapper {
     --grid-columns: 7;
 
     @include landscape {
@@ -74,7 +74,7 @@
 
     @include subgrid-container;
 
-    .object__content-wrapper__inner {
+    .card__object__content-wrapper__inner {
       grid-column: auto / span 5;
 
       @include landscape {
