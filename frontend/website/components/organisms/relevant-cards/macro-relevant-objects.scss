@@ -3,11 +3,11 @@
 }
 
 .relevant-objects__title {
-  @include typography(heading-3);
+  @include typography(heading-2);
 
   color: var(--theme-color);
   grid-column: auto / span 12;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 
   @include landscape {
     line-height: calc(var(--heading-3-line-height) / 2 + 12px);

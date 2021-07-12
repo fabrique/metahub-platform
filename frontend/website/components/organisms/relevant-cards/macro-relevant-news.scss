@@ -9,7 +9,7 @@
 }
 
 .relevant-news__title {
-  @include typography(heading-3);
+  @include typography(heading-2);
 
   color: var(--theme-color);
   grid-column: auto / span 12;
