@@ -20,13 +20,12 @@ $story-spacing: 15px;
 }
 
 .card__story__label {
+  --label-margin-bottom: 10px;
+
+  @include typography(label, false, true, false);
+
   color: $color-white;
   display: block;
-  font-family: $montserrat-font-stack;
-  font-size: 18px;
-  line-height: 22px;
-  padding-bottom: 10px;
-  text-transform: uppercase;
 }
 
 .card__story__picture {

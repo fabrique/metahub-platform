@@ -50,19 +50,11 @@
 }
 
 .card__news__label {
-  display: block;
-  font-family: $montserrat-font-stack;
-  font-size: 16px;
-  font-weight: #{get-montserrat-weight(bold)};
-  line-height: 18px;
-  margin-bottom: 4px;
-  text-transform: uppercase;
+  --label-margin-bottom: 4px;
 
-  @include portrait {
-    font-size: 18px;
-    line-height: 22px;
-    margin-bottom: 10px;
-  }
+  @include typography(label, false, true, false);
+
+  display: block;
 }
 
 .card__news__title {

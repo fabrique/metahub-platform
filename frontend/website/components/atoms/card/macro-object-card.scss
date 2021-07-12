@@ -13,19 +13,10 @@ $object-spacing: 24px;
 }
 
 .card__object__label {
+  @include typography(label, false, true, false);
+
   color: $color-black;
   display: block;
-  font-family: $montserrat-font-stack;
-  font-size: 16px;
-  font-weight: #{get-montserrat-weight(normal)};
-  line-height: 18px;
-  text-transform: uppercase;
-
-  @include landscape {
-    font-size: 18px;
-    line-height: 22px;
-    padding-bottom: 10px;
-  }
 }
 
 .card__object__picture-wrapper {

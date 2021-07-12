@@ -1,0 +1,19 @@
+
+:root {
+  --label-font-stack: #{$montserrat-font-stack};
+  --label-font-size: 16px;
+  --label-font-style: normal;
+  --label-font-variant: normal;
+  --label-font-weight: #{get-montserrat-weight(regular)};
+  --label-letter-spacing: 1%;
+  --label-line-height: 18px;
+  --label-margin-bottom: 0;
+  --label-margin-top: 0;
+  --label-text-transform: uppercase;
+
+  @include portrait {
+    --label-font-size: 18px;
+    --label-line-height: 22px;
+    --label-margin-bottom: 10px;
+  }
+}
