@@ -64,16 +64,18 @@
       class="{{ component }}__inner"
     >
       <span class="{{ component }}__picture-wrapper">
-        {{ atom_picture.regular(
-          images = picture.images,
-          fits = picture.fits,
-          classes = component + '__picture',
-          positions = picture.positions,
-          width = picture.width,
-          height = picture.height,
-          loading = picture.loading,
-          alt = picture.alt
-        ) }}
+        <span class="{{ component }}__picture-wrapper__inner">
+          {{ atom_picture.regular(
+            images = picture.images,
+            fits = picture.fits,
+            classes = component + '__picture',
+            positions = picture.positions,
+            width = picture.width,
+            height = picture.height,
+            loading = picture.loading,
+            alt = picture.alt
+          ) }}
+        </span>
       </span>
       <p class="{{ component }}__content-wrapper">
         <span class="{{ component }}__content-wrapper__inner">

@@ -2,7 +2,7 @@ $object-spacing: 24px;
 
 .card__object {
   &:hover {
-    .card__object__picture-wrapper {
+    .card__object__picture-wrapper__inner {
       transform: scale(.95);
     }
 
@@ -25,22 +25,26 @@ $object-spacing: 24px;
 }
 
 .card__object__picture-wrapper {
-  display: inline-block;
-  margin-left: $object-spacing;
-  overflow: hidden;
+  display: block;
   position: relative;
-  text-align: center;
-  transition: var(--transition-speed);
 
   &::after {
     background-image: linear-gradient(transparent, $color-white);
-    bottom: 0;
+    bottom: -1px;
     content: '';
     height: 100px;
     left: 0;
     position: absolute;
     right: 0;
   }
+}
+
+.card__object__picture-wrapper__inner {
+  display: inline-block;
+  margin-left: $object-spacing;
+  overflow: hidden;
+  position: relative;
+  transition: var(--transition-speed);
 }
 
 .card__object__picture {
@@ -55,7 +59,7 @@ $object-spacing: 24px;
   z-index: 2;
 
   @include landscape {
-    margin-top: -58px;
+    margin-top: -53px;
   }
 }
 
