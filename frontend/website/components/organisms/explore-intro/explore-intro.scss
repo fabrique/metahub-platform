@@ -75,6 +75,7 @@
 }
 
 .explore-intro__filter {
+  color: var(--theme-color);
   font-size: 22px;
   line-height: 30px;
   margin-right: 10px;
@@ -83,12 +84,10 @@
     font-size: 46px;
     line-height: 55px;
   }
-
-  &:not(.explore-intro__filter--active) {
-    opacity: .5;
-  }
 }
 
 .explore-intro__filter--active {
-  color: var(--theme-color);
+  .link__span {
+    border-bottom: 2px solid var(--theme-color);
+  }
 }
