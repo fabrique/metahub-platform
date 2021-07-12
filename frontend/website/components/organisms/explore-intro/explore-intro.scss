@@ -75,15 +75,10 @@
 }
 
 .explore-intro__filter {
-  color: var(--theme-color);
-  font-size: 22px;
-  line-height: 30px;
-  margin-right: 10px;
+  @include typography(introduction);
 
-  @include landscape {
-    font-size: 46px;
-    line-height: 55px;
-  }
+  color: var(--theme-color);
+  margin-right: 10px;
 }
 
 .explore-intro__filter--active {
