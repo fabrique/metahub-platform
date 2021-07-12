@@ -12,7 +12,7 @@
     .picture {
       height: auto;
       opacity: 1;
-      transition: opacity .3s ease .2s;
+      transition: opacity .3s ease var(--transition-speed);
       width: 100%;
     }
   }

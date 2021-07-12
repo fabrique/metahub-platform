@@ -20,17 +20,18 @@
       aria-label="{{ aria_label }}"
       class="{{ component }}__inner"
     >
-      {{ atom_picture.regular(
-        images = picture.images,
-        fits = picture.fits,
-        classes = component + '__picture',
-        positions = picture.positions,
-        width = picture.width,
-        height = picture.height,
-        loading = picture.loading,
-        alt = picture.alt
-      ) }}
-
+      <span class="{{ component }}__picture-wrapper">
+        {{ atom_picture.regular(
+          images = picture.images,
+          fits = picture.fits,
+          classes = component + '__picture',
+          positions = picture.positions,
+          width = picture.width,
+          height = picture.height,
+          loading = picture.loading,
+          alt = picture.alt
+        ) }}
+      </span>
       <p class="{{ component }}__content-wrapper">
         <span class="{{ component }}__content-wrapper__inner">
           <span class="{{ component }}__label">{{ label }}</span>

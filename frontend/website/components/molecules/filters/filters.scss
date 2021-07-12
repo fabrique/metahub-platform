@@ -34,7 +34,7 @@
       .filters__dropdown-filter,
       .filters__dropdown-date {
         opacity: 1;
-        transition: opacity .3s ease .2s;
+        transition: opacity .3s ease var(--transition-speed);
       }
     }
   }
