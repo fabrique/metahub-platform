@@ -15,14 +15,8 @@
 
 .home-content__richtext {
   p {
+    @include typography(introduction);
+
     color: var(--theme-color);
-
-    --body-text-font-size: 22px;
-    --body-text-line-height: 30px;
-
-    @include portrait {
-      --body-text-font-size: 46px;
-      --body-text-line-height: 55px;
-    }
   }
 }

@@ -1,12 +1,18 @@
 
 :root {
   --introduction-font-stack: #{$montserrat-font-stack};
-  --introduction-font-size: 25px;
+  --introduction-font-size: 22px;
   --introduction-font-style: normal;
   --introduction-font-variant: normal;
   --introduction-font-weight: #{get-montserrat-weight(regular)};
-  --introduction-letter-spacing: 0;
-  --introduction-line-height: 32px;
-  --introduction-margin-bottom: .5em;
-  --introduction-margin-top: 1em;
+  --introduction-letter-spacing: -2%;
+  --introduction-line-height: 30px;
+  --introduction-margin-bottom: 10px;
+  --introduction-margin-top: 0;
+
+  @include portrait {
+    --introduction-line-height: 55px;
+    --introduction-font-size: 46px;
+    --introduction-margin-bottom: 20px;
+  }
 }

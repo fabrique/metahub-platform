@@ -17,13 +17,7 @@
   }
 
   p {
-    font-size: 22px;
-    margin: 0 0 10px;
-
-    @include landscape {
-      font-size: 46px;
-      margin: 0 0 20px;
-    }
+    @include typography(introduction, false, true, false);
   }
 }
 
