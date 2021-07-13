@@ -1,4 +1,4 @@
-export default function TitleTween (element, start = 1, end = 2) {
+export default function TitleTween (element, wrapper, start = 1, end = 2) {
   if (!element) {
     return
   }
@@ -12,7 +12,9 @@ export default function TitleTween (element, start = 1, end = 2) {
       {
         scaleY: end,
         scrollTrigger: {
-          trigger: element.parentNode, scrub: 0.15
+          end: 'bottom bottom',
+          trigger: wrapper,
+          scrub: 0
         },
         ease: 'linear'
       }

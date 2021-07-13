@@ -5,8 +5,9 @@ import TitleTween from '../../../assets/scripts/modules/title-tween'
 class RelevantCardsComponent extends Component {
   init () {
     const title = this.element.querySelector('.js-relevant__title')
+    const wrapper = '.js-relevant-cards'
 
-    this.tween = new TitleTween(title, 1, 2)
+    this.tween = new TitleTween(title, wrapper, 2, 1)
   }
 }
 
