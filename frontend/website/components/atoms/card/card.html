@@ -21,6 +21,12 @@
       class="{{ component }}__inner"
     >
       <span class="{{ component }}__picture-wrapper">
+
+        {% if picture.images and picture.images == 'placeholders' %}
+          {# Image ratio: free  #}
+          {{ object_replace_value(picture, 'images', 'placeholders', generate_placeholders({ mobile: '530x353', portrait: '530x353', landscape: '266x177', notebook: '394x262', desktop: '494x329' })) }}
+        {% endif %}
+
         {{ atom_picture.regular(
           images = picture.images,
           fits = picture.fits,
