@@ -2,9 +2,9 @@
 {% import 'components/atoms/link/link.html' as atom_link %}
 
 {% macro story(cards = [], title = '', classes = '') %}
-  <div class="relevant-stories {{ classes }}">
+  <div class="js-relevant-cards relevant-stories {{ classes }}">
     <div class="relevant-stories__grid">
-      <h2 class="relevant-stories__title">{{ title }}</h2>
+      <h2 class="js-relevant__title relevant-stories__title">{{ title }}</h2>
     </div>
     <div class="relevant-stories__grid">
       {% for card in cards %}
@@ -25,9 +25,9 @@
 {% endmacro %}
 
 {% macro object(cards = [], title = '', classes = '') %}
-  <div class="relevant-objects {{ classes }}">
+  <div class="js-relevant-cards relevant-objects {{ classes }}">
     <div class="relevant-objects__grid">
-      <h2 class="relevant-objects__title">
+      <h2 class="js-relevant__title relevant-objects__title">
         <span class="relevant-objects__title--gradient">{{ title }}</span>
       </h2>
     </div>
@@ -51,10 +51,10 @@
 
 
 {% macro news(cards = [], title = '', classes = '', link = {}) %}
-  <div class="relevant-news {{ classes }}">
+  <div class="js-relevant-cards relevant-news {{ classes }}">
     <div>
       <div class="relevant-news__grid">
-        <h2 class="relevant-news__title">
+        <h2 class="js-relevant__title relevant-news__title">
           <span class="relevant-objects__title--gradient">{{ title }}</span>
         </h2>
       </div>

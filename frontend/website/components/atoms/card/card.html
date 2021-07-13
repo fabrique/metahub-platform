@@ -125,7 +125,7 @@
     >
       <span class="{{ component }}__picture-wrapper">
         {% if picture.images and picture.images == 'placeholders' %}
-          {# Image ratio: free (landscape 3:2 preferred) #}
+          {# Image ratio: landscape (landscape 3:2 ) #}
           {{ object_replace_value(picture, 'images', 'placeholders', generate_placeholders({ mobile: '530x353', portrait: '530x353', landscape: '266x177', notebook: '394x262', desktop: '494x329' })) }}
         {% endif %}
 

@@ -5,7 +5,7 @@ export default function AnimateSection (element) {
 
   const initAnimateSection = () => {
     const sections = document.querySelectorAll('.js-animate-section')
-
+    console.log('TEST')
     sections.forEach(section => {
       const inner = section.querySelector('.js-animate-section__inner')
       const outer = section.querySelector('.js-animate-section__outer')

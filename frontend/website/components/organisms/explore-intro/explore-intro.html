@@ -9,9 +9,9 @@
   main_filters = {}
 ) %}
   {% set component = 'explore-intro' %}
-  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }} js-{{ component }}">
     <div class="{{ component }}__grid">
-      <h1 class="{{ component }}__title">{{ title }}</h1>
+      <h1 class="{{ component }}__title js-{{ component }}__title">{{ title }}</h1>
       <form class="{{ component }}__search-wrapper">
         <input class="{{ component }}__search-input" type="text" placeholder="Search here" />
         <div class="{{ component }}__search-button-wrapper">
