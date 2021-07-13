@@ -33,7 +33,7 @@ $object-spacing: 24px;
     bottom: -1px;
     content: '';
     height: 170px;
-    left: 0;
+    left: $object-spacing;
     position: absolute;
     right: 0;
   }
