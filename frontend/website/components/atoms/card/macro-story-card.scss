@@ -3,7 +3,7 @@ $story-spacing: 15px;
 .card__story {
   @include setThemeColorsByClass;
 
-  background: linear-gradient(to top, var(--theme-color) 80%, transparent 80%);
+  background: linear-gradient(to top, var(--theme-color) 80%, rgba(255, 255, 255, .001) 80%);
   transition: filter var(--transition-speed);
 
   &:hover {

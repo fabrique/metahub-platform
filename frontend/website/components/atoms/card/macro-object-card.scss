@@ -29,7 +29,7 @@ $object-spacing: 24px;
   position: relative;
 
   &::after {
-    background-image: linear-gradient(transparent, $color-white);
+    background-image: linear-gradient(rgba(255, 255, 255, .001), $color-white);
     bottom: -.5px;
     content: '';
     height: 170px;
