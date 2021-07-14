@@ -1,9 +1,9 @@
 {% macro regular(title = '', text = '', date = '', author = '') %}
-  <div class="hero-text">
+  <div class="js-hero-text hero-text">
     <div class="hero-text__grid">
       <div class="hero-text__inner">
         {% if title %}
-          <h1>{{ title }}</h1>
+          <h1 class="js-hero-text__title">{{ title }}</h1>
         {% endif %}
 
         {% if text %}

@@ -7,7 +7,13 @@ class RelevantCardsComponent extends Component {
     const title = this.element.querySelector('.js-relevant__title')
     const wrapper = '.js-relevant-cards'
 
-    this.tween = new TitleTween(title, wrapper, 2, 1)
+    this.tween = new TitleTween({
+      element: title,
+      wrapper: wrapper,
+      start: 2,
+      end: 1,
+      endTrigger: 'bottom bottom'
+    })
   }
 }
 
