@@ -9,6 +9,7 @@
   --introduction-line-height: 30px;
   --introduction-margin-bottom: 10px;
   --introduction-margin-top: 0;
+  --introduction-hyphens: auto;
 
   @include portrait {
     --introduction-line-height: 55px;
