@@ -41,6 +41,7 @@ $story-spacing: 15px;
   margin: 0 $story-spacing;
   overflow: hidden;
   transition: var(--transition-speed);
+  width: calc(100% - (#{$story-spacing} * 2));
 
   @include landscape {
     margin: 0 $story-spacing  20px $story-spacing;
@@ -49,6 +50,10 @@ $story-spacing: 15px;
 
 .card__story__picture {
   transition: var(--transition-speed);
+
+  img {
+    width: 100%;
+  }
 }
 
 .card__story__content-wrapper {
