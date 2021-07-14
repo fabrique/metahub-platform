@@ -30,12 +30,12 @@ $object-spacing: 24px;
 
   &::after {
     background-image: linear-gradient(transparent, $color-white);
-    bottom: -1px;
+    bottom: -.5px;
     content: '';
     height: 170px;
     left: $object-spacing;
     position: absolute;
-    right: 0;
+    right: -.5px;
   }
 }
 

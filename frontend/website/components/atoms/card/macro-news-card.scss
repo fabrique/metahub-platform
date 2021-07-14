@@ -24,12 +24,12 @@
     --gradient-height: 42px;
 
     background-image: linear-gradient(transparent, $color-white);
-    bottom: 0;
+    bottom: -.5px;
     content: '';
     height: var(--gradient-height);
-    left: 0;
+    left: -.5px;
     position: absolute;
-    right: 0;
+    right: -.5px;
 
     @include portrait {
       --gradient-height: 56px;
