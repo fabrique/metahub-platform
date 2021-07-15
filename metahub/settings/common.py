@@ -102,6 +102,7 @@ LOCAL_APPS = (
     'metahub.news',
     'metahub.overviews',
     'metahub.authors',
+    'metahub.locations',
 
     # custom apps go here
 )
