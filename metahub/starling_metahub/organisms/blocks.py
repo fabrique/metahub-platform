@@ -306,5 +306,5 @@ class OrganismHomeFeaturedStoryBlock(AdapterStructBlock):
         })
 
     class Meta:
-        component = 'organisms.highlighted-card.temporarybackend'
+        component = 'organisms.highlighted-card.regular'
         interface_class = OrganismFeaturedCardLinkToAllRegular
