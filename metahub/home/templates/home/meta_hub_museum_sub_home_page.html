@@ -1,0 +1,21 @@
+{% extends 'core/base_page.html' %}
+
+{% load core_tags menu_tags wagtailcore_tags wagtailimages_tags starling_tags %}
+
+{% block bodyclass %}{% endblock %}
+
+{% block navigation_header %}
+    {% get_menu_header_component as menu %}
+    {% include_component 'structures.header.regular' menu_items=menu.menu_items logo_href=menu.logo_href has_logo=false %}
+{% endblock navigation_header %}
+
+{%  block page_header %}
+
+
+{%  endblock %}
+
+
+{% block content %}
+
+
+{% endblock %}

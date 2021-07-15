@@ -53,3 +53,9 @@ class MetaHubHomePage(RoutablePageMixin, MetaHubBasePage):
     def get_page_related_items(self):
         return get_all_news_and_events()[:3]
 
+
+class MetaHubMuseumSubHomePage(MetaHubBasePage):
+    """ This class represents a museum that participates in the MetaHub.
+    Objects and stories are placed under a specific museum. """
+
+    parent_page_types = ['home.MetaHubHomePage']

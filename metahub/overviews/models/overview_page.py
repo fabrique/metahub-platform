@@ -4,7 +4,7 @@ from metahub.core.models import MetaHubBasePage
 
 
 class MetaHubOverviewPage(MetaHubBasePage):
-    parent_page_types = ['home.MetahubHomePage']
+    parent_page_types = ['home.MetaHubMuseumSubHomePage']
 
     @property
     def cards(self):
