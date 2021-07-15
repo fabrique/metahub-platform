@@ -33,6 +33,14 @@ class OrganismContentDoubleImageRichTextRegular(NamedTuple):
     id : str = ''
     figure: AtomFigureRegular = AtomFigureRegular()
     text: str = ''
+
+    def get_context_container(self):
+        return 'text'
+
+
+class OrganismContentDoubleLinkRichTextRegular(NamedTuple):
+    id: str = ''
+    text: str = ''
     link: AtomLinkRegular = AtomLinkRegular()
 
     def get_context_container(self):

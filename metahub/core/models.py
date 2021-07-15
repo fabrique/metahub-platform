@@ -35,7 +35,7 @@ class MetaHubBasePage(PagePromoMixin, Page):
         caption_count = 1
 
         for child in self.content:
-            if child.block.name == 'double_picture_richtext':
+            if child.block.name == 'two_column_picture_richtext':
                 if child.value:
                     caption = child.value['figure']['caption']
 

@@ -112,7 +112,6 @@ class OrganismContentDoubleImageRichTextRegularBlock(AdapterStructBlock):
     """
     figure = AtomFigureRegularBlock()
     text = blocks.RichTextBlock(required=True)
-    link = OptionalBlock(AtomLinkRegularBlock())
 
     def get_word_count(self, value):
         return count_words_html(value['text'])
@@ -121,6 +120,24 @@ class OrganismContentDoubleImageRichTextRegularBlock(AdapterStructBlock):
         defaults = {}
         component = 'organisms.content-and-image.regular'
         interface_class = OrganismContentDoubleImageRichTextRegular
+
+
+class OrganismContentDoubleLinkRichTextRegularBlock(AdapterStructBlock):
+    """
+    Content Component
+    Renders a richtext on the left and a picture with caption on the right.
+    Optionally includes a link as well.
+    """
+    text = blocks.RichTextBlock(required=True)
+    link = OptionalBlock(AtomLinkRegularBlock())
+
+    def get_word_count(self, value):
+        return count_words_html(value['text'])
+
+    class Meta:
+        defaults = {}
+        component = 'organisms.content-and-link.regular'
+        interface_class = OrganismContentDoubleLinkRichTextRegular
 
 
 class OrganismContentHeroImageTitleBlock(AdapterStructBlock):
