@@ -9,7 +9,7 @@
 }
 
 .relevant-news__title {
-  @include typography(heading-3);
+  @include typography(heading-2);
 
   color: var(--theme-color);
   grid-column: auto / span 12;
@@ -17,7 +17,7 @@
 }
 
 .relevant-news__title--gradient {
-  background-image: linear-gradient($color-white 40%, transparent);
+  background-image: linear-gradient($color-white 40%, rgba(255, 255, 255, .001));
   display: inline-block;
   min-width: 50vw;
   padding: 6px 0;

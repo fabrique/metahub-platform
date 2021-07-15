@@ -94,7 +94,7 @@
   }
 
   &::before {
-    background-image: linear-gradient(transparentize($color-black, .5), transparent);
+    background-image: linear-gradient(transparentize($color-black, .5), rgba(255, 255, 255, .001));
     content: '';
     height: 50px;
     left: 0;

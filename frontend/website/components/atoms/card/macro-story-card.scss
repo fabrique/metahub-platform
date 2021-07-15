@@ -3,11 +3,19 @@ $story-spacing: 15px;
 .card__story {
   @include setThemeColorsByClass;
 
-  background: linear-gradient(to top, var(--theme-color) 80%, transparent 80%);
-  transition: filter .2s;
+  background: linear-gradient(to top, var(--theme-color) 80%, rgba(255, 255, 255, .001) 80%);
+  transition: filter var(--transition-speed);
 
   &:hover {
     filter: brightness(105%);
+
+    .card__story__picture-wrapper {
+      transform: scale(.95);
+    }
+
+    .card__story__picture {
+      transform: scale(1.09);
+    }
   }
 }
 
@@ -20,20 +28,31 @@ $story-spacing: 15px;
 }
 
 .card__story__label {
+  --label-margin-bottom: 10px;
+
+  @include typography(label, false, true, false);
+
   color: $color-white;
   display: block;
-  font-family: $montserrat-font-stack;
-  font-size: 18px;
-  line-height: 22px;
-  padding-bottom: 10px;
-  text-transform: uppercase;
 }
 
-.card__story__picture {
+.card__story__picture-wrapper {
+  display: inline-block;
   margin: 0 $story-spacing;
+  overflow: hidden;
+  transition: var(--transition-speed);
+  width: calc(100% - (#{$story-spacing} * 2));
 
   @include landscape {
     margin: 0 $story-spacing  20px $story-spacing;
+  }
+}
+
+.card__story__picture {
+  transition: var(--transition-speed);
+
+  img {
+    width: 100%;
   }
 }
 

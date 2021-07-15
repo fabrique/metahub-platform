@@ -7,6 +7,12 @@
     <div class="images__grid">
       {% for figure in figures %}
         <div class="image">
+
+          {% if figure.picture.images and figure.picture.images == 'placeholders' %}
+            {# Image ratio: free  #}
+            {{ object_replace_value(figure.picture, 'images', 'placeholders', generate_placeholders({ mobile: '530x353', portrait: '530x353', landscape: '266x177', notebook: '394x262', desktop: '494x329' })) }}
+          {% endif %}
+
           {{ atom_figure.regular(picture = figure.picture, caption = figure.caption, caption_number = figure.caption_number) }}
         </div>
       {% endfor %}

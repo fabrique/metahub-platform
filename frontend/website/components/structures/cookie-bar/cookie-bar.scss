@@ -8,7 +8,7 @@
 
   .cookie-bar__bar-wrapper,
   .cookie-bar__categories {
-    grid-column: var(--layout-full);
+    //
   }
 
   .cookie-bar__bar,
@@ -77,13 +77,12 @@
   }
 
   .cookie-bar__category {
-    grid-column: var(--layout-half);
     padding-bottom: 20px;
   }
 
   @include mobile-only {
     .cookie-bar__category {
-      grid-column: var(--layout-full);
+      //
     }
 
     .cookie-bar__bar-wrapper {

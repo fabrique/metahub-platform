@@ -26,7 +26,8 @@
 }
 
 .explore-intro__search-input {
-  border-bottom: 2px solid var(--theme-color);
+  border: 2px solid transparent;
+  border-bottom-color: var(--theme-color);
   box-sizing: border-box;
   grid-column: auto / span 8;
   padding: 5px 0;
@@ -36,6 +37,11 @@
 
   &::placeholder {
     @include search-input-text-styling;
+  }
+
+  &:focus {
+    border: 2px solid var(--theme-color);
+    outline: none;
   }
 
   @include landscape {
@@ -69,20 +75,15 @@
 }
 
 .explore-intro__filter {
-  font-size: 22px;
-  line-height: 30px;
+  @include typography(introduction);
+
+  color: var(--theme-color);
   margin-right: 10px;
-
-  @include landscape {
-    font-size: 46px;
-    line-height: 55px;
-  }
-
-  &:not(.explore-intro__filter--active) {
-    opacity: .5;
-  }
 }
 
-.explore-intro__filter--active {
-  color: var(--theme-color);
+.explore-intro__filter--active,
+.explore-intro__filter:hover {
+  .link__span {
+    border-bottom: 2px solid var(--theme-color);
+  }
 }

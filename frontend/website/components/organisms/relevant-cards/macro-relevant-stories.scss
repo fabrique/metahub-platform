@@ -3,7 +3,7 @@
 }
 
 .relevant-stories__title {
-  @include typography(heading-3);
+  @include typography(heading-2);
 
   color: var(--theme-color);
   grid-column: auto / span 12;
@@ -53,7 +53,7 @@
     }
   }
 
-  .story__content-wrapper {
+  .card__story__content-wrapper {
     --grid-columns: 7;
 
     @include landscape {

@@ -102,6 +102,7 @@
     --margin-lg: 60px;
   }
 
+  --transition-speed: .2s;
   // overlay settings
   --repeating-width: calc(100% / var(--grid-columns));
   --column-width: calc((100% / var(--grid-columns)) - var(--grid-gutter));

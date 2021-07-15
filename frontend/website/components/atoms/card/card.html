@@ -20,17 +20,24 @@
       aria-label="{{ aria_label }}"
       class="{{ component }}__inner"
     >
-      {{ atom_picture.regular(
-        images = picture.images,
-        fits = picture.fits,
-        classes = component + '__picture',
-        positions = picture.positions,
-        width = picture.width,
-        height = picture.height,
-        loading = picture.loading,
-        alt = picture.alt
-      ) }}
+      <span class="{{ component }}__picture-wrapper">
 
+        {% if picture.images and picture.images == 'placeholders' %}
+          {# Image ratio: free  #}
+          {{ object_replace_value(picture, 'images', 'placeholders', generate_placeholders({ mobile: '530x353', portrait: '530x353', landscape: '266x177', notebook: '394x262', desktop: '494x329' })) }}
+        {% endif %}
+
+        {{ atom_picture.regular(
+          images = picture.images,
+          fits = picture.fits,
+          classes = component + '__picture',
+          positions = picture.positions,
+          width = picture.width,
+          height = picture.height,
+          loading = picture.loading,
+          alt = picture.alt
+        ) }}
+      </span>
       <p class="{{ component }}__content-wrapper">
         <span class="{{ component }}__content-wrapper__inner">
           <span class="{{ component }}__label">{{ label }}</span>
@@ -63,16 +70,23 @@
       class="{{ component }}__inner"
     >
       <span class="{{ component }}__picture-wrapper">
-        {{ atom_picture.regular(
-          images = picture.images,
-          fits = picture.fits,
-          classes = component + '__picture',
-          positions = picture.positions,
-          width = picture.width,
-          height = picture.height,
-          loading = picture.loading,
-          alt = picture.alt
-        ) }}
+        <span class="{{ component }}__picture-wrapper__inner">
+          {% if picture.images and picture.images == 'placeholders' %}
+            {# Image ratio: free (portrait 2:3 preferred) #}
+            {{ object_replace_value(picture, 'images', 'placeholders', generate_placeholders({ mobile: '530x943', portrait: '530x795', landscape: '266x399', notebook: '394x591', desktop: '494x741' })) }}
+          {% endif %}
+
+          {{ atom_picture.regular(
+            images = picture.images,
+            fits = picture.fits,
+            classes = component + '__picture',
+            positions = picture.positions,
+            width = picture.width,
+            height = picture.height,
+            loading = picture.loading,
+            alt = picture.alt
+          ) }}
+        </span>
       </span>
       <p class="{{ component }}__content-wrapper">
         <span class="{{ component }}__content-wrapper__inner">
@@ -110,6 +124,11 @@
       class="{{ component }}__inner"
     >
       <span class="{{ component }}__picture-wrapper">
+        {% if picture.images and picture.images == 'placeholders' %}
+          {# Image ratio: landscape (landscape 3:2 ) #}
+          {{ object_replace_value(picture, 'images', 'placeholders', generate_placeholders({ mobile: '530x353', portrait: '530x353', landscape: '266x177', notebook: '394x262', desktop: '494x329' })) }}
+        {% endif %}
+
         {{ atom_picture.regular(
           images = picture.images,
           fits = picture.fits,

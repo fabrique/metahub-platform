@@ -2,8 +2,13 @@ $object-spacing: 24px;
 
 .card__object {
   &:hover {
+    .card__object__picture-wrapper__inner {
+      transform: scale(.95);
+    }
+
     .card__object__picture {
       filter: brightness(100%);
+      transform: scale(1.09);
     }
   }
 }
@@ -13,19 +18,10 @@ $object-spacing: 24px;
 }
 
 .card__object__label {
+  @include typography(label, false, true, false);
+
   color: $color-black;
   display: block;
-  font-family: $montserrat-font-stack;
-  font-size: 16px;
-  font-weight: #{get-montserrat-weight(normal)};
-  line-height: 18px;
-  text-transform: uppercase;
-
-  @include landscape {
-    font-size: 18px;
-    line-height: 22px;
-    padding-bottom: 10px;
-  }
 }
 
 .card__object__picture-wrapper {
@@ -33,20 +29,27 @@ $object-spacing: 24px;
   position: relative;
 
   &::after {
-    background-image: linear-gradient(transparent, $color-white);
-    bottom: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, .001), $color-white);
+    bottom: -.5px;
     content: '';
-    height: 100px;
-    left: 0;
+    height: 170px;
+    left: $object-spacing;
     position: absolute;
-    right: 0;
+    right: -.5px;
   }
+}
+
+.card__object__picture-wrapper__inner {
+  display: inline-block;
+  margin-left: $object-spacing;
+  overflow: hidden;
+  position: relative;
+  transition: var(--transition-speed);
 }
 
 .card__object__picture {
   filter: brightness(105%);
-  margin-left: $object-spacing;
-  transition: .2s;
+  transition: var(--transition-speed);
 }
 
 .card__object__content-wrapper {
@@ -56,7 +59,7 @@ $object-spacing: 24px;
   z-index: 2;
 
   @include landscape {
-    margin-top: -58px;
+    margin-top: -53px;
   }
 }
 

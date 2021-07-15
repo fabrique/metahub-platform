@@ -15,6 +15,12 @@
       <h1 class="{{ component }}__title">{{ title }}</h1>
       <div class="{{ component }}__post">
         <h3 class="{{ component }}__post__title">{{ card.title }}</h3>
+
+        {% if card.picture.images and card.picture.images == 'placeholders' %}
+          {# Image ratio: free  #}
+          {{ object_replace_value(card.picture, 'images', 'placeholders', generate_placeholders({ mobile: '530x353', portrait: '530x353', landscape: '266x177', notebook: '394x262', desktop: '494x329' })) }}
+        {% endif %}
+
         {{ atom_picture.regular(
           images = card.picture.images,
           fits = card.picture.fits,
