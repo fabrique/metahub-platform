@@ -10,6 +10,7 @@ from wagtail.core.utils import resolve_model_string
 
 from metahub.collection.models import MetaHubObjectPage
 from metahub.core.models import MetaHubBasePage
+from metahub.locations.models import MetaHubLocationPage
 from metahub.starling_metahub.organisms.interfaces import OrganismExploreSearchHeader, OrganismSearchCardGridRegular
 from metahub.starling_metahub.utils import create_paginator_component
 from metahub.stories.models import MetaHubStoryPage
@@ -29,6 +30,8 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
         all_active = not applied_filters.get('type') and not applied_filters.get('story')
         story_active = applied_filters.get('type') == 'story'
         objects_active = applied_filters.get('type') == 'object'
+        location_active = applied_filters.get('type') == 'location'
+
         active_class = 'active'
 
         return OrganismExploreSearchHeader(
@@ -48,15 +51,20 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
                     'title' : 'Stories',
                     'querystring' : '?id_type=story',
                     'active' : active_class if story_active else ''
-                }
+                },
+                'locations' : {
+                    'title' : 'Locations',
+                    'querystring' : '?id_type=location',
+                    'active' : active_class if location_active else ''
+                },
             }
         )
 
-    def get_all_objects_and_stories_queryset(self):
-        model_types = [*map(resolve_model_string, ['stories.MetaHubStoryPage', 'collection.MetaHubObjectPage'])]
+    def get_all_entities_in_collection_qs(self):
+        model_types = [*map(resolve_model_string, ['stories.MetaHubStoryPage', 'collection.MetaHubObjectPage', 'locations.MetaHubLocationPage'])]
         valid_types = reduce(Q.__or__, map(Page.objects.type_q, model_types))
-        objects_and_stories = Page.objects.filter(valid_types).specific().live()
-        return objects_and_stories
+        all_entities = Page.objects.filter(valid_types).specific().live()
+        return all_entities
 
     def get_active_filters(self, request):
         """
@@ -84,9 +92,11 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
     def get_search_results(self, filters):
         if filters.get('type') == 'object':
             return [p.get_card_representation() for p in MetaHubObjectPage.objects.live()]
-        if filters.get('type') == 'story':
+        elif filters.get('type') == 'story':
             return [p.get_card_representation() for p in MetaHubStoryPage.objects.live()]
-        return [p.get_card_representation() for p in self.get_all_objects_and_stories_queryset()]
+        elif filters.get('type') == 'location':
+            return [p.get_card_representation() for p in MetaHubLocationPage.objects.live()]
+        return [p.get_card_representation() for p in self.get_all_entities_in_collection_qs()]
 
     def create_paginator_component(self, paginator, paginator_page, querystring_extra):
         return create_paginator_component(paginator, paginator_page, querystring_extra=querystring_extra)

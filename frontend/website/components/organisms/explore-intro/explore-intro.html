@@ -30,7 +30,6 @@
         ) }}
 
 
-
         {{ atom_link.regular(
           classes =  component + '__filter ' + component + '__filter--' + main_filters.objects.active,
           href = main_filters.objects.querystring,
@@ -41,6 +40,12 @@
           classes =  component + '__filter ' + component + '__filter--' + main_filters.stories.active,
           href = main_filters.stories.querystring,
           title = main_filters.stories.title
+        ) }}
+
+        {{ atom_link.regular(
+          classes =  component + '__filter ' + component + '__filter--' + main_filters.locations.active,
+          href = main_filters.locations.querystring,
+          title = main_filters.locations.title
         ) }}
       </div>
     </div>
