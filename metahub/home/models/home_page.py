@@ -1,4 +1,4 @@
-
+from django.shortcuts import redirect
 from wagtail.admin.edit_handlers import StreamFieldPanel, FieldPanel
 from wagtail.contrib.routable_page.models import RoutablePageMixin
 from wagtail.core.blocks import StreamBlock
@@ -59,3 +59,6 @@ class MetaHubMuseumSubHomePage(MetaHubBasePage):
     Objects and stories are placed under a specific museum. """
 
     parent_page_types = ['home.MetaHubHomePage']
+
+    def serve(self, request, *args, **kwargs):
+        return redirect(self.get_site().root_url)
