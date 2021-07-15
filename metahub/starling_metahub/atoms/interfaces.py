@@ -25,8 +25,10 @@ class AtomDropdownFilterRegular(NamedTuple):
 
 
 class AtomVideoEmbedRegular(NamedTuple):
+    id: str = ''
     classes: str = ''
     video_id: str = ''
+    caption_number: str = ''
     video_type: str = 'youtube'
     href: str = '#'
     autoplay: bool = False

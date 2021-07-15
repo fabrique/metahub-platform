@@ -100,7 +100,7 @@ class OrganismContentSingleVideoRegularBlock(AdapterStructBlock):
         defaults = {
             'id' : '',
         }
-        component = 'organisms.article-video.regular'
+        component = 'organisms.article-video.temporarybackend'
         interface_class = OrganismContentSingleVideoRegular
 
 

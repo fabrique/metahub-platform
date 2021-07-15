@@ -31,3 +31,30 @@
     </div>
   </div>
 {% endmacro %}
+
+
+{% macro temporarybackend(
+  id = '',
+  classes = '',
+  caption = '',
+  caption_number = '',
+  video={}
+) %}
+  {% set component = 'article-video' %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }}">
+    <div class="{{ component }}__grid">
+      {{ atoms_video_embed.regular(
+        classes =  component + '__figure',
+        href = video.href,
+        video_id = video.video_id,
+        video_type = video.video_type,
+        picture = video.picture,
+        autoplay = video.autoplay,
+        button_play_title = videobutton_play_title
+      ) }}
+      <div class="{{ component }}__caption-wrapper">
+        {{ atom_caption.regular(caption = caption, caption_number = caption_number) }}
+      </div>
+    </div>
+  </div>
+{% endmacro %}
