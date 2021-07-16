@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 from django.conf import settings
 
@@ -196,16 +198,10 @@ class GlobalSettings(BaseSetting):
         [('footer', StructureFooterBarSimpleBlock())]
     )
 
-    def get_contextual_footer(self):
+    def get_footer(self):
         if self.footer_content_simple:
             component = self.footer_content_simple[0].block.build_component(self.footer_content_simple[0].value)
-            component = component._replace(context=True)
-            return component
-
-    def get_content_page_footer(self):
-        if self.footer_content_simple:
-            component = self.footer_content_simple[0].block.build_component(self.footer_content_simple[0].value)
-            component = component._replace(content_page=True)
+            component = component._replace(year=str(datetime.now().year))
             return component
 
     panels = [

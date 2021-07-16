@@ -13,9 +13,8 @@ class StructureMenuBarRegular(NamedTuple):
 
 
 class StructureFooterBarSimple(NamedTuple):
-    context: bool = False #whether context ribbon is present on the page
-    content_page: bool = False
-    links: Iterable[AtomLinkRegular] = ()
+    year: str = ''
+    footer_links: Iterable[AtomLinkRegular] = ()
 
 
 class StructureMenuHeaderRegular(NamedTuple):
