@@ -265,7 +265,7 @@ class OrganismActualitiesLandingHeaderRegularBlock(AdapterStructBlock):
     """
     featured_item = HelperRelatedPageBlock()
     excerpt = blocks.TextBlock()
-    link_label = blocks.CharBlock(default='Read more', max_length=200)
+    link_label = blocks.CharBlock(default=_('Read more'), max_length=200)
 
     def build_extra(self, value, build_args, parent_context=None):
         page = (parent_context or {}).get('page')
@@ -306,7 +306,7 @@ class OrganismHomeFeaturedStoryBlock(AdapterStructBlock):
     title = blocks.CharBlock(max_length=100)
     featured_item = HelperRelatedStoryBlock()
     excerpt = blocks.TextBlock()
-    link_label = blocks.CharBlock(default='Read more', max_length=200)
+    link_label = blocks.CharBlock(default=_('Read more'), max_length=200)
     link = AtomLinkRegularBlock()
 
     def build_extra(self, value, build_args, parent_context=None):
