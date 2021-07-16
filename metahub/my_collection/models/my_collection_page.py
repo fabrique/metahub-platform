@@ -22,7 +22,7 @@ class MetaHubMyCollectionPage(RoutablePageMixin, MetaHubBasePage):
     Favourites are stored on the user's device through cookies, not in our DB.
     """
 
-    # parent_page_types = []
+    parent_page_types = []
     #
     # allow_download = models.BooleanField(default=True)
     #
