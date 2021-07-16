@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
 from wagtail.core.fields import StreamField
 from wagtailmodelchooser.blocks import ModelChooserBlock
@@ -58,7 +60,7 @@ class MetaHubStoryPage(MetaHubBasePage):
         return MetaHubStoryPage.objects.live().exclude(pk=self.pk)[:3]
 
     def get_page_label(self):
-        return 'Story'
+        return _('Story')
 
     def get_card_representation(self):
         return MoleculeExploreCardRegular(

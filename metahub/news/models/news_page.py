@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
 from django.utils.timezone import now
 from wagtail.admin.edit_handlers import MultiFieldPanel, StreamFieldPanel, FieldPanel
 from wagtail.core.fields import StreamField
@@ -53,7 +55,7 @@ class MetaHubNewsPage(MetaHubBasePage):
         return MetaHubNewsPage.objects.live().exclude(pk=self.pk)[:3]
 
     def get_page_label(self):
-        return 'News'
+        return _('News')
 
     def get_page_type(self):
         return 'news'

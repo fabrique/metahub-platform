@@ -1,4 +1,4 @@
-from datetime import timedelta
+from django.utils.translation import ugettext_lazy as _
 
 from django.db import models
 from django.utils.timezone import now
@@ -52,7 +52,7 @@ class MetaHubEventPage(MetaHubBasePage):
         return MetaHubEventPage.objects.live().exclude(pk=self.pk)[:3]
 
     def get_page_label(self):
-        return 'Event'
+        return _('Event')
 
     def get_page_type(self):
         return 'event'

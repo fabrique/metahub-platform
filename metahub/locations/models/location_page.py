@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
 from wagtail.core.fields import StreamField
 from wagtailmodelchooser.blocks import ModelChooserBlock
@@ -64,7 +66,7 @@ class MetaHubLocationPage(MetaHubBasePage):
         return MetaHubLocationPage.objects.live().exclude(pk=self.pk)[:3]
 
     def get_page_label(self):
-        return 'Location'
+        return _('Location')
 
     def get_page_type(self):
         return 'story' # uses same card renderings

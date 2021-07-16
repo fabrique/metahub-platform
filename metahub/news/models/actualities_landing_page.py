@@ -34,13 +34,11 @@ class MetaHubActualitiesLandingPage(MetaHubBasePage):
     def get_all_news_and_events(self):
         return get_all_news_and_events()
 
-
     def get_actualities_landing_grid_component(self, paginated_list):
         return OrganismCardGridRegular(
             title='Latest',
             cards=[p.get_card_representation() for p in paginated_list]
         )
-
 
     def create_paginator_component(self, paginator, paginator_page):
         return create_paginator_component(paginator, paginator_page)
@@ -49,7 +47,7 @@ class MetaHubActualitiesLandingPage(MetaHubBasePage):
         context = super(MetaHubActualitiesLandingPage, self).get_context(request, *args, **kwargs)
 
         # Obtain and validate page number
-        MAX_ITEMS_PER_PAGE = 6
+        MAX_ITEMS_PER_PAGE = 12
         page_number = request.GET.get('page', 1)
         paginator = Paginator(self.get_all_news_and_events(), request=request, per_page=MAX_ITEMS_PER_PAGE)
 
