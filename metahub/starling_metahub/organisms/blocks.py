@@ -1,3 +1,5 @@
+from django.utils.translation import ugettext_lazy as _
+
 from starling.blocks.atoms.figure import AtomFigureRegularBlock
 from starling.blocks.atoms.link import AtomLinkRegularBlock
 from starling.blocks.atoms.picture import AtomPictureRegularBlock
@@ -22,6 +24,8 @@ class OrganismHeroImageHeaderRegularBlock(AdapterStructBlock):
     picture = AtomPictureRegularBlock(resolution=Resolution(mobile="1920x1080"))
 
     class Meta:
+        label = _("Header image")
+        icon = 'image'
         component = 'organisms.hero-image.regular'
         interface_class = OrganismHeroImageHeaderRegular
 
@@ -35,6 +39,8 @@ class OrganismHeroTextHeaderRegularBlock(AdapterStructBlock):
     text = blocks.TextBlock(max_length=2000)
 
     class Meta:
+        icon = 'title'
+        label = _("Header text")
         component = 'organisms.hero-text.regular'
         interface_class = OrganismHeroTextHeaderRegular
 
@@ -63,9 +69,8 @@ class OrganismContentSingleRichTextRegularBlock(AdapterStructBlock):
         return count_words_html(value['text'])
 
     class Meta:
-        defaults = {
-            'id' : '',
-        }
+        label = _("Text")
+        icon = 'pilcrow'
         component = 'organisms.article-content.regular'
         interface_class = OrganismContentSingleRichTextRegular
 
@@ -80,9 +85,8 @@ class OrganismContentSingleImageRegularBlock(AdapterStructBlock):
     ])
 
     class Meta:
-        defaults = {
-            'id': '',
-        }
+        label = _("Photo")
+        icon = 'image'
         component = 'organisms.article-photo.regular'
         interface_class = OrganismContentSingleImageRegular
 
@@ -97,9 +101,8 @@ class OrganismContentSingleVideoRegularBlock(AdapterStructBlock):
     caption = blocks.CharBlock(required=False)
 
     class Meta:
-        defaults = {
-            'id' : '',
-        }
+        label = _("Video")
+        icon = 'media'
         component = 'organisms.article-video.temporarybackend'
         interface_class = OrganismContentSingleVideoRegular
 
@@ -117,6 +120,8 @@ class OrganismContentDoubleImageRichTextRegularBlock(AdapterStructBlock):
         return count_words_html(value['text'])
 
     class Meta:
+        label = _("Text and image")
+        icon = 'image'
         defaults = {}
         component = 'organisms.content-and-image.regular'
         interface_class = OrganismContentDoubleImageRichTextRegular
@@ -135,7 +140,8 @@ class OrganismContentDoubleLinkRichTextRegularBlock(AdapterStructBlock):
         return count_words_html(value['text'])
 
     class Meta:
-        defaults = {}
+        label = _("Text and link")
+        icon = 'link'
         component = 'organisms.content-and-link.regular'
         interface_class = OrganismContentDoubleLinkRichTextRegular
 
@@ -150,7 +156,8 @@ class OrganismContentHeroImageTitleBlock(AdapterStructBlock):
     picture = AtomPictureRegularBlock()
 
     class Meta:
-        defaults = {}
+        label = _("Hero highlight")
+        icon = 'pick'
         component = 'organisms.hero-image-title.picture'
         interface_class = OrganismContentHeroImageTitle
 
@@ -163,7 +170,8 @@ class OrganismContentPhotoMosaicBlock(AdapterStructBlock):
     figures = ListBlock(AtomFigureRegularBlock())
 
     class Meta:
-        defaults = {}
+        label = _("Photo mosaic")
+        icon = 'image'
         component = 'organisms.images.regular'
         interface_class = OrganismContentPhotoMosaic
 
@@ -174,6 +182,8 @@ class OrganismArticleCookieBlockRegular(AdapterStructBlock):
     text = blocks.TextBlock()
 
     class Meta:
+        label = _("Cookie settings")
+        icon = 'settings'
         component = 'organisms.article-cookies.regular'
         interface_class = OrganismArticleCookieRegular
 
@@ -188,7 +198,7 @@ class OrganismArticleCuratedItemsRegularBlock(AdapterStructBlock):
     items = HelperRelatedPagesBlock()
 
     class Meta:
-        label = "Gerelelateerde items (handgekozen)"
+        label = _("Related items (curated)")
         icon = 'arrows-up-down'
         defaults = {}
         component = 'organisms.relevant-cards.story'
@@ -229,7 +239,7 @@ class OrganismArticleRelatedItemsRegularBlock(AdapterStructBlock):
         })
 
     class Meta:
-        label = "Gerelelateerde items (automatisch)"
+        label = _("Related items (automatic)")
         icon = 'arrows-up-down'
         defaults = {}
         component = 'organisms.relevant-cards.story'
@@ -268,6 +278,8 @@ class OrganismActualitiesLandingHeaderRegularBlock(AdapterStructBlock):
         })
 
     class Meta:
+        label = _("Header with featured item")
+        icon = 'title'
         component = 'organisms.news-list-intro.regular'
         interface_class = OrganismFeaturedCardRegular
 
@@ -280,6 +292,8 @@ class OrganismHomeIntroRegularBlock(AdapterStructBlock):
     text = blocks.RichTextBlock(features=['link'])
 
     class Meta:
+        label = _("Home intro")
+        icon = 'form'
         component = 'organisms.home-content.regular'
         interface_class = OrganismHomeIntroRegular
 
@@ -306,5 +320,7 @@ class OrganismHomeFeaturedStoryBlock(AdapterStructBlock):
         })
 
     class Meta:
+        label = _("Highlighted story")
+        icon = 'pick'
         component = 'organisms.highlighted-card.regular'
         interface_class = OrganismFeaturedCardLinkToAllRegular

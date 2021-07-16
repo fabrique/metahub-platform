@@ -113,13 +113,13 @@ class MetaHubBasePage(PagePromoMixin, Page):
 class MetahubImage(Image):
     alt_text = models.CharField(
         'Alt tekst',
-        help_text="Optionele beschrijving van wat er in de afbeelding te zien is.",
+        help_text=_("Optionele beschrijving van wat er in de afbeelding te zien is."),
         max_length=150,
         blank=True)
 
     attribution = models.CharField(
         'Credit',
-        help_text="Artist credit or licensing information, leave blank if not applicable",
+        help_text=_("Artist credit or licensing information, leave blank if not applicable"),
         max_length=4000,
         blank=True
     )
