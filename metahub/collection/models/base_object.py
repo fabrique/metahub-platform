@@ -131,16 +131,12 @@ class BaseCollectionObject(ClusterableModel):
         Mapping method used to create the list of metadata that is shown on the object
         (series) page. Since we only want existing/filled fields we do it like this.
         TODO: see if it can be improved (list comprehension?)
-        TODO: localization support
+        TODO: Douwe update with fields that metahub wants to show
         """
         fields = (
             {
                 'value': self.title,
                 'name': 'Titel'
-            },
-            {
-                'value': self.get_artist(),
-                'name': 'Künstler*in / Hersteller*in'
             },
             {
                 'value': self.datings,
