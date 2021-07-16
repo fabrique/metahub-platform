@@ -32,6 +32,7 @@ class MetaHubObjectPage(MetaHubBasePage):
 
     # Page object
     parent_page_types = ['overviews.MetaHubOverviewPage']
+
     object = models.ForeignKey('collection.BaseCollectionObject', null=True, on_delete=models.SET_NULL, blank=True, related_name='associated_page')
     subtitle = models.CharField(max_length=500, blank=True, default='')
     introduction = models.TextField(max_length=2000, blank=True)
@@ -59,16 +60,6 @@ class MetaHubObjectPage(MetaHubBasePage):
         StreamFieldPanel('related_items')
     ]
 
-    metadata_panels = [
-    ]
-
-    # Override tab interface to show metadata panels
-    # edit_handler = TabbedInterface([
-    #     ObjectList(content_panels, heading='Content'),
-    #     ObjectList(metadata_panels, heading='Object metadata'),
-    #     ObjectList(Page.promote_panels, heading='Promote'),
-    #     ObjectList(Page.settings_panels, heading='Settings', classname="settings"),
-    # ])
 
     def get_object_image(self):
         # todo, this is temp since there are no real objects
@@ -76,7 +67,7 @@ class MetaHubObjectPage(MetaHubBasePage):
 
     def get_object_header_component(self):
         return OrganismObjectHeaderRegular(
-            title="Sample title until objects are linked",
+            title=self.title,
             subtitle=self.get_object_subtitle()
         )
 
