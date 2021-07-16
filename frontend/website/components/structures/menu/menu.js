@@ -3,14 +3,21 @@ import Component from '../../../assets/scripts/modules/component'
 
 export default class MenuBarComponent extends Component {
   init () {
+    const width = 1180
     this.menu = this.element
     this.menuButton = this.element.querySelector('.js-menu-bar__menu-btn')
     this.links = this.element.querySelector('.js-menu-bar__links')
-
+    this.menuBar = this.element.querySelector('.js-menu-bar')
+    // Navigation dialog
     this.menuIsOpen = false
     this.menuButton.addEventListener('click', () => this.toggleMobileMenu())
 
     // Menu breaks on larger resolutions, so force close it.
+
+    if (window.innerWidth < width) {
+      this.menu.ariaLabel = 'Navigation dialog'
+    }
+
     window.addEventListener('resize', () => {
       if (!this.menuIsOpen || this.isTogglingMenu || !this.oldWidth || window.innerWidth === this.oldWidth) {
         this.oldWidth = window.innerWidth
@@ -19,7 +26,7 @@ export default class MenuBarComponent extends Component {
 
       this.oldWidth = window.innerWidth
 
-      if (window.innerWidth < 1180) {
+      if (window.innerWidth < width) {
         return
       }
 
@@ -66,6 +73,6 @@ export default class MenuBarComponent extends Component {
   }
 }
 
-window.addEventListener('init-load', () => document.querySelectorAll('.menu-bar').forEach(element => {
+window.addEventListener('init-load', () => document.querySelectorAll('.js-menu-bar').forEach(element => {
   element.instance = element.instance || new MenuBarComponent(element)
 }))
