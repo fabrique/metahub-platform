@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from modelcluster.contrib.taggit import ClusterTaggableManager
 
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
 from wagtail.core.fields import StreamField
@@ -44,6 +45,8 @@ class MetaHubLocationPage(MetaHubBasePage):
 
     ], blank=True)
 
+    tags = ClusterTaggableManager(through='locations.LocationTag', blank=True)
+
     content_panels = MetaHubBasePage.content_panels + [
         FieldPanel('theme_color'),
         MultiFieldPanel([
@@ -59,7 +62,8 @@ class MetaHubLocationPage(MetaHubBasePage):
             StreamFieldPanel('text_header'),
         ], heading="Header"),
         StreamFieldPanel('content'),
-        StreamFieldPanel('related_items')
+        StreamFieldPanel('related_items'),
+        FieldPanel('tags')
     ]
 
     def get_page_related_items(self):
