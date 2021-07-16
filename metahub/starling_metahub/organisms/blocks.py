@@ -177,13 +177,12 @@ class OrganismContentPhotoMosaicBlock(AdapterStructBlock):
 
 
 class OrganismArticleCookieBlockRegular(AdapterStructBlock):
-
     title = blocks.CharBlock()
     text = blocks.TextBlock()
 
     class Meta:
         label = _("Cookie settings")
-        icon = 'settings'
+        icon = 'cogs'
         component = 'organisms.article-cookies.regular'
         interface_class = OrganismArticleCookieRegular
 
