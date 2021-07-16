@@ -203,6 +203,7 @@ class GlobalSettings(BaseSetting):
             component = self.footer_content_simple[0].block.build_component(self.footer_content_simple[0].value)
             component = component._replace(year=str(datetime.now().year))
             return component
+        return {}
 
     panels = [
         ImageChooserPanel('default_share_image'),

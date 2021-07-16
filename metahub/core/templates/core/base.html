@@ -95,14 +95,12 @@
       {% endblock %}
         
       <footer class="footer" role="contentinfo">
-{#        {% block footer_bar %}#}
-{#        {% endblock %}#}
-{#        #}
-{#        {% block footer %}#}
-{#          {% for block in settings.core.GlobalSettings.footer_content_simple %}#}
-{#            {% include_block block %}#}
-{#          {% endfor %}#}
-{#        {% endblock %}#}
+        {% block footer_bar %}
+        {% endblock %}
+
+        {% block footer %}
+            {% include_component 'structures.footer.regular' settings.core.GlobalSettings.get_footer %}
+        {% endblock %}
       </footer>
     </div>
 
