@@ -41,7 +41,7 @@ class BaseCollectionObject(ClusterableModel):
     # Series/categorization
     convolute = models.CharField(max_length=256, default='', blank=True)
     series_id = models.CharField(null=True, blank=True, max_length=256)
-    series_page = models.ForeignKey('collection.MetaHubObjectSeriesPage', null=True, blank=True, on_delete=models.SET_NULL, related_name='collection_objects')
+    # series_page = models.ForeignKey('collection.MetaHubObjectSeriesPage', null=True, blank=True, on_delete=models.SET_NULL, related_name='collection_objects')
 
     # Location of object
     container_name = models.CharField(max_length=1024, default='', blank=True)

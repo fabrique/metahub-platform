@@ -28,14 +28,14 @@ class CollectionObjectTag(TaggedItemBase):
     )
 
 
-class CollectionObjectSeriesTag(TaggedItemBase):
-    """
-    Tag attached to the OBJECT SERIES PAGE. These are an aggregate of the objects
-    that are a part of this series, and created at sync time. They can be changed
-    and expanded upon in the CMS.
-    """
-    content_object = ParentalKey(
-        'collection.MetaHubObjectSeriesPage',
-        related_name='tagged_object_series',
-        on_delete=models.CASCADE,
-    )
+# class CollectionObjectSeriesTag(TaggedItemBase):
+#     """
+#     Tag attached to the OBJECT SERIES PAGE. These are an aggregate of the objects
+#     that are a part of this series, and created at sync time. They can be changed
+#     and expanded upon in the CMS.
+#     """
+#     content_object = ParentalKey(
+#         'collection.MetaHubObjectSeriesPage',
+#         related_name='tagged_object_series',
+#         on_delete=models.CASCADE,
+#     )
