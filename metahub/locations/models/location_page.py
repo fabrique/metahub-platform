@@ -20,7 +20,7 @@ class MetaHubLocationPage(MetaHubBasePage):
     parent_page_types = ['overviews.MetaHubOverviewPage']
 
     authors = StreamField([
-        ('author', ModelChooserBlock(target_model='authors.Author'))
+        ('author', ModelChooserBlock(target_model='authors.Author', icon='user'))
     ], blank=True)
 
     date = models.DateField(blank=True, null=True)
