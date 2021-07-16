@@ -27,7 +27,7 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
     def get_search_header_component(self, applied_filters):
         # Determine if they should get active class
         # (a bit ugly but this is temporary since search will be expanded later with ES)
-        all_active = not applied_filters.get('type') and not applied_filters.get('story')
+        all_active = len(applied_filters.items()) == 0
         story_active = applied_filters.get('type') == 'story'
         objects_active = applied_filters.get('type') == 'object'
         location_active = applied_filters.get('type') == 'location'
@@ -35,25 +35,26 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
         active_class = 'active'
 
         return OrganismExploreSearchHeader(
-            title="Explore",
-            search_button_title="Search",
+            title=_("Explore"),
+            search_button_title=_("Search"),
+            placeholder_text=_("Type your query here"),
             main_filters={
                 'all' : {
-                    'title' : 'All',
+                    'title' : _('All'),
                     'active' : active_class if all_active else ''
                 },
                 'objects' : {
-                    'title' : 'Objects',
+                    'title' : _('Objects'),
                     'querystring' : '?id_type=object',
                     'active' : active_class if objects_active else ''
                 },
                 'stories' : {
-                    'title' : 'Stories',
+                    'title' : _('Stories'),
                     'querystring' : '?id_type=story',
                     'active' : active_class if story_active else ''
                 },
                 'locations' : {
-                    'title' : 'Locations',
+                    'title' : _('Locations'),
                     'querystring' : '?id_type=location',
                     'active' : active_class if location_active else ''
                 },
