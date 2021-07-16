@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
+
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from starling.interfaces.atoms import AtomPictureRegular
 from starling.interfaces.generic import Resolution
@@ -72,10 +74,6 @@ class MetaHubObjectPage(MetaHubBasePage):
         )
 
     def get_object_subtitle(self):
-        """ If subtitle was not given and we do have an artist, use that. """
-        artist = self.get_object_artist()
-        if artist and self.subtitle == '':
-            return artist
         return self.subtitle
 
     def get_object_intro_component(self):
@@ -84,17 +82,11 @@ class MetaHubObjectPage(MetaHubBasePage):
             classes="richtext__section-space--bottom"
         )
 
-    def get_page_related_items(self):
-        # TODO this is itself for now since we dont have real objects yet
-        return [self, self, self]
-
-    def get_object_artist(self):
-        if self.object and self.object.artist:
-            return str(self.object.artist)
-        return None
-
     def get_object_metadata(self):
-        # todo when we have the acutal object
+        # Douwe
+        # We can use the method below once the actual object exists
+        # Check what metadata fields are for metahub since it still uses JMF ones
+        # items = self.object.get_metadata_information_fields()
         items = [
             {
                 'title': 'Title',
@@ -140,9 +132,8 @@ class MetaHubObjectPage(MetaHubBasePage):
             items=self.get_object_metadata()
         )
 
-
     def get_page_label(self):
-        return 'Object'
+        return _('Object')
 
     def get_card_representation(self):
         return MoleculeExploreCardRegular(
@@ -154,137 +145,14 @@ class MetaHubObjectPage(MetaHubBasePage):
             picture=self.get_object_image(),
             type='object'
         )
-    #
-    # def get_type_dating(self):
-    #     date = self.object.datings
-    #     dating = ", {}".format(date) if date else ''
-    #
-    #     type = self.object.object_type
-    #     return "{}{}".format(type, dating)
-    #
 
-    # def get_tags(self):
-    #     """
-    #     Generates the frontend-compatible list of tags. These are the tags from the
-    #     django-taggit model, and can be managed in the CMS.
-    #     """
-    #     if self.tags and len(self.tags.all()) > 0:
-    #         searchpage = self.get_search_base_url()
-    #         tags = { 'title' : 'Schlagworte', 'tag_items' : [ {'title': str(tag), 'href': '{}?id_tags={}'.format(searchpage, str(tag)) } for tag in self.tags.all()] }
-    #         return tags
-    #     return None
-    #
 
-    #
-    # def get_tags_as_list(self):
-    #     """
-    #     Overrides method from MetaHubBasePage
-    #     Used for ES indexing. At the moment stories do not have tags, but
-    #     this might be added in the future.
-    #     """
-    #     return [str(tag) for tag in self.tags.all()]
-    #
-    # def get_search_representation(self):
-    #     """
-    #     Renders card for search result views.
-    #     """
-    #     return self.get_object_card_representation()
-    #
-    # def get_card_representation(self):
-    #     """
-    #     Overrides method from MetaHubBasePage
-    #     Decides what info to present on the "Discover collection in context" card.
-    #     This card format also exist for stories, in a different color.
-    #     """
-    #     return MoleculeContextCardRegular(
-    #         href=self.url,
-    #         color='white',
-    #         title=self.get_hero_info()['title'],
-    #         type=self.get_category(),
-    #         picture=self.get_primary_image()
-    #     )
-    #
-    # def get_primary_image(self):
-    #     """
-    #     Overrides method from MetaHubBasePage
-    #     Image that is used if representing the object in a card or other component.
-    #     TODO: return a default image if not found (objects without image can exist)
-    #     """
-    #     images = self.get_object_images()
-    #     if images:
-    #         return images[0]
-    #     # Return default image
-    #     else:
-    #         return None
-    #
-    # def get_raw_images(self):
-    #     """
-    #     Overrides method from MetaHubBasePage
-    #     Used when we need the raw images and not the atomized variant.
-    #     """
-    #     if self.object:
-    #        if self.object.bc_image_license:
-    #            #no copyrighted images!
-    #            if self.object.bc_image_license.find('©') != -1 or self.object.bc_image_license.find('(c)') != -1:
-    #                return []
-    #        image_links = self.object.obj_img_link.all()
-    #        return [link.object_image for link in image_links]
-    #     return []
-    #
-    # def get_object_card_representation(self, classes=''):
-    #     """
-    #     Object specific card representation, for example for the "related" objects
-    #     component. Search results are based on this template as well but not called from
-    #     here but based on indexed data.
-    #     """
-    #     return MoleculeObjectCardRegular(
-    #         href=self.url,
-    #         title=self.get_hero_info()['title'],
-    #         name=self.get_hero_info()['name'],
-    #         picture=self.get_primary_image(),
-    #         type=self.get_category(),
-    #         date=self.object.datings,
-    #         classes=classes,
-    #     )
-    #
+    def get_page_related_items(self):
+        # Douwe
+        # TODO this is itself for now since we dont have real objects yet
+        # The old implementation is below but not sure how useful it is
+        return [self, self, self]
 
-    #
-    # def get_object_images(self):
-    #     """
-    #     Retrieve all images belonging to this page's linked object and transform them
-    #     into a frontend component. Can be passed to heroimage/slideshow components.
-    #     """
-    #     if self.object:
-    #        images = self.object.obj_img_link.all()
-    #        return [AtomPictureRegular(**Resolution(mobile='750', landscape='2048', crop=True).resolve(image.object_image)) for image in
-    #                 images]
-    #     return []
-    #
-    # def build_metadata(self):
-    #     """
-    #     Creates the right format that the frontend accepts for the object metadata fields.
-    #     The information displayed here is based on BeeCollect data and not managable in the
-    #     CMS, though it can be viewed in the metadata tab.
-    #     TODO: Support localization , lol
-    #     """
-    #     if self.object:
-    #         return [
-    #             {
-    #                 'title': 'Basisdaten',
-    #                 'information': self.object.get_metadata_information_fields()
-    #             },
-    #             {
-    #                 'title' : 'Eigentum und Erwerbung',
-    #                 'information' : self.object.get_metadata_property_inheritance_fields()
-    #             },
-    #             {
-    #                 'title': 'Ausstellungen',
-    #                 'information': self.object.get_metadata_display_fields()
-    #             }
-    #         ]
-    #     else:
-    #         return []
-    #
     # def build_related_objects(self):
     #     """
     #     Determine what objects should be shown in the related objects component.
@@ -360,9 +228,3 @@ class MetaHubObjectPage(MetaHubBasePage):
     #         if len(self.tags.all()) == 0:
     #             self.tags.set(*self.object.get_bc_tags_as_list())
     #         super().save(**kwargs)
-    #
-    # def get_context(self, request, *args, **kwargs):
-    #     # Required to avoid circular imports
-    #     context = super(MetaHubObjectPage, self).get_context(request, *args, **kwargs)
-    #     context['bc'] = request.GET.get('c','')  #bodyclass for testing
-    #     return context

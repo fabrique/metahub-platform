@@ -84,9 +84,6 @@ class BaseCollectionObject(ClusterableModel):
                 return url
         return '/static/media/unsplash/cropped/search-result-2.jpg'
 
-    def artist_to_string(self):
-        return str(self.get_artist())
-
     def get_object_type(self):
         return 'Objekt'
 
@@ -107,34 +104,11 @@ class BaseCollectionObject(ClusterableModel):
         else:
             return '/'
 
-    def get_is_highlight(self):
-        if self.associated_page:
-            try:
-                return self.associated_page.first().is_highlight
-            except AttributeError:
-                return False
-
     @property
     def live(self):
         if self.associated_page:
             return self.associated_page.first().live
         return False
-
-    def get_series_page_id(self):
-        """
-        Used to generate prefiltered search results based on a series page
-        and its objects. Since users can make series themselves we do this
-        on page basis, not on series_id field since this is from BeeCollect.
-        """
-        if self.series_page:
-            return self.series_page.get_elasticsearch_series_id()
-        return None
-
-    def get_artist(self):
-        if self.artist is not None:
-            return self.artist
-        else:
-            return 'Unbekannt'
 
     def get_bc_tags_as_list(self):
         if self.bc_tags:
@@ -203,47 +177,6 @@ class BaseCollectionObject(ClusterableModel):
             {
                 'value': self.bc_image_license,
                 'name': 'Bildlizenz'
-            },
-        )
-        return self.only_take_existing_data(fields)
-
-    def get_metadata_property_inheritance_fields(self):
-        """
-        Mapping method used to create the list of metadata that is shown on the object
-        (series) page. Since we only want existing/filled fields we do it like this.
-        TODO: localization support
-        """
-        fields =  (
-            {
-                'value': self.date_acquired,
-                'name' : 'Erwerbsdatum'
-
-            },
-            {
-                'value': self.bc_credits,
-                'name': 'Leihgeber*in'
-            },
-            {
-                'value': self.provenance,
-                'name': 'Vorbesitz'
-            },
-            {
-                'value': self.bc_inventory_number,
-                'name': 'Inventarnummer'
-            },
-        )
-        return self.only_take_existing_data(fields)
-
-    def get_metadata_display_fields(self):
-        """
-        Mapping method used to create the list of metadata that is shown on the object
-        (series) page. Since we only want existing/filled fields we do it like this.
-        TODO: localization support
-        """
-        fields = (
-            {
-                'value': self.current_location,
-                'name': 'Ausgestellt'
             },
         )
         return self.only_take_existing_data(fields)
