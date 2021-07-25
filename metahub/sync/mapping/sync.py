@@ -65,7 +65,7 @@ class BeeCollectMapping:
             if update:
                 bco.update(
                     bc_id=object_data.get('Id'),
-                    bc_inventory_number=object_data.get('InventoryNumber'),
+                    bc_inventory_number=object_data.get('InventoryNumber', ''),
                     bc_change_date=object_data.get('ChangeDate'),
                     bc_change_user=object_data.get('ChangeUser'),
                     bc_object_name=object_data.get('ObjectName', ''),
@@ -84,17 +84,17 @@ class BeeCollectMapping:
                     publications=self.get_publications(object_data.get('Publications', [])),
                     is_highlight=object_data.get('IsHighlight', False),
 
-                    current_location=object_data.get('CurrentLocation'),
-                    container_name=object_data.get('ContainerName'),
-                    container_id=object_data.get('ContainerId'),
-                    geographic_reference=object_data.get('GeographicReference'),
-                    geographic_location=self.get_geographic_location(object_data.get('Keywords')),
+                    current_location=object_data.get('CurrentLocation', ''),
+                    container_name=object_data.get('ContainerName', ''),
+                    container_id=object_data.get('ContainerId', ''),
+                    geographic_reference=object_data.get('GeographicReference', ''),
+                    geographic_location=self.get_geographic_location(object_data.get('Keywords', [])),
 
                     convolute=object_data.get('Convolute', ''),
                     series_id=self.get_series_id(object_data),
-                    material=self.get_material(object_data.get('Material_Technique')),
-                    dimensions=self.get_dimensions(object_data.get('Dimensions')),
-                    title=object_data.get('Title'),
+                    material=self.get_material(object_data.get('Material_Technique', [])),
+                    # dimensions=self.get_dimensions(object_data.get('Dimensions')),
+                    title=object_data.get('Title', ''),
                     artist=self.get_artist_for_object(object_data),
                     object_type=self.get_object_category(object_data),
                 )
@@ -104,7 +104,7 @@ class BeeCollectMapping:
         else:
             new_bco = BaseCollectionObject(
                 bc_id=object_data.get('Id'),
-                bc_inventory_number=object_data.get('InventoryNumber'),
+                bc_inventory_number=object_data.get('InventoryNumber', ''),
                 bc_change_date=object_data.get('ChangeDate'),
                 bc_change_user=object_data.get('ChangeUser'),
                 bc_object_name=object_data.get('ObjectName', ''),
@@ -123,17 +123,17 @@ class BeeCollectMapping:
                 publications=self.get_publications(object_data.get('Publications', [])),
                 is_highlight=object_data.get('IsHighlight', False),
 
-                current_location=object_data.get('CurrentLocation'),
-                container_name=object_data.get('ContainerName'),
-                container_id=object_data.get('ContainerId'),
-                geographic_reference=object_data.get('GeographicReference'),
-                geographic_location=self.get_geographic_location(object_data.get('Keywords')),
+                current_location=object_data.get('CurrentLocation', ''),
+                container_name=object_data.get('ContainerName', ''),
+                container_id=object_data.get('ContainerId', ''),
+                geographic_reference=object_data.get('GeographicReference', ''),
+                geographic_location=self.get_geographic_location(object_data.get('Keywords', [])),
 
                 convolute=object_data.get('Convolute', ''),
                 series_id=self.get_series_id(object_data),
-                material=self.get_material(object_data.get('Material_Technique')),
-                dimensions=self.get_dimensions(object_data.get('Dimensions')),
-                title=object_data.get('Title'),
+                material=self.get_material(object_data.get('Material_Technique', [])),
+                # dimensions=self.get_dimensions(object_data.get('Dimensions')),
+                title=object_data.get('Title', ''),
                 artist=self.get_artist_for_object(object_data),
                 object_type=self.get_object_category(object_data),
             )
@@ -209,7 +209,7 @@ class BeeCollectMapping:
                     type=artist_data.get('Type'),
                     first_name=artist_data.get('FirstName').strip(),
                     last_name=artist_data.get('LastName').strip(),
-                    alias_name=artist_data.get('AliasName').strip(),
+                    alias_name=artist_data.get('AliasName', '').strip(),
                 )
             bca.save()
             self.artists_added += 1
@@ -248,7 +248,7 @@ class BeeCollectMapping:
         This field is rather dirty so requires some equally dirty code to
         get the right data out.
         """
-        object_keywords = object_data.get('Keywords')
+        object_keywords = object_data.get('Keywords', [])
         for k in object_keywords:
             if k['Type'] == 'Objektbezeichnung':
                 if k.get('Text'):
@@ -267,7 +267,7 @@ class BeeCollectMapping:
         separated string if you intend on splitting that again later.
         """
         keywords = []
-        object_keywords = bc_object.get('Keywords')
+        object_keywords = bc_object.get('Keywords', [])
         for k in object_keywords:
             if k.get('Type') == 'Inhalt/Kontext':
                 if k.get('Text'):
@@ -452,10 +452,10 @@ class BeeCollectMapping:
             return page
 
         except MetaHubObjectPage.DoesNotExist:
-            # Determine museum
-            # Determine type (objects) (this might be german later on? its not super safe to do this by slug perhaps)
+            # TODO Determine museum
+            # TODO Determine type (objects) (this might be german later on? its not super safe to do this by slug perhaps)
             museum_slug = 'amf'
-            parent_page = MetaHubOverviewPage.objects.get(slug='objects').descendant_of(MetaHubMuseumSubHomePage.objects.get(slug=museum_slug))
+            parent_page = MetaHubOverviewPage.objects.filter(slug='objects').descendant_of(MetaHubMuseumSubHomePage.objects.get(slug=museum_slug)).first()
             new_page = MetaHubObjectPage(title=object_instance.title,
                                          object=object_instance)
             parent_page.add_child(instance=new_page)

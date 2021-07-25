@@ -7,7 +7,7 @@ from wagtail.core.models import Page
 
 from metahub.collection.models import *
 # from metahub.core.models import MetaHubObjectPage, MetahubImage, MetaHubObjectSeriesPage
-from metahub.sync.mapping import BeeCollectMapping
+from metahub.sync.mapping.sync import BeeCollectMapping
 from metahub.sync.utils import add_fabrique_image
 
 
@@ -45,18 +45,20 @@ class Command(BaseCommand):
         update_intro = True
         update_highlight_status = True
 
-        with open('sync/_data.json', 'r') as data_string:  # MKR: changed path outside of repo
+        with open('../JMF-2021-07-23/cleaned_data.json', 'r') as data_string:  # MKR: changed path outside of repo
+        # with open('../sync_hmf/_data.json', 'r') as data_string:  # MKR: changed path outside of repo
+        # with open('sync/_data.json', 'r') as data_string:  # MKR: changed path outside of repo
             data = json.load(data_string)
             bcm = BeeCollectMapping(data)
 
             if sync_objects:
                 # Artists first, so objects can be linked to it
-                for bc_a in data.get('Artists'):
-                    a = bcm.get_or_create_artist(bc_a)
-
-                    # Modification present
-                    if bc_a.get('ChangeDate') != a.bc_change_date:
-                        bcm.get_or_create_artist(bc_a, update=True)
+                # for bc_a in data.get('Artists'):
+                #     a = bcm.get_or_create_artist(bc_a)
+                #
+                #     # Modification present
+                #     if bc_a.get('ChangeDate') != a.bc_change_date:
+                #         bcm.get_or_create_artist(bc_a, update=True)
 
                 # Now that artists exist we can create the objects
                 for bc_o in data.get('Objects'):
@@ -75,7 +77,7 @@ class Command(BaseCommand):
 
         # Build the pages
         for object_instance in BaseCollectionObject.objects.all():
-            break  # TODO re-enable after all FE models are created
+            # break  # TODO re-enable after all FE models are created
             # if object_instance.pk != 1379:
             #     continue
             page = bcm.get_or_create_object_page(object_instance,
@@ -88,4 +90,3 @@ class Command(BaseCommand):
 
         bcm.create_final_log()
         print(len(BaseCollectionObject.objects.all()))
-

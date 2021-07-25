@@ -1,6 +1,6 @@
 iPython==7.8
 
-Django==3.2
+Django==3.1.12
 django-environ==0.4.5
 django-cache-url==3.0.0
 django-axes==5.0.13
@@ -27,3 +27,5 @@ git+ssh://git@bitbucket.org/fabrique/wagtail-embed.git@1.4#egg=fabrique-wagtail-
 #for search!
 django-elasticsearch-dsl==7.2.0
 django-ipware==2.1.0
+
+pydantic==1.8.2

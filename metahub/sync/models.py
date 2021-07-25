@@ -5,6 +5,8 @@ class BeeCollectSyncOccurrence(models.Model):
     date_data_dump = models.CharField(max_length=1000)
     success = models.BooleanField(default=False)
 
+    museum = models.CharField(max_length=3, default="")
+
     objects_in_dump = models.PositiveIntegerField(default=0)
     objects_added = models.PositiveIntegerField(default=0)
     objects_changed = models.PositiveIntegerField(default=0)
@@ -14,4 +16,3 @@ class BeeCollectSyncOccurrence(models.Model):
     artists_added = models.PositiveIntegerField(default=0)
     artists_changed = models.PositiveIntegerField(default=0)
     artists_removed = models.PositiveIntegerField(default=0)
-
