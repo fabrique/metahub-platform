@@ -38,6 +38,7 @@ class MetaHubObjectPage(MetaHubBasePage):
     object = models.ForeignKey('collection.BaseCollectionObject', null=True, on_delete=models.SET_NULL, blank=True, related_name='associated_page')
     subtitle = models.CharField(max_length=500, blank=True, default='')
     introduction = models.TextField(max_length=2000, blank=True)
+    location_page = models.ManyToManyField('locations.MetaHubLocationPage', related_name='object_pages', blank=True, null=True)
 
     # Maximum of related objects shown
     MAX_RELATED_OBJECTS = 3
@@ -56,6 +57,7 @@ class MetaHubObjectPage(MetaHubBasePage):
             FieldPanel('object'),
             FieldPanel('subtitle', help_text="Leave blank to use artist (if present)"),
             FieldPanel('introduction'),
+            FieldPanel('location_page'),
         ], heading="Basic information"),
         StreamFieldPanel('content'),
         FieldPanel('tags'),
