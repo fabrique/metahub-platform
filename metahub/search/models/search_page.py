@@ -24,7 +24,7 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
 
     parent_page_types = ['home.MetahubHomePage']
 
-    def get_search_header_component(self, applied_filters):
+    def get_search_header_component(self, applied_filters, search_query):
         # Determine if they should get active class
         # (a bit ugly but this is temporary since search will be expanded later with ES)
         all_active = len(applied_filters.items()) == 0
@@ -37,6 +37,7 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
         return OrganismExploreSearchHeader(
             title=_("Explore"),
             search_button_title=_("Search"),
+            search_query=search_query or '',
             placeholder_text=_("Type your query here"),
             main_filters={
                 'all' : {
@@ -61,10 +62,28 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
             }
         )
 
-    def get_all_entities_in_collection_qs(self):
+    def get_all_entities_in_collection_qs(self, search_query):
         model_types = [*map(resolve_model_string, ['stories.MetaHubStoryPage', 'collection.MetaHubObjectPage', 'locations.MetaHubLocationPage'])]
         valid_types = reduce(Q.__or__, map(Page.objects.type_q, model_types))
         all_entities = Page.objects.filter(valid_types).specific().live()
+        if search_query:
+            ids = []
+
+            # tags filter
+            for model_type in model_types:
+                ids.extend(map(lambda x: x["id"], model_type.objects.filter(tags__name__in=[search_query]).values("id")))
+
+            # body text filter
+            for entity in all_entities:
+                for data in entity.content.stream_data:
+                    if data["type"] in ["single_richtext", "two_column_picture_richtext", "richtext_with_link"]:
+                        if search_query in data["value"]["text"]:
+                            ids.append(entity.id)
+
+            # title filter OR any page that matches tags/body text filter
+            all_entities = all_entities.filter(
+                Q(title__icontains=search_query) | Q(id__in=ids)
+            )
         return all_entities
 
     def get_active_filters(self, request):
@@ -90,23 +109,23 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
             extra_params.append(f"&id_{key}={value}")
         return ''.join(extra_params)
 
-    def get_search_results(self, filters):
+    def get_search_results(self, filters, search_query):
         if filters.get('type') == 'object':
             return [p.get_card_representation() for p in MetaHubObjectPage.objects.live()]
         elif filters.get('type') == 'story':
             return [p.get_card_representation() for p in MetaHubStoryPage.objects.live()]
         elif filters.get('type') == 'location':
             return [p.get_card_representation() for p in MetaHubLocationPage.objects.live()]
-        return [p.get_card_representation() for p in self.get_all_entities_in_collection_qs()]
+        return [p.get_card_representation() for p in self.get_all_entities_in_collection_qs(search_query)]
 
     def create_paginator_component(self, paginator, paginator_page, querystring_extra):
         return create_paginator_component(paginator, paginator_page, querystring_extra=querystring_extra)
 
     def get_context(self, request, *args, **kwargs):
         context = super(MetaHubSearchPage, self).get_context(request, *args, **kwargs)
-        search_string = request.GET.get('search')
+        search_query = request.GET.get('q')
         applied_filters = self.get_active_filters(request)
-        search_results = self.get_search_results(applied_filters)
+        search_results = self.get_search_results(applied_filters, search_query)
         querystring_extra = self.get_querystring_extras(applied_filters)
 
         # Pagination for found objects
@@ -124,9 +143,9 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
         context.update({
             'results': paginator_page.object_list,
             'paginator': self.create_paginator_component(paginator, paginator_page, querystring_extra),
-            'search_filters' : applied_filters,
-            'search_query' : search_string,
-            'search_header_component' : self.get_search_header_component(applied_filters)
+            'search_filters': applied_filters,
+            'search_query': search_query,
+            'search_header_component': self.get_search_header_component(applied_filters, search_query)
         })
 
         context['result_count'] = '{} Resultate'.format(len(search_results))
