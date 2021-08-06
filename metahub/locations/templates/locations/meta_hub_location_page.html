@@ -1,1 +1,8 @@
 {% extends 'core/base_content_page.html' %}
+{% load wagtailcore_tags starling_tags %}
+
+{% block extra_content %}
+
+    {% include_component 'organisms.relevant-cards.object' page.get_associated_objects_component %}
+
+{% endblock %}

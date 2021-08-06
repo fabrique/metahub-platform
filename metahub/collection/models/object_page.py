@@ -6,6 +6,7 @@ from starling.interfaces.atoms import AtomPictureRegular
 from starling.interfaces.generic import Resolution
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
 from wagtail.core.fields import StreamField
+from wagtail.snippets.models import register_snippet
 
 from metahub.collection.models import CollectionObjectTag
 from metahub.content.blocks import content_blocks
@@ -19,6 +20,7 @@ from metahub.starling_metahub.organisms.interfaces import OrganismObjectHeaderRe
     OrganismObjectMetadataRegular
 
 
+@register_snippet
 class MetaHubObjectPage(MetaHubBasePage):
     """
     Page for the rich collection objects. It defines the object it is related to.

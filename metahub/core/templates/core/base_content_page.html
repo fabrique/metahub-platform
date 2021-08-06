@@ -22,9 +22,14 @@
     {% endfor %}
   </div>
 
-  {% for block in page.related_items %}
-    {% include_block block %}
-  {% endfor %}
+  {% block extra_content %}
+  {% endblock %}
+
+  {% block related_items %}
+      {% for block in page.related_items %}
+        {% include_block block %}
+      {% endfor %}
+  {% endblock %}
 
 {% endblock %}
 

@@ -1,9 +1,12 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
+from modelcluster.fields import ParentalKey
 
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.core.fields import StreamField
+from wagtail.core.models import Orderable
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtailmodelchooser.blocks import ModelChooserBlock
 
 from metahub.content.blocks import content_blocks
@@ -13,6 +16,17 @@ from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderReg
     OrganismHeroTextHeaderExtraInfoBlock, OrganismArticleCuratedItemsRegularBlock, \
     OrganismArticleRelatedItemsRegularBlock, OrganismArticleCuratedStoriesRegularBlock, \
     OrganismArticleRelatedStoriesRegularBlock
+from metahub.starling_metahub.organisms.interfaces import OrganismArticleRelatedItemsRegular
+
+
+class LocationObjectRelationship(Orderable, models.Model):
+    """Intermediate table for holding the many-to-many relationship. """
+    location = ParentalKey('MetaHubLocationPage', related_name='location_object_relationship', on_delete=models.CASCADE)
+    object = models.ForeignKey('collection.MetaHubObjectPage', related_name='object_location_relationship', on_delete=models.CASCADE)
+
+    panels = [
+        SnippetChooserPanel('object')
+    ]
 
 
 class MetaHubLocationPage(MetaHubBasePage):
@@ -52,19 +66,30 @@ class MetaHubLocationPage(MetaHubBasePage):
         MultiFieldPanel([
             FieldPanel('date'),
             StreamFieldPanel('authors'),
-            MultiFieldPanel([
-                FieldPanel('latitude'),
-                FieldPanel('longitude')
-            ], heading="Location specifics")
-        ], heading="Publishing information"),
+        ], heading=_("Publishing information")),
+        MultiFieldPanel([
+            FieldPanel('latitude'),
+            FieldPanel('longitude'),
+            InlinePanel('location_object_relationship', label=_("Associated Object(s)"), panels=None, min_num=1)
+        ], heading=_("Location specifics")),
         MultiFieldPanel([
             StreamFieldPanel('hero_header'),
             StreamFieldPanel('text_header'),
-        ], heading="Header"),
+        ], heading=_("Page Header")),
         StreamFieldPanel('content'),
         StreamFieldPanel('related_items'),
         FieldPanel('tags')
     ]
+
+    @property
+    def associated_objects(self):
+        return [n.object for n in self.location_object_relationship.all()]
+
+    def get_associated_objects_component(self):
+        return OrganismArticleRelatedItemsRegular(
+            title=_("Objects for this location"),
+            cards=[o.get_card_representation() for o in self.associated_objects]
+        )
 
     def get_page_related_items(self):
         return MetaHubLocationPage.objects.live().exclude(pk=self.pk)[:3]
