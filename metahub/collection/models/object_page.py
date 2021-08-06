@@ -67,7 +67,9 @@ class MetaHubObjectPage(MetaHubBasePage):
 
     def get_object_image(self):
         # todo, this is temp since there are no real objects
-        return AtomPictureRegular(**Resolution(mobile='1920', crop=True).resolve(MetahubImage.objects.first()))
+        if self.object and self.object.object_image_link:
+            primary_image = self.object.obj_img_link.first().object_image
+            return AtomPictureRegular(**Resolution(mobile='1920', crop=True).resolve(primary_image))
 
     def get_object_header_component(self):
         return OrganismObjectHeaderRegular(

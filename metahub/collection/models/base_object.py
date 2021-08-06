@@ -184,4 +184,4 @@ class ObjectImageLink(models.Model):
     all these relationships are deleted and then reconstructed based on the import data.
     """
     collection_object = models.ForeignKey('collection.BaseCollectionObject', related_name='obj_img_link', on_delete=models.CASCADE)
-    object_image = models.ForeignKey('core.metahubImage', related_name='obj_img_link', on_delete=models.CASCADE)
+    object_image = models.ForeignKey('core.MetahubImage', related_name='obj_img_link', on_delete=models.CASCADE)
