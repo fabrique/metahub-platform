@@ -66,7 +66,8 @@ class Command(BaseCommand):
                     objects_added += 1
 
                 for image in obj.Images:
-                    if path := image.KeyFileName:
+                    path = image.KeyFileName
+                    if path:
                         try:
                             image = add_fabrique_image(
                                 os.path.join(museum, path),
