@@ -164,6 +164,7 @@ class Object(BaseModel):
 
     def get_series_id(self):
         if self.OtherObjects:
-            if parts := self.InventoryNumber.split("-"):
+            parts = self.InventoryNumber.split("-")
+            if parts:
                 if len(parts) >= 3:
                     return parts[0] + parts[1]
