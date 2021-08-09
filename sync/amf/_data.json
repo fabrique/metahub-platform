@@ -1,0 +1,982 @@
+{
+  "ExportDate": "2021-05-26T13:51:40.5903168+02:00",
+  "NumberOfObjects": 21,
+  "Objects": [
+    {
+      "Id": 24373,
+      "CreateUser": "20110208_TransferAccess",
+      "CreateDate": "2011-02-10T00:00:00",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-04-21T00:00:00",
+      "InventoryNumber": "1987,35.042.002.001",
+      "Title": "Chanukkalampenfragmente",
+      "Description": "Aus den Überresten der Börneplatzsynagoge wurden die Fragmente einer Chanukka-Lampe geborgen. Sie bestand aus feuervergoldeter Bronze oder Messing und wurde wahrscheinlich im Zeitraum zwischen dem 17. bis 19. Jahrhundert im Osten Europas hergestellt.",
+      "GeographicReference": "Ausgrabung 1987 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Messing",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25236,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-21T10:27:39.167",
+          "ChangeUser": "AM_TS",
+          "ChangeDate": "2021-04-26T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "d4d6822a-986f-4029-897a-e8ec82b129ca.jpg",
+          "OriginalFileName": "S_1987,35.042.002.001.tif"
+        }
+      ]
+    },
+    {
+      "Id": 53900,
+      "CreateUser": "AM_TM",
+      "CreateDate": "2020-05-25T18:05:49.38",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-05-06T00:00:00",
+      "InventoryNumber": "1990,75.012",
+      "Title": "Überreste des Thoraschreins der Börneplatzsynagoge von 1882",
+      "Description": "Bei Ausgrabungen am Börneplatz wurden mehr als fünfzig Bruchstücke aus weißem Marmor entdeckt.  Die Steine wurden aus den mit Bauschutt verfüllten Kellern der Synagoge geborgen, die 1938/1939 durch die Nationalsozialisten zerstört und abgerissen wurde. Durch erhaltene Fotoaufnahmen können die Steinfragmente eindeutig dem Thoraschrein zugewiesen werden. Markante Spuren der Zerstörung an den Steinoberflächen machen diese Exponate zu einem eindrucksvollen Zeugnis der Novemberpogrome",
+      "GeographicReference": "Ausgrabung am Börneplatz 1990",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Marmor",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 24239,
+          "CreateUser": "AM_TM",
+          "CreateDate": "2020-11-09T13:47:44.083",
+          "ChangeUser": "AM_TM",
+          "ChangeDate": "2021-05-11T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "9eda80c6-55ed-4799-b838-a1f350ad24f7.jpg",
+          "OriginalFileName": "S_1990,75.012_01_96dpi.jpg"
+        }
+      ]
+    },
+    {
+      "Id": 53975,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2020-08-03T11:01:40.803",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-01-25T00:00:00",
+      "InventoryNumber": "1987,35.042.002.002",
+      "Title": "Ofenkacheln",
+      "Description": "Verschiedene Teile eines Kachelofens, hauptsächlich quadratische Blattkacheln sowie Gesims- und Bodensegmente, jeweils dunkeloliv bis dunkelolivbraun glasiert. Welchen Bereich der Synagoge der Ofen einstmals heizte ist nicht bekannt.",
+      "GeographicReference": "Ausgrabung 1987 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Kachel",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 24683,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-01-21T09:34:08.633",
+          "ChangeUser": "AM_TS",
+          "ChangeDate": "2021-04-26T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "e602be0f-8fbc-40b9-abf7-e2e4f2af262f.jpg",
+          "OriginalFileName": "S_1987,35.042.002.002.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54196,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2020-10-01T12:40:37.127",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-01-28T00:00:00",
+      "InventoryNumber": "1990,75.075",
+      "Title": "Beschriftete Marmorplatte",
+      "Description": "Annähernd rechteckiges Marmorplattenbruchstück mit fragmentarisch noch lesbarer Bleistiftaufschrift. Es handelt sich dabei wohl um eine Rechnung oder eine Lieferbestätigung laut der der Stein im Sommer des Jahres  1901 verbaut wurde.",
+      "GeographicReference": "Ausgrabung 1990 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Objektmaß",
+          "Text": "46 x 21,5 x 5 cm",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Marmor",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 24785,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-01-28T12:25:41.717",
+          "ChangeUser": "AM_TS",
+          "ChangeDate": "2021-04-26T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "d2a3cf46-620f-4cc0-9aad-a1f0b38d24ef.jpg",
+          "OriginalFileName": "S_1990,75.075.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54198,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2020-10-05T08:18:02.067",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-04-14T00:00:00",
+      "InventoryNumber": "1990,75.077",
+      "Title": "Wand- und Bodenverkleidung",
+      "Description": "Zerschlagene Überreste von Wand- und Bodenverkleidung sowie weiteren Architekturteilen aus verschiedenfarbigem Marmor.",
+      "GeographicReference": "Ausgrabung 1990 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Marmor, Bronze",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 24787,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-01-28T12:28:33.813",
+          "ChangeUser": "AM_TS",
+          "ChangeDate": "2021-04-26T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "ca507117-0a96-499b-87c3-12273d995874.jpg",
+          "OriginalFileName": "S_1990,75.077.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54218,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2020-10-12T13:19:30.303",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-01-21T00:00:00",
+      "InventoryNumber": "1990,75.000.004",
+      "Title": "Wandverputz",
+      "Description": "Zwei Fragmente von Wandverputz mit flächiger königsblauer Bemalung. Sie stammen von der Kuppel der Apsis der Börneplatzsynagoge.",
+      "GeographicReference": "Ausgrabung 1990 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Verputz",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 24690,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-01-21T10:29:15.997",
+          "ChangeUser": "AM_TS",
+          "ChangeDate": "2021-04-26T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "f459c91d-02fe-4f64-a5ec-3ba87433efe1.jpg",
+          "OriginalFileName": "S_1990,75.000.004.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54219,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2020-10-13T10:23:54.39",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-04-21T00:00:00",
+      "InventoryNumber": "1990,75.000.005",
+      "Title": "Mosaikbodenfliesen",
+      "Description": "Fünf quadratische Mosaikbodenfliesen, schwarz-weiß, aus der Zeit um 1900. Hergestellt wurden sie von der Firma Villeroy & Boch. Seit einer Ausstellung sind sie in einem Metallrahmen zusammengefasst. Das Motiv besteht jeweils aus einem schwarzen Karo in weißem Kreis. Die Synagoge am Börneplatz war flächig mit solchen Fliesen ausgelegt.",
+      "GeographicReference": "Ausgrabung 1990 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Kistenmaß",
+          "Text": "17 x 17 x 1,8 cm",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Fliese, Stahl",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25237,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-21T10:32:02.72",
+          "ChangeUser": "AM_TS",
+          "ChangeDate": "2021-04-26T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "ac4a8f5d-25f3-4719-82a8-c0d0dc7dcee6.jpg",
+          "OriginalFileName": "S_1990,75.000.005-neu.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54220,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2020-10-13T10:31:58.423",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-04-21T00:00:00",
+      "InventoryNumber": "1990,75.000.006",
+      "Title": "Mosaikbodenfliesen",
+      "Description": "Fünf quadratische Mosaikbodenfliesen, schwarz-weiß, aus der Zeit um 1900. Hergestellt wurden sie von der Firma Villeroy & Boch. Seit einer Ausstellung sind sie in einem Metallrahmen zusammengefasst. Die Schaufläche ist jeweils doppelt diagonal in Dreiecke unterteilt. Die Synagoge am Börneplatz war flächig mit solchen Fliesen ausgelegt.",
+      "GeographicReference": "Ausgrabung 1990 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Kistenmaß",
+          "Text": "17 x 17 x 1,8 cm",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Fliese, Stahl",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25238,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-21T10:33:47.95",
+          "ChangeUser": "AM_TS",
+          "ChangeDate": "2021-04-26T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "2b58a920-16b8-4271-b002-bfbaf59f3d36.jpg",
+          "OriginalFileName": "S_1990,75.000.006-neu.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54222,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2020-10-13T11:35:03.593",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-04-21T00:00:00",
+      "InventoryNumber": "1990,75.000.007",
+      "Title": "Mosaikbodenfliesen",
+      "Description": "Fünf quadratische Mosaikbodenfliesen, schwarz-weiß, aus der Zeit um 1900. Hergestellt wurden sie von der Firma Villeroy & Boch. Seit einer Ausstellung sind sie in einem Metallrahmen zusammengefasst. Das Motiv besteht jeweils aus kleinen, weißen Quadraten, die oben und unten von schmalen weißen Linien begrenzt werden. Die Synagoge am Börneplatz war flächig mit solchen Fliesen ausgelegt.",
+      "GeographicReference": "Ausgrabung 1990 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Kistenmaß",
+          "Text": "17 x 17 x 1,8 cm",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Fliese, Stahl",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25239,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-21T10:35:17.66",
+          "ChangeUser": "AM_TS",
+          "ChangeDate": "2021-04-26T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "b9f5cfea-fadd-4a52-9b0e-38266441dee2.jpg",
+          "OriginalFileName": "S_1990,75.000.007-neu.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54223,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2020-10-13T11:43:44.81",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-01-21T00:00:00",
+      "InventoryNumber": "1990,75.000.008",
+      "Title": "Mosaikbodenfliesen",
+      "Description": "Vier Mosaikbodenfliesen, hergestellt von der Firma Villeroy und Boch, die in dieser Zusammenstellung in der Börneplatzsynagoge vorgefunden wurden. Seit einer Ausstellung sind sie in einem Metallrahmen zusammengefasst.",
+      "GeographicReference": "Ausgrabung 1990 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Fliese, Stahl",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 24694,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-01-21T10:39:43.77",
+          "ChangeUser": "AM_TS",
+          "ChangeDate": "2021-04-26T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "fda3b888-2039-4532-9ee2-578b31b194ca.jpg",
+          "OriginalFileName": "S_1990,75.000.008.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54622,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2021-03-23T12:30:12.49",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-04-27T00:00:00",
+      "InventoryNumber": "1987,35.001.000.0031",
+      "Title": "Spielwürfel",
+      "Description": "Kleine Spielwürfel mit gebohrten Zahlmarkierungen aus Tierknochen. Es handelt sich um die Abfälle einer Würfelmanufaktur, deren ehemaliger Standort nicht bekannt ist.",
+      "GeographicReference": "Ausgrabung 1987 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Mittelalter, Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Tierknochen",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25273,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-21T12:11:18.13",
+          "ChangeUser": "AM_TS",
+          "ChangeDate": "2021-04-26T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "f7711ce6-3662-4b6a-a16a-724f2934e699.jpg",
+          "OriginalFileName": "S_1987,35.001.000.0031.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54623,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2021-03-23T12:32:51.197",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-04-27T00:00:00",
+      "InventoryNumber": "1987,35.001.000.0032",
+      "Title": "Würfelrohlinge",
+      "Description": "Rohlinge für kleine Spielwürfel, noch ohne gebohrte Zahlmarkierungen. Es handelt sich um die Abfälle einer Würfelmanufaktur, deren ehemaliger Standort nicht bekannt ist.",
+      "GeographicReference": "Ausgrabung 1987 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Mittelalter, Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Tierknochen",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25274,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-21T12:12:58.92",
+          "ChangeUser": "AM_TM",
+          "ChangeDate": "2021-04-22T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "14dac4a1-6f94-4beb-90c7-6b27bf2feb9f.jpg",
+          "OriginalFileName": "S_1987,35.001.000.0032.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54635,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2021-03-24T11:42:30.573",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-04-27T00:00:00",
+      "InventoryNumber": "1987,35.001.000.0044",
+      "Title": "Halbfabrikate zur Würfelherstellung",
+      "Description": "Spalten von Langknochen, Halbfabrikate zur Würfelherstellung. Es handelt sich um die Abfälle einer Würfelmanufaktur, deren ehemaliger Standort nicht bekannt ist.",
+      "GeographicReference": "Ausgrabung 1987 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Mittelalter, Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Tierknochen",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25285,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-21T12:32:33.987",
+          "ChangeUser": "AM_TS",
+          "ChangeDate": "2021-04-26T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "8a666a4a-8d72-49b2-ae08-0a4989f982c6.jpg",
+          "OriginalFileName": "S_1987,35.001.000.0044.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54696,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2021-04-07T11:20:57.493",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-04-27T00:00:00",
+      "InventoryNumber": "1987,35.001.000.0058",
+      "Title": "Abgeschlagene Gelenkenden",
+      "Description": "Abgeschlagene Gelenkenden von Langknochen vom Rind. Der restliche Knochen wurde dann aufgespalten und zu Spielwürfeln weiterverarbeitet.  Es handelt sich um die Abfälle einer Würfelmanufaktur, deren ehemaliger Standort nicht bekannt ist.",
+      "GeographicReference": "Ausgrabung 1987 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Mittelalter, Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Tierknochen",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25346,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-22T09:49:11.28",
+          "ChangeUser": "AM_TS",
+          "ChangeDate": "2021-04-26T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "c3da4116-9c81-4f9d-9a01-75eacb2d8ca3.jpg",
+          "OriginalFileName": "S_1987,35.001.000.0058.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54699,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2021-04-13T11:31:42.723",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-04-21T00:00:00",
+      "InventoryNumber": "1990,75.027.001",
+      "Title": "Mosaikbodenfliese",
+      "Description": "Eine quadratische Mosaikbodenfliese, schwarz-weiß, hergestellt von der Firma Villeroy & Boch. Das Motiv besteht aus einer Reihe von kleinen weißen Quadraten, die von weißen Linien begrenzt werden. Die Synagoge am Börneplatz war flächig mit solchen Fliesen ausgelegt.  Auf der Unterseite befindet sich noch eine Mörtelanhaftung.",
+      "GeographicReference": "Ausgrabung 1990 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Objektmaß",
+          "Text": "17 x 17 x 1,8 cm",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Fliese",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25241,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-21T10:40:27.043",
+          "ChangeUser": "AM_TM",
+          "ChangeDate": "2021-05-11T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "1d06c4ea-c52d-49e3-b9cf-4577484ae00f.jpg",
+          "OriginalFileName": "S_1990,75.027.001.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54700,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2021-04-13T12:05:10.553",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-04-21T00:00:00",
+      "InventoryNumber": "1990,75.009.003",
+      "Title": "Metallgefäßfragmente",
+      "Description": "17 zum Teil stark deformierte und ineinander verschlungene Fragmente eines größeren, verzierten Metallgefäßes (wohl Kupfer mit Silberanteil) mit mindestens drei Standfüßen sowie diversen Griffen und Ösen. Unter den vor allem floralen Ornamenten lassen sich gekreuzte Füllhörner erkennen.",
+      "GeographicReference": "Ausgrabung 1990 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Spätmittelalter, Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Kupfer, Silber",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25240,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-21T10:37:38.34",
+          "ChangeUser": "AM_TS",
+          "ChangeDate": "2021-04-26T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "2b76e068-773d-4acc-a416-e4c2120f5a59.jpg",
+          "OriginalFileName": "S_1990,75.009.003.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54701,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2021-04-13T12:41:42.463",
+      "ChangeUser": "AM_TS",
+      "ChangeDate": "2021-04-21T00:00:00",
+      "InventoryNumber": "1990,75.068.001",
+      "Title": "Architekturteil aus Marmor",
+      "Description": "Massives Endstück einer Leiste aus weißem Marmor, im Querschnitt ist der Sichtbereich halbrund abgesetzt. Auf der Endfläche sind die Buchstaben „R“ und „V“ eingeritzt. Es liegen aus dem Bereich der Synagoge mehrere Stücke dieses Typs vor. Durch die jeweils erkennbare Biegung kann auf ein ehemals insgesamt bogenförmiges Architekturteil geschlossen werden.",
+      "GeographicReference": "Ausgrabung 1990 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Marmor",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25242,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-21T10:48:02.857",
+          "ChangeUser": "AM_TS",
+          "ChangeDate": "2021-04-26T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "25e9c2f5-aa3f-4f9b-9b02-8a8b16080c1d.jpg",
+          "OriginalFileName": "S_1990,75.068.001.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54702,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2021-04-13T12:58:56.627",
+      "ChangeUser": "AM_TM",
+      "ChangeDate": "2021-05-04T00:00:00",
+      "InventoryNumber": "1990,75.012.001",
+      "Title": "Gesimsaufsatz",
+      "Description": "Gesimsaufsatz aus weißem Marmor in Form einer Fleur-de-Lys (Lilie) vom Thoraschrein der Börneplatzsynagoge.",
+      "GeographicReference": "Ausgrabung 1990 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Marmor",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25352,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-29T08:32:11.487",
+          "ChangeUser": "AM_TM",
+          "ChangeDate": "2021-05-04T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "ea0fa08b-22ef-4647-8cbf-50248c13d669.jpg",
+          "OriginalFileName": "S_1990,75.012.001neu.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54703,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2021-04-13T13:01:45.257",
+      "ChangeUser": "AM_TM",
+      "ChangeDate": "2021-05-04T00:00:00",
+      "InventoryNumber": "1990,75.012.006",
+      "Title": "Kuppeldachfragment",
+      "Description": "Fragment vom Kuppeldach des Thoraschreins der Börneplatzsynagoge aus weißem Marmor, leicht trapezförmig und gewölbt mit Bandwerkverzierung.",
+      "GeographicReference": "Ausgrabung 1990 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Marmor",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25353,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-29T08:34:38.81",
+          "ChangeUser": "AM_TM",
+          "ChangeDate": "2021-05-04T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "864a214b-2bb4-4f62-bcbb-83810945ebd2.jpg",
+          "OriginalFileName": "S_1990,75.012.006neu.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54704,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2021-04-13T13:03:31.933",
+      "ChangeUser": "AM_TM",
+      "ChangeDate": "2021-05-04T00:00:00",
+      "InventoryNumber": "1990,75.012.009",
+      "Title": "Gesimsfragment",
+      "Description": "Gesimsfragment mit Zierleiste aus weißem Marmor vom Thoraschrein der Börneplatzsynagoge.",
+      "GeographicReference": "Ausgrabung am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Marmor",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25354,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-29T08:36:22.247",
+          "ChangeUser": "AM_TM",
+          "ChangeDate": "2021-05-04T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "4d8ea74c-c18d-4aa4-887a-487a8e7b2578.jpg",
+          "OriginalFileName": "S_1990,75.012.009neu.tif"
+        }
+      ]
+    },
+    {
+      "Id": 54705,
+      "CreateUser": "AM_TS",
+      "CreateDate": "2021-04-13T13:13:12.287",
+      "ChangeUser": "AM_TM",
+      "ChangeDate": "2021-05-04T00:00:00",
+      "InventoryNumber": "1990,75.085.001",
+      "Title": "Pfeilerfragment",
+      "Description": "Fragment eines im Querschnitt rechteckigen Pfeilers aus dunkelrotem Marmor mit W-förmiger Aussparung zur Schauseite hin. Darin eingearbeitet eine dünne Platte aus schwarzem Marmor mit dunkelgrünen Mineralgängen. Der Pfeiler war Teil der Absperrung der Bima in der Synagoge.",
+      "GeographicReference": "Ausgrabung 1990 am Börneplatz",
+      "ContainerName": "AMF-Datenerfassung",
+      "ContainerId": 182,
+      "CurrentLocation": "Depot",
+      "Creators": [],
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "Neuzeit",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Material",
+          "Text": "Marmor",
+          "Notes": ""
+        }
+      ],
+      "Keywords": [],
+      "Images": [
+        {
+          "Id": 25351,
+          "CreateUser": "AM_TS",
+          "CreateDate": "2021-04-29T08:29:20.91",
+          "ChangeUser": "AM_TM",
+          "ChangeDate": "2021-05-04T00:00:00",
+          "License": "Archäologisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "66ca16b8-1aa7-4b11-a574-c4fe1962c02c.jpg",
+          "OriginalFileName": "S_1990,75.085.001.tif"
+        }
+      ]
+    }
+  ],
+  "Artists": []
+}

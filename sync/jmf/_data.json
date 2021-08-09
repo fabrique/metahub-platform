@@ -1,0 +1,1470 @@
+{
+  "ExportDate": "2021-07-22T10:03:56.6708388+02:00",
+  "NumberOfObjects": 12,
+  "NumberOfArtists": 6,
+  "Objects": [
+    {
+      "Id": 5272,
+      "CreateUser": "20110308_DÜ_Inventarkarten",
+      "CreateDate": "2011-03-25T00:00:00",
+      "ChangeUser": "JM_SB",
+      "ChangeDate": "2021-07-06T00:00:00",
+      "InventoryNumber": "JMF2009-0036",
+      "Title": "Bodenkachel aus der Börneplatz-Synagoge",
+      "ObjectName": "",
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "1880 - 1938",
+          "YearFrom": "1880",
+          "YearTo": "1938",
+          "Notes": ""
+        }
+      ],
+      "ContainerName": "JMF Historische Sammlung",
+      "ContainerId": 172,
+      "Creditline": "",
+      "Notes": "Diese beschädigte Bodenkachel lag einst in der Börneplatz-Synagoge. Der Schriftsteller Valentin Senger berichtete, dass er diese Kachel aus den Brandruinen herausgeholt hatte. Die Synagoge wurde zusammen mit allen anderen Synagogen in Deutschland 1938 beim Novemberpogrom von den Nationalsozialisten verbrannt. ",
+      "AcquisitionDate": "2009",
+      "CurrentLocation": "",
+      "Convolute": "",
+      "NumberOfParts": "",
+      "Creators": [],
+      "Provenance": [],
+      "GeographicReferences": [
+        {
+          "Type": "",
+          "Text": "Deutschland; Hessen; Frankfurt am Main",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Objektmaß",
+          "Text": "17 x 17 cm (Ecke 8x10 fehlt)",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "Ausgabe",
+          "Text": "Steingut",
+          "Notes": ""
+        }
+      ],
+      "Signatures": [
+        {
+          "Type": "",
+          "Text": "",
+          "Notes": ""
+        }
+      ],
+      "Inscriptions": [],
+      "Keywords": [
+        {
+          "Type": "Geogr. Bezug",
+          "Text": "Frankfurt am Main (Geografie/Kontinente/Kontinente/Europa/Regionen (Europa)/Mitteleuropa/Deutschland/Hessen)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Synagoge (Gebäude) (Religion, Philosophie, Ethik/Religiöse Orte, Religiöse Zeiten/Religiöse Orte)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Novemberpogrom (Politik und Militär/Politisches Handeln/Kollektives politisches Handeln/Pogrom)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Neo-orthodoxes Judentum (Religion, Philosophie, Ethik/Einzelne Religionen und religiöse Bewegungen/Richtungen und Bewegungen im Judentum)",
+          "Notes": ""
+        }
+      ],
+      "OtherObjects": [],
+      "Publications": [],
+      "Exhibitions": [
+        {
+          "Type": "",
+          "Text": "9",
+          "Notes": ""
+        }
+      ],
+      "ImageLicense": "",
+      "Images": []
+    },
+    {
+      "Id": 15670,
+      "CreateUser": "20110308_DÜ_Foto",
+      "CreateDate": "2011-03-25T00:00:00",
+      "ChangeUser": "JM_SB",
+      "ChangeDate": "2021-01-28T00:00:00",
+      "InventoryNumber": "F87-B744",
+      "Title": "Blick auf den Tora-Schrein in der Börneplatz-Synagoge",
+      "ObjectName": "Fotoreproduktion (Objekte/Visuelles und audiovisuelles Material/Visuelle Werke/Grafik, Fotografie)",
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "um 1900",
+          "YearFrom": "",
+          "YearTo": "",
+          "Notes": ""
+        }
+      ],
+      "ContainerName": "JMF Foto",
+      "ContainerId": 173,
+      "Creditline": "",
+      "Notes": "Die Fotografie zeigt einen Blick auf die Ostwand der Synagoge mit dem prächtigen Tora-Schrein. Das Foto wurde von der Frauenempore aus gemacht, wahrscheinlich bevor das Gebäude 1901 erweitert wurde.",
+      "AcquisitionDate": "",
+      "CurrentLocation": "",
+      "Convolute": "",
+      "NumberOfParts": "",
+      "Creators": [
+        {
+          "Id": 16015,
+          "ChangeUser": "JM_SB",
+          "ChangeDate": "2021-01-28T00:00:00",
+          "ArtistId": 3035,
+          "Order": 1,
+          "Role": "Fotograf/in",
+          "Attribution": "",
+          "Description": ""
+        }
+      ],
+      "Provenance": [],
+      "GeographicReferences": [
+        {
+          "Type": "Darstellungsort",
+          "Text": "Deutschland; Hessen; Frankfurt am Main",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Objektmaß",
+          "Text": "keine Angaben",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "",
+          "Text": "Keine Angaben",
+          "Notes": ""
+        }
+      ],
+      "Signatures": [
+        {
+          "Type": "",
+          "Text": "",
+          "Notes": ""
+        }
+      ],
+      "Inscriptions": [],
+      "Keywords": [
+        {
+          "Type": "Geogr. Bezug",
+          "Text": "Frankfurt am Main (Geografie/Kontinente/Kontinente/Europa/Regionen (Europa)/Mitteleuropa/Deutschland/Hessen)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Tora-Schrein (Religion, Philosophie, Ethik/Religiöse Orte, Religiöse Zeiten/Religiöse Orte/Heiligtum)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Synagoge (Gebäude) (Religion, Philosophie, Ethik/Religiöse Orte, Religiöse Zeiten/Religiöse Orte)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Neo-orthodoxes Judentum (Religion, Philosophie, Ethik/Einzelne Religionen und religiöse Bewegungen/Richtungen und Bewegungen im Judentum)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Novemberpogrom (Politik und Militär/Politisches Handeln/Kollektives politisches Handeln/Pogrom)",
+          "Notes": ""
+        },
+        {
+          "Type": "Objektbezeichnung",
+          "Text": "Fotoreproduktion (Objekte/Visuelles und audiovisuelles Material/Visuelle Werke/Grafik, Fotografie)",
+          "Notes": ""
+        }
+      ],
+      "OtherObjects": [],
+      "Publications": [],
+      "Exhibitions": [],
+      "ImageLicense": "",
+      "Images": []
+    },
+    {
+      "Id": 17986,
+      "CreateUser": "20110308_DÜ_Inventarkarten1",
+      "CreateDate": "2011-03-25T00:00:00",
+      "ChangeUser": "JM_SB",
+      "ChangeDate": "2021-07-06T00:00:00",
+      "InventoryNumber": "JMF1990-0002",
+      "Title": "Ausgrabung am Börneplatz",
+      "ObjectName": "Zeichnung (Kunst und Kultur/Bildende Kunst/Kunstgattungen/Grafik/Grafik)",
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "1987",
+          "YearFrom": "1987",
+          "YearTo": "1987",
+          "Notes": ""
+        }
+      ],
+      "ContainerName": "JMF Historische Sammlung",
+      "ContainerId": 172,
+      "Creditline": "",
+      "Notes": "Diese Zeichnung dokumentiert die Ausgrabungen am Börneplatz im Jahr 1987. In der Vogelschauperspektive sind immer wieder architektonische Bauelemente wie Steinbögen und Mauerfundamente zu erkennen. ",
+      "AcquisitionDate": "",
+      "CurrentLocation": "",
+      "Convolute": "",
+      "NumberOfParts": "",
+      "Creators": [
+        {
+          "Id": 8466,
+          "ChangeUser": "JM_SB",
+          "ChangeDate": "2021-01-28T00:00:00",
+          "ArtistId": 520,
+          "Order": 5,
+          "Role": "Künstler/in",
+          "Attribution": "",
+          "Description": ""
+        }
+      ],
+      "Provenance": [],
+      "GeographicReferences": [
+        {
+          "Type": "Darstellungsort",
+          "Text": "Deutschland; Hessen; Frankfurt am Main",
+          "Notes": ""
+        },
+        {
+          "Type": "Herkunft/Besitzer",
+          "Text": "Deutschland; Hessen; Frankfurt am Main",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [],
+      "Material_Technique": [
+        {
+          "Type": "Ausgabe",
+          "Text": "Federzeichnung auf Papier",
+          "Notes": ""
+        }
+      ],
+      "Signatures": [
+        {
+          "Type": "Inschrift",
+          "Text": "signiert und datiert 1987 (vom Künstler)",
+          "Notes": ""
+        }
+      ],
+      "Inscriptions": [],
+      "Keywords": [
+        {
+          "Type": "Geogr. Bezug",
+          "Text": "Frankfurt am Main (Geografie/Kontinente/Kontinente/Europa/Regionen (Europa)/Mitteleuropa/Deutschland/Hessen)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Novemberpogrom (Politik und Militär/Politisches Handeln/Kollektives politisches Handeln/Pogrom)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Synagoge (Gebäude) (Religion, Philosophie, Ethik/Religiöse Orte, Religiöse Zeiten/Religiöse Orte)",
+          "Notes": ""
+        },
+        {
+          "Type": "Objektbezeichnung",
+          "Text": "Zeichnung (Kunst und Kultur/Bildende Kunst/Kunstgattungen/Grafik/Grafik)",
+          "Notes": ""
+        }
+      ],
+      "OtherObjects": [],
+      "Publications": [],
+      "Exhibitions": [],
+      "ImageLicense": "",
+      "Images": [
+        {
+          "Id": 68490,
+          "CreateUser": "20110308_DÜ",
+          "CreateDate": "2011-03-25T13:40:31",
+          "ChangeUser": "JM_ML",
+          "ChangeDate": "2012-03-08T19:16:31",
+          "License": "Jüdisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "231023d8-5505-4843-ab00-b32b9b9ab407.jpg",
+          "OriginalFileName": "JMF90-002_FK.jpg"
+        }
+      ]
+    },
+    {
+      "Id": 21833,
+      "CreateUser": "20110308_DÜ_Inventarkarten1",
+      "CreateDate": "2011-03-25T00:00:00",
+      "ChangeUser": "JM_SB",
+      "ChangeDate": "2021-02-02T00:00:00",
+      "InventoryNumber": "JMF1989-0092",
+      "Title": "Der Börneplatz",
+      "ObjectName": "Zeichnung (Kunst und Kultur/Bildende Kunst/Kunstgattungen/Grafik/Grafik)",
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "1932",
+          "YearFrom": "1932",
+          "YearTo": "1932",
+          "Notes": ""
+        }
+      ],
+      "ContainerName": "JMF Historische Sammlung",
+      "ContainerId": 172,
+      "Creditline": "",
+      "Notes": "Wir sehen auf den historischen Börneplatz und die Synagoge. Dieser Platz mit seiner großen Straßenkreuzung wurde auch als wöchentlicher Marktplatz benutzt. ",
+      "AcquisitionDate": "19.05.1989",
+      "CurrentLocation": "",
+      "Convolute": "",
+      "NumberOfParts": "",
+      "Creators": [
+        {
+          "Id": 4725,
+          "ChangeUser": "JM_SB",
+          "ChangeDate": "2021-01-28T00:00:00",
+          "ArtistId": 648,
+          "Order": 5,
+          "Role": "Künstler/in",
+          "Attribution": "",
+          "Description": ""
+        }
+      ],
+      "Provenance": [],
+      "GeographicReferences": [
+        {
+          "Type": "Darstellungsort",
+          "Text": "Deutschland; Hessen; Frankfurt am Main",
+          "Notes": ""
+        },
+        {
+          "Type": "Herkunft/Besitzer",
+          "Text": "Deutschland; Hessen; Frankfurt am Main",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Rahmenmaß",
+          "Text": "57,5 x 76 cm",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "Ausgabe",
+          "Text": "Aquarellierte Federzeichnung auf Papier",
+          "Notes": ""
+        }
+      ],
+      "Signatures": [
+        {
+          "Type": "Inschrift",
+          "Text": "signiert und datiert Mitte rechts '32 vom Künstler",
+          "Notes": ""
+        }
+      ],
+      "Inscriptions": [],
+      "Keywords": [
+        {
+          "Type": "Geogr. Bezug",
+          "Text": "Frankfurt am Main (Geografie/Kontinente/Kontinente/Europa/Regionen (Europa)/Mitteleuropa/Deutschland/Hessen)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Markt (Wirtschaft und Verkehr/Markt)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Stadt (Gesellschaft, Soziologie, Psychologie/Siedlung und Städtebau/Siedlung)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Synagoge (Gebäude) (Religion, Philosophie, Ethik/Religiöse Orte, Religiöse Zeiten/Religiöse Orte)",
+          "Notes": ""
+        },
+        {
+          "Type": "Objektbezeichnung",
+          "Text": "Zeichnung (Kunst und Kultur/Bildende Kunst/Kunstgattungen/Grafik/Grafik)",
+          "Notes": ""
+        }
+      ],
+      "OtherObjects": [],
+      "Publications": [],
+      "Exhibitions": [
+        {
+          "Type": "",
+          "Text": "279",
+          "Notes": ""
+        },
+        {
+          "Type": "",
+          "Text": "76",
+          "Notes": ""
+        }
+      ],
+      "ImageLicense": "",
+      "Images": []
+    },
+    {
+      "Id": 24995,
+      "CreateUser": "20110308_DÜ_Foto",
+      "CreateDate": "2011-03-25T00:00:00",
+      "ChangeUser": "JM_SB",
+      "ChangeDate": "2021-02-02T00:00:00",
+      "InventoryNumber": "F87-F0487",
+      "Title": "Geschmückter Tora-Schrein in der Börneplatz-Synagoge",
+      "ObjectName": "Fotoreproduktion (Objekte/Visuelles und audiovisuelles Material/Visuelle Werke/Grafik, Fotografie)",
+      "Datings": [
+        {
+          "Type": "Verwendung",
+          "Text": "1932",
+          "YearFrom": "1932",
+          "YearTo": "1932",
+          "Notes": ""
+        }
+      ],
+      "ContainerName": "JMF Foto",
+      "ContainerId": 173,
+      "Creditline": "",
+      "Notes": "Die Aufnahme stammt aus der Novemberausgabe des Frankfurter Israelitischen Gemeindeblatts 1932 und dokumentiert den festlich geschmückten Tora-Schrein.",
+      "AcquisitionDate": "",
+      "CurrentLocation": "",
+      "Convolute": "",
+      "NumberOfParts": "",
+      "Creators": [
+        {
+          "Id": 28719,
+          "ChangeUser": "JM_SB",
+          "ChangeDate": "2021-02-02T00:00:00",
+          "ArtistId": 3035,
+          "Order": 1,
+          "Role": "Fotograf/in",
+          "Attribution": "",
+          "Description": ""
+        }
+      ],
+      "Provenance": [],
+      "GeographicReferences": [
+        {
+          "Type": "",
+          "Text": "",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Objektmaß",
+          "Text": "keine Angaben",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "",
+          "Text": "Keine Angaben",
+          "Notes": ""
+        }
+      ],
+      "Signatures": [
+        {
+          "Type": "",
+          "Text": "",
+          "Notes": ""
+        }
+      ],
+      "Inscriptions": [],
+      "Keywords": [
+        {
+          "Type": "Geogr. Bezug",
+          "Text": "Frankfurt am Main (Geografie/Kontinente/Europa/Europa/Regionen (Europa)/Mitteleuropa/Deutschland/Hessen)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Synagoge (Gebäude) (Objekte/Bauwerke, Gebaute Umwelt/Sakralbauten)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Tora-Schrein (Religion, Philosophie, Ethik/Religiöse Orte, Religiöse Zeiten/Religiöse Orte/Heiligtum)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Neo-orthodoxes Judentum (Religion, Philosophie, Ethik/Einzelne Religionen und religiöse Bewegungen/Richtungen und Bewegungen im Judentum)",
+          "Notes": ""
+        },
+        {
+          "Type": "Objektbezeichnung",
+          "Text": "Fotoreproduktion (Objekte/Visuelles und audiovisuelles Material/Visuelle Werke/Grafik, Fotografie)",
+          "Notes": ""
+        }
+      ],
+      "OtherObjects": [],
+      "Publications": [],
+      "Exhibitions": [],
+      "ImageLicense": "",
+      "Images": []
+    },
+    {
+      "Id": 26638,
+      "CreateUser": "20110308_DÜ_Foto",
+      "CreateDate": "2011-03-25T00:00:00",
+      "ChangeUser": "JM_SB",
+      "ChangeDate": "2021-01-28T00:00:00",
+      "InventoryNumber": "F87-D360",
+      "Title": "Grundriss der Börneplatz-Synagoge",
+      "ObjectName": "Fotoreproduktion (Objekte/Visuelles und audiovisuelles Material/Visuelle Werke/Grafik, Fotografie)",
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "1886",
+          "YearFrom": "1886",
+          "YearTo": "1886",
+          "Notes": ""
+        }
+      ],
+      "ContainerName": "JMF Foto",
+      "ContainerId": 173,
+      "Creditline": "",
+      "Notes": "",
+      "AcquisitionDate": "",
+      "CurrentLocation": "",
+      "Convolute": "",
+      "NumberOfParts": "",
+      "Creators": [],
+      "Provenance": [],
+      "GeographicReferences": [
+        {
+          "Type": "Darstellungsort",
+          "Text": "Deutschland; Hessen; Frankfurt am Main",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Objektmaß",
+          "Text": "keine Angaben",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "",
+          "Text": "Keine Angaben",
+          "Notes": ""
+        }
+      ],
+      "Signatures": [
+        {
+          "Type": "",
+          "Text": "",
+          "Notes": ""
+        }
+      ],
+      "Inscriptions": [],
+      "Keywords": [
+        {
+          "Type": "Geogr. Bezug",
+          "Text": "Frankfurt am Main (Geografie/Kontinente/Europa/Regionen (Europa)/Mitteleuropa/Deutschland/Hessen)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Synagoge (Gebäude) (Religion, Philosophie, Ethik/Religiöse Orte, Religiöse Zeiten/Religiöse Orte)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Grundriss (Objekte/Visuelles und audiovisuelles Material/Visuelle Werke/Grafik, Fotografie/Grafische Dokumentgattungen/Technische Pläne und Zeichnungen)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Bima (Religion, Philosophie, Ethik/Religiöse Orte, Religiöse Zeiten/Religiöse Orte/Synagoge (Gebäude))",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Neo-orthodoxes Judentum (Religion, Philosophie, Ethik/Einzelne Religionen und religiöse Bewegungen/Richtungen und Bewegungen im Judentum)",
+          "Notes": ""
+        },
+        {
+          "Type": "Objektbezeichnung",
+          "Text": "Fotoreproduktion (Objekte/Visuelles und audiovisuelles Material/Visuelle Werke/Grafik, Fotografie)",
+          "Notes": ""
+        }
+      ],
+      "OtherObjects": [],
+      "Publications": [],
+      "Exhibitions": [],
+      "ImageLicense": "",
+      "Images": [
+        {
+          "Id": 54161,
+          "CreateUser": "20110308_DÜ",
+          "CreateDate": "2011-03-25T12:14:46",
+          "ChangeUser": "JM_ML",
+          "ChangeDate": "2016-06-13T13:46:22",
+          "License": "gemeinfrei",
+          "KeyFileName": "45a5536c-eae6-4b96-8df9-d517d8f5d15f.jpg",
+          "OriginalFileName": "F87-D360.jpg"
+        }
+      ]
+    },
+    {
+      "Id": 27109,
+      "CreateUser": "20110308_DÜ_Foto",
+      "CreateDate": "2011-03-25T00:00:00",
+      "ChangeUser": "JM_SB",
+      "ChangeDate": "2021-05-31T00:00:00",
+      "InventoryNumber": "F87-F1097",
+      "Title": "Tora-Rollen mit Tora-Schmuck in der Börneplatz-Synagoge",
+      "ObjectName": "Fotoreproduktion (Objekte/Visuelles und audiovisuelles Material/Visuelle Werke/Grafik, Fotografie)",
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "1913",
+          "YearFrom": "1913",
+          "YearTo": "1913",
+          "Notes": ""
+        }
+      ],
+      "ContainerName": "JMF Foto",
+      "ContainerId": 173,
+      "Creditline": "",
+      "Notes": "In dem geöffneten Tora-Schrein sind Tora-Rollen in festlichem Schmuck zu sehen. Dieser wurde teilweise 1913 von der Familie Arnsberg gestiftet, als deren Sohn Paul seine Bar Mizwa feierte. Dieser Tora-Schmuck gehörte somit zum festen Inventar der Israelitischen Kultusgemeinde in der Börneplatz-Synagoge. ",
+      "AcquisitionDate": "",
+      "CurrentLocation": "",
+      "Convolute": "",
+      "NumberOfParts": "",
+      "Creators": [],
+      "Provenance": [],
+      "GeographicReferences": [
+        {
+          "Type": "Darstellungsort",
+          "Text": "Deutschland; Hessen; Frankfurt am Main",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Objektmaß",
+          "Text": "keine Angaben",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "",
+          "Text": "Keine Angaben",
+          "Notes": ""
+        }
+      ],
+      "Signatures": [
+        {
+          "Type": "",
+          "Text": "",
+          "Notes": ""
+        }
+      ],
+      "Inscriptions": [],
+      "Keywords": [
+        {
+          "Type": "Geogr. Bezug",
+          "Text": "Frankfurt am Main (Geografie/Kontinente/Europa/Regionen (Europa)/Mitteleuropa/Deutschland/Hessen)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Tora-Schmuck (Objekte/Zeremonialobjekte, Ritualgegenstände, Festtagszubehör/Zeremonialobjekt)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Tora-Schrein (Religion, Philosophie, Ethik/Religiöse Orte, Religiöse Zeiten/Religiöse Orte/Heiligtum)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Synagoge (Gebäude) (Religion, Philosophie, Ethik/Religiöse Orte, Religiöse Zeiten/Religiöse Orte)",
+          "Notes": ""
+        },
+        {
+          "Type": "Objektbezeichnung",
+          "Text": "Fotoreproduktion (Objekte/Visuelles und audiovisuelles Material/Visuelle Werke/Grafik, Fotografie)",
+          "Notes": ""
+        }
+      ],
+      "OtherObjects": [],
+      "Publications": [],
+      "Exhibitions": [],
+      "ImageLicense": "",
+      "Images": []
+    },
+    {
+      "Id": 28626,
+      "CreateUser": "20110308_DÜ_Inventarkarten1",
+      "CreateDate": "2011-03-25T00:00:00",
+      "ChangeUser": "JM_SB",
+      "ChangeDate": "2021-02-02T00:00:00",
+      "InventoryNumber": "JMF1989-0093",
+      "Title": "Der Börneplatz (Vorstudie)",
+      "ObjectName": "Zeichnung (Kunst und Kultur/Bildende Kunst/Kunstgattungen/Grafik/Grafik)",
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "1932",
+          "YearFrom": "1932",
+          "YearTo": "1932",
+          "Notes": ""
+        }
+      ],
+      "ContainerName": "JMF Historische Sammlung",
+      "ContainerId": 172,
+      "Creditline": "",
+      "Notes": "Diese kolorierte Zeichnung ist eine sogenannte Vorstudie für eine andere Darstellung. Wir sehen hier über ein Markthäuschen hinweg die große Straßenkreuzung auf dem Börneplatz. Links steht die große Synagoge mit ihrer Kuppel. ",
+      "AcquisitionDate": "19.05.1989",
+      "CurrentLocation": "",
+      "Convolute": "",
+      "NumberOfParts": "",
+      "Creators": [
+        {
+          "Id": 8871,
+          "ChangeUser": "JM_SB",
+          "ChangeDate": "2021-01-28T00:00:00",
+          "ArtistId": 648,
+          "Order": 5,
+          "Role": "Künstler/in",
+          "Attribution": "",
+          "Description": ""
+        }
+      ],
+      "Provenance": [],
+      "GeographicReferences": [
+        {
+          "Type": "Darstellungsort",
+          "Text": "Deutschland; Hessen; Frankfurt am Main",
+          "Notes": ""
+        },
+        {
+          "Type": "Herkunft/Besitzer",
+          "Text": "Deutschland; Hessen; Frankfurt am Main",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Rahmenmaß",
+          "Text": "76 x 57,7 cm",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "Ausgabe",
+          "Text": "Aquarellierte Federzeichnung auf Papier",
+          "Notes": ""
+        }
+      ],
+      "Signatures": [
+        {
+          "Type": "Inschrift",
+          "Text": "signiert und datiert rechts unten 'Epstein 32 vom Künstler",
+          "Notes": ""
+        }
+      ],
+      "Inscriptions": [],
+      "Keywords": [
+        {
+          "Type": "Geogr. Bezug",
+          "Text": "Frankfurt am Main (Geografie/Kontinente/Kontinente/Europa/Regionen (Europa)/Mitteleuropa/Deutschland/Hessen)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Markt (Wirtschaft und Verkehr/Markt)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Stadt (Gesellschaft, Soziologie, Psychologie/Siedlung und Städtebau/Siedlung)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Synagoge (Gebäude) (Religion, Philosophie, Ethik/Religiöse Orte, Religiöse Zeiten/Religiöse Orte)",
+          "Notes": ""
+        },
+        {
+          "Type": "Objektbezeichnung",
+          "Text": "Zeichnung (Kunst und Kultur/Bildende Kunst/Kunstgattungen/Grafik/Grafik)",
+          "Notes": ""
+        }
+      ],
+      "OtherObjects": [],
+      "Publications": [],
+      "Exhibitions": [
+        {
+          "Type": "",
+          "Text": "279",
+          "Notes": ""
+        },
+        {
+          "Type": "",
+          "Text": "76",
+          "Notes": ""
+        }
+      ],
+      "ImageLicense": "",
+      "Images": [
+        {
+          "Id": 69799,
+          "CreateUser": "20110308_DÜ",
+          "CreateDate": "2011-03-25T13:40:31",
+          "ChangeUser": "JM_ANG",
+          "ChangeDate": "2012-03-16T10:01:44",
+          "License": "Jüdisches Museum Frankfurt, CC BY-SA 4.0",
+          "KeyFileName": "d637ead0-38ba-4644-89cd-10502b8dedaf.jpg",
+          "OriginalFileName": "JMF89-093_Wb.jpg"
+        }
+      ]
+    },
+    {
+      "Id": 29455,
+      "CreateUser": "20110308_DÜ_Foto",
+      "CreateDate": "2011-03-25T00:00:00",
+      "ChangeUser": "JM_SB",
+      "ChangeDate": "2021-02-02T00:00:00",
+      "InventoryNumber": "F004-653",
+      "Title": "Markt auf dem Börneplatz mit der Synagoge im Hintergrund",
+      "ObjectName": "Fotoreproduktion (Kunst und Kultur/Bildende Kunst/Kunstgattungen/Fotografie/Fotografie (Bildträger))",
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "1881 - 1918",
+          "YearFrom": "1881",
+          "YearTo": "1918",
+          "Notes": ""
+        }
+      ],
+      "ContainerName": "JMF Foto",
+      "ContainerId": 173,
+      "Creditline": "",
+      "Notes": "Diese historische Aufnahme zeigt einen Markttag auf dem Börneplatz. Links sieht man die Börneplatz-Synagoge mit ihrer markanten Kuppel und die Mauer des Alten Jüdischen Friedhofs. ",
+      "AcquisitionDate": "",
+      "CurrentLocation": "",
+      "Convolute": "",
+      "NumberOfParts": "",
+      "Creators": [
+        {
+          "Id": 29024,
+          "ChangeUser": "JM_SB",
+          "ChangeDate": "2021-01-28T00:00:00",
+          "ArtistId": 3035,
+          "Order": 1,
+          "Role": "Fotograf/in",
+          "Attribution": "",
+          "Description": ""
+        }
+      ],
+      "Provenance": [],
+      "GeographicReferences": [
+        {
+          "Type": "Darstellungsort",
+          "Text": "Deutschland; Hessen; Frankfurt am Main",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Objektmaß",
+          "Text": "keine Angaben",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "",
+          "Text": "Keine Angaben",
+          "Notes": ""
+        }
+      ],
+      "Signatures": [
+        {
+          "Type": "",
+          "Text": "",
+          "Notes": ""
+        }
+      ],
+      "Inscriptions": [],
+      "Keywords": [
+        {
+          "Type": "Geogr. Bezug",
+          "Text": "Frankfurt am Main (Geografie/Kontinente/Kontinente/Europa/Regionen (Europa)/Mitteleuropa/Deutschland/Hessen)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Markt (Wirtschaft und Verkehr/Markt)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Stadt (Gesellschaft, Soziologie, Psychologie/Siedlung und Städtebau/Siedlung)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Alter Jüdischer Friedhof (Frankfurt a. Main) (Religion, Philosophie, Ethik/Religiöse Orte, Religiöse Zeiten/Religiöse Orte)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Synagoge (Gebäude) (Objekte/Bauwerke, Gebaute Umwelt/Sakralbauten)",
+          "Notes": ""
+        },
+        {
+          "Type": "Objektbezeichnung",
+          "Text": "Fotoreproduktion (Kunst und Kultur/Bildende Kunst/Kunstgattungen/Fotografie/Fotografie (Bildträger))",
+          "Notes": ""
+        }
+      ],
+      "OtherObjects": [],
+      "Publications": [],
+      "Exhibitions": [],
+      "ImageLicense": "",
+      "Images": []
+    },
+    {
+      "Id": 33919,
+      "CreateUser": "20110308_DÜ_Inventarkarten1",
+      "CreateDate": "2011-03-25T00:00:00",
+      "ChangeUser": "JM_SB",
+      "ChangeDate": "2020-10-12T00:00:00",
+      "InventoryNumber": "JMF1989-0120",
+      "Title": "Tora-Aufsatz",
+      "ObjectName": "Zeremonialobjekt (Objekte/Zeremonialobjekte, Ritualgegenstände, Festtagszubehör)",
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "1904",
+          "YearFrom": "1904",
+          "YearTo": "1904",
+          "Notes": ""
+        }
+      ],
+      "ContainerName": "JMF Judaica",
+      "ContainerId": 171,
+      "Creditline": "",
+      "Notes": "Diese Tora-Aufsätze haben die Form von Bäumen mit vergoldeten Äpfeln im Laub. Sie symbolisieren den Lebensbaum, als welcher die Tora traditionellerweise verstanden wird. Auch die Stäbe, an denen die Tora-Rolle befestigt ist, nennt man auf Hebräisch »Bäume des Lebens«. Der Frankfurter  Rabbiner Markus Horovitz beauftragte seinen Sohn, den Silberschmied Leo Horovitz, mit der Fertigung eines Tora-Schmucks, der aus\r\neinem Schild, Aufsätzen und einer Widmungsplakette bestand. Die  Gegenstände waren für das 25-jährige Jubiläum der konservativen Synagoge am\r\nBörneplatz 1907 bestimmt. Die Widmungsplakette befindet sich ebenfalls in der Sammlung des Museums, das Tora-Schild ist hingegen verschollen. Die Tora-Aufsätze wurden 1989 im Kunsthandel\r\nerworben.",
+      "AcquisitionDate": "06.12.1989",
+      "CurrentLocation": "Rothschild-Palais 2. Etage, Pracht der Gebote, Die Gegenwart des Tempels",
+      "Convolute": "",
+      "NumberOfParts": "",
+      "Creators": [
+        {
+          "Id": 12964,
+          "ChangeUser": "JM_SB",
+          "ChangeDate": "2020-10-06T00:00:00",
+          "ArtistId": 528,
+          "Order": 5,
+          "Role": "Künstler/in",
+          "Attribution": "",
+          "Description": ""
+        }
+      ],
+      "Provenance": [
+        {
+          "Type": "Provenienz",
+          "Text": "Börneplatzsynagoge; ",
+          "Notes": "1903/04 - ?"
+        },
+        {
+          "Type": "Provenienz",
+          "Text": "Verbleib unbekannt, 1989 in Christie's Auktion",
+          "Notes": "? - 1989"
+        },
+        {
+          "Type": "Provenienz",
+          "Text": "Jüdisches Museum Frankfurt",
+          "Notes": "1989 - dato"
+        }
+      ],
+      "GeographicReferences": [
+        {
+          "Type": "Herkunft/Besitzer",
+          "Text": "Deutschland; Hessen; Frankfurt am Main",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Objektmaß",
+          "Text": "33,4 x 10 cm",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "Ausgabe",
+          "Text": "Silber, getrieben, teilweise vergoldet",
+          "Notes": ""
+        }
+      ],
+      "Signatures": [
+        {
+          "Type": "Marke",
+          "Text": "Reichssilberstempel, Meisterpunze HOROVITZ (auf dem Schaft)",
+          "Notes": ""
+        }
+      ],
+      "Inscriptions": [],
+      "Keywords": [
+        {
+          "Type": "Geogr. Bezug",
+          "Text": "Frankfurt am Main (Geografie/Kontinente/Kontinente/Europa/Regionen (Europa)/Mitteleuropa/Deutschland/Hessen)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Tora-Schmuck (Objekte/Zeremonialobjekte, Ritualgegenstände, Festtagszubehör/Synagogenausstattung, Tempelgerät)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Gebet (Religion, Philosophie, Ethik/Religiöses Leben, Religionsausübung/Gebete und Segenssprüche)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Baum (Objekte/Natur und Umwelt/Lebewesen, Pflanzen, Fossilien, Präparate, organische Materialien)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Metallkunst (Kunst und Kultur/Bildende Kunst/Kunstgattungen/Angewandte Kunst)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Gottesdienst (Religion, Philosophie, Ethik/Religiöses Leben, Religionsausübung/Öffentliche Religionsausübung, Gottesdienst)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Synagoge (Gebäude) (Objekte/Bauwerke, Gebaute Umwelt/Gebäude/Sakralbau)",
+          "Notes": ""
+        },
+        {
+          "Type": "Objektbezeichnung",
+          "Text": "Zeremonialobjekt (Objekte/Zeremonialobjekte, Ritualgegenstände, Festtagszubehör)",
+          "Notes": ""
+        }
+      ],
+      "OtherObjects": [],
+      "Publications": [
+        {
+          "Text": "Heuberger, Georg (Hrsg.), Die Pracht der Gebote - Die Judaica-Sammlung des Jüdischen Museums Frankfurt am Main, Köln: Wienand, 2006.",
+          "Pages": "",
+          "Illustrations": "",
+          "CatalogueNumber": "17",
+          "Notes": ""
+        },
+        {
+          "Text": "Ost und West, 1904",
+          "Pages": "",
+          "Illustrations": "S. 52-55",
+          "CatalogueNumber": "",
+          "Notes": ""
+        }
+      ],
+      "Exhibitions": [
+        {
+          "Type": "",
+          "Text": "371",
+          "Notes": ""
+        },
+        {
+          "Type": "",
+          "Text": "303",
+          "Notes": ""
+        },
+        {
+          "Type": "",
+          "Text": "14",
+          "Notes": ""
+        },
+        {
+          "Type": "",
+          "Text": "97",
+          "Notes": ""
+        }
+      ],
+      "ImageLicense": "",
+      "Images": [
+        {
+          "Id": 86068,
+          "CreateUser": "JM_EA",
+          "CreateDate": "2018-08-28T11:51:36",
+          "ChangeUser": "JM_EA",
+          "ChangeDate": "2018-08-28T11:52:12",
+          "License": "Jüdisches Museum Frankfurt, Foto: Herbert Fischer CC BY SA 4.0",
+          "KeyFileName": "75dc29ea-b2b1-420b-b96d-d575ef41b8e4.jpg",
+          "OriginalFileName": "JMF1989-0120.jpg"
+        }
+      ]
+    },
+    {
+      "Id": 37881,
+      "CreateUser": "JM_ML",
+      "CreateDate": "2014-01-09T00:00:00",
+      "ChangeUser": "JM_SB",
+      "ChangeDate": "2021-07-06T00:00:00",
+      "InventoryNumber": "JMF2014-0003",
+      "Title": "Modell der Börneplatz-Synagoge",
+      "ObjectName": "Architekturmodell (Kunst und Kultur/Bildende Kunst/Kunstgattungen/Architektur)",
+      "Datings": [
+        {
+          "Type": "Darstellung",
+          "Text": "1988",
+          "YearFrom": "1988",
+          "YearTo": "1988",
+          "Notes": ""
+        },
+        {
+          "Type": "Herstellung Original/Vorlage",
+          "Text": "1881 - 1882",
+          "YearFrom": "1881",
+          "YearTo": "1882",
+          "Notes": ""
+        }
+      ],
+      "ContainerName": "JMF Historische Sammlung",
+      "ContainerId": 172,
+      "Creditline": "",
+      "Notes": "Dieses Modell wurde für die Ausstellung \"Die Architektur der Synagoge\" im Deutschen Architekturmuseum 1988 angefertigt. Das Atelier Tschavgov berücksichtigte dabei sowohl den Bau Siegfried Kusnizky 1881-82 und die Erweiterung 1901 durch Fritz Epstein.",
+      "AcquisitionDate": "1988",
+      "CurrentLocation": "",
+      "Convolute": "",
+      "NumberOfParts": "",
+      "Creators": [
+        {
+          "Id": 43890,
+          "ChangeUser": "JM_SB",
+          "ChangeDate": "2021-02-01T00:00:00",
+          "ArtistId": 5631,
+          "Order": 1,
+          "Role": "Künstler/in",
+          "Attribution": "",
+          "Description": ""
+        },
+        {
+          "Id": 43891,
+          "ChangeUser": "JM_SB",
+          "ChangeDate": "2021-02-01T00:00:00",
+          "ArtistId": 5410,
+          "Order": 6,
+          "Role": "Künstler/in",
+          "Attribution": "",
+          "Description": ""
+        }
+      ],
+      "Provenance": [],
+      "GeographicReferences": [
+        {
+          "Type": "",
+          "Text": "Deutschland; Hessen; Frankfurt am Main",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Objektmaß",
+          "Text": "Grundplatte x 70 x 70 cm",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "",
+          "Text": "Kunststoff, geätzt",
+          "Notes": ""
+        }
+      ],
+      "Signatures": [
+        {
+          "Type": "",
+          "Text": "",
+          "Notes": ""
+        }
+      ],
+      "Inscriptions": [],
+      "Keywords": [
+        {
+          "Type": "",
+          "Text": "",
+          "Notes": ""
+        },
+        {
+          "Type": "Geogr. Bezug",
+          "Text": "Frankfurt am Main (Geografie/Kontinente/Kontinente/Europa/Regionen (Europa)/Mitteleuropa/Deutschland/Hessen)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Synagoge (Gebäude) (Objekte/Bauwerke, Gebaute Umwelt/Sakralbauten)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Neo-orthodoxes Judentum (Religion, Philosophie, Ethik/Einzelne Religionen und religiöse Bewegungen/Richtungen und Bewegungen im Judentum)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Alter Jüdischer Friedhof (Frankfurt a. Main) (Objekte/Bauwerke, Gebaute Umwelt/Bauten des Gedenkens und Erinnerns/Friedhof)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Novemberpogrom (Geschichte/Historische Ereignisse/Ausgrenzung, Verfolgung, Vertreibung)",
+          "Notes": ""
+        },
+        {
+          "Type": "Objektbezeichnung",
+          "Text": "Architekturmodell (Kunst und Kultur/Bildende Kunst/Kunstgattungen/Architektur)",
+          "Notes": ""
+        }
+      ],
+      "OtherObjects": [],
+      "Publications": [
+        {
+          "Text": "Die Architektur der Synagoge. Katalog der Ausstellung in Frankfurt am Main 1988, hrsg. von Deutsches Architekturmuseum, Frankfurt am Main: Deutsches Architekturmuseum, ",
+          "Pages": "417",
+          "Illustrations": "378",
+          "CatalogueNumber": "394",
+          "Notes": ""
+        }
+      ],
+      "Exhibitions": [
+        {
+          "Type": "",
+          "Text": "183",
+          "Notes": ""
+        }
+      ],
+      "ImageLicense": "",
+      "Images": [
+        {
+          "Id": 75933,
+          "CreateUser": "JM_ML",
+          "CreateDate": "2014-01-09T17:56:27",
+          "ChangeUser": "JM_ML",
+          "ChangeDate": "2014-01-09T17:56:52",
+          "License": "Jüdisches Museum Frankfurt CC BY-SA 4.0",
+          "KeyFileName": "2454a1ab-a47f-4c36-b200-4efa286cd0a9.jpg",
+          "OriginalFileName": "JMF2014-0003.jpg"
+        }
+      ]
+    },
+    {
+      "Id": 38695,
+      "CreateUser": "JM_SK",
+      "CreateDate": "2014-05-01T00:00:00",
+      "ChangeUser": "JM_SB",
+      "ChangeDate": "2021-02-01T00:00:00",
+      "InventoryNumber": "JMF2014-0044",
+      "Title": "Ansichtskarte von Frankfurt mit Hauptsynagoge und Börneplatz-Synagoge",
+      "ObjectName": "Postkarte (Objekte/Schriftgut und Druckerzeugnisse/Schriftgut und Druckerzeugnisse nach Form/Gattung/Korrespondenz: Briefe, Schreiben, Mitteilungen)",
+      "Datings": [
+        {
+          "Type": "",
+          "Text": "28.02.1907",
+          "YearFrom": "1907",
+          "YearTo": "1907",
+          "Notes": ""
+        }
+      ],
+      "ContainerName": "JMF Historische Sammlung",
+      "ContainerId": 172,
+      "Creditline": "",
+      "Notes": "Auf dieser Ansichtskarte von Frankfurt sind unter anderem zwei Synagogen als Sehenswürdigkeiten und Wahrzeichen der Stadt abgebildet. Sie wurde von Frankfurt aus nach an Manfred Kühn nach Mannheim verschickt.",
+      "AcquisitionDate": "Mai 2014",
+      "CurrentLocation": "",
+      "Convolute": "",
+      "NumberOfParts": "",
+      "Creators": [],
+      "Provenance": [],
+      "GeographicReferences": [
+        {
+          "Type": "",
+          "Text": "Deutschland; Hessen; Frankfurt am Main",
+          "Notes": ""
+        }
+      ],
+      "Dimensions": [
+        {
+          "Type": "Objektmaß",
+          "Text": "9 x 14 cm",
+          "Notes": ""
+        }
+      ],
+      "Material_Technique": [
+        {
+          "Type": "",
+          "Text": "Karton",
+          "Notes": ""
+        }
+      ],
+      "Signatures": [
+        {
+          "Type": "",
+          "Text": "",
+          "Notes": ""
+        }
+      ],
+      "Inscriptions": [],
+      "Keywords": [
+        {
+          "Type": "Geogr. Bezug",
+          "Text": "Frankfurt am Main (Geografie/Kontinente/Kontinente/Europa/Regionen (Europa)/Mitteleuropa/Deutschland/Hessen)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Synagoge (Gebäude) (Objekte/Bauwerke, Gebaute Umwelt/Sakralbauten/Sakralbau)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Tourismus (Wirtschaft und Verkehr/Wirtschaftszweige, Wirtschaftssektoren/Gastgewerbe und Freizeitwirtschaft)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Stadtansicht (Kunst und Kultur/Kunst und Kultur allgemein/Motive und Symbole allgemein)",
+          "Notes": ""
+        },
+        {
+          "Type": "Inhalt/Kontext",
+          "Text": "Kirche (Gebäude) (Objekte/Bauwerke, Gebaute Umwelt/Sakralbauten)",
+          "Notes": ""
+        },
+        {
+          "Type": "Objektbezeichnung",
+          "Text": "Postkarte (Objekte/Schriftgut und Druckerzeugnisse/Schriftgut und Druckerzeugnisse nach Form/Gattung/Korrespondenz: Briefe, Schreiben, Mitteilungen)",
+          "Notes": ""
+        }
+      ],
+      "OtherObjects": [],
+      "Publications": [],
+      "Exhibitions": [],
+      "ImageLicense": "",
+      "Images": [
+        {
+          "Id": 77514,
+          "CreateUser": "JM_SK",
+          "CreateDate": "2014-05-01T12:20:27",
+          "ChangeUser": "JM_SK",
+          "ChangeDate": "2014-05-01T12:21:25",
+          "License": "Jüdisches Museum Frankfurt CC BY-SA 4.0",
+          "KeyFileName": "7a953545-6864-460b-95dc-3c4ce32396df.jpg",
+          "OriginalFileName": "JMF2014-0044.jpg"
+        }
+      ]
+    }
+  ],
+  "Artists": [
+    {
+      "Id": 3035,
+      "CreateUser": "JM_ER",
+      "CreateDate": "2011-06-10T15:12:14",
+      "ChangeUser": "JM_ER",
+      "ChangeDate": "2011-06-10T00:00:00",
+      "Type": "Person",
+      "FirstName": "",
+      "LastName": "Unbekannt",
+      "AliasName": "",
+      "Dating": ""
+    },
+    {
+      "Id": 520,
+      "CreateUser": "20110308_DÜ_JMF",
+      "CreateDate": "2011-03-25T10:57:22",
+      "ChangeUser": "vb",
+      "ChangeDate": "2011-03-25T00:00:00",
+      "Type": "Person",
+      "FirstName": "Klaus",
+      "LastName": "Gorsler",
+      "AliasName": "",
+      "Dating": ""
+    },
+    {
+      "Id": 648,
+      "CreateUser": "20110308_DÜ_JMF",
+      "CreateDate": "2011-03-25T10:57:22",
+      "ChangeUser": "JM_EA",
+      "ChangeDate": "2017-01-13T00:00:00",
+      "Type": "Person",
+      "FirstName": "Werner Hugo",
+      "LastName": "Epstein",
+      "AliasName": "",
+      "Dating": "1903-1987"
+    },
+    {
+      "Id": 528,
+      "CreateUser": "20110308_DÜ_JMF",
+      "CreateDate": "2011-03-25T10:57:22",
+      "ChangeUser": "JM_ML",
+      "ChangeDate": "2019-01-24T00:00:00",
+      "Type": "Person",
+      "FirstName": "Leo",
+      "LastName": "Horovitz",
+      "AliasName": "",
+      "Dating": "1876 - 1964"
+    },
+    {
+      "Id": 5631,
+      "CreateUser": "JM_ML",
+      "CreateDate": "2014-01-09T12:18:14",
+      "ChangeUser": "JM_ML",
+      "ChangeDate": "2014-01-09T00:00:00",
+      "Type": "Person",
+      "FirstName": "Siegfried",
+      "LastName": "Kusnitzky",
+      "AliasName": "",
+      "Dating": ""
+    },
+    {
+      "Id": 5410,
+      "CreateUser": "JM_SK",
+      "CreateDate": "2012-09-25T09:58:14",
+      "ChangeUser": "JM_ML",
+      "ChangeDate": "2014-01-09T00:00:00",
+      "Type": "Person",
+      "FirstName": "Fritz",
+      "LastName": "Epstein",
+      "AliasName": "",
+      "Dating": "1877 - 1960"
+    }
+  ]
+}
