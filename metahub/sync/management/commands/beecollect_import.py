@@ -81,9 +81,10 @@ class Command(BaseCommand):
                             logger.warning("Image not found")
                         else:
                             # Link with object-image-link
-                            ObjectImageLink.objects.create(
+                            oil = ObjectImageLink.objects.create(
                                 object_image=image, collection_object=bc_obj
                             )
+                            print(oil)
 
                 for tag in obj.get_tags():
                     BaseTag.objects.get_or_create(name=tag)
@@ -147,7 +148,13 @@ class Command(BaseCommand):
                 .descendant_of(MetaHubMuseumSubHomePage.objects.get(slug=museum_slug))
                 .first()
             )
+            # objects are always null, why?
             new_page = MetaHubObjectPage(title=title, object=object_instance)
+            print('object', new_page.object)
+
+            if not parent_page:
+                logger.warning("Missing objects parent page to append children! Cannot continue.")
+
             parent_page.add_child(instance=new_page)
             return new_page
             # logger.warning(f"Can't create CMS page for object id: {object_instance.id}")
