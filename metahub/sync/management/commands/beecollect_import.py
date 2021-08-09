@@ -81,10 +81,9 @@ class Command(BaseCommand):
                             logger.warning("Image not found")
                         else:
                             # Link with object-image-link
-                            oil = ObjectImageLink.objects.create(
+                            ObjectImageLink.objects.create(
                                 object_image=image, collection_object=bc_obj
                             )
-                            print(oil)
 
                 for tag in obj.get_tags():
                     BaseTag.objects.get_or_create(name=tag)
@@ -148,9 +147,7 @@ class Command(BaseCommand):
                 .descendant_of(MetaHubMuseumSubHomePage.objects.get(slug=museum_slug))
                 .first()
             )
-            # objects are always null, why?
             new_page = MetaHubObjectPage(title=title, object=object_instance)
-            print('object', new_page.object)
 
             if not parent_page:
                 logger.warning("Missing objects parent page to append children! Cannot continue.")
