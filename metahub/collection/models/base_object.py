@@ -122,7 +122,7 @@ class BaseCollectionObject(ClusterableModel):
         """
         list = []
         for el in fields:
-            if el['value'] and el['value'] != '':
+            if el['data'] and el['data'] != '':
                 list.append(el)
         return list
 
@@ -131,49 +131,44 @@ class BaseCollectionObject(ClusterableModel):
         Mapping method used to create the list of metadata that is shown on the object
         (series) page. Since we only want existing/filled fields we do it like this.
         TODO: see if it can be improved (list comprehension?)
-        TODO: Douwe update with fields that metahub wants to show
         """
         fields = (
             {
-                'value': self.title,
-                'name': 'Titel'
+                'data': self.title,
+                'title': 'Titel'
             },
             {
-                'value': self.datings,
-                'name': 'Datierung'
+                'data': self.artist,
+                'title': 'Kunstler(in) / Hersteller(in)'
             },
             {
-                'value': self.object_type,
-                'name': 'Objektbezeichnung'
+                'data': self.datings,
+                'title': 'Datierung'
             },
             {
-                'value': self.container_name,
-                'name': 'Sammlungsbereich'
+                'data': self.object_type,
+                'title': 'Objektbezeichnung'
             },
             {
-                'value': self.geographic_location,
-                'name': 'Ort'
+                'data': self.container_name,
+                'title': 'Sammlungsbereich'
             },
             {
-                'value': self.dimensions,
-                'name': 'Maße'
+                'data': self.geographic_location,
+                'title': 'Ort'
             },
             {
-                'value': self.material,
-                'name': 'Material / Technik'
+                'data': self.dimensions,
+                'title': 'Maße'
             },
             {
-                'value': self.signatures,
-                'name': 'Signatur / Beschriftung'
+                'data': self.material,
+                'title': 'Material / Technik'
             },
             {
-                'value': self.publications,
-                'name': 'Literatur'
-            },
-            {
-                'value': self.bc_image_license,
-                'name': 'Bildlizenz'
-            },
+                'data': self.signatures,
+                'title': 'Signatur / Beschriftung'
+            }
         )
         return self.only_take_existing_data(fields)
 

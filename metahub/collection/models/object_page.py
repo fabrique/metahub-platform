@@ -64,12 +64,17 @@ class MetaHubObjectPage(MetaHubBasePage):
         StreamFieldPanel('related_items')
     ]
 
-
     def get_object_image(self):
         # todo, this is temp since there are no real objects
-        if self.object and self.object.object_image_link:
-            primary_image = self.object.obj_img_link.first().object_image
-            return AtomPictureRegular(**Resolution(mobile='1920', crop=True).resolve(primary_image))
+        print('obj', self.object)
+        print('get_object_image')
+        if self.object:
+            print('hasobj')
+            print(self.object)
+            if hasattr(self.object, 'obj_image_link'):
+                print('has img link')
+                primary_image = self.object.obj_img_link.first().object_image
+                return AtomPictureRegular(**Resolution(mobile='1920', crop=True).resolve(primary_image))
 
     def get_object_header_component(self):
         return OrganismObjectHeaderRegular(
@@ -87,45 +92,7 @@ class MetaHubObjectPage(MetaHubBasePage):
         )
 
     def get_object_metadata(self):
-        # Douwe
-        # We can use the method below once the actual object exists
-        # Check what metadata fields are for metahub since it still uses JMF ones
-        # items = self.object.get_metadata_information_fields()
-        items = [
-            {
-                'title': 'Title',
-                'data': 'Etrog liqueur',
-            },
-            {
-                'title': 'Kunstler in Hersteller in',
-                'data': 'Kurt de Jong',
-            },
-            {
-                'title': 'Datierung',
-                'data': '2007',
-            },
-            {
-                'title': 'Objektbezeichnung',
-                'data': 'bottle',
-            },
-            {
-                'title': 'Ort',
-                'data': 'Frankfurt am Main',
-            },
-            {
-                'title': 'MaBe',
-                'data': 'Bottle 1:30cm',
-            },
-            {
-                'title': 'Material Technik',
-                'data': 'Glass',
-            },
-            {
-                'title': 'Signatur',
-                'data': 'JMF contemporary cultures',
-            }
-        ]
-
+        items = self.object.get_metadata_information_fields()
         for index, item in enumerate(items):
             item['number'] = str(index+1).zfill(2)
 
