@@ -107,6 +107,15 @@ class OrganismArticleRelatedItemsRegular(NamedTuple):
     tags: Iterable = ()
     variant: str = ''
     card_background: str = ''
+    link: AtomLinkRegular = AtomLinkRegular()
+
+
+class OrganismArticleRelatedItemsWithLinkRegular(OrganismArticleRelatedItemsRegular):
+    """
+    Basic/Content Page component
+    Related item cards, based on chosen pages
+    """
+    link: AtomLinkRegular = AtomLinkRegular()
 
 
 class OrganismFeaturedCardRegular(NamedTuple):

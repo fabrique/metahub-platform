@@ -220,6 +220,16 @@ class OrganismArticleCuratedStoriesRegularBlock(OrganismArticleCuratedItemsRegul
         component = 'organisms.relevant-cards.story'
 
 
+class OrganismArticleCuratedNewsRegularBlock(OrganismArticleCuratedItemsRegularBlock):
+    items = HelperRelatedPagesBlock()
+    link = AtomLinkRegularBlock()
+
+    class Meta:
+        label = "Related/highlighted news and events"
+        component = 'organisms.relevant-cards.news'
+        interface_class = OrganismArticleRelatedItemsWithLinkRegular
+
+
 class OrganismArticleRelatedItemsRegularBlock(AdapterStructBlock):
     """
     Basic/Content Page component
@@ -255,6 +265,14 @@ class OrganismArticleRelatedStoriesRegularBlock(OrganismArticleRelatedItemsRegul
     class Meta:
         component = 'organisms.relevant-cards.story'
         interface_class = OrganismArticleRelatedItemsRegular
+
+
+class OrganismArticleRelatedNewsRegularBlock(OrganismArticleRelatedItemsRegularBlock):
+    link = AtomLinkRegularBlock()
+
+    class Meta:
+        component = 'organisms.relevant-cards.news'
+        interface_class = OrganismArticleRelatedItemsWithLinkRegular
 
 
 class OrganismActualitiesLandingHeaderRegularBlock(AdapterStructBlock):
