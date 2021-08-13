@@ -72,23 +72,24 @@
             type = card.type,
             date = card.date,
             width = card.width,
-            aria_label = card.aria_label,
             height = card.height
           ) }}
         </div>
       {% endfor %}
     </div>
-    <div>
-      <div class="relevant-news__grid">
-        {{ atom_link.regular(
-          classes = 'relevant-news__link',
-          href = link.href,
-          title = link.title,
-          target = link.target,
-          icon_before = link.icon_before,
-          icon_after = link.icon_after
-        ) }}
+
+    {% if link %}
+      <div>
+        <div class="relevant-news__grid">
+          {{ atom_link.regular(
+            classes = 'relevant-news__link',
+            href = link.href,
+            title = link.title,
+            target = link.target,
+            icon_after = 'custom/arrow-right-icon'
+          ) }}
+        </div>
       </div>
-    </div>
+    {% endif %}
   </div>
 {% endmacro %}
