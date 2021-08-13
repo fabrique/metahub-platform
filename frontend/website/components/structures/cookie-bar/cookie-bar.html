@@ -53,8 +53,8 @@
             {% endif %}
 
             <div class="cookie-bar__buttons">
-              {{ atom_button.button(classes = 'button--accept-all', title = button_accept_all_title, long_title = button_accept_all_title, variant = 'secondary') }}
-              {{ atom_button.button(classes = 'button--save', title = button_save_title, long_title = button_save_title, variant = 'primary') }}
+              {{ atom_link.span(classes = 'link--accept-all', title = button_accept_all_title, long_title = button_accept_all_title) }}
+              {{ atom_link.span(classes = 'link--save', title = button_save_title, long_title = button_save_title) }}
             </div>
           </div>
         </div>
@@ -77,8 +77,8 @@
           </div>
 
           <div class="cookie-bar__buttons">
-            {{ atom_button.button(classes = 'button--reject', title = button_reject_title, long_title = button_reject_title, variant = 'secondary') }}
-            {{ atom_button.button(classes = 'button--accept', title = button_accept_title, long_title = button_accept_title, variant = 'primary') }}
+            {{ atom_link.span(classes = 'link--reject', title = button_reject_title, long_title = button_reject_title) }}
+            {{ atom_link.span(classes = 'link--accept', title = button_accept_title, long_title = button_accept_title) }}
           </div>
         </div>
       </div>

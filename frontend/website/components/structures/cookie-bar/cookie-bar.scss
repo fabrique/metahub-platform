@@ -8,7 +8,7 @@
 
   .cookie-bar__bar-wrapper,
   .cookie-bar__categories {
-    //
+    grid-column: 1 / -1;
   }
 
   .cookie-bar__bar,
@@ -77,13 +77,14 @@
   }
 
   .cookie-bar__category {
+    grid-column: 1 / -1;
     padding-bottom: 20px;
   }
 
   @include mobile-only {
-    .cookie-bar__category {
-      //
-    }
+    //.cookie-bar__category {
+    //  width: 100%;
+    //}
 
     .cookie-bar__bar-wrapper {
       flex-direction: column;
@@ -119,19 +120,17 @@
 
 @mixin cookie-bar-styling {
   .cookie-bar__bar {
-    background-color: $color-grey-light;
-    border-top: 3px solid $color-white;
+    background-color: $color-white;
     color: $color-black;
   }
 
   .cookie-bar__details {
-    background-color: $color-grey-light;
-    border-top: 3px solid $color-white;
+    background-color: $color-white;
     color: $color-black;
   }
 
   .cookie-bar__title {
-    @include typography(caption, false, true);
+    @include typography(heading-5, false, true);
 
     font-weight: bold;
   }
@@ -139,7 +138,7 @@
   .cookie-bar__text,
   .cookie-bar__category-text,
   .cookie-bar__text .link {
-    @include typography(caption);
+    @include typography(paragraph);
   }
 
   .cookie-bar__category-text {
@@ -167,6 +166,28 @@
 
   .link {
     display: inline;
+  }
+
+  .cookie-bar__buttons {
+    .link {
+      color: $color-magenta;
+      cursor: pointer;
+      display: inline-block;
+      margin: 0 .5em;
+      vertical-align: top;
+      white-space: nowrap;
+
+      .link__span {
+        text-decoration: underline;
+      }
+
+      &:hover,
+      &:focus {
+        .link__span {
+          text-decoration: none;
+        }
+      }
+    }
   }
 }
 

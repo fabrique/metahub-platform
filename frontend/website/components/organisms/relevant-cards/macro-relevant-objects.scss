@@ -85,10 +85,9 @@
 }
 
 .relevant-objects--home {
+  height: 100vh;
   margin-bottom: 0;
   padding-bottom: var(--section-space);
-
-  @include viewHeight;
 
   .relevant-objects__title {
     margin-top: 10vh;
