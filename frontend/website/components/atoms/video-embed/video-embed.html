@@ -4,9 +4,7 @@
 {% macro regular(classes = '', href = '', video_id = 'placeholder', video_type = 'youtube', picture = {}, autoplay = false, button_play_title = 'Play') %}
   <figure class="video-embed {{ classes }} {% if autoplay %}video-embed--autoplay{% endif %}">
     <div class="video-embed__container">
-    <!--   {% if picture and picture.images %} -->
-        {{ atom_picture.regular(images = picture.images, fits = picture.fits, positions = picture.positions, width = picture.width, height = picture.height, loading = picture.loading) }}
-      <!-- {% endif %} -->
+      {{ atom_picture.regular(images = picture.images, fits = picture.fits, positions = picture.positions, width = picture.width, height = picture.height, loading = picture.loading) }}
 
       <a class="video-embed__hit-target" href="{{ href }}" target="_blank" data-id="{{ video_id }}" data-type="{{ video_type }}" aria-label="{{ button_play_title }}">
         <span class="video-embed__overlay"></span>
