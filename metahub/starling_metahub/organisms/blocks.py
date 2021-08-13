@@ -306,17 +306,19 @@ class OrganismHomeFeaturedStoryBlock(AdapterStructBlock):
     featured_item = HelperRelatedStoryBlock()
     excerpt = blocks.TextBlock()
     link_label = blocks.CharBlock(default=_('Read more'), max_length=200)
-    link = AtomLinkRegularBlock()
+    all_stories_link_label = blocks.CharBlock(default=_('See all stories'), max_length=200)
 
     def build_extra(self, value, build_args, parent_context=None):
-        page = (parent_context or {}).get('page')
-
-        if not page:
+        from metahub.search.models import MetaHubSearchPage
+        try:
+            search_page = MetaHubSearchPage.objects.live().first()
+        except MetaHubSearchPage.DoesNotExist:
             return
-
-        build_args.update({
-            'title': page.title
-        })
+        else:
+            build_args.update({
+                'link': AtomLinkRegular(href=f"{search_page.url}?id_type=story",
+                                        title=value['all_stories_link_label'])
+            })
 
     class Meta:
         label = _("Highlighted story")

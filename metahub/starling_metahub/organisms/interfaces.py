@@ -130,6 +130,7 @@ class OrganismFeaturedCardLinkToAllRegular(NamedTuple):
     card: MoleculeCardRegular = MoleculeCardRegular()
     excerpt: str = ''
     link: AtomLinkRegular = AtomLinkRegular()
+    all_stories_link_label: str = ''
 
 
 class OrganismCardGridRegular(NamedTuple):
