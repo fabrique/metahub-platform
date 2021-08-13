@@ -4,7 +4,7 @@
 {% macro regular() %}
   <section class="pagination-wrapper">
     <nav class="pagination">
-      {{ atom_number_button.regular(classes = 'number-button--previous', variant = 'clean', href = '?', title = 'Previous', icon = 'custom/arrow-left-icon') }}
+      {{ atom_number_button.regular(classes = 'number-button--previous', variant = 'clean', href = '?', title = 'Previous', aria_label = 'Previous', icon = 'custom/arrow-left-icon') }}
       {{ atom_number_button.regular(href = '?', title = '1') }}
       {{ atom_number_button.span(classes = 'number-button--selected', variant = 'clean', title = '2') }}
       {{ atom_number_button.regular(href = '?', title = '3') }}
@@ -12,7 +12,7 @@
       {{ atom_number_button.span(classes = 'number-button--dots', variant = 'clean', title = '...') }}
       {{ atom_number_button.regular(href = '?', title = '43') }}
       {{ atom_number_button.regular(href = '?', title = '44') }}
-      {{ atom_number_button.regular(classes = 'number-button--next', variant = 'clean', href = '?', title = 'Next', icon = 'custom/arrow-right-icon') }}
+      {{ atom_number_button.regular(classes = 'number-button--next', variant = 'clean', href = '?', title = 'Next', aria_label = 'Next', icon = 'custom/arrow-right-icon') }}
     </nav>
   </section>
 {% endmacro %}

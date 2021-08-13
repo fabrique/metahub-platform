@@ -1,6 +1,6 @@
 
-{% macro regular(classes = '', logo_href = '') %}
-  <a class="logo" href="{{ logo_href }}">
+{% macro regular(classes = '', logo_href = '/', logo_label = 'Home') %}
+  <a class="logo" href="{{ logo_href }}" aria-label="{{ logo_label }}">
     <span hidden="screen">METAhub</span>
 
     <svg preserveAspectRatio="xMinYMid meet" class="logo__svg" viewBox="0 0 238 46" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
