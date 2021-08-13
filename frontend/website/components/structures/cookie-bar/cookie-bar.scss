@@ -173,7 +173,6 @@
       color: $color-magenta;
       cursor: pointer;
       display: inline-block;
-      margin: 0 .5em;
       vertical-align: top;
       white-space: nowrap;
 
@@ -186,6 +185,10 @@
         .link__span {
           text-decoration: none;
         }
+      }
+
+      &:not(:first-child) {
+        margin-left: .5em;
       }
     }
   }
