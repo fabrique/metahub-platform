@@ -19,9 +19,11 @@
   grid-column: auto / span 12;
 }
 
-.explore-intro__search-wrapper {
+.explore-intro__search-form {
   grid-column: auto / span 12;
+}
 
+.explore-intro__search-wrapper {
   @include subgrid-container;
 }
 
@@ -41,7 +43,7 @@
 
   &:focus {
     border: 2px solid var(--theme-color);
-    outline: none;
+    //outline: none;
   }
 
   @include landscape {
@@ -86,4 +88,15 @@
   .link__span {
     border-bottom: 2px solid var(--theme-color);
   }
+}
+
+.explore-intro__search-label {
+  @include typography(field-label, false, true, false);
+
+  cursor: pointer;
+  display: block;
+  line-height: 32px;
+  margin: 8px 0;
+  user-select: none;
+  width: 100%;
 }

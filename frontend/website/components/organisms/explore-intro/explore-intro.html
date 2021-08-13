@@ -8,47 +8,62 @@
   search_button_icon = '',
   search_query = '',
   placeholder_text = '',
-  main_filters = {}
+  main_filters = {},
+  search_label = ''
 ) %}
   {% set component = 'explore-intro' %}
   <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }} js-{{ component }}">
     <div class="{{ component }}__grid">
       <h1 class="{{ component }}__title js-{{ component }}__title">{{ title }}</h1>
-      <form class="{{ component }}__search-wrapper" method="get">
-        <input class="{{ component }}__search-input" name="q" value="{{ search_query }}" type="text" placeholder={{ placeholder_text }} />
-        <div class="{{ component }}__search-button-wrapper">
-          {{ atom_link.button(
-            classes =  component + '__search-button',
-            title = search_button_title,
-            icon_after = search_button_icon
-          ) }}
+
+      <form class="{{ component }}__search-form" method="get">
+        <label class="{{ component }}__search-label" for="search-input" hidden="screen">{{ search_label }}</label>
+
+        <div class="{{ component }}__search-wrapper">
+          <input id="search-input" class="{{ component }}__search-input" name="q" value="{{ search_query }}" type="text" placeholder="{{ placeholder_text }}">
+
+          <div class="{{ component }}__search-button-wrapper">
+            {{ atom_link.button(
+              classes =  component + '__search-button',
+              title = search_button_title,
+              icon_after = search_button_icon
+            ) }}
+          </div>
         </div>
       </form>
+
       <div class="{{ component }}__filter-wrapper">
-        {{ atom_link.regular(
-          classes =  component + '__filter ' + component + '__filter--' + main_filters.all.active,
-          href = '?',
-          title = main_filters.all.title
-        ) }}
+        {% if main_filters.all.title %}
+          {{ atom_link.regular(
+            classes =  component + '__filter ' + component + '__filter--' + main_filters.all.active,
+            href = '?',
+            title = main_filters.all.title
+          ) }}
+        {% endif %}
 
+        {% if main_filters.objects.title %}
+          {{ atom_link.regular(
+            classes =  component + '__filter ' + component + '__filter--' + main_filters.objects.active,
+            href = main_filters.objects.querystring,
+            title = main_filters.objects.title
+          ) }}
+        {% endif %}
 
-        {{ atom_link.regular(
-          classes =  component + '__filter ' + component + '__filter--' + main_filters.objects.active,
-          href = main_filters.objects.querystring,
-          title = main_filters.objects.title
-        ) }}
+        {% if main_filters.stories.title %}
+          {{ atom_link.regular(
+            classes =  component + '__filter ' + component + '__filter--' + main_filters.stories.active,
+            href = main_filters.stories.querystring,
+            title = main_filters.stories.title
+          ) }}
+        {% endif %}
 
-        {{ atom_link.regular(
-          classes =  component + '__filter ' + component + '__filter--' + main_filters.stories.active,
-          href = main_filters.stories.querystring,
-          title = main_filters.stories.title
-        ) }}
-
-        {{ atom_link.regular(
-          classes =  component + '__filter ' + component + '__filter--' + main_filters.locations.active,
-          href = main_filters.locations.querystring,
-          title = main_filters.locations.title
-        ) }}
+        {% if main_filters.locations.title %}
+          {{ atom_link.regular(
+            classes =  component + '__filter ' + component + '__filter--' + main_filters.locations.active,
+            href = main_filters.locations.querystring,
+            title = main_filters.locations.title
+          ) }}
+        {% endif %}
       </div>
     </div>
   </div>

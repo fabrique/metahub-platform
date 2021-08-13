@@ -43,7 +43,7 @@ $margin-top: 50px;
   }
 
   p {
-    @include typography(body-text, $lora-font-stack, true);
+    @include typography(paragraph, $lora-font-stack, true);
   }
 
   ul,

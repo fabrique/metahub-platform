@@ -71,13 +71,13 @@
 }
 
 .highlighted-card__card-excerpt {
-  @include typography(body-text, false);
+  @include typography(paragraph, false);
 
   color: inherit;
 
   @include landscape {
-    --body-text-font-size: 16px;
-    --body-text-line-height: 22px;
+    --paragraph-font-size: 16px;
+    --paragraph-line-height: 22px;
   }
 }
 

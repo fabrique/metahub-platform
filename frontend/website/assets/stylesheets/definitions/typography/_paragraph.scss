@@ -1,0 +1,18 @@
+
+:root {
+  --paragraph-font-stack: #{$lora-font-stack};
+  --paragraph-font-size: 18px;
+  --paragraph-font-style: normal;
+  --paragraph-font-variant: normal;
+  --paragraph-font-weight: #{get-lora-weight(medium)};
+  --paragraph-letter-spacing: -.01em;
+  --paragraph-line-height: 26px;
+  --paragraph-margin-bottom: 20px;
+  --paragraph-margin-top: 0;
+
+  @include portrait {
+    --paragraph-font-size: 22px;
+    --paragraph-line-height: 32px;
+    --paragraph-margin-bottom: 40px;
+  }
+}

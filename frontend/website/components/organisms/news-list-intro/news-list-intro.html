@@ -36,12 +36,14 @@
             {{ excerpt }}
           </p>
           <span class="{{ component }}__post__date">{{ card.date }}</span>
-          {{ atom_link.regular(
-            classes = component + '__post__link',
-            href = card.href,
-            title = link_label,
-            icon_after = 'custom/arrow-right-icon'
-          ) }}
+          {% if card.href and link_label %}
+            {{ atom_link.regular(
+              classes = component + '__post__link',
+              href = card.href,
+              title = link_label,
+              icon_after = 'custom/arrow-right-icon'
+            ) }}
+          {% endif %}
         </div>
       </div>
     </div>

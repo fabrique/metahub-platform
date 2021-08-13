@@ -47,8 +47,8 @@
 }
 
 @mixin style-list-base {
-  font-size: var(--body-text-font-size);
-  line-height: var(--body-text-line-height);
+  font-size: var(--paragraph-font-size);
+  line-height: var(--paragraph-line-height);
   list-style: none;
   margin: 0;
   padding: 0;

@@ -44,5 +44,5 @@
 }
 
 .article-cookies__text {
-  @include typography(body-text, $lora-font-stack, true);
+  @include typography(paragraph, $lora-font-stack, true);
 }
