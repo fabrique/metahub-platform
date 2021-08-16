@@ -35,12 +35,12 @@ def create_paginator_component(paginator, paginator_page, querystring_extra=''):
 
     # Separate buttons for previous and next
     button_previous = AtomLinkRegular(
-        title=_('Vorige'),
+        # title=_('Vorige'),
         href=f'?page={paginator_page.number - 1}{querystring_extra}'
     ) if paginator_page.number > 1 else None
 
     button_next = AtomLinkRegular(
-        title=_('Volgende'),
+        # title=_('Volgende'),
         href=f'?page={paginator_page.number + 1}{querystring_extra}'
     ) if paginator_page.number < paginator.num_pages else None
 
