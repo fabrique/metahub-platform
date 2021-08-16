@@ -29,8 +29,8 @@ class MetaHubHomePage(RoutablePageMixin, MetaHubBasePage):
     ], max_num=1))
 
     object_highlights = StreamField(StreamBlock([
-        ('object_highlights', OrganismArticleCuratedObjectsRegularBlock(defaults={'classes' : 'relevant-objects--home'})),
-    ], max_num=1))
+        ('object_highlights', OrganismArticleCuratedObjectsRegularBlock(defaults={'classes' : 'relevant-objects--home'}, required=False)),
+    ], max_num=1, required=False), blank=True)
 
     story_highlight = StreamField(StreamBlock([
         ('story_highlight', OrganismHomeFeaturedStoryBlock()),
