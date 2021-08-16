@@ -158,7 +158,7 @@ class OrganismContentHeroImageTitleBlock(AdapterStructBlock):
     class Meta:
         label = _("Hero highlight")
         icon = 'pick'
-        component = 'organisms.hero-image-title.picture'
+        component = 'organisms.hero-image-title.regular'
         interface_class = OrganismContentHeroImageTitle
 
 
