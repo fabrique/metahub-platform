@@ -10,7 +10,7 @@
         <div class="{{ component }}__card-wrapper">
           <h2 class="{{ component }}__card-title">{{ card.title }}</h2>
 
-          {% if  card.picture.images and  card.picture.images == 'placeholders' %}
+          {% if card.picture.images and card.picture.images == 'placeholders' %}
             {# Image ratio: free (landscape 3:2 preferred) #}
             {{ object_replace_value( card.picture, 'images', 'placeholders', generate_placeholders({ mobile: '530x353', portrait: '530x353', landscape: '400x266', notebook: '590x394', desktop: '740x494' })) }}
           {% endif %}
@@ -27,21 +27,26 @@
           ) }}
           <div class="{{ component }}__card-content">
             <p class="{{ component }}__card-excerpt">{{ excerpt }}</p>
-            {{ atom_link.regular(
-              classes = component + '__card-link',
-              href = card.href,
-              title = link_label,
-              icon_after = 'custom/arrow-right-icon'
-            ) }}
+
+            {% if link_label and card.href %}
+              {{ atom_link.regular(
+                classes = component + '__card-link',
+                href = card.href,
+                title = link_label,
+                icon_after = 'custom/arrow-right-icon'
+              ) }}
+            {% endif %}
           </div>
           <div class="{{ component }}__link-wrapper">
-            {{ atom_link.regular(
-              classes = component + '__link',
-              href = link.href,
-              title = link.title,
-              target = link.target,
-              icon_after = 'custom/arrow-right-icon'
-            ) }}
+            {% if link.href and link.title %}
+              {{ atom_link.regular(
+                classes = component + '__link',
+                href = link.href,
+                title = link.title,
+                target = link.target,
+                icon_after = 'custom/arrow-right-icon'
+              ) }}
+            {% endif %}
           </div>
         </div>
       </div>

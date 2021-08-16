@@ -15,13 +15,3 @@
     --theme-color: var(--color-magenta);
   }
 }
-
-@mixin viewHeight($min-header-height: false) {
-  @if not ($min-header-height) {
-    height: 100vh;
-  }
-
-  @if ($min-header-height) {
-    height: calc(100vh - var(--header-height));
-  }
-}

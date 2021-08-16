@@ -41,10 +41,10 @@ export default class CookieBarComponent extends Component {
 
     this.checkboxes = [...this.element.querySelectorAll('input[type="checkbox"]')]
 
-    this.buttonAccept = this.element.querySelector('.button--accept')
-    this.buttonReject = this.element.querySelector('.button--reject')
-    this.buttonSave = this.element.querySelector('.button--save')
-    this.buttonAcceptAll = this.element.querySelector('.button--accept-all')
+    this.buttonAccept = this.element.querySelector('.link--accept')
+    this.buttonReject = this.element.querySelector('.link--reject')
+    this.buttonSave = this.element.querySelector('.link--save')
+    this.buttonAcceptAll = this.element.querySelector('.link--accept-all')
     this.linkDetails = this.element.querySelector('.link--details')
     this.categoryTextItems = [...this.element.querySelectorAll('.cookie-bar__category-text')]
 

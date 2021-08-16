@@ -1,4 +1,4 @@
-{% import 'components/atoms/logo/logo.html' as atom_logo %}
+
 {% import 'components/atoms/link/link.html' as atom_link %}
 {% import 'components/atoms/icon-button/icon-button.html' as atom_icon_button %}
 
@@ -6,13 +6,15 @@
   <div class="menu-bar js-menu-bar" role="dialog" aria-label="Navigation">
     <nav class="menu-bar__nav-bar">
       <div class="menu-bar__wrapper">
-        <button class="menu-bar__menu-btn js-menu-bar__menu-btn" aria-expanded="false">
-          <span hidden="screen">Open menu</span>
+        <button class="menu-bar__menu-btn js-menu-bar__menu-btn" aria-expanded="false" aria-label="Menu">
+          <span hidden="screen">Menu</span>
+
           <svg class="menu-bar__menu-btn__icon menu-bar__menu-btn__icon--open" viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <line y1="2" x2="36" y2="2" stroke="currentColor" stroke-width="4"/>
             <line y1="12" x2="36" y2="12" stroke="currentColor" stroke-width="4"/>
             <line y1="22" x2="36" y2="22" stroke="currentColor" stroke-width="4"/>
           </svg>
+
           <svg class="menu-bar__menu-btn__icon menu-bar__menu-btn__icon--close" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M25 2L2 25" stroke="currentColor" stroke-width="4"/>
             <path d="M2 2L25 25" stroke="currentColor" stroke-width="4"/>

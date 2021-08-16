@@ -1,7 +1,6 @@
 
 .home-content {
-  @include viewHeight;
-
+  height: 100vh;
   padding: var(--section-space) 0;
 }
 

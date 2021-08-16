@@ -20,7 +20,7 @@
   }
 
   .option-field__item {
-    @include typography(body-text, false, true);
+    @include typography(paragraph, false, true);
 
     display: block;
   }

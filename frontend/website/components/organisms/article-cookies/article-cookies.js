@@ -6,8 +6,8 @@ export default class ArticleCookiesComponent extends Component {
   init () {
     this.observedIntersectionElements = this.element.querySelectorAll('.article-cookies__title, .article-cookies__text, .article-cookies__buttons')
 
-    this.buttonChange = this.element.querySelector('.button--change')
-    this.buttonClear = this.element.querySelector('.button--clear')
+    this.buttonChange = this.element.querySelector('.link--change')
+    this.buttonClear = this.element.querySelector('.link--clear')
 
     this.buttonChange.addEventListener('click', event => {
       event.preventDefault()

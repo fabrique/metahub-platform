@@ -11,8 +11,8 @@
   {% endif %}
 {% endmacro %}
 
-{% macro regular(classes = '', variant = 'default', title = '', href = '', target = '', icon = '') %}
-  <a class="number-button number-button--{{ variant }} {{ classes }}" href="{{ href }}" {% if target %}target="{{ target }}"{% endif %}>
+{% macro regular(classes = '', variant = 'default', title = '', href = '', target = '', icon = '', aria_label = '') %}
+  <a class="number-button number-button--{{ variant }} {{ classes }}" href="{{ href }}" {% if target %}target="{{ target }}"{% endif %} {% if aria_label %}aria-label="{{ aria_label }}"{% endif %}>
     {{ _number_button_content(title = title, icon = icon) }}
   </a>
 {% endmacro %}

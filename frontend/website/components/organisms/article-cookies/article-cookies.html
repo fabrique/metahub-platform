@@ -1,5 +1,5 @@
 
-{% import 'components/atoms/button/button.html' as atom_button %}
+{% import 'components/atoms/link/link.html' as atom_link %}
 
 {% macro regular(id = '', title = 'Cookie-Einstellungen', text = 'Ändern Sie hier Ihre Cookie-Einstellungen. Sie können auswählen, welche Kategorien von Cookies Sie (nicht) zulassen möchten.') %}
   <div {% if id %}id="{{ id }}"{% endif %} class="article-cookies">
@@ -14,8 +14,8 @@
         {% endif %}
 
         <div class="article-cookies__buttons">
-          {{ atom_button.regular(variant = 'primary', classes = 'button--change', href = '#cookie-bar__details', title = 'Einstellungen anpassen', long_title = 'Einstellungen anpassen') }}
-          {{ atom_button.regular(variant = 'secondary', classes = 'button--clear', href = '#cookie-bar', title = 'Cookies Löschen', long_title = 'Cookies Löschen') }}
+          {{ atom_link.span(classes = 'link--change', href = '#cookie-bar__details', title = 'Einstellungen anpassen', long_title = 'Einstellungen anpassen') }}
+          {{ atom_link.span(classes = 'link--clear', href = '#cookie-bar', title = 'Cookies Löschen', long_title = 'Cookies Löschen') }}
         </div>
       </div>
     </div>

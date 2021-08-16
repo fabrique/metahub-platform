@@ -1,22 +1,48 @@
 
 .article-cookies {
-  margin: var(--margin-lg) 0 0 0;
-  position: relative;
+  margin-bottom: var(--section-space);
+}
 
-  .article-cookies__grid {
-    @include grid-container;
+.article-cookies__grid {
+  @include grid-container;
+}
+
+.article-cookies__wrapper {
+  grid-column: column 1 / span 12;
+
+  @include landscape {
+    grid-column: column 3 / span 7;
   }
 
-  .article-cookies__wrapper {
-    //
-  }
+  .link {
+    color: $color-magenta;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
 
-  .article-cookies__title,
-  .option-field__input-label {
-    @include typography(heading-2, true, true);
-  }
+    .link__span {
+      text-decoration: underline;
+    }
 
-  .article-cookies__text {
-    @include typography(introduction, true, true);
+    &:hover,
+    &:focus {
+      .link__span {
+        text-decoration: none;
+      }
+    }
+
+    &:not(:first-child) {
+      margin-left: .5em;
+    }
   }
+}
+
+.article-cookies__title,
+.option-field__input-label {
+  @include typography(heading-2, true, true);
+}
+
+.article-cookies__text {
+  @include typography(paragraph, $lora-font-stack, true);
 }

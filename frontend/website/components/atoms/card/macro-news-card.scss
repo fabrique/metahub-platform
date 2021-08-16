@@ -70,13 +70,13 @@
 }
 
 .card__news__excerpt {
-  @include typography(body-text, $lora-font-stack, false);
+  @include typography(paragraph, $lora-font-stack, false);
 
   display: block;
 
   @include portrait {
-    --body-text-font-size: 16px;
-    --body-text-line-height: 22px;
+    --paragraph-font-size: 16px;
+    --paragraph-line-height: 22px;
   }
 }
 
