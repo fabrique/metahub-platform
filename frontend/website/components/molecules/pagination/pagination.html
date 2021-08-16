@@ -23,25 +23,23 @@
     <nav class="pagination">
 
       {% if pagination.button_previous %}
-        {{ atom_link.regular(classes = 'pagination__previous', href = pagination.button_previous.href, title = pagination.button_previous.title, icon_before = 'custom/arrow-left-icon') }}
+        {{ atom_number_button.regular(classes = 'number-button--previous', variant = 'clean', href = pagination.button_previous.href, title = 'Previous', aria_label = 'Previous', icon = 'custom/arrow-left-icon') }}
       {% endif %}
 
-      <div class="pagination__numbers">
-        {% for button in pagination.buttons %}
-            {% if button.title and button.href %}
-              {% if button.current %}
-                {{ atom_number_button.span(classes = 'number-button--selected', variant = 'clean', title = button.title) }}
-              {% else %}
-                {{ atom_number_button.regular(href = button.href, title = button.title) }}
-              {% endif %}
+      {% for button in pagination.buttons %}
+          {% if button.title and button.href %}
+            {% if button.current %}
+              {{ atom_number_button.span(classes = 'number-button--selected', variant = 'clean', title = button.title) }}
             {% else %}
-                {{ atom_number_button.span(classes = 'number-button--dots', variant = 'clean', title = '...') }}
+              {{ atom_number_button.regular(href = button.href, title = button.title) }}
             {% endif %}
-        {% endfor %}
-      </div>
+          {% else %}
+              {{ atom_number_button.span(classes = 'number-button--dots', variant = 'clean', title = '...') }}
+          {% endif %}
+      {% endfor %}
 
       {% if pagination.button_next %}
-        {{ atom_link.regular(classes = 'pagination__next', href = pagination.button_next.href, title = pagination.button_next.title, icon_after = 'custom/arrow-right-icon') }}
+        {{ atom_number_button.regular(classes = 'number-button--next', variant = 'clean', href = pagination.button_next.href, title = 'Previous', aria_label = 'Previous', icon = 'custom/arrow-right-icon') }}
       {% endif %}
 
     </nav>
