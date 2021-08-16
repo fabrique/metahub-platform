@@ -27,7 +27,7 @@
   </a>
 {% endmacro %}
 
-{% macro span(classes = '', title = '', icon_before = '', icon_after = '', long_title = '', aria_label = '') %}
+{% macro span(classes = '', title = '', icon_before = '', icon_after = '', long_title = '', aria_label = '', href = '') %}
   <span class="link {{ classes }}" {% if aria_label %}aria-label="{{ aria_label }}"{% endif %}>
     {{ _link_content(title = title, icon_before = icon_before, icon_after = icon_after, long_title = long_title) }}
   </span>
