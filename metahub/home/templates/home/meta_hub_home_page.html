@@ -16,22 +16,54 @@
 
 
 {% block content %}
-    {% include_component 'organisms.full-screen-logo.regular' theme_color=page.get_random_theme_color  %}
 
-    {% for block in page.home_intro %}
-        {% include_block block %}
-    {% endfor %}
+    <div class="js-animate-section animate-section">
+        <div class="js-animate-section__outer animate-section__outer">
+            <div class="js-animate-section__inner animate-section__inner">
+                {% include_component 'organisms.full-screen-logo.regular' theme_color=page.get_random_theme_color  %}
+            </div>
+        </div>
+    </div>
 
-{#    {% for block in page.object_highlights %}#}
-{#        {% include_block block %}#}
-{#    {% endfor %}#}
+    <div class="js-animate-section animate-section">
+        <div class="js-animate-section__outer animate-section__outer">
+            <div class="js-animate-section__inner animate-section__inner">
+                {% for block in page.home_intro %}
+                    {% include_block block %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
-    {% for block in page.story_highlight %}
-        {% include_block block %}
-    {% endfor %}
+{#    <div class="js-animate-section animate-section">#}
+{#        <div class="js-animate-section__outer animate-section__outer">#}
+{#            <div class="js-animate-section__inner animate-section__inner">#}
+        {#    {% for block in page.object_highlights %}#}
+        {#        {% include_block block %}#}
+        {#    {% endfor %}#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#    #}
 
-    {% for block in page.news_highlights %}
-        {% include_block block %}
-    {% endfor %}
+    <div class="js-animate-section animate-section">
+        <div class="js-animate-section__outer animate-section__outer">
+            <div class="js-animate-section__inner animate-section__inner">
+                {% for block in page.story_highlight %}
+                    {% include_block block %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="js-animate-section animate-section">
+        <div class="js-animate-section__outer animate-section__outer">
+            <div class="js-animate-section__inner animate-section__inner">
+                {% for block in page.news_highlights %}
+                    {% include_block block %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
