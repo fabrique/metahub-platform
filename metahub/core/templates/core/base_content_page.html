@@ -25,14 +25,13 @@
   {% block extra_content %}
   {% endblock %}
 
+
   {% block related_items %}
-      {% for block in page.related_items %}
-        {% include_block block %}
-      {% endfor %}
+      {% if page.get_page_related_items %}
+          {% for block in page.related_items %}
+            {% include_block block %}
+          {% endfor %}
+      {% endif %}
   {% endblock %}
 
 {% endblock %}
-
-{#{% block footer %}#}
-{#      {% include_component 'structures.footer-bar.simple' settings.core.GlobalSettings.get_content_page_footer %}#}
-{#{% endblock %}#}
