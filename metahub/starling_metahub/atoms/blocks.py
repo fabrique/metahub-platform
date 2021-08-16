@@ -1,6 +1,7 @@
 from starling.blocks.atoms.picture import AtomPictureBlock, AtomPictureRegularBlock
 from starling.blocks.helpers import HelperHrefBlock
 from starling.interfaces.atoms import AtomLinkRegular
+from starling.interfaces.generic import Resolution
 from starling.mixins import AdapterStructBlock
 from wagtail.core import blocks
 
@@ -10,7 +11,7 @@ from ..helpers import HelperEmbedBlock, HelperPageURLBlock, HelperOptionalHrefBl
 
 class AtomVideoEmbedRegularBlock(AdapterStructBlock):
     video = HelperEmbedBlock()
-    picture = AtomPictureRegularBlock()
+    picture = AtomPictureRegularBlock(resolution=Resolution(mobile="1080x1050", crop=True))
 
     class Meta:
         defaults = {
