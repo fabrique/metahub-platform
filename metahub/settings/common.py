@@ -125,6 +125,7 @@ MIDDLEWARE = (
     'corsheaders.middleware.CorsMiddleware',
     'wagtail.contrib.legacy.sitemiddleware.SiteMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

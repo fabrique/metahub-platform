@@ -107,19 +107,19 @@ DEPLOY_CONFIGURATION = {
     },
     'production': {
         'branch': 'master',
-        'project_dir': '/data/www/sammlung.juedischesmuseum.de',
-        'src_dir': '/data/www/sammlung.juedischesmuseum.de/src',
-        'venv_dir': '/data/www/sammlung.juedischesmuseum.de/venv',
+        'project_dir': '/data/www/metahub/production',
+        'src_dir': '/data/www/metahub/production/src',
+        'venv_dir': '/data/www/metahub/production/venv',
         'supervisor_name': 'metahub-production',
     },
     'staging': {
-        'branch': 'develop',
+        'branch': 'master',
         'project_dir': '/data/www/metahub/staging',
         'src_dir': '/data/www/metahub/staging/src',
         'venv_dir': '/data/www/metahub/staging/venv',
         'supervisor_name': 'metahub-staging',
         'remote_user': 'webdev',
-        'remote_host': 'jmffm.fabriquehq.nl', #todo change when domain exists
+        'remote_host': 'metahub.fabriquehq.nl', #todo change when domain exists
     },
 }
 

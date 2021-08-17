@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
 from django.conf.urls import include, url
+from django.conf.urls.i18n import i18n_patterns
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.staticfiles.storage import staticfiles_storage
@@ -12,7 +13,9 @@ from wagtail.documents import urls as wagtaildocs_urls
 
 from .core import views as core_views
 
-urlpatterns = []
+urlpatterns = i18n_patterns(
+    prefix_default_language=False,
+)
 
 if settings.DEBUG:
     # serve /favicon.ico accessed directly (in production this is handled by nginx)

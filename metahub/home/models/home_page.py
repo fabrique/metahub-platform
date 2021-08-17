@@ -22,7 +22,7 @@ class MetaHubHomePage(RoutablePageMixin, MetaHubBasePage):
     """
 
     max_count_per_parent = 1
-    parent_page_types = ['wagtailcore.Page']
+    parent_page_types = ['wagtailcore.Page', 'home.MetaHubHomePage']
 
     home_intro = StreamField(StreamBlock([
         ('home_intro', OrganismHomeIntroRegularBlock()),
