@@ -205,18 +205,18 @@ class OrganismArticleCuratedItemsRegularBlock(AdapterStructBlock):
 
 
 class OrganismArticleCuratedObjectsRegularBlock(OrganismArticleCuratedItemsRegularBlock):
-    items = HelperRelatedObjectsBlock()
+    items = HelperRelatedPagesBlock()
 
     class Meta:
-        label= "Related/highlighted objects"
+        label= "Related/highlighted items"
         component = 'organisms.relevant-cards.object'
 
 
 class OrganismArticleCuratedStoriesRegularBlock(OrganismArticleCuratedItemsRegularBlock):
-    items = HelperRelatedStoriesBlock()
+    items = HelperRelatedPagesBlock()
 
     class Meta:
-        label = "Related/highlighted objects"
+        label = "Related/highlighted items"
         component = 'organisms.relevant-cards.story'
 
 
