@@ -14,7 +14,7 @@ pytz==2019.2
 urllib3==1.23
 
 Pillow==8.2.0
-redis==2.10.6  # this is for compatibility with py3
+redis==3.5.3  # this is for compatibility with py3 - MKR bumped because of version conflicts
 
 wagtail>=2.11,<2.12
 wagtailfontawesome==1.1.4
