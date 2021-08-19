@@ -2,8 +2,8 @@
 {% import 'components/atoms/figure/figure.html' as atom_figure %}
 {% import 'components/atoms/link/link.html' as atom_link %}
 
-{% macro regular(figures = []) %}
-  <div class="images">
+{% macro regular(id = '', figures = []) %}
+  <div {% if id %}id="{{ id }}"{% endif %} class="images">
     <div class="images__grid">
       {% for figure in figures %}
         <div class="image">

@@ -1,9 +1,9 @@
 {% import 'components/atoms/picture/picture.html' as atom_picture %}
 {% import 'components/atoms/link/link.html' as atom_link %}
 
-{% macro regular(card = {}, title = '', classes = '', link = {}, link_label = '', excerpt = '') %}
+{% macro regular(id= '', card = {}, title = '', classes = '', link = {}, link_label = '', excerpt = '') %}
   {% set component = 'highlighted-card' %}
-  <div class="{{ component }} {{ classes }} {{ card.theme_color }}">
+  <div {% if id %}id="{{ id }}"{% endif %} class="{{ component }} {{ classes }} {{ card.theme_color }}">
     <div class="{{ component }}__grid">
       <div class="{{ component }}__inner">
         <h2 class="{{ component }}__title">{{ title }}</h2>

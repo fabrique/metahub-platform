@@ -63,6 +63,7 @@ class OrganismContentSingleRichTextRegularBlock(AdapterStructBlock):
     Content Component
     Renders a single richtext component
     """
+    id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
     text = blocks.RichTextBlock()
 
     def get_word_count(self, value):
@@ -80,6 +81,7 @@ class OrganismContentSingleImageRegularBlock(AdapterStructBlock):
     Content Component
     Renders a single image with a caption
     """
+    id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
     figure = AtomFigureRegularBlock([
         ('picture', AtomPictureRegularBlock(resolution=Resolution(mobile='1920', crop=True))),
     ])
@@ -97,6 +99,7 @@ class OrganismContentSingleVideoRegularBlock(AdapterStructBlock):
     Supports Vimeo and YouTube uploads. Includes an optional link to
     a video transcript for accessiblity purposes.
     """
+    id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
     video = AtomVideoEmbedRegularBlock(required=True)
     caption = blocks.CharBlock(required=False)
 
@@ -113,6 +116,7 @@ class OrganismContentDoubleImageRichTextRegularBlock(AdapterStructBlock):
     Renders a richtext on the left and a picture with caption on the right.
     Optionally includes a link as well.
     """
+    id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
     figure = AtomFigureRegularBlock()
     text = blocks.RichTextBlock(required=True)
 
@@ -133,6 +137,7 @@ class OrganismContentDoubleLinkRichTextRegularBlock(AdapterStructBlock):
     Renders a richtext on the left and a picture with caption on the right.
     Optionally includes a link as well.
     """
+    id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
     text = blocks.RichTextBlock(required=True)
     link = OptionalBlock(AtomLinkRegularBlock())
 
@@ -151,6 +156,7 @@ class OrganismContentHeroImageTitleBlock(AdapterStructBlock):
     Content Component
     Image with title and link, call to action/highlight
     """
+    id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
     title = blocks.CharBlock(max_length=200)
     link = AtomLinkRegularBlock()
     picture = AtomPictureRegularBlock()
@@ -167,6 +173,7 @@ class OrganismContentPhotoMosaicBlock(AdapterStructBlock):
     Content Component
     A list of pictures placed playfully
     """
+    id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
     figures = ListBlock(AtomFigureRegularBlock())
 
     class Meta:

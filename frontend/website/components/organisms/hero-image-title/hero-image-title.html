@@ -3,7 +3,7 @@
 {% import 'components/atoms/picture/picture.html' as atom_picture %}
 
 {% macro regular(id = '', align = 'default', title = '', picture = {}, link = {}) %}
-  <div class="hero-image-title">
+  <div {% if id %}id="{{ id }}"{% endif %} class="hero-image-title">
     <div class="hero-image-title__grid">
       <div class="hero-image-title__image">
 
