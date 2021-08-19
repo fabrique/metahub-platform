@@ -12,6 +12,7 @@ from .interfaces import *
 from ..atoms.blocks import AtomVideoEmbedRegularBlock
 from ..helpers import HelperRelatedPagesBlock, HelperRelatedPageBlock, HelperRelatedObjectsBlock, \
     HelperRelatedStoriesBlock, HelperRelatedStoryBlock
+from ..molecules.blocks import MoleculeLogoRegularBlock
 from ..utils import count_words_html
 from ...core.utils import format_date
 
@@ -350,3 +351,30 @@ class OrganismHomeFeaturedStoryBlock(AdapterStructBlock):
         icon = 'pick'
         component = 'organisms.highlighted-card.regular'
         interface_class = OrganismFeaturedCardLinkToAllRegular
+
+
+class OrganismSponsorsRegularBlock(AdapterStructBlock):
+    SPONSORS_VARIANT_CHOICES = [
+        ('default', _('Default')),
+        ('large', _('Large')),
+    ]
+
+    title = blocks.CharBlock(label=_('Title'))
+    text = blocks.TextBlock(required=False, label=_('Text'))
+    variant = blocks.ChoiceBlock(required=True, choices=SPONSORS_VARIANT_CHOICES, label=_('Sponsors size'))
+    logos = blocks.StreamBlock(required=False, local_blocks=[
+        ('logo', MoleculeLogoRegularBlock()),
+    ], default=[], label=_('Logos'))
+
+    def build_extra(self, value, build_args, parent_context=None):
+        build_args.update({
+            'logos': [logo.block.build_component(logo.value, value)
+                      for logo in build_args.pop('logos', [])],
+        })
+
+    class Meta:
+        icon = 'image'
+        defaults = {}
+        component = 'organisms.logo-list.regular'
+        interface_class = OrganismSponsorsRegular
+        label = _('Sponsors')

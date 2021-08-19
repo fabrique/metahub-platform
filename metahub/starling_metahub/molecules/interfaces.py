@@ -83,3 +83,9 @@ class MoleculePaginationRegular(NamedTuple):
     button_next: AtomLinkRegular = AtomLinkRegular()
     button_previous: AtomLinkRegular = AtomLinkRegular()
     buttons: Iterable = ()
+
+
+class MoleculeLogoRegular(NamedTuple):
+    picture: AtomPictureRegular = AtomPictureRegular()
+    size_percentage: str = ''
+    # href: str = ''

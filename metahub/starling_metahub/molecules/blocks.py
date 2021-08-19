@@ -1,6 +1,9 @@
+from django.utils.translation import ugettext_lazy as _
+
 from starling.blocks.atoms.link import AtomLinkRegularBlock
 from starling.blocks.atoms.picture import AtomPictureRegularBlock
 from starling.blocks.helpers import HelperHrefBlock
+from starling.interfaces.generic import Resolution
 from starling.mixins import AdapterStructBlock, OptionalBlock
 from wagtail.core import blocks
 from wagtail.core.blocks import PageChooserBlock
@@ -89,3 +92,25 @@ class MoleculeAudioPlayerBlock(AdapterStructBlock):
         defaults = {}
         component = 'molecules.audio.regular'
         interface_class = MoleculeAudioPlayer
+
+
+class MoleculeLogoRegularBlock(AdapterStructBlock):
+    PICTURE_SIZE_PERCENTAGES = [(x, x) for x in range(10, 100, 10)]
+
+    picture = AtomPictureRegularBlock(resolution=Resolution(mobile='120x70', crop=False))
+    size_percentage = blocks.ChoiceBlock(required=False, choices=PICTURE_SIZE_PERCENTAGES, label=_('Size in percentage'))
+    # link = AtomLinkRegularBlock()
+
+    def build_extra(self, value, build_args, parent_context=None):
+        build_args.update({
+            # 'href': (getattr(link, 'href', None) if (link := build_args.pop('link', None)) else None),
+            'picture': (AtomPictureRegular(**Resolution(mobile='240x123', crop=False).resolve(picture.get('source')))
+                            if (picture := value.get('picture', None))
+                                and parent_context.get('variant') not in ['', 'default'] else build_args.get('picture'))
+        })
+
+    class Meta:
+        defaults = {}
+        component = 'molecules.logo.regular'
+        interface_class = MoleculeLogoRegular
+        label = _('Logo')
