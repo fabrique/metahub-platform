@@ -36,7 +36,7 @@ class OrganismHeroTextHeaderRegularBlock(AdapterStructBlock):
     Header with text
     """
     title = blocks.CharBlock(max_length=200)
-    text = blocks.TextBlock(max_length=2000)
+    text = blocks.TextBlock(max_length=2000, required=False)
 
     class Meta:
         icon = 'title'
