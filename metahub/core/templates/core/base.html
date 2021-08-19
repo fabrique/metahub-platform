@@ -1,13 +1,17 @@
 <!doctype html>
+
 {% load static i18n analytics_tags menu_tags core_tags wagtailimages_tags starling_tags wagtailcore_tags wagtailuserbar %}
 {% get_current_language as LANGUAGE_CODE %}
+
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
     <meta charset="utf-8">
 
+    {# TODO: GOOGLE TAG MANAGER #}
+
     <meta name="viewport" content="width=device-width, minimum-scale=1.0">
     <meta name="format-detection" content="telephone=no">
-    
+
     <title>{% block page_title %}{{ page.title }}{% endblock %}</title>
     <meta name="description" content="{% block site_description %}{{ settings.core.GlobalSettings.default_site_description }}{% endblock %}">
 
@@ -15,8 +19,7 @@
     <link rel="DC.Contributor" href="https://fabrique.nl">
 
     <link rel="preload" href="{% static 'stylesheets/main.css' %}" as="style">
-    <link rel="preload" href="{% static 'scripts/base.js' %}" as="script" crossorigin>
-    <link rel="preload" href="{% static 'scripts/main.js' %}" as="script" crossorigin>
+    <link rel="modulepreload" href="{% static 'scripts/main.js' %}" as="script" crossorigin>
 
     {% block share %}
       {% if settings.core.GlobalSettings.default_share_image %}
@@ -29,14 +32,17 @@
       <meta property="og:image" content="{% block og_image %}{% if share_image %}{{ share_image.url }}{% endif %}{% endblock %}">
       <meta property="og:description" content="{% block og_description %}{{ settings.core.GlobalSettings.default_site_description }}{% endblock %}">
       <meta property="og:site_name " content="{% block og_sitename %}{{ request.site.site_name }}{% endblock %}">
+
       {% trans "core.head.fb_admins" as fb_admins %}
       {% if fb_admins and fb_admins != "core.head.fb_admins" %}
         <meta property="fb:admins" content="{{ fb_admins }}">
       {% endif %}
+
       {% trans "core.head.fb_appid" as fb_appid %}
       {% if fb_appid and fb_appid != "core.head.fb_appid" %}
         <meta property="fb:app_id" content="{{ fb_appid }}">
       {% endif %}
+
       <meta name="twitter:title" content="{% block twitter_title %}{{ request.site.site_name }}{% endblock %}">
       <meta name="twitter:description" content="{% block twitter_description %}{{ settings.core.GlobalSettings.default_site_description }}{% endblock %}">
       <meta name="twitter:card" content="summary_large_image">
@@ -61,58 +67,66 @@
   </head>
 
   <body class="{% block bodyclass %}{% endblock %}">
-    <script src="{% static 'scripts/base.js' %}" type="module" crossorigin></script>
+    <script>
+      (() => {
+        const ua = window.navigator.userAgent;
+        const cl = document.documentElement.classList;
+        cl.add('has-js');
+        cl.add('ontouchstart' in window ? 'touch' : 'no-touch');
+        if (ua.indexOf('iPad') !== -1) { cl.add('is-ipad'); cl.add('is-ios'); } else if (ua.indexOf('iPhone') !== -1) { cl.add('is-iphone'); cl.add('is-ios'); }
+        if (ua.indexOf('Mac OS X') !== -1) { cl.add('is-osx'); } else if (ua.indexOf('Windows') !== -1) { cl.add('is-windows'); } else if (ua.indexOf('Android') !== -1) { cl.add('is-android'); }
+        if (ua.indexOf('Edge/') !== -1) { cl.add('is-edge'); } else if (ua.indexOf('Chrome/') !== -1) { cl.add('is-chrome'); } else if (ua.indexOf('Firefox/') !== -1) { cl.add('is-firefox'); } else if (ua.indexOf('Safari/') !== -1) { cl.add('is-safari'); } else if (ua.indexOf('Trident/') !== -1) { cl.add('is-ie'); }
+      })();
+    </script>
 
-      {% block navigation_header %}
-        {% get_menu_header_component as menu %}
-        {% include_component 'structures.header.regular' menu_items=menu.menu_items logo_href=menu.logo_href %}
-      {% endblock navigation_header %}
-
-    <div class="content">
+    <div class="container container--wrapper">
       {% include_component 'structures.skip-to-main.regular' %}
-      
-      {% block header_bar %}
-      {% endblock %}
 
-      <header class="header" role="banner">
-        {% block header %}
+      <header class="container container--header">
+        {% block navigation_header %}
+          {% get_menu_header_component as menu %}
+          {% include_component 'structures.header.regular' menu_items=menu.menu_items logo_href=menu.logo_href %}
+        {% endblock navigation_header %}
+
+        {% block header_bar %}
         {% endblock %}
       </header>
-        
-      {% block main %}
-        <main id="main" class="container container--content" role="main">
 
-            {% block page_header %}
-            {% endblock page_header %}
+      <main id="main" class="container container--content">
+        {% block header %}
+        {% endblock %}
 
-            {% block content %}
-            {% endblock content %}
+        {% block main %}
+          {% block page_header %}
+          {% endblock page_header %}
 
-            {% block page_content %}
-            {% endblock page_content %}
+          {% block content %}
+          {% endblock content %}
 
-        </main>
-      {% endblock %}
-        
-      <footer class="footer" role="contentinfo">
+          {% block page_content %}
+          {% endblock page_content %}
+        {% endblock %}
+      </main>
+
+      <footer class="container container--footer">
         {% block footer_bar %}
         {% endblock %}
 
         {% block footer %}
-            {% include_component 'structures.footer.regular' settings.core.GlobalSettings.get_footer %}
+          {% include_component 'structures.footer.regular' settings.core.GlobalSettings.get_footer %}
         {% endblock %}
       </footer>
     </div>
 
-    <div class="overlays" role="dialog">
+    <div class="container container--overlays">
       {% block overlays %}
       {% endblock %}
-      
+
       {% include_component 'structures.cookie-bar.regular' %}
     </div>
 
     {% block javascript %}
-        <script src="{% static 'scripts/main.js' %}" type="module" crossorigin></script>
+      <script src="{% static 'scripts/main.js' %}" type="module" crossorigin></script>
     {% endblock javascript %}
 
     {% wagtailuserbar %}
