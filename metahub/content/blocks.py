@@ -1,12 +1,7 @@
-from typing import Sequence
-
 from metahub.starling_metahub.organisms.blocks import OrganismContentSingleRichTextRegularBlock, \
     OrganismContentDoubleImageRichTextRegularBlock, OrganismContentSingleVideoRegularBlock, \
     OrganismContentHeroImageTitleBlock, OrganismContentPhotoMosaicBlock, OrganismContentDoubleLinkRichTextRegularBlock, \
     OrganismArticleCookieBlockRegular
-
-
-
 
 def content_blocks():
     return [
@@ -18,7 +13,6 @@ def content_blocks():
         ('image_mosaic', OrganismContentPhotoMosaicBlock()),
         ('cookie_settings', OrganismArticleCookieBlockRegular())
     ]
-
 
 def cookieless_content_blocks():
     """ No cookies for this block set awwwwwwww
