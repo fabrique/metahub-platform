@@ -9,12 +9,10 @@ from wagtail.core.fields import StreamField
 from wagtail.snippets.models import register_snippet
 
 from metahub.collection.models import CollectionObjectTag
-from metahub.content.blocks import content_blocks
-from metahub.core.models import MetaHubBasePage, MetahubImage
-from metahub.starling_metahub.molecules.interfaces import MoleculeObjectCardRegular, MoleculeContextCardRegular, \
-    MoleculeCardRegular, MoleculeExploreCardRegular
-from metahub.starling_metahub.organisms.blocks import OrganismArticleCuratedItemsRegularBlock, \
-    OrganismArticleRelatedItemsRegularBlock, OrganismArticleCuratedObjectsRegularBlock, \
+from metahub.content.blocks import rich_collection_entity_blocks
+from metahub.core.models import MetaHubBasePage
+from metahub.starling_metahub.molecules.interfaces import MoleculeExploreCardRegular
+from metahub.starling_metahub.organisms.blocks import OrganismArticleCuratedObjectsRegularBlock, \
     OrganismArticleRelatedObjectsRegularBlock
 from metahub.starling_metahub.organisms.interfaces import OrganismObjectHeaderRegular, OrganismObjectIntroRegular, \
     OrganismObjectMetadataRegular
@@ -45,7 +43,7 @@ class MetaHubObjectPage(MetaHubBasePage):
     MAX_RELATED_OBJECTS = 3
 
     # CMS panels
-    content = StreamField(content_blocks(), blank=True)
+    content = StreamField(rich_collection_entity_blocks(), blank=True)
     tags = ClusterTaggableManager(through=CollectionObjectTag, blank=True)
 
     related_items = StreamField([

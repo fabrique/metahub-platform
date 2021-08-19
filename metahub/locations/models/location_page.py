@@ -9,12 +9,11 @@ from wagtail.core.models import Orderable
 from wagtail.snippets.edit_handlers import SnippetChooserPanel
 from wagtailmodelchooser.blocks import ModelChooserBlock
 
-from metahub.content.blocks import content_blocks
+from metahub.content.blocks import rich_collection_entity_blocks
 from metahub.core.models import MetaHubBasePage
-from metahub.starling_metahub.molecules.interfaces import MoleculeCardRegular, MoleculeExploreCardRegular
+from metahub.starling_metahub.molecules.interfaces import MoleculeExploreCardRegular
 from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderRegularBlock, \
-    OrganismHeroTextHeaderExtraInfoBlock, OrganismArticleCuratedItemsRegularBlock, \
-    OrganismArticleRelatedItemsRegularBlock, OrganismArticleCuratedStoriesRegularBlock, \
+    OrganismHeroTextHeaderExtraInfoBlock, OrganismArticleCuratedStoriesRegularBlock, \
     OrganismArticleRelatedStoriesRegularBlock
 from metahub.starling_metahub.organisms.interfaces import OrganismArticleRelatedItemsRegular
 
@@ -51,7 +50,7 @@ class MetaHubLocationPage(MetaHubBasePage):
         ('header_text', OrganismHeroTextHeaderExtraInfoBlock()),
     ])
 
-    content = StreamField(content_blocks(), blank=True)
+    content = StreamField(rich_collection_entity_blocks(), blank=True)
 
     related_items = StreamField([
         ('related_curated', OrganismArticleCuratedStoriesRegularBlock()),

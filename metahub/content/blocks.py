@@ -1,7 +1,11 @@
+from typing import Sequence
+
 from metahub.starling_metahub.organisms.blocks import OrganismContentSingleRichTextRegularBlock, \
     OrganismContentDoubleImageRichTextRegularBlock, OrganismContentSingleVideoRegularBlock, \
     OrganismContentHeroImageTitleBlock, OrganismContentPhotoMosaicBlock, OrganismContentDoubleLinkRichTextRegularBlock, \
     OrganismArticleCookieBlockRegular
+
+
 
 
 def content_blocks():
@@ -13,4 +17,15 @@ def content_blocks():
         ('highlight', OrganismContentHeroImageTitleBlock()),
         ('image_mosaic', OrganismContentPhotoMosaicBlock()),
         ('cookie_settings', OrganismArticleCookieBlockRegular())
+    ]
+
+
+def rich_collection_entity_blocks():
+    return [
+        ('single_richtext', OrganismContentSingleRichTextRegularBlock()),
+        ('two_column_picture_richtext', OrganismContentDoubleImageRichTextRegularBlock()),
+        ('richtext_with_link', OrganismContentDoubleLinkRichTextRegularBlock()),
+        ('video', OrganismContentSingleVideoRegularBlock()),
+        ('highlight', OrganismContentHeroImageTitleBlock()),
+        ('image_mosaic', OrganismContentPhotoMosaicBlock()),
     ]
