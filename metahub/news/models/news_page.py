@@ -20,7 +20,7 @@ class MetaHubNewsPage(MetaHubBasePage):
         ('author', ModelChooserBlock(target_model='authors.Author'))
     ], blank=True)
 
-    date = models.DateField(blank=True, null=True)
+    date = models.DateField(null=True)
 
     hero_header = StreamField([
         ('header_image', OrganismHeroImageHeaderRegularBlock()),

@@ -16,7 +16,7 @@ from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderReg
 class MetaHubEventPage(MetaHubBasePage):
     parent_page_types = ['news.MetaHubActualitiesLandingPage']
 
-    date = models.DateField(blank=True, null=True)
+    date = models.DateField(null=True)
     event_location = models.CharField(blank=True, null=True, default='', max_length=200)
 
     hero_header = StreamField([
