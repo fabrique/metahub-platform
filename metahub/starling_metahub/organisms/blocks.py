@@ -9,7 +9,7 @@ from wagtail.core import blocks
 from wagtail.core.blocks import ListBlock
 
 from .interfaces import *
-from ..atoms.blocks import AtomVideoEmbedRegularBlock
+from ..atoms.blocks import AtomVideoEmbedRegularBlock, AtomFigureRegularBlockHighRes
 from ..helpers import HelperRelatedPagesBlock, HelperRelatedPageBlock, HelperRelatedObjectsBlock, \
     HelperRelatedStoriesBlock, HelperRelatedStoryBlock
 from ..molecules.blocks import MoleculeLogoRegularBlock
@@ -22,7 +22,7 @@ class OrganismHeroImageHeaderRegularBlock(AdapterStructBlock):
     Content Page Header Component
     Simple header with an image
     """
-    picture = AtomPictureRegularBlock(resolution=Resolution(mobile="1920x1080"))
+    picture = AtomPictureRegularBlock(resolution=Resolution(mobile="4096x2160"))
 
     class Meta:
         label = _("Header image")
@@ -84,7 +84,7 @@ class OrganismContentSingleImageRegularBlock(AdapterStructBlock):
     """
     id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
     figure = AtomFigureRegularBlock([
-        ('picture', AtomPictureRegularBlock(resolution=Resolution(mobile='1920', crop=True))),
+        ('picture', AtomPictureRegularBlock(resolution=Resolution(mobile="4096", crop=False))),
     ])
 
     class Meta:
@@ -118,7 +118,7 @@ class OrganismContentDoubleImageRichTextRegularBlock(AdapterStructBlock):
     Optionally includes a link as well.
     """
     id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
-    figure = AtomFigureRegularBlock()
+    figure = AtomFigureRegularBlockHighRes()
     text = blocks.RichTextBlock(required=True)
 
     def get_word_count(self, value):
@@ -160,7 +160,7 @@ class OrganismContentHeroImageTitleBlock(AdapterStructBlock):
     id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
     title = blocks.CharBlock(max_length=200)
     link = AtomLinkRegularBlock()
-    picture = AtomPictureRegularBlock()
+    picture = AtomPictureRegularBlock(resolution=Resolution(mobile="4096", crop=False))
 
     class Meta:
         label = _("Hero highlight")
@@ -175,7 +175,7 @@ class OrganismContentPhotoMosaicBlock(AdapterStructBlock):
     A list of pictures placed playfully
     """
     id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
-    figures = ListBlock(AtomFigureRegularBlock())
+    figures = ListBlock(AtomFigureRegularBlockHighRes())
 
     class Meta:
         label = _("Photo mosaic")

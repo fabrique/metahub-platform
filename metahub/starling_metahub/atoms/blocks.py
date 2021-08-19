@@ -1,6 +1,6 @@
 from starling.blocks.atoms.picture import AtomPictureBlock, AtomPictureRegularBlock
 from starling.blocks.helpers import HelperHrefBlock
-from starling.interfaces.atoms import AtomLinkRegular
+from starling.interfaces.atoms import AtomLinkRegular, AtomFigureRegular
 from starling.interfaces.generic import Resolution
 from starling.mixins import AdapterStructBlock
 from wagtail.core import blocks
@@ -39,3 +39,11 @@ class AtomTitlelessLinkRegularBlock(AdapterStructBlock):
         interface_class = AtomLinkRegular
 
 
+class AtomFigureRegularBlockHighRes(AdapterStructBlock):
+    picture = AtomPictureRegularBlock(resolution=Resolution("4096"), crop=False)
+    caption = blocks.CharBlock(required=False)
+    classes = blocks.CharBlock(required=False)
+
+    class Meta:
+        defaults = {'classes': ''}
+        interface_class = AtomFigureRegular
