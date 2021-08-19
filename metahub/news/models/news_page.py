@@ -6,10 +6,10 @@ from wagtail.admin.edit_handlers import MultiFieldPanel, StreamFieldPanel, Field
 from wagtail.core.fields import StreamField
 from wagtailmodelchooser.blocks import ModelChooserBlock
 
-from metahub.content.blocks import content_blocks
+from metahub.content.blocks import cookieless_content_blocks
 from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.organisms.blocks import OrganismHeroImageHeaderRegularBlock, \
-    OrganismHeroTextHeaderRegularBlock, OrganismArticleCuratedItemsRegularBlock, OrganismHeroTextHeaderExtraInfoBlock, \
+    OrganismArticleCuratedItemsRegularBlock, OrganismHeroTextHeaderExtraInfoBlock, \
     OrganismArticleRelatedItemsRegularBlock
 
 
@@ -29,7 +29,7 @@ class MetaHubNewsPage(MetaHubBasePage):
         ('header_text', OrganismHeroTextHeaderExtraInfoBlock()),
     ])
 
-    content = StreamField(content_blocks(), blank=True)
+    content = StreamField(cookieless_content_blocks(), blank=True)
 
     related_items = StreamField([
         ('related_curated', OrganismArticleCuratedItemsRegularBlock()),

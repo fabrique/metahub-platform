@@ -9,7 +9,7 @@ from wagtail.core.fields import StreamField
 from wagtail.snippets.models import register_snippet
 
 from metahub.collection.models import CollectionObjectTag
-from metahub.content.blocks import rich_collection_entity_blocks
+from metahub.content.blocks import cookieless_content_blocks
 from metahub.core.models import MetaHubBasePage
 from metahub.starling_metahub.molecules.interfaces import MoleculeExploreCardRegular
 from metahub.starling_metahub.organisms.blocks import OrganismArticleCuratedObjectsRegularBlock, \
@@ -43,7 +43,7 @@ class MetaHubObjectPage(MetaHubBasePage):
     MAX_RELATED_OBJECTS = 3
 
     # CMS panels
-    content = StreamField(rich_collection_entity_blocks(), blank=True)
+    content = StreamField(cookieless_content_blocks(), blank=True)
     tags = ClusterTaggableManager(through=CollectionObjectTag, blank=True)
 
     related_items = StreamField([

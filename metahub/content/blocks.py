@@ -20,7 +20,9 @@ def content_blocks():
     ]
 
 
-def rich_collection_entity_blocks():
+def cookieless_content_blocks():
+    """ No cookies for this block set awwwwwwww
+    See CNV for a more elegant variant of restricting blocks per page type """
     return [
         ('single_richtext', OrganismContentSingleRichTextRegularBlock()),
         ('two_column_picture_richtext', OrganismContentDoubleImageRichTextRegularBlock()),
