@@ -189,6 +189,7 @@ class OrganismHomeIntroRegular(NamedTuple):
     def get_context_container(self):
         return 'text'
 
+
 class OrganismSponsorsRegular(NamedTuple):
     id: str = ''
     variant: str = 'default'
