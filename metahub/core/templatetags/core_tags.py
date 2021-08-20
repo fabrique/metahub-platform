@@ -7,6 +7,8 @@ from django.utils.safestring import mark_safe
 from wagtail.core.rich_text import RichText
 from wagtail.core.rich_text import expand_db_html
 
+from metahub.starling_metahub.structures.interfaces import StructureCookieBarRegular
+
 register = template.Library()
 
 
@@ -68,3 +70,7 @@ class CaptureasNode(template.Node):
         output = self.nodelist.render(context)
         context[self.varname] = output
         return ''
+
+@register.simple_tag
+def get_cookie_bar_component():
+    return StructureCookieBarRegular()

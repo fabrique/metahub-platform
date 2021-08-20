@@ -111,8 +111,10 @@
     <div class="overlays" role="dialog">
       {% block overlays %}
       {% endblock %}
-      
-      {% include_component 'structures.cookie-bar.regular' %}
+
+      {% get_cookie_bar_component as cbc %}
+      {% include_component 'structures.cookie-bar.regular' cbc %}
+
     </div>
 
     {% block javascript %}

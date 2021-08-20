@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-20 10:49+0200\n"
+"POT-Creation-Date: 2021-08-20 11:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -260,12 +260,91 @@ msgid "Sponsors"
 msgstr ""
 
 #: src/metahub/starling_metahub/organisms/interfaces.py:85
+#: src/metahub/starling_metahub/structures/interfaces.py:35
 msgid "Change settings"
 msgstr "Einstellungen anpassen"
 
 #: src/metahub/starling_metahub/organisms/interfaces.py:86
 msgid "Clear cookies"
 msgstr "Cookies Löschen"
+
+#: src/metahub/starling_metahub/structures/interfaces.py:30
+msgid ""
+"This website uses cookies and similar techniques for an optimal visitor "
+"experience."
+msgstr ""
+"Diese Website verwendet Cookies und ähnliche Techniken für eine optimale "
+"Benutzererfahrung."
+
+#: src/metahub/starling_metahub/structures/interfaces.py:31
+msgid "Accept"
+msgstr "Zustimmen"
+
+#: src/metahub/starling_metahub/structures/interfaces.py:32
+msgid "Reject"
+msgstr "Ablehnen"
+
+#: src/metahub/starling_metahub/structures/interfaces.py:33
+msgid "Save"
+msgstr "Speichern"
+
+#: src/metahub/starling_metahub/structures/interfaces.py:34
+msgid "Accept all"
+msgstr "Alle akzeptieren"
+
+#: src/metahub/starling_metahub/structures/interfaces.py:36
+msgid ""
+"By deactivating one or more categories it's possible that certain parts of "
+"the website won't function as intended. You can always change your settings "
+"at a later time."
+msgstr ""
+"Durch Deaktivieren einzelner Kategorien kann es vorkommen, dass einige "
+"Funktionen der Website nicht mehr funktionieren. Sie können die "
+"Einstellungen jederzeit anpassen."
+
+#: src/metahub/starling_metahub/structures/interfaces.py:37
+#| msgid "Clear cookies"
+msgid "/en/cookies/"
+msgstr "/cookies"
+
+#: src/metahub/starling_metahub/structures/interfaces.py:37
+msgid "More information"
+msgstr "Mehr Informationen"
+
+#: src/metahub/starling_metahub/structures/interfaces.py:39
+msgid "Functional cookies"
+msgstr "Funktionale Cookies"
+
+#: src/metahub/starling_metahub/structures/interfaces.py:40
+msgid ""
+"These cookies are necessary for a functioning website. You cannot deactivate "
+"these cookies."
+msgstr ""
+"Diese Cookies stellen sicher, dass die Website fehlerfrei funktioniert. "
+"Diese Cookies können nicht deaktiviert werden."
+
+#: src/metahub/starling_metahub/structures/interfaces.py:41
+msgid "Third party cookies"
+msgstr "Externe Cookies"
+
+#: src/metahub/starling_metahub/structures/interfaces.py:42
+msgid ""
+"These third party cookies are necessary to play Vimeo or YouTube content "
+"within the website."
+msgstr ""
+"Diese Cookies können von Dritten wie YouTube oder Vimeo platziert werden."
+
+#: src/metahub/starling_metahub/structures/interfaces.py:43
+msgid "Analytic cookies"
+msgstr "Cookies zur Websiteanalyse"
+
+#: src/metahub/starling_metahub/structures/interfaces.py:44
+msgid ""
+"These cookies are used to monitor website usage and improve website "
+"performance and user experience."
+msgstr ""
+"Mit diesen Cookies messen wir die Nutzung der Webseite und nehmen "
+"Verbesserungen vor."
 
 #: src/metahub/stories/models/story_page.py:66
 msgid "Story"

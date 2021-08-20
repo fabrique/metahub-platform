@@ -3,6 +3,7 @@ from starling.mixins import AdapterStructBlock
 from wagtail.core import blocks
 from .interfaces import *
 
+
 class StructureFooterBarSimpleBlock(AdapterStructBlock):
     footer_links = blocks.ListBlock(AtomLinkRegularBlock())
 
