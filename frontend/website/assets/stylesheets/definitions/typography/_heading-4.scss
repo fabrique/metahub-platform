@@ -11,7 +11,6 @@
   --heading-4-margin-top: 0;
   --heading-4-color: #{var(--theme-color)};
   --heading-4-text-transform: uppercase;
-  --heading-4-hyphens: auto;
 
   @include landscape {
     --heading-4-line-height: 28px;

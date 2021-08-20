@@ -49,6 +49,8 @@ $margin-top: 50px;
   ul,
   ol {
     @include style-list-base;
+
+    margin-bottom: var(--paragraph-margin-bottom);
   }
 
   ul {

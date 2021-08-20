@@ -11,7 +11,6 @@
   --heading-3-margin-top: 0;
   --heading-3-color: #{var(--theme-color)};
   --heading-3-text-transform: uppercase;
-  --heading-3-hyphens: auto;
 
   @include landscape {
     --heading-3-font-size: 32px;

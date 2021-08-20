@@ -1,11 +1,13 @@
 <!doctype html>
+
 {% import 'components/structures/cookie-bar/cookie-bar.html' as cookie_bar %}
 {% import 'components/structures/footer/footer.html' as footer %}
 {% import 'components/structures/skip-to-main/skip-to-main.html' as skip_to_main %}
 {% import 'components/structures/header/header.html' as header %}
+
 {% set cachebuster = '' if environment == 'development' else '?v=' + random_hash() %}
 
-<html lang="de" class="{% if debug_grid %}debug-layout debug-grid debug-names{% endif %}">
+<html lang="de">
   <head>
     <meta charset="utf-8">
 
@@ -59,21 +61,21 @@
           {{ header.regular(
             logo_href = '/',
             menu_items = [
-            { href: '?', title: 'Explore' },
-            { href: '?', title: 'News & Events' },
-            { href: '?', title: 'About' },
-            { href: '?', title: 'Contact' }
-          ],
-          languages = [
-            {
-              classes: '',
-              href: '?',
-              title: 'EN',
-              target: '',
-              icon_before: '',
-              icon_after: ''
-            }
-          ]
+              { href: '?', title: 'Explore' },
+              { href: '?', title: 'News & Events' },
+              { href: '?', title: 'About' },
+              { href: '?', title: 'Contact' }
+            ],
+            languages = [
+              {
+                classes: '',
+                href: '?',
+                title: 'EN',
+                target: '',
+                icon_before: '',
+                icon_after: ''
+              }
+            ]
           ) }}
         {% endblock %}
       </header>
