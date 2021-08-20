@@ -80,10 +80,10 @@ class OrganismHeroTextHeaderRegular(NamedTuple):
 
 class OrganismArticleCookieRegular(NamedTuple):
     id: str = ''
-    title: str = _('Cookie-Einstellungen')
-    text: str = _('Ändern Sie hier Ihre Cookie-Einstellungen. Sie können auswählen, welche Kategorien von Cookies Sie (nicht) zulassen möchten.')
-    button_change_text: str = _('Einstellungen anpassen')
-    button_clear_text: str = _('Cookies Löschen')
+    title: str = ''
+    text: str = ''
+    button_change_text: str = _('Change settings')
+    button_clear_text: str = _('Clear cookies')
 
 
 class OrganismContentHeroImageTitle(NamedTuple):
