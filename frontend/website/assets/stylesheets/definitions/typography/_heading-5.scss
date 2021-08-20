@@ -11,7 +11,6 @@
   --heading-5-margin-top: 0;
   --heading-5-color: #{var(--theme-color)};
   --heading-5-text-transform: uppercase;
-  --heading-5-hyphens: auto;
 
   @include landscape {
     --heading-5-line-height: 22px;
