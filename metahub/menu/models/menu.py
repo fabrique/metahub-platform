@@ -10,27 +10,38 @@ class Menu(ClusterableModel):
     Allows to build the site menu.
     """
 
-    site = models.OneToOneField(
-        Site, unique=True, db_index=True, on_delete=models.CASCADE)
+    site = models.ForeignKey(
+        Site, on_delete=models.CASCADE)
 
+    language = models.CharField(choices=[
+        ('en', 'English'),
+        ('de', 'German')
+    ], max_length=200)
 
     panels = [
         FieldPanel('site'),
+        FieldPanel('language'),
         MultiFieldPanel([
             InlinePanel('menu_items'),
         ], heading='Items')
     ]
 
     def __str__(self):
-        return str(self.site)
+        return self.language
 
     @classmethod
-    def for_site(cls, site):
+    def for_site_and_language(cls, site, language):
         """
         Get an instance of this setting for the site.
         """
-        instance, created = cls.objects.get_or_create(site=site)
+        instance, created = cls.objects.get_or_create(site=site, language=language)
         return instance
+
+    def get_root_url(self):
+        if self.language == 'de':
+            return '/'
+        else:
+            return '/en'
 
     def save(self, **kwargs):
         super().save(**kwargs)

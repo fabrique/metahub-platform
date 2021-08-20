@@ -9,9 +9,10 @@ from wagtail.core import blocks
 from wagtail.core.blocks import ListBlock
 
 from .interfaces import *
-from ..atoms.blocks import AtomVideoEmbedRegularBlock
+from ..atoms.blocks import AtomVideoEmbedRegularBlock, AtomFigureRegularBlockHighRes
 from ..helpers import HelperRelatedPagesBlock, HelperRelatedPageBlock, HelperRelatedObjectsBlock, \
     HelperRelatedStoriesBlock, HelperRelatedStoryBlock
+from ..molecules.blocks import MoleculeLogoRegularBlock
 from ..utils import count_words_html
 from ...core.utils import format_date
 
@@ -21,7 +22,7 @@ class OrganismHeroImageHeaderRegularBlock(AdapterStructBlock):
     Content Page Header Component
     Simple header with an image
     """
-    picture = AtomPictureRegularBlock(resolution=Resolution(mobile="1920x1080"))
+    picture = AtomPictureRegularBlock(resolution=Resolution(mobile="4096x2160"))
 
     class Meta:
         label = _("Header image")
@@ -83,7 +84,7 @@ class OrganismContentSingleImageRegularBlock(AdapterStructBlock):
     """
     id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
     figure = AtomFigureRegularBlock([
-        ('picture', AtomPictureRegularBlock(resolution=Resolution(mobile='1920', crop=True))),
+        ('picture', AtomPictureRegularBlock(resolution=Resolution(mobile="4096", crop=False))),
     ])
 
     class Meta:
@@ -117,7 +118,7 @@ class OrganismContentDoubleImageRichTextRegularBlock(AdapterStructBlock):
     Optionally includes a link as well.
     """
     id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
-    figure = AtomFigureRegularBlock()
+    figure = AtomFigureRegularBlockHighRes()
     text = blocks.RichTextBlock(required=True)
 
     def get_word_count(self, value):
@@ -159,7 +160,7 @@ class OrganismContentHeroImageTitleBlock(AdapterStructBlock):
     id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
     title = blocks.CharBlock(max_length=200)
     link = AtomLinkRegularBlock()
-    picture = AtomPictureRegularBlock()
+    picture = AtomPictureRegularBlock(resolution=Resolution(mobile="4096", crop=False))
 
     class Meta:
         label = _("Hero highlight")
@@ -174,7 +175,7 @@ class OrganismContentPhotoMosaicBlock(AdapterStructBlock):
     A list of pictures placed playfully
     """
     id = blocks.CharBlock(max_length=100, required=False, help_text="Optional, to use as an anchor in the page")
-    figures = ListBlock(AtomFigureRegularBlock())
+    figures = ListBlock(AtomFigureRegularBlockHighRes())
 
     class Meta:
         label = _("Photo mosaic")
@@ -350,3 +351,30 @@ class OrganismHomeFeaturedStoryBlock(AdapterStructBlock):
         icon = 'pick'
         component = 'organisms.highlighted-card.regular'
         interface_class = OrganismFeaturedCardLinkToAllRegular
+
+
+class OrganismSponsorsRegularBlock(AdapterStructBlock):
+    SPONSORS_VARIANT_CHOICES = [
+        ('default', _('Default')),
+        ('large', _('Large')),
+    ]
+
+    title = blocks.CharBlock(label=_('Title'))
+    text = blocks.TextBlock(required=False, label=_('Text'))
+    variant = blocks.ChoiceBlock(required=True, choices=SPONSORS_VARIANT_CHOICES, label=_('Sponsors size'))
+    logos = blocks.StreamBlock(required=False, local_blocks=[
+        ('logo', MoleculeLogoRegularBlock()),
+    ], default=[], label=_('Logos'))
+
+    def build_extra(self, value, build_args, parent_context=None):
+        build_args.update({
+            'logos': [logo.block.build_component(logo.value, value)
+                      for logo in build_args.pop('logos', [])],
+        })
+
+    class Meta:
+        icon = 'image'
+        defaults = {}
+        component = 'organisms.logo-list.regular'
+        interface_class = OrganismSponsorsRegular
+        label = _('Sponsors')

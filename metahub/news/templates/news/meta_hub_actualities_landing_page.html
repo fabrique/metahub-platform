@@ -1,6 +1,8 @@
 {% extends 'core/base_page.html' %}
 {% load wagtailcore_tags starling_tags %}
 
+{% block bodyclass %}{{ page.theme_color }}{% endblock %}
+
 {%  block page_header %}
     {% for block in page.header %}
         {% include_block block %}

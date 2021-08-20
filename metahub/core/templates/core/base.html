@@ -113,7 +113,11 @@
         {% endblock %}
 
         {% block footer %}
-          {% include_component 'structures.footer.regular' settings.core.GlobalSettings.get_footer %}
+          {% if LANGUAGE_CODE == 'de' %}
+              {% include_component 'structures.footer.regular' settings.core.GlobalSettings.get_footer %}
+          {% else %}
+              {% include_component 'structures.footer.regular' settings.core.GlobalSettings.get_footer_en %}
+          {% endif %}
         {% endblock %}
       </footer>
     </div>
