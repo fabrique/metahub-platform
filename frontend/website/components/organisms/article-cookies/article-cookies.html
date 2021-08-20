@@ -1,7 +1,7 @@
 
 {% import 'components/atoms/link/link.html' as atom_link %}
 
-{% macro regular(id = '', title = 'Cookie-Einstellungen', text = 'Ändern Sie hier Ihre Cookie-Einstellungen. Sie können auswählen, welche Kategorien von Cookies Sie (nicht) zulassen möchten.') %}
+{% macro regular(id = '', title = 'Cookie-Einstellungen', text = 'Ändern Sie hier Ihre Cookie-Einstellungen. Sie können auswählen, welche Kategorien von Cookies Sie (nicht) zulassen möchten.', button_change_text = 'Einstellungen anpassen', button_clear_text = 'Cookies Löschen') %}
   <div {% if id %}id="{{ id }}"{% endif %} class="article-cookies">
     <div class="article-cookies__grid">
       <div class="article-cookies__wrapper">
@@ -14,8 +14,8 @@
         {% endif %}
 
         <div class="article-cookies__buttons">
-          {{ atom_link.span(classes = 'link--change', href = '#cookie-bar__details', title = 'Einstellungen anpassen', long_title = 'Einstellungen anpassen') }}
-          {{ atom_link.span(classes = 'link--clear', href = '#cookie-bar', title = 'Cookies Löschen', long_title = 'Cookies Löschen') }}
+          {{ atom_link.span(classes = 'link--change', href = '#cookie-bar__details', title = button_change_text, long_title = button_change_text) }}
+          {{ atom_link.span(classes = 'link--clear', href = '#cookie-bar', title = button_clear_text, long_title = button_clear_text) }}
         </div>
       </div>
     </div>

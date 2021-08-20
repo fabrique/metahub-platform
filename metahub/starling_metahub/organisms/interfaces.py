@@ -1,5 +1,7 @@
 from typing import NamedTuple, Iterable, Sequence
 
+from django.utils.translation import ugettext_lazy as _
+
 from starling.interfaces.atoms import AtomPictureRegular as AtomPictureRegular, AtomFigureRegular, AtomLinkRegular
 
 from ..atoms.interfaces import AtomVideoEmbedRegular
@@ -78,8 +80,10 @@ class OrganismHeroTextHeaderRegular(NamedTuple):
 
 class OrganismArticleCookieRegular(NamedTuple):
     id: str = ''
-    title: str = 'Cookie-Einstellungen'
-    text: str = 'Ändern Sie hier Ihre Cookie-Einstellungen. Sie können auswählen, welche Kategorien von Cookies Sie (nicht) zulassen möchten.'
+    title: str = _('Cookie-Einstellungen')
+    text: str = _('Ändern Sie hier Ihre Cookie-Einstellungen. Sie können auswählen, welche Kategorien von Cookies Sie (nicht) zulassen möchten.')
+    button_change_text: str = _('Einstellungen anpassen')
+    button_clear_text: str = _('Cookies Löschen')
 
 
 class OrganismContentHeroImageTitle(NamedTuple):
