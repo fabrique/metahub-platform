@@ -1,0 +1,88 @@
+
+.logo-list {
+  margin-bottom: var(--section-space);
+  position: relative;
+
+  .logo-list__grid {
+    @include grid-container;
+  }
+
+  .logo-list__wrapper {
+    grid-column: column 1 / span 12;
+  }
+
+  .logo-list__title {
+    @include typography(heading-5);
+
+    margin-block-end: 1rem;
+  }
+
+  .logo-list__text {
+    @include typography(paragraph);
+
+    margin-block-start: 1rem;
+  }
+
+  .logo-list__logos {
+    font-size: 0;
+    padding-block-start: 1px;
+    padding-inline-start: 1px;
+  }
+
+  .logo-list__logo {
+    display: inline-block;
+    margin-block-start: -1px;
+    margin-inline-start: -1px;
+    max-width: 100%;
+    min-width: 0;
+    position: relative;
+    vertical-align: bottom;
+  }
+
+  .logo-list__logo-wrapper {
+    height: 100%;
+    padding-block-end: 100%;
+    width: 100%;
+  }
+
+  .logo-list__logo-container {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    .picture--background {
+      position: relative;
+    }
+  }
+
+  @include landscape {
+    .logo-list__wrapper {
+      grid-column: column 3 / span 7;
+    }
+  }
+}
+
+.logo-list--default {
+  .logo-list__logo {
+    margin-inline-end: 2rem;
+    width: 120px;
+  }
+
+  .logo-list__logo-wrapper {
+    padding-block-end: 58.5%;
+  }
+}
+
+.logo-list--large {
+  .logo-list__logo {
+    margin-inline-end: 4rem;
+    width: 240px;
+  }
+
+  .logo-list__logo-wrapper {
+    padding-block-end: 51.2%;
+  }
+}

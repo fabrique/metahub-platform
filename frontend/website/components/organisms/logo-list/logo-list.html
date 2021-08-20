@@ -1,0 +1,41 @@
+
+{% macro regular(id = '', variant = 'default', title = '', text = '', logos = []) %}
+  {% import 'components/atoms/picture/picture.html' as atom_picture %}
+
+  <div {% if id %}id="{{ id }}"{% endif %} class="logo-list logo-list--{{ variant }}">
+    <div class="logo-list__grid">
+      <div class="logo-list__wrapper">
+        {% if title %}
+          <h2 class="logo-list__title">{{ title }}</h2>
+        {% endif %}
+
+        <div class="logo-list__logos">
+          {% for logo in logos %}
+            <a class="logo-list__logo" href="{{ logo.href }}" {% if logo.target %}target="{{ logo.target }}"{% endif %} {% if logo.target == '_blank' %}rel="noopener noreferrer"{% endif %}>
+              <div class="logo-list__logo-wrapper">
+                <div class="logo-list__logo-container" {% if logo.size_percentage %}style="padding-inline-end: calc(100% - {{ logo.size_percentage }}%);"{% endif %}>
+                  {% if picture and picture.images == 'placeholders' %}
+                    {% if (variant == 'large') %}
+                      {# Image ratio: free #}
+                      {{ object_replace_value(figure.picture, 'images', 'placeholders', generate_placeholders({ mobile: '240x123' })) }}
+                    {% else %}
+                      {# Image ratio: free #}
+                      {{ object_replace_value(figure.picture, 'images', 'placeholders', generate_placeholders({ mobile: '120x70' })) }}
+                    {% endif %}
+                  {% endif %}
+
+                  {# Image ratio: Free #}
+                  {{ atom_picture.background(images = logo.picture.images, fits = { mobile: 'contain' }, loading = 'lazy', alt_text = logo.picture.alt_text) }}
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+
+        {% if text %}
+          <p class="logo-list__text">{{ text }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endmacro %}

@@ -1,16 +1,17 @@
 {% extends 'templates/_base.html' %}
 
-{% import 'components/structures/header/header.html' as header %}
-{% import 'components/organisms/hero-text/hero-text.html' as organisms_hero_text %}
-{% import 'components/organisms/hero-image/hero-image.html' as organisms_hero_image %}
-{% import 'components/organisms/hero-image-title/hero-image-title.html' as organisms_hero_image_title %}
-{% import 'components/organisms/relevant-cards/relevant-cards.html' as organisms_relevant_cards %}
+{% import 'components/atoms/video-embed/video-embed.html' as atoms_video_embed %}
+{% import 'components/organisms/article-content/article-content.html' as organisms_article_content %}
+{% import 'components/organisms/article-video/article-video.html' as organisms_article_video %}
 {% import 'components/organisms/content-and-image/content-and-image.html' as organisms_content_and_image %}
 {% import 'components/organisms/content-and-link/content-and-link.html' as organisms_content_and_link %}
-{% import 'components/organisms/article-content/article-content.html' as organisms_article_content %}
+{% import 'components/organisms/hero-image-title/hero-image-title.html' as organisms_hero_image_title %}
+{% import 'components/organisms/hero-image/hero-image.html' as organisms_hero_image %}
+{% import 'components/organisms/hero-text/hero-text.html' as organisms_hero_text %}
 {% import 'components/organisms/images/images.html' as organisms_images %}
-{% import 'components/organisms/article-video/article-video.html' as organisms_article_video %}
-{% import 'components/atoms/video-embed/video-embed.html' as atoms_video_embed %}
+{% import 'components/organisms/logo-list/logo-list.html' as logo_list %}
+{% import 'components/organisms/relevant-cards/relevant-cards.html' as organisms_relevant_cards %}
+{% import 'components/structures/header/header.html' as header %}
 
 {% block page_title %}Content{% endblock %}
 
@@ -243,6 +244,27 @@
     ]
   ) }}
 
+
+  {{ logo_list.regular(
+    variant = 'large',
+    title = 'Funding partners',
+    logos = [
+      { href: '?', size_percentage: 100, picture: { images: { mobile: '/static/media/logos/kulturfonds.jpg' }, alt_text: 'Kulturfonds' } },
+      { href: '?', size_percentage: 100, picture: { images: { mobile: '/static/media/logos/beauftragte.svg' }, alt_text: 'Beauftragte' } }
+    ],
+    text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  ) }}
+
+  {{ logo_list.regular(
+    variant = 'default',
+    title = 'Supporting institutions',
+    logos = [
+      { href: '?', size_percentage: 100, picture: { images: { mobile: '/static/media/logos/kulturfonds.jpg' }, alt_text: 'Kulturfonds' } },
+      { href: '?', size_percentage: 100, picture: { images: { mobile: '/static/media/logos/frankfurt.png' }, alt_text: 'Frankfurt' } },
+      { href: '?', size_percentage: 100, picture: { images: { mobile: '/static/media/logos/beauftragte.svg' }, alt_text: 'Beauftragte' } }
+    ],
+    text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  ) }}
 {% endblock %}
 
 
