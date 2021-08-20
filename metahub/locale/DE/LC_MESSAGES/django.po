@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-20 11:26+0200\n"
+"POT-Creation-Date: 2021-08-20 11:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,12 +57,12 @@ msgstr ""
 msgid "Beschrijving van de site voor zoekmachine's e.d."
 msgstr ""
 
-#: src/metahub/core/templates/core/base.html:32
+#: src/metahub/core/templates/core/base.html:36
 #: src/metahub/core/templates/core/base_unused.html:30
 msgid "core.head.fb_admins"
 msgstr ""
 
-#: src/metahub/core/templates/core/base.html:36
+#: src/metahub/core/templates/core/base.html:41
 #: src/metahub/core/templates/core/base_unused.html:34
 msgid "core.head.fb_appid"
 msgstr ""
@@ -303,7 +303,6 @@ msgstr ""
 "Einstellungen jederzeit anpassen."
 
 #: src/metahub/starling_metahub/structures/interfaces.py:37
-#| msgid "Clear cookies"
 msgid "/en/cookies/"
 msgstr "/cookies"
 
