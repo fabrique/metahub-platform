@@ -198,6 +198,11 @@ class GlobalSettings(BaseSetting):
         [('footer', StructureFooterBarSimpleBlock())]
     )
 
+    footer_content_simple_en = StreamField(
+        [('footer', StructureFooterBarSimpleBlock())]
+    )
+
+    # im aware this is suboptimal
     def get_footer(self):
         if self.footer_content_simple:
             component = self.footer_content_simple[0].block.build_component(self.footer_content_simple[0].value)
@@ -205,10 +210,18 @@ class GlobalSettings(BaseSetting):
             return component
         return {}
 
+    def get_footer_en(self):
+        if self.footer_content_simple_en:
+            component = self.footer_content_simple[0].block.build_component(self.footer_content_simple_en[0].value)
+            component = component._replace(year=str(datetime.now().year))
+            return component
+        return {}
+
     panels = [
         ImageChooserPanel('default_share_image'),
         FieldPanel('default_site_description', classname="fullwidth", widget=Textarea(attrs={'rows': 2})),
-        StreamFieldPanel('footer_content_simple'),
+        StreamFieldPanel('footer_content_simple', heading="German footer"),
+        StreamFieldPanel('footer_content_simple_en', heading="English footer"),
     ]
 
     class Meta:
