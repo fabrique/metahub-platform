@@ -13,8 +13,10 @@ def get_menu_header_component(context):
 
     request = context['request']
     site = request.site
+    language = request.LANGUAGE_CODE
 
-    menu_pages = Menu.for_site(site).menu_items.all()
+    menu = Menu.for_site_and_language(site, language)
+    menu_pages = menu.menu_items.all()
 
     menu_items = [
         AtomLinkRegular(
@@ -25,6 +27,5 @@ def get_menu_header_component(context):
 
     return StructureMenuHeaderRegular(
         menu_items=menu_items,
-        logo_href='/' # fix later
-        # logo_href=Site.objects.get(is_default_site=True).root_url,
+        logo_href=menu.get_root_url()
     )
