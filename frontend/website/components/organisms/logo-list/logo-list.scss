@@ -67,22 +67,23 @@
 
 .logo-list--default {
   .logo-list__logo {
-    margin-inline-end: 2rem;
-    width: 120px;
+    margin-inline-end: 1rem;
+    width: 180px;
   }
 
   .logo-list__logo-wrapper {
-    padding-block-end: 58.5%;
+    padding-block-end: 50%;
   }
 }
 
 .logo-list--large {
   .logo-list__logo {
-    margin-inline-end: 4rem;
-    width: 240px;
+    display: block;
+    margin-inline-end: 0;
+    width: 360px;
   }
 
   .logo-list__logo-wrapper {
-    padding-block-end: 51.2%;
+    padding-block-end: 50%;
   }
 }

@@ -17,15 +17,15 @@
                   {% if picture and picture.images == 'placeholders' %}
                     {% if (variant == 'large') %}
                       {# Image ratio: free #}
-                      {{ object_replace_value(figure.picture, 'images', 'placeholders', generate_placeholders({ mobile: '240x123' })) }}
+                      {{ object_replace_value(figure.picture, 'images', 'placeholders', generate_placeholders({ mobile: '360x180' })) }}
                     {% else %}
                       {# Image ratio: free #}
-                      {{ object_replace_value(figure.picture, 'images', 'placeholders', generate_placeholders({ mobile: '120x70' })) }}
+                      {{ object_replace_value(figure.picture, 'images', 'placeholders', generate_placeholders({ mobile: '180x90' })) }}
                     {% endif %}
                   {% endif %}
 
                   {# Image ratio: Free #}
-                  {{ atom_picture.background(images = logo.picture.images, fits = logo.fits, loading = 'lazy') }}
+                  {{ atom_picture.background(images = logo.picture.images, fits = logo.fits|default({ mobile: 'contain' }), loading = 'lazy') }}
                 </div>
               </div>
             </a>

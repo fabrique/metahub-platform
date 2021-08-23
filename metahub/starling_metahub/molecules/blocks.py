@@ -1,5 +1,4 @@
 from django.utils.translation import ugettext_lazy as _
-
 from starling.blocks.atoms.link import AtomLinkRegularBlock
 from starling.blocks.atoms.picture import AtomPictureRegularBlock
 from starling.blocks.helpers import HelperHrefBlock
@@ -8,8 +7,9 @@ from starling.mixins import AdapterStructBlock, OptionalBlock
 from wagtail.core import blocks
 from wagtail.core.blocks import PageChooserBlock
 
+from ..helpers import (HelperDocumentBlock, HelperHrefBlockSimple,
+                       HelperOptionalHrefBlock, HelperPageURLBlock)
 from .interfaces import *
-from ..helpers import HelperDocumentBlock, HelperPageURLBlock, HelperOptionalHrefBlock, HelperHrefBlockSimple
 
 
 class MoleculeObjectCardRegularBlock(AdapterStructBlock):
@@ -97,7 +97,7 @@ class MoleculeAudioPlayerBlock(AdapterStructBlock):
 class MoleculeLogoRegularBlock(AdapterStructBlock):
     PICTURE_SIZE_PERCENTAGES = [(x, x) for x in range(10, 100, 10)]
 
-    picture = AtomPictureRegularBlock(resolution=Resolution(mobile='120x70', crop=False))
+    picture = AtomPictureRegularBlock(resolution=Resolution(mobile='160x80', crop=False))
     size_percentage = blocks.ChoiceBlock(required=False, choices=PICTURE_SIZE_PERCENTAGES, label=_('Size in percentage'))
     link = AtomLinkRegularBlock()
 
@@ -106,7 +106,7 @@ class MoleculeLogoRegularBlock(AdapterStructBlock):
         link = build_args.pop('link', None)
         build_args.update({
             'href': (getattr(link, 'href', None) if link else None),
-            'picture': (AtomPictureRegular(**Resolution(mobile='240x123', crop=False).resolve(picture.get('source')))
+            'picture': (AtomPictureRegular(**Resolution(mobile='360x180', crop=False).resolve(picture.get('source')))
                             if picture and parent_context.get('variant') not in ['', 'default'] else build_args.get('picture'))
         })
 
