@@ -103,8 +103,9 @@ class MoleculeLogoRegularBlock(AdapterStructBlock):
 
     def build_extra(self, value, build_args, parent_context=None):
         picture = value.get('picture', None)
+        link = build_args.pop('link', None)
         build_args.update({
-            'href': (getattr(link, 'href', None) if (link := build_args.pop('link', None)) else None),
+            'href': (getattr(link, 'href', None) if link else None),
             'picture': (AtomPictureRegular(**Resolution(mobile='240x123', crop=False).resolve(picture.get('source')))
                             if picture and parent_context.get('variant') not in ['', 'default'] else build_args.get('picture'))
         })
