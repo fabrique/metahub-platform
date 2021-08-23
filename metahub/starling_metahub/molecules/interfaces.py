@@ -88,4 +88,5 @@ class MoleculePaginationRegular(NamedTuple):
 class MoleculeLogoRegular(NamedTuple):
     picture: AtomPictureRegular = AtomPictureRegular()
     size_percentage: str = ''
-    # href: str = ''
+    href: str = ''
+    fits: dict = {'mobile' : 'contain'}

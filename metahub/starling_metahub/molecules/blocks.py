@@ -99,12 +99,12 @@ class MoleculeLogoRegularBlock(AdapterStructBlock):
 
     picture = AtomPictureRegularBlock(resolution=Resolution(mobile='120x70', crop=False))
     size_percentage = blocks.ChoiceBlock(required=False, choices=PICTURE_SIZE_PERCENTAGES, label=_('Size in percentage'))
-    # link = AtomLinkRegularBlock()
+    link = AtomLinkRegularBlock()
 
     def build_extra(self, value, build_args, parent_context=None):
         picture = value.get('picture', None)
         build_args.update({
-            # 'href': (getattr(link, 'href', None) if (link := build_args.pop('link', None)) else None),
+            'href': (getattr(link, 'href', None) if (link := build_args.pop('link', None)) else None),
             'picture': (AtomPictureRegular(**Resolution(mobile='240x123', crop=False).resolve(picture.get('source')))
                             if picture and parent_context.get('variant') not in ['', 'default'] else build_args.get('picture'))
         })
