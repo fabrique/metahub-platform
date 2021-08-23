@@ -23,6 +23,8 @@
 
 .hero-text__grid {
   @include grid-container;
+
+  width: 100%;
 }
 
 .hero-text__inner {
