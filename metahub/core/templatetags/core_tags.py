@@ -3,6 +3,7 @@ import random
 from django import template
 
 from django.utils.safestring import mark_safe
+from django.utils.translation import get_language
 
 from wagtail.core.rich_text import RichText
 from wagtail.core.rich_text import expand_db_html

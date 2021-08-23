@@ -1,3 +1,4 @@
+from django.utils import translation
 from django.utils.translation import ugettext_lazy as _
 
 from starling.blocks.atoms.figure import AtomFigureRegularBlock
@@ -247,12 +248,15 @@ class OrganismArticleRelatedItemsRegularBlock(AdapterStructBlock):
 
     def build_extra(self, value, build_args, parent_context=None):
         page = (parent_context or {}).get('page')
-
         if not page:
             return
 
+        #chck language here
+        language_from_path = translation.get_language_from_path(page.url)
+        # print('lang from path: ', page.url, language_from_path)
+
         build_args.update({
-            'cards' : [page.get_card_representation() for page in page.get_page_related_items()]
+            'cards' : [page.get_card_representation() for page in page.get_page_related_items(language=language_from_path)]
         })
 
     class Meta:

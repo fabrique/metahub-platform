@@ -51,8 +51,8 @@ class MetaHubHomePage(RoutablePageMixin, MetaHubBasePage):
     def get_random_theme_color(self):
         return get_random_color()
 
-    def get_page_related_items(self):
-        return get_all_news_and_events()[:3]
+    def get_page_related_items(self, language=None):
+        return get_all_news_and_events(language=language)[:3]
 
 
 class MetaHubMuseumSubHomePage(MetaHubBasePage):
