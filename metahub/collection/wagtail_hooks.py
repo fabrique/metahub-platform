@@ -25,4 +25,4 @@ class BaseCollectionObjectAdmin(ModelAdmin):
     list_display = ("title", "date_added")
     search_fields = ("title", "bc_inventory_number")
 
-# modeladmin_register(BaseCollectionObjectAdmin)
+modeladmin_register(BaseCollectionObjectAdmin)
