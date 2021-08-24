@@ -142,7 +142,7 @@ export default class VideoEmbedComponent extends Component {
         width: 640,
         height: 360,
         videoId: this.videoId,
-        playerVars: { autoplay: 1, hd: 1, showinfo: 0, modestbranding: 1, iv_load_policy: 3, rel: 0, playlist: '', origin: `${window.location.protocol}//${window.location.host}` },
+        playerVars: { autoplay: 1, hd: 1, showinfo: 0, modestbranding: 1, iv_load_policy: 3, rel: 0, origin: `${window.location.protocol}//${window.location.host}` },
         events: {
           onReady: () => {
             this.player.setPlaybackQuality('hd1080')
