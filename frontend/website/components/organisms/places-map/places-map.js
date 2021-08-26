@@ -21,7 +21,7 @@ class PlacesMapComponent extends Component {
     if (this.buttonZoomIn) {
       this.buttonZoomIn.addEventListener('click', () => {
         if (this.element.classList.contains('places-map--zoomed-in')) {
-
+          //
         } else if (this.element.classList.contains('places-map--zoomed-out')) {
           this.element.classList.remove('places-map--zoomed-out')
         } else {
@@ -33,7 +33,7 @@ class PlacesMapComponent extends Component {
     if (this.buttonZoomOut) {
       this.buttonZoomOut.addEventListener('click', () => {
         if (this.element.classList.contains('places-map--zoomed-out')) {
-
+          //
         } else if (this.element.classList.contains('places-map--zoomed-in')) {
           this.element.classList.remove('places-map--zoomed-in')
         } else {
