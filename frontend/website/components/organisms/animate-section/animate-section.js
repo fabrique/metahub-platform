@@ -24,9 +24,9 @@ class AnimateSectionComponent extends Component {
     this.going = window.GSAP.timeline({ scrollTrigger: { trigger: this.element, scrub: 0, start: 'top top', end: 'bottom top' }, ease: 'none' })
     this.going.fromTo(outer, { scaleY: 1, transformOrigin: '50% 100%' }, { scaleY: 0, ease: 'none', transformOrigin: '50% 100%' })
 
-    window.addEventListener('resize', () => window.requestAnimationFrame(
-      //
-    ))
+    // window.addEventListener('resize', () => window.requestAnimationFrame(
+    //
+    // ))
   }
 }
 

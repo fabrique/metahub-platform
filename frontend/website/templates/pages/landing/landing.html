@@ -4,6 +4,7 @@
 {% import 'components/organisms/home-content/home-content.html' as organisms_home_content %}
 {% import 'components/organisms/relevant-cards/relevant-cards.html' as organisms_relevant_cards %}
 {% import 'components/organisms/highlighted-card/highlighted-card.html' as organisms_highlighted_card %}
+{% import 'components/organisms/places-map/places-map.html' as organisms_places_map %}
 
 {% block page_title %}Home{% endblock %}
 
@@ -215,6 +216,16 @@
             date: '11 April, 2021'
           }
           ]
+        ) }}
+      </div>
+    </div>
+  </div>
+
+  <div class="js-animate-section animate-section">
+    <div class="js-animate-section__outer animate-section__outer">
+      <div class="js-animate-section__inner animate-section__inner">
+        {{ organisms_places_map.regular(
+          title = 'Places'
         ) }}
       </div>
     </div>

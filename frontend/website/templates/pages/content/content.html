@@ -12,6 +12,7 @@
 {% import 'components/organisms/logo-list/logo-list.html' as logo_list %}
 {% import 'components/organisms/relevant-cards/relevant-cards.html' as organisms_relevant_cards %}
 {% import 'components/structures/header/header.html' as header %}
+{% import 'components/organisms/places-map/places-map.html' as organisms_places_map %}
 
 {% block page_title %}Content{% endblock %}
 
@@ -244,7 +245,6 @@
     ]
   ) }}
 
-
   {{ logo_list.regular(
     variant = 'large',
     title = 'Funding partners',
@@ -264,6 +264,10 @@
       { href: '?', size_percentage: 100, picture: { images: { mobile: '/static/media/logos/beauftragte.svg' }, alt_text: 'Beauftragte' } }
     ],
     text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+  ) }}
+
+  {{ organisms_places_map.regular(
+    title = 'Places'
   ) }}
 {% endblock %}
 

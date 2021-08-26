@@ -1,0 +1,131 @@
+.places-map {
+  height: 100vh;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  position: relative;
+
+  .places-map__grid {
+    @include grid-container;
+
+    position: relative;
+    z-index: 2;
+  }
+
+  .places-map__title {
+    @include typography(heading-2);
+
+    color: var(--theme-color);
+    grid-column: auto / span 12;
+    margin-bottom: 20px;
+  }
+
+  .places-map__map {
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+    &::after {
+      background-image: linear-gradient($color-white 40%, rgba(255, 255, 255, .001));
+      content: '';
+      display: block;
+      height: 150px;
+      left: 0;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+  }
+
+  .places-map__svg {
+    height: 300%;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(calc(-50% - 20%), calc(-50% + 5%));
+    width: 300%;
+  }
+
+  .places-map__zoom-button {
+    background: transparent;
+    border: 1px solid $color-magenta;
+    border-radius: 50%;
+    color: $color-magenta;
+    height: 40px;
+    left: 20px;
+    position: absolute;
+    transition: background-color $easing-change, color $easing-change;
+    width: 40px;
+
+    &:hover {
+      background: $color-magenta;
+      color: $color-white;
+    }
+  }
+
+  .places-map__zoom-button--out {
+    bottom: 40px;
+  }
+
+  .places-map__zoom-button--in {
+    bottom: 90px;
+  }
+
+  &.places-map--zoomed-in {
+    .places-map__svg {
+      height: 400%;
+      width: 400%;
+    }
+  }
+
+  &.places-map--zoomed-out {
+    .places-map__svg {
+      height: 200%;
+      width: 200%;
+    }
+  }
+
+  @include portrait {
+    .places-map__svg {
+      height: 200%;
+      transform: translate(calc(-50% - 20%), calc(-50% + 5%));
+      width: 200%;
+    }
+
+    &.places-map--zoomed-in {
+      .places-map__svg {
+        height: 300%;
+        width: 300%;
+      }
+    }
+
+    &.places-map--zoomed-out {
+      .places-map__svg {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  @include landscape {
+    .places-map__map {
+      &::after {
+        height: 250px;
+      }
+    }
+
+    .places-map__svg {
+      height: 100%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+
+    .places-map__zoom-button {
+      display: none;
+    }
+  }
+}
