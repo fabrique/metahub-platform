@@ -2,6 +2,7 @@
 .animate-section {
   height: 100vh;
   overflow: hidden;
+  transform: translate3d(0, 0, 0); // TEST bibberen
 
   &:first-child {
     height: calc(100vh - var(--header-height));
