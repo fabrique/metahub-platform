@@ -64,6 +64,14 @@
       background: $color-magenta;
       color: $color-white;
     }
+
+    &:disabled,
+    &:hover:disabled {
+      background-color: transparent;
+      border-color: rgba(0, 0, 0, .5);
+      color: rgba(0, 0, 0, 5);
+      pointer-events: none;
+    }
   }
 
   .places-map__zoom-button--out {
@@ -74,38 +82,14 @@
     bottom: 90px;
   }
 
-  &.places-map--zoomed-in {
-    .places-map__svg {
-      height: 200%;
-      width: 200%;
-    }
-  }
-
-  &.places-map--zoomed-out {
-    .places-map__svg {
-      height: 50%;
-      width: 50%;
-    }
-  }
-
-  @include portrait {
-    //.places-map__svg {
-    //  height: 200%;
-    //  transform: translate(calc(-50% - 30%), calc(-50% + 10%));
-    //  width: 200%;
-    //}
-
+  @include breakpoints(mobile-only, portrait-only) {
     &.places-map--zoomed-in {
       .places-map__svg {
-        //height: 300%;
-        //width: 300%;
-      }
-    }
-
-    &.places-map--zoomed-out {
-      .places-map__svg {
-        //height: 100%;
-        //width: 100%;
+        height: 200%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 200%;
       }
     }
   }
@@ -115,12 +99,6 @@
       &::after {
         height: 250px;
       }
-    }
-
-    .places-map__svg {
-      //height: 100%;
-      //transform: translate(-50%, -50%);
-      //width: 100%;
     }
 
     .places-map__zoom-button {

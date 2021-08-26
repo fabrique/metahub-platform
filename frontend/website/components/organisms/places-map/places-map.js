@@ -17,29 +17,45 @@ class PlacesMapComponent extends Component {
 
     this.buttonZoomIn = this.element.querySelector('.places-map__zoom-button--in')
     this.buttonZoomOut = this.element.querySelector('.places-map__zoom-button--out')
+    this.svg = this.element.querySelector('.places-map__svg')
 
     if (this.buttonZoomIn) {
       this.buttonZoomIn.addEventListener('click', () => {
         if (this.element.classList.contains('places-map--zoomed-in')) {
           //
-        } else if (this.element.classList.contains('places-map--zoomed-out')) {
-          this.element.classList.remove('places-map--zoomed-out')
         } else {
           this.element.classList.add('places-map--zoomed-in')
+          this.buttonZoomIn.disabled = true
+          this.buttonZoomOut.disabled = false
         }
       })
     }
 
     if (this.buttonZoomOut) {
       this.buttonZoomOut.addEventListener('click', () => {
-        if (this.element.classList.contains('places-map--zoomed-out')) {
-          //
-        } else if (this.element.classList.contains('places-map--zoomed-in')) {
+        if (this.element.classList.contains('places-map--zoomed-in')) {
           this.element.classList.remove('places-map--zoomed-in')
+          this.buttonZoomOut.disabled = true
+          this.buttonZoomIn.disabled = false
         } else {
-          this.element.classList.add('places-map--zoomed-out')
+          //
         }
       })
+    }
+
+    window.addEventListener('resize', () => this.onResize())
+    this.onResize()
+  }
+
+  onResize () {
+    if (!this.svg) {
+      return
+    }
+
+    if (window.innerWidth < 800) {
+      this.svg.setAttribute('viewBox', '400 0 2783 1785')
+    } else {
+      this.svg.setAttribute('viewBox', '0 0 2783 1785')
     }
   }
 }

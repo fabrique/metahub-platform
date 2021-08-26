@@ -7,7 +7,6 @@ class AnimateSectionComponent extends Component {
   }
 
   initAnimateSection () {
-    console.log('eh')
     const inner = this.element.querySelector('.js-animate-section__inner')
     const outer = this.element.querySelector('.js-animate-section__outer')
 
