@@ -42,12 +42,11 @@
   }
 
   .places-map__svg {
-    height: 300%;
-    left: 50%;
+    height: 100%;
+    left: 0;
     position: absolute;
-    top: 50%;
-    transform: translate(calc(-50% - 20%), calc(-50% + 5%));
-    width: 300%;
+    top: 0;
+    width: 100%;
   }
 
   .places-map__zoom-button {
@@ -77,36 +76,36 @@
 
   &.places-map--zoomed-in {
     .places-map__svg {
-      height: 400%;
-      width: 400%;
+      height: 200%;
+      width: 200%;
     }
   }
 
   &.places-map--zoomed-out {
     .places-map__svg {
-      height: 200%;
-      width: 200%;
+      height: 50%;
+      width: 50%;
     }
   }
 
   @include portrait {
-    .places-map__svg {
-      height: 200%;
-      transform: translate(calc(-50% - 20%), calc(-50% + 5%));
-      width: 200%;
-    }
+    //.places-map__svg {
+    //  height: 200%;
+    //  transform: translate(calc(-50% - 30%), calc(-50% + 10%));
+    //  width: 200%;
+    //}
 
     &.places-map--zoomed-in {
       .places-map__svg {
-        height: 300%;
-        width: 300%;
+        //height: 300%;
+        //width: 300%;
       }
     }
 
     &.places-map--zoomed-out {
       .places-map__svg {
-        height: 100%;
-        width: 100%;
+        //height: 100%;
+        //width: 100%;
       }
     }
   }
@@ -119,9 +118,9 @@
     }
 
     .places-map__svg {
-      height: 100%;
-      transform: translate(-50%, -50%);
-      width: 100%;
+      //height: 100%;
+      //transform: translate(-50%, -50%);
+      //width: 100%;
     }
 
     .places-map__zoom-button {
