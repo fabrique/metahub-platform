@@ -76,7 +76,7 @@ class MetaHubLocationPage(MetaHubBasePage):
             StreamFieldPanel('text_header'),
         ], heading=_("Page Header")),
         StreamFieldPanel('content'),
-        StreamFieldPanel('related_items'),
+        # StreamFieldPanel('related_items'),
         FieldPanel('tags')
     ]
 
