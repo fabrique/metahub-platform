@@ -113,7 +113,7 @@ DEPLOY_CONFIGURATION = {
         'supervisor_name': 'metahub-production',
     },
     'staging': {
-        'branch': 'master',
+        'branch': 'develop',
         'project_dir': '/data/www/metahub/staging',
         'src_dir': '/data/www/metahub/staging/src',
         'venv_dir': '/data/www/metahub/staging/venv',
