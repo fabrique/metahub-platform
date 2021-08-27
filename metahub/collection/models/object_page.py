@@ -67,7 +67,7 @@ class MetaHubObjectPage(MetaHubBasePage):
             primary_image = self.object.object_img_link.first()
             if primary_image:
                 primary_image = primary_image.object_image
-            return AtomPictureRegular(**Resolution(mobile='1920', crop=True).resolve(primary_image))
+                return AtomPictureRegular(**Resolution(mobile='1920', crop=True).resolve(primary_image))
 
     def get_object_header_component(self):
         return OrganismObjectHeaderRegular(
