@@ -382,3 +382,28 @@ class OrganismSponsorsRegularBlock(AdapterStructBlock):
         component = 'organisms.logo-list.regular'
         interface_class = OrganismSponsorsRegular
         label = _('Sponsors')
+
+
+class OrganismPlacesMapRegularBlock(AdapterStructBlock):
+    title = blocks.CharBlock(label=_('Title'))
+    link_borneplatz_href_block = blocks.PageChooserBlock()
+    link_alter_href_block = blocks.PageChooserBlock()
+    link_toraschrein_href_block = blocks.PageChooserBlock()
+
+    def build_extra(self, value, build_args, parent_context=None):
+        build_args.update({
+            'link_borneplatz_href' : build_args.get('link_borneplatz_href_block').url,
+            'link_alter_href' : build_args.get('link_alter_href_block').url,
+            'link_toraschrein_href' : build_args.get('link_toraschrein_href_block').url,
+        })
+        build_args.pop('link_borneplatz_href_block')
+        build_args.pop('link_alter_href_block')
+        build_args.pop('link_toraschrein_href_block')
+
+
+    class Meta:
+        icon = 'site'
+        defaults = {}
+        component = 'organisms.places-map.regular'
+        interface_class = OrganismPlacesMapRegular
+        label = _('Map with places')

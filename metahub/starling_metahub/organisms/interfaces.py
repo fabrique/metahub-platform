@@ -196,3 +196,14 @@ class OrganismSponsorsRegular(NamedTuple):
     title: str = ''
     text: str = ''
     logos: Iterable = ()
+
+
+class OrganismPlacesMapRegular(NamedTuple):
+    id: str = ''
+    classes: str = ''
+    title: str = ''
+    button_zoom_in_aria_label: str = _('Zoom in')
+    button_zoom_out_aria_label: str = _('Zoom out')
+    link_borneplatz_href: str = ''
+    link_alter_href: str = ''
+    link_toraschrein_href: str = ''
