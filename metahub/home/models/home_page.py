@@ -11,7 +11,7 @@ from metahub.news.utils import get_all_news_and_events
 from metahub.starling_metahub.organisms.blocks import OrganismHomeIntroRegularBlock, \
     OrganismArticleCuratedObjectsRegularBlock, OrganismHomeFeaturedStoryBlock, \
     OrganismArticleCuratedNewsRegularBlock, \
-    OrganismArticleRelatedNewsRegularBlock
+    OrganismArticleRelatedNewsRegularBlock, OrganismPlacesMapRegularBlock
 
 
 class MetaHubHomePage(RoutablePageMixin, MetaHubBasePage):
@@ -41,11 +41,16 @@ class MetaHubHomePage(RoutablePageMixin, MetaHubBasePage):
         ('related_automatic', OrganismArticleRelatedNewsRegularBlock()),
     ], max_num=1))
 
+    places_map = StreamField(StreamBlock([
+        ('places_map', OrganismPlacesMapRegularBlock()),
+    ], max_num=1, required=False), blank=True)
+
     content_panels = MetaHubBasePage.content_panels + [
         StreamFieldPanel('home_intro'),
         StreamFieldPanel('object_highlights'),
         StreamFieldPanel('story_highlight'),
-        StreamFieldPanel('news_highlights')
+        StreamFieldPanel('news_highlights'),
+        StreamFieldPanel('places_map')
     ]
 
     def get_random_theme_color(self):
