@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+import zipfile
 
 from django.core.management import BaseCommand
 from django.utils.text import slugify
@@ -19,6 +20,17 @@ from metahub.sync.utils import add_fabrique_image
 
 logger = logging.getLogger(__name__)
 
+MUSEUMS = [
+    "amf",
+    "hmf",
+    "jmf",
+]
+MUSEUM_ZIPFILES = {
+    "amf": "AMF_MetaHubExport.zip",
+    "hmf": "WebsiteExport.zip",
+    "jmf": "JMF_MetaHubExport.zip",
+}
+
 
 class Command(BaseCommand):
     help = """Imports the json with beecollect data from the specified path.
@@ -29,25 +41,48 @@ class Command(BaseCommand):
     """
 
     def add_arguments(self, parser):
-        parser.add_argument("folder", nargs="+", type=str)
+        parser.add_argument("beecollect_folder", nargs=1, type=str)
+        parser.add_argument("sync_folder", nargs=1, type=str)
 
-    def handle(self, *args, **options):
+    def handle(self, beecollect_folder, sync_folder, *args, **options):
         logger.info(f"Start Beecollect import...")
+        beecollect_folder = beecollect_folder[0]
+        sync_folder = sync_folder[0]
+
+        if not beecollect_folder.startswith("/"):
+            logger.error("Path parameters need to be absolute paths, start with /")
+            exit(1)
+        if not sync_folder.startswith("/"):
+            logger.error("Path parameters need to be absolute paths, start with /")
+            exit(1)
 
         # we are remaking all links
         ObjectImageLink.objects.all().delete()
         update_title = True
         update_intro = True
 
-        for museum in ["amf", "hmf", "jmf"]:
+        for museum in MUSEUMS:
+            logger.info(f"*** Start Beecollect sync for {museum}")
+            museum_sync_folder = os.path.join(sync_folder, museum)
+
+            logger.info(f"Clearing old Beecollect data of {museum}")
+            for filename in os.listdir(os.path.join(museum_sync_folder)):
+                os.remove(os.path.join(museum_sync_folder, filename))
+
+            logger.info(f"Unpacking Beecollect data of {museum}")
+            with zipfile.ZipFile(os.path.join(beecollect_folder, MUSEUM_ZIPFILES[museum]), 'r') as zip_ref:
+                zip_ref.extractall(os.path.join(museum_sync_folder))
+
             logger.info(f"Importing {museum}")
             objects_added = 0
             objects_changed = 0
             objects_removed = 0
-            for object in self.get_items_from_file(
-                os.path.join(options["folder"][0], museum), "Objects"
-            ):
-                obj = Object(**object)
+            for object in self.get_items_from_file(museum_sync_folder, "Objects"):
+                try:
+                    obj = Object(**object)
+                except Exception as e:
+                    logger.error(f"Import error '{museum}' for object id: {object['Id']}, {e}")
+                    continue
                 if not obj.Images:
                     logger.debug(
                         f"Skipping object '{obj.Id}' because there are no images present"
@@ -66,24 +101,24 @@ class Command(BaseCommand):
                     objects_added += 1
 
                 for image in obj.Images:
-                    path = image.KeyFileName
-                    if path:
+                    if image.KeyFileName:
+                        image_path = os.path.join(museum_sync_folder, image.KeyFileName)
                         try:
-                            image = add_fabrique_image(
-                                os.path.join(museum, path),
+                            img = add_fabrique_image(
+                                image_path,
                                 overwrite=True,
                                 attribution=image.License,
                                 alt_text=obj.Title,
                             )
                             logger.debug(
-                                f"Import image '{image.filename}' for object id: {bc_obj.id}"
+                                f"Import image '{img.filename}' for object id: {bc_obj.id}"
                             )
                         except FileNotFoundError:
-                            logger.warning("Image not found")
+                            logger.warning(f"Image '{image_path}' not found for object: {obj.Id}")
                         else:
                             # Link with object-image-link
                             ObjectImageLink.objects.create(
-                                object_image=image, collection_object=bc_obj
+                                object_image=img, collection_object=bc_obj
                             )
 
                 for tag in obj.get_tags():
@@ -167,7 +202,7 @@ class Command(BaseCommand):
 
         # TODO the code below is better for memory consumption to load huge _data.json files
         #  but it doesn't load the metadata (ExportDate, NumberOfObjects)
-        # with open(os.path.join(os.getcwd(), folder, "cleaned_data.json"), "r") as fp:
+        # with open(os.path.join(folder, "cleaned_data.json"), "r") as fp:
         #     item = []
         #     in_items = False
         #     curly = 0
@@ -196,7 +231,7 @@ class Command(BaseCommand):
         #                 curly += 1
         #             if curly > 0:
         #                 item.append(line.strip().replace("\n", ""))
-        with open(os.path.join(os.getcwd(), folder, "_data.json"), "r") as fp:
+        with open(os.path.join(folder, "_data.json"), "r") as fp:
             self.data = json.load(fp)
             for object in self.data.get(items_section):
                 logger.debug(f"Import object '{object.get('Id')}'")

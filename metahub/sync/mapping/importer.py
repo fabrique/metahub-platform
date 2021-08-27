@@ -1,5 +1,5 @@
 from datetime import datetime
-from typing import List
+from typing import List, Optional
 
 from pydantic import BaseModel
 
@@ -68,7 +68,11 @@ class Dating(TypeTextNotes):
 
 
 class OtherObject(BaseModel):
-    Id: int
+    Id: Optional[int]
+    Type: Optional[str]
+    Text: Optional[str]
+    Notes: Optional[str]
+
 
 
 class Object(BaseModel):

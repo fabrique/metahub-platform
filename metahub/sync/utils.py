@@ -32,8 +32,11 @@ def add_fabrique_image(file_name, title=None, is_url=False,
     :return:
     """
 
-    file_import_path = 'src/metahub/sync/bc_images/{}'.format(file_name)
-    file_import_path = 'sync/{}'.format(file_name)  #MKR: changed this outside of repository
+    if file_name.startswith("/"):
+        file_import_path = file_name
+    else:
+        file_import_path = 'src/metahub/sync/bc_images/{}'.format(file_name)
+        file_import_path = 'sync/{}'.format(file_name)  #MKR: changed this outside of repository
 
     title = title or file_name
 
