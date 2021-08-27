@@ -40,6 +40,7 @@ if settings.DEBUG:
 urlpatterns += [
     url(r'^django-admin/', admin.site.urls),
     # url(r'^api/', include('metahub.api.urls')),
+    url(r'^collection/', include('metahub.collection.urls')),
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
     url(r'', include(wagtail_urls)),

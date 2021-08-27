@@ -123,4 +123,10 @@ DEPLOY_CONFIGURATION = {
     },
 }
 
+BEECOLLECT_DATA_FOLDER = "/data/www/beecollect_data/"
+BEECOLLECT_SYNC_FOLDER = "/data/www/metahub/staging/sync/"
 
+try:
+    from .local import *
+except:
+    pass

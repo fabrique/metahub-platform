@@ -45,10 +45,11 @@ class Command(BaseCommand):
         parser.add_argument("sync_folder", nargs=1, type=str)
 
     def handle(self, beecollect_folder, sync_folder, *args, **options):
-        logger.info(f"Start Beecollect import...")
-        beecollect_folder = beecollect_folder[0]
-        sync_folder = sync_folder[0]
+        BeecollectImporter().start(beecollect_folder[0], sync_folder[0])
 
+
+class BeecollectImporter:
+    def start(self, beecollect_folder, sync_folder):
         if not beecollect_folder.startswith("/"):
             logger.error("Path parameters need to be absolute paths, start with /")
             exit(1)

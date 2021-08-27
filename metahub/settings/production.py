@@ -76,3 +76,6 @@ LOGGING = {
 WEBPACK_LOADER['DEFAULT']['CACHE'] = True
 
 # Your production stuff: Below this line define 3rd party library settings
+
+BEECOLLECT_DATA_FOLDER = "/data/www/beecollect_data/"
+BEECOLLECT_SYNC_FOLDER = "/data/www/metahub/production/sync/"
