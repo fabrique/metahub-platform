@@ -1,9 +1,40 @@
-{% extends 'base.html' %}
+{% extends 'core/base_page.html' %}
 {% load i18n %}
+
+{% block bodyclass %}theme--pink{% endblock %}
 
 {% block page_content %}
 
-  {# Put your 404 message content here #}
+<div class="js-hero-text hero-text">
+    <div class="hero-text__grid">
+      <div class="hero-text__inner">
+          <h1 class="js-hero-text__title">This content doesn't exist.</h1>
+      </div>
+      <div class="hero-text__meta">
+
+      </div>
+    </div>
+  </div>
+
+<div class="container--content__wrapper">
+
+  <div class="article-content">
+    <div class="article-content__grid">
+      <div class="article-content__wrapper">
+
+  <div class="richtext richtext--regular ">
+
+            <p>That's a shame! Please be patient with us, we're new. You should find all the content that we do have from our <a href="/">landing page</a>.</p>
+
+  </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  </div>
 
 {% endblock %}
 
