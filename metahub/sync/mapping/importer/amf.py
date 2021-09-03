@@ -103,3 +103,6 @@ class Object(BaseModel):
             if parts:
                 if len(parts) >= 3:
                     return parts[0] + parts[1]
+
+    def get_title(self):
+        return self.Title

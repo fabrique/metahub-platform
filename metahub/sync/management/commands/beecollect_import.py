@@ -114,7 +114,7 @@ class BeecollectImporter:
                                 image_path,
                                 overwrite=True,
                                 attribution=image.License,
-                                alt_text=obj.Title,
+                                alt_text=obj.get_title(),
                             )
                             logger.debug(
                                 f"Import image '{img.filename}' for object id: {bc_obj.id}"

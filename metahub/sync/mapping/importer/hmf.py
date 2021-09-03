@@ -13,7 +13,7 @@ class Object(BaseModel):
     ChangeUser: str
     ChangeDate: datetime
     ReferenceNumber: str = ""
-    Title: str = ""
+    ShortTitle: str = ""
     ObjectName: str = ""
     Datings: List[Dating] = []
     ContainerName: str = ""
@@ -81,7 +81,7 @@ class Object(BaseModel):
             series_id=self.get_series_id(),
             material=self.MaterialTechnique,
             dimensions=self.Dimensions,
-            title=self.Title,
+            title=self.ShortTitle,
             # artist=self.get_artist_for_object(self),
             object_type=self.get_keyword_text("Objektbezeichnung"),
         )
@@ -103,3 +103,6 @@ class Object(BaseModel):
             if parts:
                 if len(parts) >= 3:
                     return parts[0] + parts[1]
+
+    def get_title(self):
+        return self.ShortTitle

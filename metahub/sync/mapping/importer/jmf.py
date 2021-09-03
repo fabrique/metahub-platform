@@ -26,7 +26,6 @@ class Object(BaseModel):
     NumberOfParts: str = ""
     Creators: List[Creator] = []
     Provenance: List[TypeTextNotes] = []
-    GeographicReference: str = ""
     GeographicReferences: List[TypeTextNotes] = []
     Dimensions: List[TypeTextNotes] = []
     Material_Technique: List[TypeTextNotes] = []
@@ -75,7 +74,7 @@ class Object(BaseModel):
             current_location=self.CurrentLocation,
             container_name=self.ContainerName,
             container_id=self.ContainerId,
-            geographic_reference=self.GeographicReference,
+            geographic_reference=", ".join([i.Text for i in self.GeographicReferences]),
             geographic_location=self.get_keyword_text("Geogr. Bezug"),
             convolute=self.Convolute,
             series_id=self.get_series_id(),
@@ -103,3 +102,6 @@ class Object(BaseModel):
             if parts:
                 if len(parts) >= 3:
                     return parts[0] + parts[1]
+
+    def get_title(self):
+        return self.Title
