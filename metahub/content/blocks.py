@@ -1,7 +1,7 @@
 from metahub.starling_metahub.organisms.blocks import OrganismContentSingleRichTextRegularBlock, \
     OrganismContentDoubleImageRichTextRegularBlock, OrganismContentSingleVideoRegularBlock, \
     OrganismContentHeroImageTitleBlock, OrganismContentPhotoMosaicBlock, OrganismContentDoubleLinkRichTextRegularBlock, \
-    OrganismArticleCookieBlockRegular, OrganismSponsorsRegularBlock
+    OrganismArticleCookieBlockRegular, OrganismSponsorsRegularBlock, OrganismArticleFormRegularBlock
 
 
 def content_blocks():
@@ -14,6 +14,7 @@ def content_blocks():
         ('image_mosaic', OrganismContentPhotoMosaicBlock()),
         ('sponsor_logos', OrganismSponsorsRegularBlock()),
         ('cookie_settings', OrganismArticleCookieBlockRegular()),
+        ('form', OrganismArticleFormRegularBlock()),
     ]
 
 def cookieless_content_blocks():

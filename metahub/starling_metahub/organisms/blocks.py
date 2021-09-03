@@ -5,6 +5,7 @@ from starling.blocks.atoms.figure import AtomFigureRegularBlock
 from starling.blocks.atoms.link import AtomLinkRegularBlock
 from starling.blocks.atoms.picture import AtomPictureRegularBlock
 from starling.interfaces.generic import Resolution
+from starling.interfaces.organisms import OrganismArticleFormRegular
 from starling.mixins import AdapterStructBlock, OptionalBlock
 from wagtail.core import blocks
 from wagtail.core.blocks import ListBlock
@@ -14,7 +15,7 @@ from ..atoms.blocks import AtomVideoEmbedRegularBlock, AtomFigureRegularBlockHig
 from ..helpers import HelperRelatedPagesBlock, HelperRelatedPageBlock, HelperRelatedObjectsBlock, \
     HelperRelatedStoriesBlock, HelperRelatedStoryBlock
 from ..molecules.blocks import MoleculeLogoRegularBlock
-from ..utils import count_words_html
+from ..utils import count_words_html, OrganismBlockMixin, StreamFormBlockMixin
 from ...core.utils import format_date
 
 
@@ -382,3 +383,17 @@ class OrganismSponsorsRegularBlock(AdapterStructBlock):
         component = 'organisms.logo-list.regular'
         interface_class = OrganismSponsorsRegular
         label = _('Sponsors')
+
+
+class OrganismArticleFormRegularBlock(StreamFormBlockMixin):
+    """
+    Basic/Content Page component
+    Allows Wagtail stream forms to be included on the page
+    """
+
+    class Meta:
+        label = _("Form")
+        icon = 'form'
+        defaults = {}
+        component = 'organisms.article-form.regular'
+        interface_class = OrganismArticleFormRegular

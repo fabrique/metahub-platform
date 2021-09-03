@@ -64,6 +64,8 @@ THIRD_PARTY_APPS = (
     'wagtail.contrib.search_promotions',
     'wagtail.contrib.routable_page',
 
+    'wagtailstreamforms',
+
     'modelcluster',
     'taggit',
     'wagtailfontawesome',
@@ -103,6 +105,8 @@ LOCAL_APPS = (
     'metahub.overviews',
     'metahub.authors',
     'metahub.locations',
+    'metahub.mails',
+    'metahub.streamforms',
 
     # custom apps go here
 )
@@ -153,8 +157,10 @@ AUTHENTICATION_BACKENDS = [
 
 # this adds the domain name to the sites model
 MIGRATION_MODULES = {
-    'sites': 'contrib.sites.migrations'
+    'sites': 'contrib.sites.migrations',
+    'wagtailstreamforms': 'metahub.streamforms.wsf_migrations',
 }
+
 
 DEBUG = env.bool("DJANGO_DEBUG", False)
 ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['collection.metahub.de'])

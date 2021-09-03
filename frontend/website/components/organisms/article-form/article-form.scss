@@ -1,0 +1,46 @@
+
+.article-form {
+  margin-block-end: var(--block-margin);
+  margin-block-start: var(--block-margin);
+  position: relative;
+
+  .article-form__grid {
+    @include grid-container;
+  }
+
+  .article-form__wrapper {
+    grid-column: column 1 / span 4;
+    padding-inline-end: var(--grid-padding);
+    padding-inline-start: var(--grid-padding);
+  }
+
+  @include portrait {
+    .article-form__wrapper {
+      grid-column: column 1 / span 6;
+    }
+  }
+
+  @include landscape {
+    .article-form__wrapper {
+      grid-column: column 3 / span 7;
+    }
+  }
+
+  @include notebook {
+    .article-form__wrapper {
+      grid-column: column 4 / span 6;
+    }
+  }
+
+  @include desktop {
+    .article-form__wrapper {
+      grid-column: column 5 / span 6;
+    }
+  }
+
+  @include desktop-large {
+    .article-form__wrapper {
+      grid-column: column 6 / span 6;
+    }
+  }
+}

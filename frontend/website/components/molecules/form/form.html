@@ -1,6 +1,9 @@
+{% import 'components/atoms/button/button.html' as atom_button %}
+{% import 'components/atoms/link/link.html' as atom_link %}
 
-{% macro regular(classes = '', action = '/', method = 'post', enctype = 'multipart/form-data', role = '', aria_label = '', title = '', text = '', error = '') %}
-  <form class="form {{ classes }}" action="{{ action }}" method="{{ method }}" {% if enctype %}enctype="{{ enctype }}"{% endif %} {% if role %}role="{{ role }}"{% endif %} {% if aria_abel %}aria-label="{{ aria_label }}"{% endif %}>
+{# This is a partial function that will probably not be used directly, but can not have underscore notation due to a Nunjucks context bug #}
+{% macro formpartial(submit_button_type = atom_button.button, classes = '', id = '', action = '/', method = 'post', button = {}, csrf = '', enctype = 'multipart/form-data', role = '', aria_label = '', title = '', text = '', error = '') %}
+  <form class="form {{ classes }}" {% if id %}id="{{ id }}"{% endif %} action="{{ action }}" method="{{ method }}" {% if enctype %}enctype="{{ enctype }}"{% endif %} {% if role %}role="{{ role }}"{% endif %} {% if aria_abel %}aria-label="{{ aria_label }}"{% endif %}>
     <div class="form__wrapper">
       {% if title %}
         <h2 class="form__title">{{ title }}</h2>
@@ -19,52 +22,112 @@
       {% endif %}
 
       {{ caller() }}
+
+      {% if button.title %}
+        {{ submit_button_type(classes = 'form__submit ' ~ button.classes, type = 'submit', title = button.title, variant = button.variant, icon_after = button.icon_after, icon_before = button.icon_before, disabled = button.disabled, selected = button.selected) }}
+      {% endif %}
+
+      {% if csrf %}
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf }}">
+      {% endif %}
     </div>
   </form>
 {% endmacro %}
 
+{% macro regular(classes = '', id = '', action = '/', method = 'post', button = {}, csrf = '', enctype = 'multipart/form-data', role = '', aria_label = '', title = '', text = '', error = '') %}
+  {% import 'components/molecules/form/form.html' as form2 %}
+  {% set caller_context = caller() %}
+  {% call form2.formpartial(submit_button_type = atom_button.button, classes = classes, id = id, action = action, method = method, button = button, csrf = csrf, enctype = enctype, role = role, aria_label = aria_label, title = title, text = text, error = error) %}
+    {{ caller_context }}
+  {% endcall %}
+{% endmacro %}
+
+{% macro button(classes = '', id = '', action = '/', method = 'post', button = {}, csrf = '', enctype = 'multipart/form-data', role = '', aria_label = '', title = '', text = '', error = '') %}
+  {# TODO: won't work in Nunjucks without explicit reimport... #}
+  {% import 'components/molecules/form/form.html' as form2 %}
+  {% set caller_context = caller() %}
+  {% call form2.formpartial(submit_button_type = atom_button.button, classes = classes, id = id, action = action, method = method, button = button, csrf = csrf, enctype = enctype, role = role, aria_label = aria_label, title = title, text = text, error = error) %}
+    {{ caller_context }}
+  {% endcall %}
+{% endmacro %}
+
 {% macro example() %}
   {% import 'components/atoms/button/button.html' as atom_button %}
+  {% import 'components/atoms/dropdown-field/dropdown-field.html' as atom_dropdown_field %}
+  {% import 'components/atoms/file-field/file-field.html' as atom_file_field %}
   {% import 'components/atoms/form-fieldset/form-fieldset.html' as atom_form_fieldset %}
   {% import 'components/atoms/form-row/form-row.html' as atom_form_row %}
-  {% import 'components/atoms/text-field/text-field.html' as atom_text_field %}
   {% import 'components/atoms/option-field/option-field.html' as atom_option_field %}
-  {% import 'components/atoms/dropdown-field/dropdown-field.html' as atom_dropdown_field %}
+  {% import 'components/atoms/text-field/text-field.html' as atom_text_field %}
 
   {% call regular(classes = '', action = '/', method = 'post', enctype = 'multipart/form-data', role = '', aria_label = '', title = 'Form title', text = 'This is a basic example form. Use it to submit stuff.', error = 'Something went wrong when submitting the request. Please try again or contact us so we can help.') %}
     {% call atom_form_fieldset.regular(title = 'Personal Details') %}
       {% call atom_form_row.regular() %}
-        {{ atom_text_field.regular(variant = 'text', name = 'input_example', label = 'Input ex.', value = '', required = true) }}
-        {{ atom_text_field.regular(variant = 'password', name = 'password_example', label = 'Password ex.', value = '', required = true, error = 'Please fill in this field; it cannot be empty.') }}
+        {{ atom_text_field.regular(variant = 'text', name = 'input_example', label = 'Text input', value = '', required = true) }}
+        {{ atom_text_field.regular(variant = 'password', name = 'password_example', label = 'Password', value = '', required = true, error = 'Please fill in this field; it cannot be empty.') }}
       {% endcall %}
 
       {% call atom_form_row.regular() %}
-        {{ atom_text_field.regular(variant = 'number', name = 'number_example', label = 'Number1 ex.', value = '123') }}
-        {{ atom_text_field.regular(variant = 'number', name = 'number2_example', label = 'Number2 ex.', value = '123') }}
-        {{ atom_text_field.regular(variant = 'number', name = 'number3_example', label = 'Number3 ex.', value = '123') }}
+        {{ atom_text_field.regular(variant = 'number', name = 'number_example', label = 'Number1', value = '123') }}
+        {{ atom_text_field.regular(variant = 'number', name = 'number2_example', label = 'Number2', value = '123') }}
+        {{ atom_text_field.regular(variant = 'number', name = 'number3_example', label = 'Number3', value = '123') }}
       {% endcall %}
 
       {% call atom_form_row.regular() %}
-        {{ atom_dropdown_field.regular(name = 'dropdown_example', label = 'Dropdown ex.', placeholder = 'Choose your country', items = [
+        {{ atom_dropdown_field.regular(name = 'dropdown_example', label = 'Dropdown', placeholder = 'Choose your country', items = [
           { value: 'nl', title: 'Netherlands, The' },
           { value: 'us', title: 'United States, The' }
         ]) }}
       {% endcall %}
+      {% call atom_form_row.regular() %}
+        {{ atom_text_field.regular(variant = 'textarea', name = 'textarea_example', label = 'Textarea', value = 'Prefilled value') }}
+      {% endcall %}
+
+      <p>This message might contain some small guidelines for entering text.</p>
+    {% endcall %}
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec aliquam turpis. Aliquam erat volutpat. Integer imperdiet nec ante vitae blandit.</p>
+
+    {% call atom_form_fieldset.regular(title = 'More fields') %}
+      {% call atom_form_row.regular(variant = 'phone') %}
+        {{ atom_dropdown_field.regular(name = 'phone_area_code_example', label = 'Area code', items = [
+          { value: '', title: '', disabled: true },
+          { value: '+974', title: '+974 (Qatar)' },
+          { value: '+31', title: '+31 (The Netherlands)' }
+        ]) }}
+
+        {{ atom_text_field.regular(variant = 'number', name = 'phone_example', label = 'Phone') }}
+      {% endcall %}
+
+      {% call atom_form_row.regular(variant = 'date-of-birth') %}
+        {{ atom_dropdown_field.regular(name = 'date-of-birth_day', label = 'Date of Birth: Day', items = [
+          { value: '', title: '', disabled: true },
+          { value: '1', title: '01' },
+          { value: '2', title: '02' },
+          { value: '3', title: '03' }
+        ]) }}
+
+        {{ atom_dropdown_field.regular(name = 'date-of-birth_month', label = 'Month', items = [
+          { value: '', title: '', disabled: true },
+          { value: 'jan', title: 'January' },
+          { value: 'feb', title: 'February' },
+          { value: 'mar', title: 'March' }
+        ]) }}
+
+        {{ atom_dropdown_field.regular(name = 'date-of-birth_year', label = 'Year', items = [
+          { value: '', title: '', disabled: true },
+          { value: '2021', title: '2021' },
+          { value: '2020', title: '2020' },
+          { value: '2019', title: '2019' }
+        ]) }}
+      {% endcall %}
 
       {% call atom_form_row.regular() %}
-        {{ atom_text_field.regular(variant = 'search', label = 'Search ex.', placeholder = 'Search...') }}
+        {{ atom_file_field.regular(name = 'file_example', label = 'Upload file', accepts_multiple = true, accepted_filetypes = '*.pdf,*.docx,*.doc,*.txt,*.rtf', use_camera = false) }}
       {% endcall %}
     {% endcall %}
 
-    {% call atom_form_fieldset.regular(title = 'Legend') %}
-      {% call atom_form_row.regular() %}
-        {{ atom_text_field.regular(variant = 'textarea', name = 'textarea_example', label = 'Textarea ex.', value = 'Prefilled value') }}
-      {% endcall %}
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec aliquam turpis. Aliquam erat volutpat. Integer imperdiet nec ante vitae blandit.</p>
-    {% endcall %}
-
-    {% call atom_form_fieldset.regular(title = 'Legend') %}
+    {% call atom_form_fieldset.regular(title = 'Options') %}
       {% call atom_form_row.regular() %}
         {{ atom_option_field.regular(variant = 'checkbox', name = 'checkboxes_inline_example', label = 'Checkboxes (inline)', items = [
           { value: 'agree1', title: 'I agree', checked: true, required: true },
@@ -95,8 +158,7 @@
     {% endcall %}
 
     {% call atom_form_row.regular(variant = 'footer') %}
-      {{ atom_button.button(type = 'submit', title = 'Submit', variant = 'primary') }}
-      {{ atom_button.button(type = 'cancel', title = 'Cancel', variant = 'secondary') }}
+      {{ atom_button.button(type = 'submit', title = 'Send form', variant = 'primary', icon_before = 'qatar-museums/arrow-right') }}
     {% endcall %}
   {% endcall %}
 {% endmacro %}

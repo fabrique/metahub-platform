@@ -1,22 +1,51 @@
 
 .form {
+  //min-width: 500px;
   position: relative;
   width: 100%;
 
   .form__title {
-    @include typography(heading-3, false, true);
+    @include typography(heading-2);
+
+    margin-block-end: 1rem;
   }
 
   .form__text {
-    @include typography(paragraph, true, true);
+    @include typography(paragraph);
+
+    margin-block-end: 1rem;
+    margin-block-start: 1rem;
 
     &.form__text--error {
-      @include typography(caption);
+      @include typography(paragraph);
 
-      background-color: $color-error;
-      color: $color-white;
-      margin: 20px 0;
-      padding: 15px 20px;
+      background-color: $color-white;
+      border-block-end: 1px solid $color-error;
+      border-block-start: 1px solid $color-error;
+      border-inline-end: 1px solid $color-error;
+      border-inline-start: 1px solid $color-error;
+      color: $color-error;
+      font-weight: 500;
+      margin-block-end: 1rem;
+      margin-block-start: 1rem;
+      padding-block-end: .75rem;
+      padding-block-start: .75rem;
+      padding-inline-end: 1rem;
+      padding-inline-start: 1rem;
+
+      &::before {
+        background: svg-uri('<svg width="15" height="15" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><circle fill="#E9190A" cx="7.5" cy="7.5" r="7.5"/><path stroke="#FFF" d="M7.5 3v7M7.5 11v1"/></g></svg>');
+        content: '';
+        display: inline-block;
+        flex-shrink: 0;
+        height: 15px;
+        margin-inline-end: 5px;
+        width: 15px;
+      }
+
+      > p {
+        display: inline;
+      }
     }
   }
 }
