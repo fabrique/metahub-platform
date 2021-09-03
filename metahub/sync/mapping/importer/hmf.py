@@ -1,78 +1,9 @@
 from datetime import datetime
-from typing import List, Optional
+from typing import List
 
 from pydantic import BaseModel
 
-
-class Publication(BaseModel):
-    Text: str
-    Pages: str
-    Illustrations: str
-    CatalogueNumber: str
-    Notes: str
-
-    def specifications(self):
-        return ", ".join(
-            [
-                i
-                for i in [
-                    self.Pages,
-                    self.Illustrations,
-                    self.CatalogueNumber,
-                    self.Notes,
-                ]
-                if i
-            ]
-        )
-
-
-class Image(BaseModel):
-    Id: int
-    CreateUser: str
-    CreateDate: datetime
-    ChangeUser: str
-    ChangeDate: datetime
-    License: str
-    KeyFileName: str
-    OriginalFileName: str
-
-
-class Creator(BaseModel):
-    Id: int
-    ChangeUser: str
-    ChangeDate: datetime
-    ArtistId: int
-    Order: int
-    Role: str
-    Attribution: str
-    Description: str
-
-
-class TypeTextNotes(BaseModel):
-    Type: str
-    Text: str
-    Notes: str
-
-
-class Dating(TypeTextNotes):
-    YearFrom: str
-    YearTo: str
-
-    def year_from_date(self):
-        if self.YearFrom:
-            return datetime(int(self.YearFrom), 1, 1).date()
-
-    def year_to_date(self):
-        if self.YearTo:
-            return datetime(int(self.YearTo), 1, 1).date()
-
-
-class OtherObject(BaseModel):
-    Id: Optional[int]
-    Type: Optional[str]
-    Text: Optional[str]
-    Notes: Optional[str]
-
+from metahub.sync.mapping.importer import Dating, Creator, TypeTextNotes, OtherObject, Publication, Image
 
 
 class Object(BaseModel):
@@ -81,24 +12,24 @@ class Object(BaseModel):
     # CreateDate: datetime
     ChangeUser: str
     ChangeDate: datetime
-    InventoryNumber: str = ""
+    ReferenceNumber: str = ""
     Title: str = ""
     ObjectName: str = ""
     Datings: List[Dating] = []
     ContainerName: str = ""
     ContainerId: int = 0
     Creditline: str = ""
-    Notes: str = ""
+    ShortText: str = ""
+    ReadMore: str = ""
     AcquisitionDate: str = ""
     CurrentLocation: str = ""
     Convolute: str = ""
     NumberOfParts: str = ""
     Creators: List[Creator] = []
     Provenance: List[TypeTextNotes] = []
-    GeographicReference: str = ""
-    GeographicReferences: List[TypeTextNotes] = []
-    # Dimensions: List[TypeTextNotes] = []
-    Material_Technique: List[TypeTextNotes] = []
+    GeoReference: List[TypeTextNotes] = []
+    Dimensions: str = ""
+    MaterialTechnique: str = ""
     Signatures: List[TypeTextNotes] = []
     # Inscriptions: List[TypeTextNotes]
     Keywords: List[TypeTextNotes] = []
@@ -112,12 +43,12 @@ class Object(BaseModel):
     def to_bc_dict(self):
         return dict(
             bc_id=self.Id,
-            bc_inventory_number=self.InventoryNumber,
+            bc_inventory_number=self.ReferenceNumber,
             bc_change_date=self.ChangeDate,
             bc_change_user=self.ChangeUser,
             bc_object_name=self.ObjectName,
             bc_credits=self.Creditline,
-            bc_notes=self.Notes,
+            bc_notes=f"{self.ShortText}\n{self.ReadMore}",
             bc_tags="|".join(self.get_tags()),
             bc_images=", ".join([i.KeyFileName for i in self.Images]),
             bc_image_license=", ".join([i.License for i in self.Images]),
@@ -144,12 +75,12 @@ class Object(BaseModel):
             current_location=self.CurrentLocation,
             container_name=self.ContainerName,
             container_id=self.ContainerId,
-            geographic_reference=self.GeographicReference,
+            geographic_reference=", ".join([i.Text for i in self.GeoReference]),
             geographic_location=self.get_keyword_text("Geogr. Bezug"),
             convolute=self.Convolute,
             series_id=self.get_series_id(),
-            material=", ".join([i.Text for i in self.Material_Technique]),
-            # dimensions=self.get_dimensions(self.get('Dimensions')),
+            material=self.MaterialTechnique,
+            dimensions=self.Dimensions,
             title=self.Title,
             # artist=self.get_artist_for_object(self),
             object_type=self.get_keyword_text("Objektbezeichnung"),
@@ -168,7 +99,7 @@ class Object(BaseModel):
 
     def get_series_id(self):
         if self.OtherObjects:
-            parts = self.InventoryNumber.split("-")
+            parts = self.ReferenceNumber.split("-")
             if parts:
                 if len(parts) >= 3:
                     return parts[0] + parts[1]

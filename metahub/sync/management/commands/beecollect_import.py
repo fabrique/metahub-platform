@@ -13,8 +13,8 @@ from metahub.collection.models import (
     ObjectImageLink,
 )
 from metahub.home.models import MetaHubMuseumSubHomePage
-from metahub.sync.mapping.importer import Object
 from metahub.overviews.models import MetaHubOverviewPage
+from metahub.sync.mapping.importer import amf, jmf, hmf
 from metahub.sync.models import BeeCollectSyncOccurrence
 from metahub.sync.utils import add_fabrique_image
 
@@ -27,8 +27,13 @@ MUSEUMS = [
 ]
 MUSEUM_ZIPFILES = {
     "amf": "AMF_MetaHubExport.zip",
-    "hmf": "WebsiteExport.zip",
+    "hmf": "HMF_MetaHubExport.zip",
     "jmf": "JMF_MetaHubExport.zip",
+}
+MUSEUM_OBJECT_MAPPING = {
+    "amf": amf.Object,
+    "hmf": hmf.Object,
+    "jmf": jmf.Object,
 }
 
 
@@ -80,7 +85,7 @@ class BeecollectImporter:
             objects_removed = 0
             for object in self.get_items_from_file(museum_sync_folder, "Objects"):
                 try:
-                    obj = Object(**object)
+                    obj = MUSEUM_OBJECT_MAPPING[museum](**object)
                 except Exception as e:
                     logger.error(f"Import error '{museum}' for object id: {object['Id']}, {e}")
                     continue
