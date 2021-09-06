@@ -1,8 +1,10 @@
 from metahub.starling_metahub.organisms.blocks import OrganismContentSingleRichTextRegularBlock, \
     OrganismContentDoubleImageRichTextRegularBlock, OrganismContentSingleVideoRegularBlock, \
     OrganismContentHeroImageTitleBlock, OrganismContentPhotoMosaicBlock, OrganismContentDoubleLinkRichTextRegularBlock, \
-    OrganismArticleCookieBlockRegular, OrganismSponsorsRegularBlock, OrganismPlacesMapRegularBlock
-    OrganismArticleCookieBlockRegular, OrganismSponsorsRegularBlock, OrganismArticleFormRegularBlock
+    OrganismArticleCookieBlockRegular, OrganismSponsorsRegularBlock, OrganismPlacesMapRegularBlock, \
+    OrganismArticleFormRegularBlock
+
+OrganismArticleCookieBlockRegular, OrganismSponsorsRegularBlock, OrganismArticleFormRegularBlock
 
 
 def content_blocks():
