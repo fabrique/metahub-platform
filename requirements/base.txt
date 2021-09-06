@@ -20,6 +20,10 @@ wagtail>=2.11,<2.12
 wagtailfontawesome==1.1.4
 wagtail-modelchooser==2.3.3
 
+# TODO: take regular wagtailstreamforms when support for wagtail 2.11 is available
+git+https://github.com/dbramwell/wagtailstreamforms.git#egg=wagtailstreamforms
+python-magic==0.4.18
+
 django-webpack-loader==0.6.0
 git+ssh://git@bitbucket.org/fabrique/starling.git@alpha-1.34.0#egg=starling
 git+ssh://git@bitbucket.org/fabrique/wagtail-embed.git@1.4#egg=fabrique-wagtail-embed

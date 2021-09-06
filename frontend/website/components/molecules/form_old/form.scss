@@ -1,0 +1,22 @@
+
+.form {
+  position: relative;
+  width: 100%;
+
+  .form__title {
+    @include typography(heading-3, false, true);
+  }
+
+  .form__text {
+    @include typography(paragraph, true, true);
+
+    &.form__text--error {
+      @include typography(caption);
+
+      background-color: $color-error;
+      color: $color-white;
+      margin: 20px 0;
+      padding: 15px 20px;
+    }
+  }
+}

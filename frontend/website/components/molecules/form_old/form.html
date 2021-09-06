@@ -1,0 +1,102 @@
+
+{% macro regular(classes = '', action = '/', method = 'post', enctype = 'multipart/form-data', role = '', aria_label = '', title = '', text = '', error = '') %}
+  <form class="form {{ classes }}" action="{{ action }}" method="{{ method }}" {% if enctype %}enctype="{{ enctype }}"{% endif %} {% if role %}role="{{ role }}"{% endif %} {% if aria_abel %}aria-label="{{ aria_label }}"{% endif %}>
+    <div class="form__wrapper">
+      {% if title %}
+        <h2 class="form__title">{{ title }}</h2>
+      {% endif %}
+
+      {% if text %}
+        <div class="form__text">
+          <p>{{ text|safe }}</p>
+        </div>
+      {% endif %}
+
+      {% if error %}
+        <div class="form__text form__text--error">
+          <p>{{ error|safe }}</p>
+        </div>
+      {% endif %}
+
+      {{ caller() }}
+    </div>
+  </form>
+{% endmacro %}
+
+{% macro example() %}
+  {% import 'components/atoms/button/button.html' as atom_button %}
+  {% import 'components/atoms/form-fieldset/form-fieldset.html' as atom_form_fieldset %}
+  {% import 'components/atoms/form-row/form-row.html' as atom_form_row %}
+  {% import 'components/atoms/text-field/text-field.html' as atom_text_field %}
+  {% import 'components/atoms/option-field/option-field.html' as atom_option_field %}
+  {% import 'components/atoms/dropdown-field/dropdown-field.html' as atom_dropdown_field %}
+
+  {% call regular(classes = '', action = '/', method = 'post', enctype = 'multipart/form-data', role = '', aria_label = '', title = 'Form title', text = 'This is a basic example form. Use it to submit stuff.', error = 'Something went wrong when submitting the request. Please try again or contact us so we can help.') %}
+    {% call atom_form_fieldset.regular(title = 'Personal Details') %}
+      {% call atom_form_row.regular() %}
+        {{ atom_text_field.regular(variant = 'text', name = 'input_example', label = 'Input ex.', value = '', required = true) }}
+        {{ atom_text_field.regular(variant = 'password', name = 'password_example', label = 'Password ex.', value = '', required = true, error = 'Please fill in this field; it cannot be empty.') }}
+      {% endcall %}
+
+      {% call atom_form_row.regular() %}
+        {{ atom_text_field.regular(variant = 'number', name = 'number_example', label = 'Number1 ex.', value = '123') }}
+        {{ atom_text_field.regular(variant = 'number', name = 'number2_example', label = 'Number2 ex.', value = '123') }}
+        {{ atom_text_field.regular(variant = 'number', name = 'number3_example', label = 'Number3 ex.', value = '123') }}
+      {% endcall %}
+
+      {% call atom_form_row.regular() %}
+        {{ atom_dropdown_field.regular(name = 'dropdown_example', label = 'Dropdown ex.', placeholder = 'Choose your country', items = [
+          { value: 'nl', title: 'Netherlands, The' },
+          { value: 'us', title: 'United States, The' }
+        ]) }}
+      {% endcall %}
+
+      {% call atom_form_row.regular() %}
+        {{ atom_text_field.regular(variant = 'search', label = 'Search ex.', placeholder = 'Search...') }}
+      {% endcall %}
+    {% endcall %}
+
+    {% call atom_form_fieldset.regular(title = 'Legend') %}
+      {% call atom_form_row.regular() %}
+        {{ atom_text_field.regular(variant = 'textarea', name = 'textarea_example', label = 'Textarea ex.', value = 'Prefilled value') }}
+      {% endcall %}
+
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec aliquam turpis. Aliquam erat volutpat. Integer imperdiet nec ante vitae blandit.</p>
+    {% endcall %}
+
+    {% call atom_form_fieldset.regular(title = 'Legend') %}
+      {% call atom_form_row.regular() %}
+        {{ atom_option_field.regular(variant = 'checkbox', name = 'checkboxes_inline_example', label = 'Checkboxes (inline)', items = [
+          { value: 'agree1', title: 'I agree', checked: true, required: true },
+          { value: 'agree2', title: 'I agree with <a href="?" target="_blank">something else</a> as well', checked: false, required: false }
+        ], inline = true, required = true) }}
+      {% endcall %}
+
+      {% call atom_form_row.regular() %}
+        {{ atom_option_field.regular(variant = 'radio', name = 'radiobuttons_inline_example', label = 'Radiobuttons (inline)', items = [
+          { value: 'test1', title: 'Oh yeah!', checked: true, required: true },
+          { value: 'test2', title: "This one's even better!", checked: false, required: false }
+        ], inline = true) }}
+      {% endcall %}
+
+      {% call atom_form_row.regular() %}
+        {{ atom_option_field.regular(variant = 'checkbox', name = 'checkboxes_example', label = 'Checkboxes', items = [
+          { value: 'agree1', title: 'I agree', checked: true, required: true },
+          { value: 'agree2', title: 'I agree with <a href="?" target="_blank">something else</a> as well', checked: false, required: false }
+        ]) }}
+      {% endcall %}
+
+      {% call atom_form_row.regular() %}
+        {{ atom_option_field.regular(variant = 'radio', name = 'radiobuttons_example', label = 'Radiobuttons', items = [
+          { value: 'test1', title: 'Oh yeah!', checked: true, required: true },
+          { value: 'test2', title: "This one's even better!", checked: false, required: false }
+        ], inline = false, required = true) }}
+      {% endcall %}
+    {% endcall %}
+
+    {% call atom_form_row.regular(variant = 'footer') %}
+      {{ atom_button.button(type = 'submit', title = 'Submit', variant = 'primary') }}
+      {{ atom_button.button(type = 'cancel', title = 'Cancel', variant = 'secondary') }}
+    {% endcall %}
+  {% endcall %}
+{% endmacro %}
