@@ -38,9 +38,4 @@
     }
   }
 
-  @include desktop-large {
-    .article-form__wrapper {
-      grid-column: column 6 / span 6;
-    }
-  }
 }
