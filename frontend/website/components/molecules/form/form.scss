@@ -1,8 +1,6 @@
 
 .form {
-  //min-width: 500px;
   position: relative;
-  width: 100%;
 
   .form__title {
     @include typography(heading-2);
