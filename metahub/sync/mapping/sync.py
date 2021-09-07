@@ -29,6 +29,7 @@ class BeeCollectMapping:
     def create_base_log(self):
         # date of import attempt
         # date of bc data
+        return ''
         self.log = BeeCollectSyncOccurrence(
             date_data_dump=self.data.get('ExportDate'),
             objects_in_dump=self.data.get('NumberOfObjects'),

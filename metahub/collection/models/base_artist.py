@@ -10,12 +10,12 @@ class BaseCollectionArtist(models.Model):
     date_modified = models.DateTimeField(auto_now=True)
 
     bc_inventory_number = models.CharField(max_length=1024)
-    bc_date_acquired = models.CharField(max_length=256)
-    bc_change_user = models.CharField(max_length=256)
-    bc_change_date = models.CharField(max_length=256)
-    bc_dating = models.CharField(max_length=256)
+    bc_date_acquired = models.CharField(max_length=256, null=True)
+    bc_change_user = models.CharField(max_length=256, null=True)
+    bc_change_date = models.CharField(max_length=256, null=True)
+    bc_dating = models.CharField(max_length=256, null=True)
 
-    type = models.CharField(max_length=256)
+    type = models.CharField(max_length=256, null=True)
     first_name = models.CharField(max_length=1024, default='')
     last_name = models.CharField(max_length=1024, default='')
     alias_name = models.CharField(max_length=1024, default='')

@@ -48,6 +48,17 @@ class Creator(BaseModel):
     Description: str
 
 
+class Artist(BaseModel):
+    Id: int
+    ChangeUser: str
+    ChangeDate: datetime
+    ArtistId: int
+    Order: int
+    Role: str
+    Attribution: str
+    Description: str
+
+
 class TypeTextNotes(BaseModel):
     Type: str = ""
     Text: str = ""

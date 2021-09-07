@@ -15,20 +15,21 @@ from metahub.collection.models import (
 from metahub.home.models import MetaHubMuseumSubHomePage
 from metahub.overviews.models import MetaHubOverviewPage
 from metahub.sync.mapping.importer import amf, jmf, hmf
+from metahub.sync.mapping.sync import BeeCollectMapping
 from metahub.sync.models import BeeCollectSyncOccurrence
 from metahub.sync.utils import add_fabrique_image
 
 logger = logging.getLogger(__name__)
 
 MUSEUMS = [
-    "amf",
+#    "amf",
     "hmf",
-    "jmf",
+#    "jmf",
 ]
 MUSEUM_ZIPFILES = {
-    "amf": "AMF_MetaHubExport.zip",
+#    "amf": "AMF_MetaHubExport.zip",
     "hmf": "HMF_MetaHubExport.zip",
-    "jmf": "JMF_MetaHubExport.zip",
+#    "jmf": "JMF_MetaHubExport.zip",
 }
 MUSEUM_OBJECT_MAPPING = {
     "amf": amf.Object,
@@ -83,7 +84,15 @@ class BeecollectImporter:
             objects_added = 0
             objects_changed = 0
             objects_removed = 0
+
+            ## Add artist here
+            artist_data = self.get_items_from_file(museum_sync_folder, 'Artists')
+            bcm = BeeCollectMapping(artist_data)
+            for bc_a in artist_data:
+                a = bcm.get_or_create_artist(bc_a)
+
             for object in self.get_items_from_file(museum_sync_folder, "Objects"):
+                print(object)
                 try:
                     obj = MUSEUM_OBJECT_MAPPING[museum](**object)
                 except Exception as e:
@@ -105,6 +114,10 @@ class BeecollectImporter:
                     bc_obj = BaseCollectionObject.objects.create(**obj.to_bc_dict())
                     logger.debug(f"Creating object '{obj.Id}' with id: {bc_obj.id}")
                     objects_added += 1
+
+                #connect artist here
+
+
 
                 for image in obj.Images:
                     if image.KeyFileName:

@@ -31,7 +31,7 @@ class BaseCollectionArtistAdmin(ModelAdmin):
     exclude_from_explorer = False
     list_display = ("first_name", "last_name", "date_added")
 
-# modeladmin_register(BaseCollectionArtistAdmin)
+modeladmin_register(BaseCollectionArtistAdmin)
 
 
 class BaseCollectionObjectAdmin(ModelAdmin):

@@ -3,7 +3,8 @@ from typing import List
 
 from pydantic import BaseModel
 
-from metahub.sync.mapping.importer import Dating, Creator, TypeTextNotes, OtherObject, Publication, Image
+from metahub.collection.models import BaseCollectionArtist
+from metahub.sync.mapping.importer import Dating, Creator, TypeTextNotes, OtherObject, Publication, Image, Artist
 
 
 class Object(BaseModel):
@@ -39,6 +40,7 @@ class Object(BaseModel):
     Exhibitions: List[TypeTextNotes] = []
     ImageLicense: str = ""
     Images: List[Image] = []
+    Artists_Active: List[Artist] = []
 
     def to_bc_dict(self):
         return dict(
@@ -82,9 +84,25 @@ class Object(BaseModel):
             material=self.MaterialTechnique,
             dimensions=self.Dimensions,
             title=self.ShortTitle,
-            # artist=self.get_artist_for_object(self),
+            artist=self.get_artist_for_object(self.Artists_Active, self.Id),
             object_type=self.get_keyword_text("Objektbezeichnung"),
         )
+
+    def get_artist_for_object(self, artist_data, object_id):
+        """
+        Artists have been added to the DB before objects are synced, so normally
+        every object that mentions an artist can find the match.
+        """
+        artist_id = artist_data[0].ArtistId if artist_data else None
+
+        try:
+            artist = BaseCollectionArtist.objects.get(bc_inventory_number=artist_id)
+            print('Found artist {} for object {}'.format(artist, object_id))
+        except BaseCollectionArtist.DoesNotExist:
+            print('Cannot find artist with id {} for object {}'.format(artist_id, object_id))
+            artist = None
+        return artist
+
 
     def get_tags(self):
         for tag in self.Keywords:

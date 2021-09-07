@@ -138,7 +138,7 @@ class BaseCollectionObject(ClusterableModel):
                 'title': 'Titel'
             },
             {
-                'data': self.artist,
+                'data': str(self.artist),
                 'title': 'Kunstler(in) / Hersteller(in)'
             },
             {
@@ -168,6 +168,10 @@ class BaseCollectionObject(ClusterableModel):
             {
                 'data': self.signatures,
                 'title': 'Signatur / Beschriftung'
+            },
+            {
+                'data': self.bc_image_license,
+                'title': 'Bild licenz'
             }
         )
         return self.only_take_existing_data(fields)
