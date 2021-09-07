@@ -22,13 +22,13 @@ from metahub.sync.utils import add_fabrique_image
 logger = logging.getLogger(__name__)
 
 MUSEUMS = [
-#    "amf",
-#     "hmf",
+   "amf",
+    "hmf",
    "jmf",
 ]
 MUSEUM_ZIPFILES = {
-#    "amf": "AMF_MetaHubExport.zip",
-    "hmf": "HMF_MetaHubExport.zip",
+   "amf": "AMF_MetaHubExport.zip",
+   "hmf": "HMF_MetaHubExport.zip",
    "jmf": "JMF_MetaHubExport.zip",
 }
 MUSEUM_OBJECT_MAPPING = {
