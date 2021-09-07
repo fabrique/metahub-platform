@@ -23,13 +23,13 @@ logger = logging.getLogger(__name__)
 
 MUSEUMS = [
 #    "amf",
-    "hmf",
-#    "jmf",
+#     "hmf",
+   "jmf",
 ]
 MUSEUM_ZIPFILES = {
 #    "amf": "AMF_MetaHubExport.zip",
     "hmf": "HMF_MetaHubExport.zip",
-#    "jmf": "JMF_MetaHubExport.zip",
+   "jmf": "JMF_MetaHubExport.zip",
 }
 MUSEUM_OBJECT_MAPPING = {
     "amf": amf.Object,

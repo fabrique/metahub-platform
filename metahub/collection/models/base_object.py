@@ -138,7 +138,7 @@ class BaseCollectionObject(ClusterableModel):
                 'title': 'Titel'
             },
             {
-                'data': str(self.artist),
+                'data': str(self.artist) if self.artist else '',
                 'title': 'Kunstler(in) / Hersteller(in)'
             },
             {
