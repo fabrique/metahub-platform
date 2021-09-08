@@ -164,10 +164,8 @@ class BeeCollectMapping:
         creators = object_data.get('Creators')
         artist_id = creators[0].get('ArtistId') if creators else None
 
-        print('fetching artist', artist_id)
         try:
             artist = BaseCollectionArtist.objects.get(bc_inventory_number=artist_id)
-            print('Found artist {} for object {}'.format(artist, object_data.get('InventoryNumber')))
         except BaseCollectionArtist.DoesNotExist:
             print('Cannot find artist with id {} for object {}'.format(artist_id, object_data.get('InventoryNumber')))
             artist = None

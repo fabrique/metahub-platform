@@ -76,13 +76,13 @@ class Object(BaseModel):
             container_name=self.ContainerName,
             container_id=self.ContainerId,
             geographic_reference=self.GeographicReference,
-            geographic_location=self.get_keyword_text("Geogr. Bezug"),
+            geographic_location=self.GeographicReference, #self.get_keyword_text("Geogr. Bezug"),
             convolute=self.Convolute,
             series_id=self.get_series_id(),
             material=", ".join([i.Text for i in self.Material_Technique]),
             dimensions=", ".join([i.Text for i in self.Dimensions]),
             title=self.Title,
-            # artist=self.get_artist_for_object(self),
+            # artist=self.get_artist_for_object(self),  # no artists known for AMF stuff
             object_type=self.get_keyword_text("Objektbezeichnung"),
         )
 
@@ -95,7 +95,7 @@ class Object(BaseModel):
         keywords = [k for k in self.Keywords if k.Type == type]
         if keywords and "(" in keywords[0]:
             return keywords[0].Text.split("(")[0].strip()
-        return "Unbekannt"
+        return ""
 
     def get_series_id(self):
         if self.OtherObjects:

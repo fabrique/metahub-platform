@@ -38,13 +38,12 @@
     <div class="js-animate-section animate-section">
         <div class="js-animate-section__outer animate-section__outer">
             <div class="js-animate-section__inner animate-section__inner">
-            {% for block in page.object_highlights %}
-                {% include_block block %}
-            {% endfor %}
+                {% for block in page.places_map %}
+                    {% include_block block %}
+                {% endfor %}
             </div>
         </div>
     </div>
-
 
     <div class="js-animate-section animate-section">
         <div class="js-animate-section__outer animate-section__outer">
@@ -56,6 +55,7 @@
         </div>
     </div>
 
+
     <div class="js-animate-section animate-section">
         <div class="js-animate-section__outer animate-section__outer">
             <div class="js-animate-section__inner animate-section__inner">
@@ -66,12 +66,13 @@
         </div>
     </div>
 
+
     <div class="js-animate-section animate-section">
         <div class="js-animate-section__outer animate-section__outer">
             <div class="js-animate-section__inner animate-section__inner">
-                {% for block in page.places_map %}
-                    {% include_block block %}
-                {% endfor %}
+            {% for block in page.object_highlights %}
+                {% include_block block %}
+            {% endfor %}
             </div>
         </div>
     </div>

@@ -33,7 +33,25 @@
     grid-row: 1;
   }
 
-  &:nth-child(1) {
+  &:nth-child(4),
+  &:nth-child(5),
+  &:nth-child(6) { // 4th5,6, 7th, 10th etc
+    grid-row: 2;
+  }
+
+  &:nth-child(7),
+  &:nth-child(8),
+  &:nth-child(9) {
+    grid-row: 3;
+  }
+
+  &:nth-child(10),
+  &:nth-child(11),
+  &:nth-child(12) {
+    grid-row: 4;
+  }
+
+  &:nth-child(3n+1) {
     grid-column: column 1 / span 7;
 
     @include landscape {
@@ -41,7 +59,7 @@
     }
   }
 
-  &:nth-child(2) {
+  &:nth-child(3n+2) {
     grid-column: column 6 / span 7;
     margin-top: -150px;
 
@@ -55,7 +73,7 @@
     grid-column: auto / span 4;
   }
 
-  &:nth-child(n+3) {
+  &:nth-child(3n+3) {
     grid-column: column 1 / span 7;
     margin-top: 20px;
 

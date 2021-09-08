@@ -17,6 +17,7 @@ class Object(BaseModel):
     ShortTitle: str = ""
     ObjectName: str = ""
     Datings: List[Dating] = []
+    Dating: str = ""
     ContainerName: str = ""
     ContainerId: int = 0
     Creditline: str = ""
@@ -55,9 +56,7 @@ class Object(BaseModel):
             bc_images=", ".join([i.KeyFileName for i in self.Images]),
             bc_image_license=", ".join([i.License for i in self.Images]),
             date_acquired=self.AcquisitionDate,
-            datings=self.Datings[0].Text or "Unbekannt"
-            if self.Datings
-            else "Unbekannt",
+            datings=self.Dating or "Unbekannt",
             dating_from_df=self.Datings[0].year_from_date() if self.Datings else None,
             dating_to_df=self.Datings[0].year_to_date() if self.Datings else None,
             provenance=", ".join(
@@ -78,7 +77,7 @@ class Object(BaseModel):
             container_name=self.ContainerName,
             container_id=self.ContainerId,
             geographic_reference=", ".join([i.Text for i in self.GeoReference]),
-            geographic_location=self.get_keyword_text("Geogr. Bezug"),
+            geographic_location=", ".join([i.Text for i in self.GeoReference]),
             convolute=self.Convolute,
             series_id=self.get_series_id(),
             material=self.MaterialTechnique,

@@ -41,6 +41,9 @@ class Object(BaseModel):
     Images: List[Image] = []
 
     def to_bc_dict(self):
+
+        print('JMF object object_name:', self.get_keyword_text("Objektbezeichnung"))
+
         return dict(
             bc_id=self.Id,
             bc_inventory_number=self.InventoryNumber,
@@ -75,6 +78,7 @@ class Object(BaseModel):
             current_location=self.CurrentLocation,
             container_name=self.ContainerName,
             container_id=self.ContainerId,
+            # geographic_reference=", ".join([i.Text for i in self.GeographicReferences]),
             geographic_reference=", ".join([i.Text for i in self.GeographicReferences]),
             geographic_location=self.get_keyword_text("Geogr. Bezug"),
             convolute=self.Convolute,
@@ -110,7 +114,7 @@ class Object(BaseModel):
         keywords = [k for k in self.Keywords if k.Type == type]
         if keywords and "(" in keywords[0]:
             return keywords[0].Text.split("(")[0].strip()
-        return "Unbekannt"
+        return keywords[0].Text
 
     def get_series_id(self):
         if self.OtherObjects:

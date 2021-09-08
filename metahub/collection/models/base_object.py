@@ -171,7 +171,7 @@ class BaseCollectionObject(ClusterableModel):
             },
             {
                 'data': self.bc_image_license,
-                'title': 'Bild licenz'
+                'title': 'Bildlizenz'
             }
         )
         return self.only_take_existing_data(fields)

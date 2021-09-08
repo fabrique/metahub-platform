@@ -137,7 +137,7 @@ msgstr ""
 
 #: metahub/search/models/search_page.py:41
 msgid "Type your query here"
-msgstr ""
+msgstr "Suchbegriff eintragen"
 
 #: metahub/search/models/search_page.py:44
 msgid "All"
