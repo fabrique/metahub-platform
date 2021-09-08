@@ -54,7 +54,7 @@ class Object(BaseModel):
             bc_notes=f"{self.ShortText}\n{self.ReadMore}",
             bc_tags="|".join(self.get_tags()),
             bc_images=", ".join([i.KeyFileName for i in self.Images]),
-            bc_image_license=", ".join([i.License for i in self.Images]),
+            bc_image_license="Historisches Museum Frankfurt", #, ".join([i.License for i in self.Images]),
             date_acquired=self.AcquisitionDate,
             datings=self.Dating or "Unbekannt",
             dating_from_df=self.Datings[0].year_from_date() if self.Datings else None,
