@@ -113,7 +113,7 @@ msgstr ""
 
 #: metahub/locations/models/location_page.py:89
 msgid "Objects for this location"
-msgstr ""
+msgstr "Objekte zu diesem Ort"
 
 #: metahub/locations/models/location_page.py:97
 msgid "Location"
