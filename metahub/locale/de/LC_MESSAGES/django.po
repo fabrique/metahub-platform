@@ -35,7 +35,7 @@ msgstr ""
 
 #: metahub/collection/models/object_page.py:98
 msgid "Object"
-msgstr ""
+msgstr "Objekt"
 
 #: metahub/core/models.py:118
 msgid "Optionele beschrijving van wat er in de afbeelding te zien is."
@@ -117,7 +117,7 @@ msgstr "Objekte zu diesem Ort"
 
 #: metahub/locations/models/location_page.py:97
 msgid "Location"
-msgstr ""
+msgstr "Location"
 
 #: metahub/news/models/event_page.py:54
 msgid "Event"
@@ -145,15 +145,15 @@ msgstr ""
 
 #: metahub/search/models/search_page.py:48
 msgid "Objects"
-msgstr ""
+msgstr "Objekte"
 
 #: metahub/search/models/search_page.py:53
 msgid "Stories"
-msgstr ""
+msgstr "Geschichten"
 
 #: metahub/search/models/search_page.py:58
 msgid "Locations"
-msgstr ""
+msgstr "Orte"
 
 #: metahub/starling_metahub/molecules/blocks.py:101
 msgid "Size in percentage"
@@ -345,4 +345,4 @@ msgstr ""
 
 #: metahub/stories/models/story_page.py:66
 msgid "Story"
-msgstr ""
+msgstr "Geschicht"
