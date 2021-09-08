@@ -31,4 +31,5 @@ def cookieless_content_blocks():
         ('video', OrganismContentSingleVideoRegularBlock()),
         ('highlight', OrganismContentHeroImageTitleBlock()),
         ('image_mosaic', OrganismContentPhotoMosaicBlock()),
+        ('form', OrganismArticleFormRegularBlock()),
     ]

@@ -73,7 +73,7 @@ class Object(BaseModel):
             ),
             is_highlight=self.IsHighlight,
             current_location=self.CurrentLocation,
-            container_name=self.ContainerName,
+            container_name='',# empty by default,self.ContainerName,
             container_id=self.ContainerId,
             geographic_reference=self.GeographicReference,
             geographic_location=self.GeographicReference, #self.get_keyword_text("Geogr. Bezug"),
