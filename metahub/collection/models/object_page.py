@@ -78,9 +78,12 @@ class MetaHubObjectPage(MetaHubBasePage):
     def get_object_subtitle(self):
         return self.subtitle
 
+    def get_introduction(self):
+        return self.object.bc_notes if self.object.bc_notes else self.introduction
+
     def get_object_intro_component(self):
         return OrganismObjectIntroRegular(
-            text=f"<p>{self.introduction}</p>",
+            text=f"<p>{self.get_introduction()}</p>",
             classes="richtext__section-space--bottom"
         )
 
