@@ -1,5 +1,7 @@
 from functools import reduce
-from django.utils.translation import ugettext_lazy as _
+
+from django.conf import settings
+from django.utils.translation import ugettext_lazy as _, get_language
 
 from django.core.paginator import PageNotAnInteger
 from django.db.models import Q
@@ -10,11 +12,15 @@ from wagtail.core.utils import resolve_model_string
 
 from metahub.collection.models import MetaHubObjectPage
 from metahub.core.models import MetaHubBasePage
+from metahub.home.models import MetaHubHomePage
 from metahub.locations.models import MetaHubLocationPage
 from metahub.starling_metahub.organisms.interfaces import OrganismExploreSearchHeader, OrganismSearchCardGridRegular
 from metahub.starling_metahub.utils import create_paginator_component
 from metahub.stories.models import MetaHubStoryPage
 
+
+LANGUAGES = settings.LANGUAGES
+LCODES = [d[0] for d in LANGUAGES]
 
 class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
     """
@@ -109,14 +115,38 @@ class MetaHubSearchPage(RoutablePageMixin, MetaHubBasePage):
             extra_params.append(f"&id_{key}={value}")
         return ''.join(extra_params)
 
+    def filter_on_language(self, results):
+        #take a page query list and sanitize it for language filters
+
+        #fetch homepages and connect them to language
+        hp = MetaHubHomePage.objects.live()
+        language = get_language()
+
+        include_path = None  #so by default we query all
+        exclude_path = None  #by default not needed
+        for p in hp:
+            if p.slug in LCODES:
+                if p.slug == language:
+                    include_path = p.path
+                else:
+                    exclude_path = p.path
+
+        if exclude_path:
+            results = results.exclude(path__startswith=exclude_path)
+        if include_path:
+            results = results.filter(path__startswith=include_path)
+
+        return results
+
+
     def get_search_results(self, filters, search_query):
         if filters.get('type') == 'object':
-            return [p.get_card_representation() for p in MetaHubObjectPage.objects.live()]
+            return [p.get_card_representation() for p in self.filter_on_language(MetaHubObjectPage.objects.live())]
         elif filters.get('type') == 'story':
-            return [p.get_card_representation() for p in MetaHubStoryPage.objects.live()]
+            return [p.get_card_representation() for p in self.filter_on_language(MetaHubStoryPage.objects.live())]
         elif filters.get('type') == 'location':
-            return [p.get_card_representation() for p in MetaHubLocationPage.objects.live()]
-        return [p.get_card_representation() for p in self.get_all_entities_in_collection_qs(search_query)]
+            return [p.get_card_representation() for p in self.filter_on_language(MetaHubLocationPage.objects.live())]
+        return [p.get_card_representation() for p in self.filter_on_language(self.get_all_entities_in_collection_qs(search_query))]
 
     def create_paginator_component(self, paginator, paginator_page, querystring_extra):
         return create_paginator_component(paginator, paginator_page, querystring_extra=querystring_extra)
