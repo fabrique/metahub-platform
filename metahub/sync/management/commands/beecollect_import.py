@@ -199,7 +199,7 @@ class BeecollectImporter:
             # TODO Determine type (objects) (this might be german later on? its not super safe to do this by slug perhaps)
             parent_page = (
                 MetaHubOverviewPage.objects.filter(slug="objects")
-                .descendant_of(MetaHubMuseumSubHomePage.objects.get(slug=museum_slug))
+                .descendant_of(MetaHubMuseumSubHomePage.objects.get(slug=museum_slug).first())
                 .first()
             )
             new_page = MetaHubObjectPage(title=title, object=object_instance)
