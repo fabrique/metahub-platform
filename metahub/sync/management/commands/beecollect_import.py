@@ -197,9 +197,13 @@ class BeecollectImporter:
                 title = object_instance.bc_id
             logger.debug(f"Creating CMS page for object id: {object_instance.id}")
             # TODO Determine type (objects) (this might be german later on? its not super safe to do this by slug perhaps)
+
+            museumpages = MetaHubMuseumSubHomePage.objects.filter(slug=museum_slug)  #get the first one, we solve EN later (beecollect is not english...)
+            museumpage = museumpages[0]
+
             parent_page = (
                 MetaHubOverviewPage.objects.filter(slug="objects")
-                .descendant_of(MetaHubMuseumSubHomePage.objects.get(slug=museum_slug).first())
+                .descendant_of(museumpage)
                 .first()
             )
             new_page = MetaHubObjectPage(title=title, object=object_instance)
