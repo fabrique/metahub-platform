@@ -8,6 +8,15 @@
     margin-block-end: 1rem;
   }
 
+  ul {
+    list-style: none;
+    padding-inline-start: 0px;
+  }
+
+  input[type='checkbox'] {
+    cursor: pointer;
+  }
+
   .form__text {
     @include typography(paragraph);
 
